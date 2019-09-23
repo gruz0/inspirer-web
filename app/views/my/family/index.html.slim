@@ -1,0 +1,82 @@
+h2 Family
+
+.row
+  .col-sm-4
+    = link_to(new_my_family_path, class: 'btn btn-success')
+      | Add New
+
+br
+
+.card-columns
+  .card
+    = image_tag("placeholders/360x240.png", class: 'card-img-top')
+    .card-body
+      h5.card-title Some Card Title
+      p.card-text
+        | Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+      p.card-text
+        | Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+
+      p.card-text
+        a.card-link href='#' Read more
+
+      p.card-text
+        small.text-muted Last updated 3 mins ago
+
+  .card
+    = image_tag("placeholders/360x240.png", class: 'card-img-top')
+    .card-body
+      h5.card-title Some news about our children
+      p.card-text
+        | Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+
+      p.card-text
+        small.text-muted
+          | Last updated&nbsp;
+          = Time.now.strftime('%Y-%m-%d')
+
+  .card
+    .card-body
+      h5.card-title Some news about our children
+      p.card-text
+        | Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+
+      p.card-text
+        small.text-muted
+          | Last updated&nbsp;
+          = Time.now.strftime('%Y-%m-%d')
+
+  .card
+    = image_tag("placeholders/360x240.png", class: 'card-img-top')
+    .card-body
+      h5.card-title Do u want to knew something new?
+      p.card-text
+        | Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+
+      p.card-text
+        a.card-link href='#' Read more
+
+      p.card-text
+        small.text-muted Last updated 1 hour ago
+
+  .card
+    = image_tag("placeholders/360x240.png", class: 'card-img-top')
+    .card-body
+      p.card-text
+        | Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+
+      p.card-text
+        small.text-muted
+          | Last updated&nbsp;
+          = (Time.now - 1.days).strftime('%Y-%m-%d')
+
+  .card
+    .card-body
+      h5.card-title We've tested a new sort of coffee
+      p.card-text
+        | Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+
+      p.card-text
+        small.text-muted
+          | Last updated&nbsp;
+          = Time.now.strftime('%Y-%m-%d')

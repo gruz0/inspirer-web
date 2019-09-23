@@ -1,0 +1,24 @@
+h2 Health
+
+.row
+  .col-sm-4
+    .card.mb-3.text-center.border-0
+      .card-body.rounded style="background-color:#f3a683;"
+        h5.card-title
+          = link_to(my_health_sleep_index_path, class: 'stretched-link')
+            | Sleep
+
+  .col-sm-4
+    .card.mb-3.text-center.border-0
+      .card-body.rounded style="background-color:#cf6a87;"
+        h5.card-title
+          = link_to(my_health_body_weights_path, class: 'stretched-link')
+            | Body Weight
+
+  .col-sm-4
+    .card.mb-3.text-center.border-0
+      .card-body.rounded style="background-color:#fdcb6e;"
+        h5.card-title
+          = link_to(my_health_body_sizes_path, class: 'stretched-link')
+            | Body Size
+

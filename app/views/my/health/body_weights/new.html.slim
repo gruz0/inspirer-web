@@ -1,0 +1,24 @@
+h2 Body Weight Card
+
+form
+  .form-group.row
+    label.col-sm-4.col-form-label for="healthQuestion3" My current weight is (kg.)
+    .col-sm-2
+      input#healthQuestion3.form-control
+
+  .form-group.row
+    label.col-sm-4.col-form-label for="textarea1" Notes
+    .col-sm-8
+      textarea#textarea1.form-control rows="3" placeholder="(optional)"
+
+  .form-group.row
+    label.col-sm-4.col-form-label for="privacyOptions" Privacy
+
+    .col-sm-3
+      = render partial: 'shared/privacy_options'
+
+  .form-group.row
+    .col-sm-4
+    .col-sm-8
+      button.btn.btn-primary Save
+

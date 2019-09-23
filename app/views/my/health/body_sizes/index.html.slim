@@ -1,0 +1,38 @@
+h2 Body Size
+
+.row
+  .col-sm-4
+    = link_to(new_my_health_body_size_path, class: 'btn btn-success')
+      | Track Today
+
+br
+
+.row
+  .col
+    table.table.table-sm.table-hover
+      thead.thead-light
+        tr
+          th scope="col" Chest
+          th scope="col" Waist
+          th scope="col" Hips
+          th scope="col" Updated at
+
+      tbody
+        tr
+          th scope="row" 100
+          td 75
+          td 115
+          td = long_date(Time.now)
+
+        tr
+          th scope="row" 99.8
+          td 75
+          td 115
+          td = long_date(Time.now)
+
+        tr
+          th scope="row" 99.9
+          td 74.3
+          td 112.7
+          td = long_date(Time.now)
+

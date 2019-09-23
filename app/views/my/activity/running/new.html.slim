@@ -1,0 +1,28 @@
+h2 Running Card
+
+form
+  .form-group.row
+    label.col-sm-3.col-form-label for="healthQuestion1" Distance, km.
+    .col-sm-3
+      input#healthQuestion1.form-control
+
+  .form-group.row
+    label.col-sm-3.col-form-label for="healthQuestion2" Time spent, hh:mm
+    .col-sm-3
+      input#healthQuestion2.form-control
+
+  .form-group.row
+    label.col-sm-3.col-form-label for="textarea1" Notes
+    .col-sm-8
+      textarea#textarea1.form-control rows="3" placeholder="(optional)"
+
+  .form-group.row
+    label.col-sm-3.col-form-label for="privacyOptions" Privacy
+
+    .col-sm-3
+      = render partial: 'shared/privacy_options'
+
+  .form-group.row
+    .col-sm-3
+    .col-sm-8
+      button.btn.btn-primary Save

@@ -1,0 +1,30 @@
+h2 Gym & Workout
+
+.row
+  .col-sm-4
+    = link_to(new_my_activity_gym_path, class: 'btn btn-success')
+      | Track Today
+
+br
+
+.row
+  .col
+    table.table.table-sm.table-hover
+      thead.thead-light
+        tr
+          th scope="col" Workout plan
+          th scope="col" Updated at
+
+      tbody
+        tr
+          th scope="row" Lorem Ipsum
+          td = long_date(Time.now)
+
+        tr
+          th scope="row" Lorem Ipsum
+          td = long_date(Time.now)
+
+        tr
+          th scope="row" Lorem Ipsum
+          td = long_date(Time.now)
+

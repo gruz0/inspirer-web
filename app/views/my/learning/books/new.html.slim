@@ -1,0 +1,60 @@
+h2 New Book
+
+form
+  .form-group.row
+    label.col-sm-3.col-form-label for="healthQuestion1" Title
+    .col-sm-8
+      input#healthQuestion1.form-control
+
+  .form-group.row
+    label.col-sm-3.col-form-label for="healthQuestion2" Author
+    .col-sm-8
+      input#healthQuestion2.form-control
+
+  .form-group.row
+    label.col-sm-3.col-form-label for="healthQuestion3" Link
+    .col-sm-8
+      input#healthQuestion3.form-control
+
+  .form-group.row
+    label.col-sm-3.col-form-label Status
+
+    .col-sm-8
+      .form-check.form-check-inline
+        input#inlineRadioOptions1.form-check-input type="radio" name="inlineRadioOptions" value="option1"
+        label.form-check-label for="inlineRadioOptions1" New
+
+      .form-check.form-check-inline
+        input#inlineRadioOptions2.form-check-input type="radio" name="inlineRadioOptions" value="option2"
+        label.form-check-label for="inlineRadioOptions2" Want to read
+
+      .form-check.form-check-inline
+        input#inlineRadioOptions3.form-check-input type="radio" name="inlineRadioOptions" value="option3"
+        label.form-check-label for="inlineRadioOptions3" Reading now
+
+      .form-check.form-check-inline
+        input#inlineRadioOptions4.form-check-input type="radio" name="inlineRadioOptions" value="option4"
+        label.form-check-label for="inlineRadioOptions4" Completed
+
+  .form-group.row
+    label.col-sm-3.col-form-label Rating
+
+    .col-sm-8
+      = render partial: 'shared/rating'
+
+  .form-group.row
+    label.col-sm-3.col-form-label for="textarea1" Notes
+    .col-sm-8
+      textarea#textarea1.form-control rows="3" placeholder="(optional)"
+
+  .form-group.row
+    label.col-sm-3.col-form-label for="privacyOptions" Privacy
+
+    .col-sm-3
+      = render partial: 'shared/privacy_options'
+
+  .form-group.row
+    .col-sm-3
+    .col-sm-8
+      button.btn.btn-primary Save
+

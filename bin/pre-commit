@@ -1,0 +1,40 @@
+#!/bin/sh
+
+red='\033[0;31m'
+green='\033[0;32m'
+yellow='\033[0;33m'
+NC='\033[0m'
+
+gem update rubocop rubocop-rspec brakeman bundle-audit rails_best_practices
+
+# Code styling
+echo "${green}[Ruby Style][Info]: Checking Ruby Style${NC}"
+
+if [ ! -f '.rubocop.yml' ]; then
+  echo "${yellow}[Ruby Style][Warning]: No .rubocop.yml config file.${NC}"
+  exit 1
+fi
+
+rubocop -DS --force-exclusion -c .rubocop.yml -d -E
+
+if [ $? -ne 0 ]; then
+  echo "${red}[Ruby Style][Error]: Fix the issues and commit again${NC}"
+  exit 1
+fi
+
+# Checks for vulnerable gems
+bundle audit update
+bundle audit check
+if [ $? -ne 0 ]; then
+  echo "${red}[Bundle Audit][Error]: Update the gems and commit again${NC}"
+  exit 1
+fi
+
+# Security audits
+brakeman -A -z
+if [ $? -ne 0 ]; then
+  echo "${red}[Brakeman][Error]: Fix the issues and commit again${NC}"
+  exit 1
+fi
+
+exit 0

@@ -1,0 +1,42 @@
+h2 Books
+
+.row
+  .col-sm-4
+    = link_to(new_my_learning_book_path, class: 'btn btn-success')
+      | Add New
+
+br
+
+.row
+  .col
+    table.table.table-sm.table-hover
+      thead.thead-light
+        tr
+          th scope="col" Title
+          th scope="col" Author
+          th scope="col" Rating
+          th scope="col" Status
+          th scope="col" Updated at
+
+      tbody
+        tr
+          th scope="row" Oprah' Diary
+          td Oprah Winfrey
+          td 4
+          td Читаю
+          td = long_date(Time.now)
+
+        tr
+          th scope="row" 5 A.M. Miracle
+          td
+          td 5
+          td Читаю
+          td = long_date(Time.now)
+
+        tr
+          th scope="row" Уборка дома
+          td Джеймс Картук
+          td 3
+          td Прочитано
+          td = long_date(Time.now)
+

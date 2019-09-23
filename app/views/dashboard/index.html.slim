@@ -1,0 +1,55 @@
+.row
+  .col-sm-4
+    .card.mb-3.text-center.border-0
+      .card-body
+        p.card-text
+          = fa_icon "heart 5x", style: 'color:#e66767;'
+        h5.card-title
+          = link_to(my_health_index_path, class: 'stretched-link')
+            | Health
+
+  .col-sm-4
+    .card.mb-3.text-center.border-0
+      .card-body
+        p.card-text
+          = fa_icon "tasks 5x", style: 'color:#F79F1F;'
+        h5.card-title
+          = link_to(my_productivity_index_path, class: 'stretched-link')
+            | Productivity
+
+  .col-sm-4
+    .card.mb-3.text-center.border-0
+      .card-body
+        p.card-text
+          = fa_icon "heartbeat 5x", style: 'color:#EA2027;'
+        h5.card-title
+          = link_to(my_activity_index_path, class: 'stretched-link')
+            | Activity
+
+  .col-sm-4
+    .card.mb-3.text-center.border-0
+      .card-body
+        p.card-text
+          = fa_icon "smile-o 5x", style: 'color:#009432;'
+        h5.card-title
+          = link_to(my_emotions_path, class: 'stretched-link')
+            | Emotions
+
+  .col-sm-4
+    .card.mb-3.text-center.border-0
+      .card-body
+        p.card-text
+          = fa_icon "leanpub 5x", style: 'color:#A3CB38;'
+        h5.card-title
+          = link_to(my_learning_index_path, class: 'stretched-link')
+            | Learning
+
+  .col-sm-4
+    .card.mb-3.text-center.border-0
+      .card-body
+        p.card-text
+          = fa_icon "users 5x", style: 'color:#B53471;'
+        h5.card-title
+          = link_to(my_family_index_path, class: 'stretched-link')
+            | Family
+

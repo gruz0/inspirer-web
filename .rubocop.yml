@@ -1,0 +1,55 @@
+require:
+  - rubocop-rspec
+  - rubocop-performance
+
+AllCops:
+  TargetRubyVersion: 2.5
+  DisplayCopNames: true
+  Exclude:
+    - bin/*
+    - db/schema.rb
+    - tmp/**/*
+    - lib/tasks/import/*.rake
+
+#
+# Linters
+#
+
+#
+# Naming
+#
+
+#
+# Metrics
+#
+Metrics/LineLength:
+  Max: 120
+
+Metrics/BlockLength:
+  Exclude:
+    - config/routes.rb
+    - config/environments/*.rb
+    - spec/**/*.rb
+
+Metrics/AbcSize:
+  Enabled: false
+
+#
+# Style
+#
+Style/Documentation:
+  Enabled: false
+
+#
+# Rails
+#
+Rails:
+  Enabled: true
+
+#
+# RSpec
+#
+
+#
+# Capybara
+#

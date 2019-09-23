@@ -1,0 +1,25 @@
+doctype html
+html lang="en"
+  head
+    meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    title Impress Me!
+    = csrf_meta_tags
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  body style="padding-bottom:55px;"
+    header
+      = render 'application/menu'
+
+    .container-fluid
+      .row
+        .col-md-2.pt-3.bg-light.sidebar
+          = render 'application/left_sidebar'
+
+        main.col-md-7.mt-3 role="main"
+          = yield
+
+        .col-md-3.pt-3.bg-light.sidebar
+          = render 'application/right_sidebar'
+
+    footer
+      = render 'application/footer'

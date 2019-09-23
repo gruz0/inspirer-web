@@ -1,0 +1,32 @@
+h2 Add New Post
+
+form
+  .form-group.row
+    label.col-sm-3.col-form-label for="healthQuestion1" Title
+    .col-sm-8
+      input#healthQuestion1.form-control type="text"
+
+  .form-group.row
+    label.col-sm-3.col-form-label for="textarea1" Body
+    .col-sm-8
+      textarea#textarea1.form-control rows="5"
+
+  .form-group.row
+    label.col-sm-3.col-form-label Upload photo
+
+    .col-sm-8
+      .custom-file
+        input.custom-file-input type="file" id="customFile"
+        label.custom-file-label for="customFile" Choose photo
+
+  .form-group.row
+    label.col-sm-3.col-form-label for="privacyOptions" Privacy
+
+    .col-sm-3
+      = render partial: 'shared/privacy_options'
+
+  .form-group.row
+    .col-sm-3
+    .col-sm-8
+      button.btn.btn-primary Save
+

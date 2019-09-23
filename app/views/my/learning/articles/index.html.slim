@@ -1,0 +1,34 @@
+h2 Articles
+
+.row
+  .col-sm-4
+    = link_to(new_my_learning_article_path, class: 'btn btn-success')
+      | Add New
+
+br
+
+.row
+  .col
+    table.table.table-sm.table-hover
+      thead.thead-light
+        tr
+          th scope="col" Title
+          th scope="col" Rating
+          th scope="col" Updated at
+
+      tbody
+        tr
+          th scope="row" Oprah' Diary
+          td 4
+          td = long_date(Time.now)
+
+        tr
+          th scope="row" 5 A.M. Miracle
+          td 4
+          td = long_date(Time.now)
+
+        tr
+          th scope="row" Уборка дома
+          td 5
+          td = long_date(Time.now)
+

@@ -1,0 +1,40 @@
+h2 Podcasts
+
+.row
+  .col-sm-4
+    = link_to(new_my_learning_podcast_path, class: 'btn btn-success')
+      | Add New
+
+br
+
+.row
+  .col
+    table.table.table-sm.table-hover
+      thead.thead-light
+        tr
+          th scope="col" Title
+          th scope="col" Rating
+          th scope="col" Updated at
+
+      tbody
+        tr
+          td
+            a href="https://youtube.com/" target="_blank" rel="nofollow noreferrer"
+              | Jim Carrey Stand-Up
+          td 5
+          td = long_date(Time.now)
+
+        tr
+          td
+            a href="https://youtube.com/" target="_blank" rel="nofollow noreferrer"
+              | Jim Carrey Stand-Up
+          td 4
+          td = long_date(Time.now)
+
+        tr
+          td
+            a href="https://youtube.com/" target="_blank" rel="nofollow noreferrer"
+              | Jim Carrey Stand-Up
+          td 3
+          td = long_date(Time.now)
+
