@@ -29,3 +29,5 @@ TODO
 coverage
 
 /public/assets/*
+
+/.data/*

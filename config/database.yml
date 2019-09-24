@@ -1,0 +1,21 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  username: postgres
+  password: postgres
+
+development:
+  <<: *default
+  database: inspirer_development
+  host: db
+
+test:
+  <<: *default
+  database: inspirer_test
+  host: db
+
+production:
+  <<: *default
+  database: inspirer_production
+  host: localhost
