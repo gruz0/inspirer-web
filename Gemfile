@@ -9,6 +9,8 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'bootstrap', '>= 4.3.1'
 gem 'font-awesome-rails'
 gem 'jquery-rails'
+gem 'mini_racer', platforms: :ruby
+gem 'pg'
 gem 'puma', '~> 3.11'
 gem 'rails', '~> 5.2.3'
 gem 'sass-rails', '~> 5.0'

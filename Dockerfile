@@ -13,7 +13,7 @@ APT {\n\
 DSELECT::Clean "always";' >> /etc/apt/apt.conf.d/docker-no-cache
 
 RUN apt-get update -qq && \
-    apt-get install -y build-essential && \
+    apt-get install -y build-essential libpq-dev && \
     gem install bundler && \
     mkdir /app
 
