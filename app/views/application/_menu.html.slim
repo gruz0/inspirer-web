@@ -4,45 +4,53 @@ nav.navbar.navbar-expand-lg.bg-dark.navbar-dark
     = 'Inspire Me!'
 
   .collapse.navbar-collapse
-    ul.navbar-nav.mr-auto
-      li.nav-item
-        = link_to("#", class: 'nav-link') do
-          = 'Overview'
+    - if account_signed_in?
+        ul.navbar-nav.mr-auto
+          li.nav-item
+            = link_to("#", class: 'nav-link') do
+              = 'Overview'
 
-      li.nav-item
-        = link_to("#", class: 'nav-link') do
-          = 'Reports'
+          li.nav-item
+            = link_to("#", class: 'nav-link') do
+              = 'Reports'
 
-    ul.navbar-nav
-      li.nav-item
-        = link_to("#", class: 'nav-link') do
-          = fa_icon 'bell'
+        ul.navbar-nav
+          li.nav-item
+            = link_to("#", class: 'nav-link') do
+              = fa_icon 'bell'
 
-    ul.navbar-nav
-      li.nav-item.dropdown
-        a#navbar-dictionaries.nav-link.dropdown-toggle href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-          = 'Welcome, gruz0!'
-        .dropdown-menu aria-labelledby="navbar-dictionaries"
-          = link_to("#", class: 'dropdown-item') do
-            = 'My Profile'
-          = link_to("#", class: 'dropdown-item') do
-            = 'Settings'
-          = link_to("#", class: 'dropdown-item') do
-            = 'Integrations'
-          = link_to("#", class: 'dropdown-item') do
-            = 'Email Settings'
-          = link_to("#", class: 'dropdown-item') do
-            = 'Billing'
-          = link_to("#", class: 'dropdown-item') do
-            = 'Password'
-          .dropdown-divider
-          = link_to("#", class: 'dropdown-item') do
-            = 'FAQ'
-          = link_to("#", class: 'dropdown-item') do
-            = 'Feedback'
-          = link_to("#", class: 'dropdown-item') do
-            = 'Support'
-          .dropdown-divider
-          = link_to("#", class: 'dropdown-item') do
-            = 'Log out'
+        ul.navbar-nav
+          li.nav-item.dropdown
+            a#navbar-dictionaries.nav-link.dropdown-toggle href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+              = "Welcome, #{current_account.email}!"
+            .dropdown-menu aria-labelledby="navbar-dictionaries"
+              = link_to("#", class: 'dropdown-item') do
+                = 'My Profile'
+              = link_to("#", class: 'dropdown-item') do
+                = 'Settings'
+              = link_to("#", class: 'dropdown-item') do
+                = 'Integrations'
+              = link_to("#", class: 'dropdown-item') do
+                = 'Email Settings'
+              = link_to("#", class: 'dropdown-item') do
+                = 'Billing'
+              = link_to("#", class: 'dropdown-item') do
+                = 'Password'
+              .dropdown-divider
+              = link_to("#", class: 'dropdown-item') do
+                = 'FAQ'
+              = link_to("#", class: 'dropdown-item') do
+                = 'Feedback'
+              = link_to("#", class: 'dropdown-item') do
+                = 'Support'
+              .dropdown-divider
+              = link_to(destroy_account_session_path, class: 'dropdown-item')
+                | Log out
+    - else
+      .m-auto
+      ul.navbar-nav
+        li.nav-item.pull-left
+          = link_to(new_account_session_path, class: 'nav-link') do
+            = fa_icon('sign-in')
+            | &nbsp;Log In
 

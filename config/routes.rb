@@ -1,6 +1,16 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  devise_for :account, controllers: {
+    confirmations: 'accounts/confirmations',
+    passwords: 'accounts/passwords',
+    registrations: 'accounts/registrations',
+    sessions: 'accounts/sessions',
+    unlocks: 'accounts/unlocks'
+  }
+
+  resources :dashboard, only: [:index]
+
   namespace :my do
     resources :health, only: [:index]
     namespace :health do
@@ -40,5 +50,5 @@ Rails.application.routes.draw do
     resources :family
   end
 
-  root 'dashboard#index'
+  root 'home#index'
 end
