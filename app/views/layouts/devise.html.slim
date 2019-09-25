@@ -11,28 +11,22 @@ html lang="en"
       = render 'application/menu'
 
     .container-fluid
-      .row
-        .col-md-2.pt-3.bg-light.sidebar
-          = render 'application/left_sidebar'
+      - if notice
+        .row
+          .col.mt-3
+            .alert.alert-info
+              = notice
 
-        main.col-md-7.mt-3 role="main"
+      - if alert
+        .row
+          .col.mt-3
+            .alert.alert-danger
+              = alert
 
-          - if notice
-            .row
-              .col
-                .alert.alert-info
-                  = notice
-
-          - if alert
-            .row
-              .col
-                .alert.alert-danger
-                  = alert
-
-          = yield
-
-        .col-md-3.pt-3.bg-light.sidebar
-          = render 'application/right_sidebar'
+      .row.justify-content-md-center
+        .col.col-md-6.mt-3
+          main role="main"
+            = yield
 
     footer
       = render 'application/footer'
