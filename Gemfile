@@ -7,6 +7,7 @@ ruby '2.5.5'
 
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'bootstrap', '>= 4.3.1'
+gem 'devise'
 gem 'font-awesome-rails'
 gem 'jquery-rails'
 gem 'mini_racer', platforms: :ruby
