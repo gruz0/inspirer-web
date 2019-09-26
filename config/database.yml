@@ -2,8 +2,8 @@ default: &default
   adapter: postgresql
   encoding: unicode
   pool: 5
-  username: postgres
-  password: postgres
+  username: <%= ENV.fetch('DB_USER') %>
+  password: <%= ENV.fetch('DB_PASSWORD') %>
 
 development:
   <<: *default
@@ -17,5 +17,5 @@ test:
 
 production:
   <<: *default
-  database: inspirer_production
+  database: <%= ENV.fetch('DB_NAME') %>
   host: localhost
