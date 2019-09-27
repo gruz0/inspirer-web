@@ -24,10 +24,8 @@ nav.navbar.navbar-expand-lg.bg-dark.navbar-dark
             a#navbar-dictionaries.nav-link.dropdown-toggle href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
               = "Welcome, #{current_account.email}!"
             .dropdown-menu aria-labelledby="navbar-dictionaries"
-              = link_to("#", class: 'dropdown-item') do
-                = 'My Profile'
-              = link_to("#", class: 'dropdown-item') do
-                = 'Settings'
+              = link_to(edit_account_registration_path, class: 'dropdown-item') do
+                = 'Edit Profile'
               = link_to("#", class: 'dropdown-item') do
                 = 'Integrations'
               = link_to("#", class: 'dropdown-item') do
