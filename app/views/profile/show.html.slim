@@ -1,0 +1,37 @@
+.row
+  .col-md-4
+    .card.border-0
+      img src="https://sun9-61.userapi.com/c840232/v840232895/372c4/BAK_QjtYRyE.jpg?ava=1" alt="" class="card-img-top rounded-circle"
+
+      ul.list-group.list-group-flush
+        li.list-group-item.border-0
+          = link_to('#', class: 'btn btn-primary btn-block')
+            | Write message
+
+        li.list-group-item.border-0
+          .dropdown
+            button.btn.btn-secondary.btn-block.dropdown-toggle type="button" id="relationsDropdown" data-toggle="dropdown" aria-haspopup="false" aria-expanded="false"
+              | You're friends
+            .dropdown-menu aria-labelledby="relationsDropdown"
+              a.dropdown-item href="#"
+                | Suggest friends
+              a.dropdown-item href="#"
+                | Unfriend
+
+  .col-md-8
+    h1 #{@profile.name}
+
+    - if @profile.website.present?
+      .row
+        .col-md-3
+          | Website:
+        .col-md-9
+          = link_to(h(sanitize(@profile.website)), target: '_blank', rel: 'noopener noreferrer')
+            = h(sanitize(@profile.website))
+
+    - if @profile.bio.present?
+      .row
+        .col-md-3
+          | Bio:
+        .col-md-9
+          = @profile.bio
