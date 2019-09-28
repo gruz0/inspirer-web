@@ -16,18 +16,7 @@ html lang="en"
           = render 'application/left_sidebar'
 
         main.col-md-7.mt-3 role="main"
-
-          - if notice
-            .row
-              .col
-                .alert.alert-info
-                  = notice
-
-          - if alert
-            .row
-              .col
-                .alert.alert-danger
-                  = alert
+          = render 'application/flash_messages'
 
           = yield
 

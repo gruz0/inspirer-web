@@ -11,19 +11,10 @@ html lang="en"
       = render 'application/menu'
 
     .container-fluid
-      - if notice
-        .row
-          .col.mt-3
-            .alert.alert-info
-              = notice
+      .col.mt-3
+        = render 'application/flash_messages'
 
-      - if alert
-        .row
-          .col.mt-3
-            .alert.alert-danger
-              = alert
-
-      = yield
+        = yield
 
     footer
       = render 'application/footer'

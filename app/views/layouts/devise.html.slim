@@ -11,20 +11,10 @@ html lang="en"
       = render 'application/menu'
 
     .container-fluid
-      - if notice
-        .row
-          .col.mt-3
-            .alert.alert-info
-              = notice
-
-      - if alert
-        .row
-          .col.mt-3
-            .alert.alert-danger
-              = alert
-
       .row.justify-content-md-center
         .col.col-md-6.mt-3
+          = render 'application/flash_messages'
+
           main role="main"
             = yield
 
