@@ -5,6 +5,17 @@ h2
   = render "accounts/shared/error_messages", resource: resource
 
   .form-group.row
+    = f.label :avatar, class: 'col-sm-4 col-form-label'
+    .col-sm-8
+      - if current_account.avatar.attached?
+        = image_tag(current_account.avatar, class: 'img-thumbnail rounded-circle', style: 'width:150px;')
+        hr.mr-4
+      .custom-file
+        = f.file_field :avatar, class: 'custom-file-input'
+        label.custom-file-label for="account_avatar"
+          | Choose file
+
+  .form-group.row
     = f.label :name, class: 'col-sm-4 col-form-label'
     .col-sm-8
       = f.text_field :name, autofocus: true, class: 'form-control'
