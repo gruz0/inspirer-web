@@ -8,4 +8,8 @@ module ApplicationHelper
   def long_date(value)
     l(value, format: :long)
   end
+
+  def feelings_to_array
+    FEELINGS.map { |k, v| [v, k] }
+  end
 end

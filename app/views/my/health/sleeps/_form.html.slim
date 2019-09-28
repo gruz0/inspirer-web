@@ -1,0 +1,33 @@
+- if sleep.errors.any?
+  .alert.alert-danger
+    h5 = t('errors.messages.not_saved', resource: sleep.class.model_name.human.downcase, count: sleep.errors.count)
+    ul
+      - sleep.errors.full_messages.each do |message|
+        li = message
+
+= form_for [:my, sleep] do |f|
+  .form-group.row
+    label.col-sm-3.col-form-label for="health_sleep_woke_up_at_hour"
+      | Woke up at
+    .col-sm-4
+      .row
+        .col-sm-6
+          = f.number_field :woke_up_at_hour, class: 'form-control', required: 'required', placeholder: 'Hour', min: 0, max: 23, maxlength: 2
+        .col-sm-6
+          = f.number_field :woke_up_at_minutes, class: 'form-control', required: 'required', placeholder: 'Minutes', min: 0, max: 59, maxlength: 2
+
+  .form-group.row
+    = f.label :feeling, class: 'col-sm-3 col-form-label'
+    .col-sm-4
+      = render partial: 'shared/rating', locals: { form: f, value: sleep.feeling }, required: 'required'
+
+  .form-group.row
+    = f.label :notes, class: 'col-sm-3 col-form-label'
+    .col-sm-8
+      = f.text_area :notes, class: 'form-control', rows: 3, placeholder: '(optional)'
+
+  .form-group.row
+    .col-sm-3
+    .col-sm-8
+      = f.submit 'Save', class: 'btn btn-success'
+
