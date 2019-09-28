@@ -9,26 +9,18 @@ br
 
 .row
   .col
-    table.table.table-sm.table-hover
+    table.table.table-sm.table-striped.table-hover
       thead.thead-light
         tr
-          th scope="col" I woke up at
-          th scope="col" Sleep quality
-          th scope="col" Updated at
+          th.w-50 scope="col" I woke up at
+          th.w-20 scope="col" Feeling
+          th.w-30 scope="col" Updated at
 
       tbody
-        tr
-          th scope="row" 7:15
-          td 3
-          td = long_date(Time.now)
-
-        tr
-          th scope="row" 8:03
-          td 5
-          td = long_date(Time.now)
-
-        tr
-          th scope="row" 5:49
-          td 5
-          td = long_date(Time.now)
+        - @sleeps.each do |sleep|
+          - sleep_presenter = Health::SleepPresenter.new(sleep)
+          tr
+            th scope="row" = sleep_presenter.woke_up_at
+            td = sleep.feeling
+            td = long_date(sleep.updated_at)
 
