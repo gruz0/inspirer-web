@@ -7,4 +7,6 @@ class Account < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_one_attached :avatar
+
+  has_many :health_sleep, dependent: :destroy
 end
