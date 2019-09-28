@@ -2,7 +2,7 @@
 
 module My
   module Health
-    class SleepController < BaseController
+    class SleepsController < BaseController
       def index; end
 
       def new; end

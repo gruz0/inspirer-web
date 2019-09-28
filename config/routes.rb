@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   namespace :my do
     resources :health, only: [:index]
     namespace :health do
-      resources :sleep
+      resources :sleeps
       resources :body_weights
       resources :body_sizes
     end
