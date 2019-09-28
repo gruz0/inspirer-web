@@ -1,0 +1,24 @@
+h1 Friends
+
+- if @friends.any?
+  .card-deck
+    - @friends.each do |friend|
+      .card.mb-3
+        = link_to(profile_path(friend))
+          img src="https://sun9-61.userapi.com/c840232/v840232895/372c4/BAK_QjtYRyE.jpg?ava=1" alt="" class="card-img-top"
+
+        .card-body
+          h5.card-title
+            = friend.name
+
+          - if friend.bio.present?
+            p.card-text
+              = friend.bio
+
+        .card-footer
+          small.text-muted
+            | Updated 3 hours ago
+
+- else
+  | You don't have friends, sorry :-/
+
