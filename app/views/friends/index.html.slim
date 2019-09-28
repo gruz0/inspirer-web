@@ -1,23 +1,27 @@
 h1 Friends
 
 - if @friends.any?
-  .card-deck
-    - @friends.each do |friend|
-      .card.mb-3
-        = link_to(profile_path(friend))
-          img src="https://sun9-61.userapi.com/c840232/v840232895/372c4/BAK_QjtYRyE.jpg?ava=1" alt="" class="card-img-top"
+  - @friends.each do |friend|
+    .card.mb-3.border-0
+      .row.no-gutters
+        .col-md-3
+          - if friend.avatar.attached?
+            = link_to(profile_path(friend))
+              = image_tag(friend.avatar, class: 'card-img rounded-circle img-thumbnail')
 
-        .card-body
-          h5.card-title
-            = friend.name
+        .col-md-9
+          .card-body
+            h5.card-title
+              = link_to(profile_path(friend))
+                = friend.name
 
-          - if friend.bio.present?
-            p.card-text
-              = friend.bio
+            - if friend.bio.present?
+              p.card-text
+                = friend.bio
 
-        .card-footer
-          small.text-muted
-            | Updated 3 hours ago
+            = link_to('#', class: 'btn btn-sm btn-secondary')
+              = fa_icon('email')
+              | Write message
 
 - else
   | You don't have friends, sorry :-/
