@@ -3,7 +3,9 @@
 module My
   module Health
     class SleepsController < BaseController
-      def index; end
+      def index
+        @sleeps = current_account.health_sleep.order(created_at: :desc)
+      end
 
       def new
         @sleep = HealthSleep.new
