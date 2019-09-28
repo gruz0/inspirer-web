@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :dashboard, only: [:index]
 
   resources :profile, only: [:show]
+  resources :friends, only: [:index]
 
   namespace :my do
     resources :health, only: [:index]
