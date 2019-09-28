@@ -19,7 +19,7 @@
   .form-group.row
     = f.label :feeling, class: 'col-sm-3 col-form-label'
     .col-sm-4
-      = render partial: 'shared/rating', locals: { form: f, value: sleep.feeling }, required: 'required'
+      = render partial: 'shared/feeling', locals: { form: f, value: sleep.feeling }, required: 'required'
 
   .form-group.row
     = f.label :notes, class: 'col-sm-3 col-form-label'
