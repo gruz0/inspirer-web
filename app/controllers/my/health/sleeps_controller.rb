@@ -8,7 +8,12 @@ module My
       end
 
       def new
-        @sleep = HealthSleep.new
+        created_today = FindByCreatedToday.call(current_account.health_sleep)
+        if created_today
+          redirect_to edit_my_health_sleep_path(created_today)
+        else
+          @sleep = current_account.health_sleep.new
+        end
       end
 
       def create
