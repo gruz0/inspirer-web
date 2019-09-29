@@ -8,7 +8,12 @@ module My
       end
 
       def new
-        @body_weight = current_account.health_body_weight.new
+        created_today = FindByCreatedToday.call(current_account.health_body_weight)
+        if created_today
+          redirect_to edit_my_health_body_weight_path(created_today)
+        else
+          @body_weight = current_account.health_body_weight.new
+        end
       end
 
       def create
