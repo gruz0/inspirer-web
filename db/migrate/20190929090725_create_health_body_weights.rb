@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class CreateHealthWeights < ActiveRecord::Migration[5.2]
+class CreateHealthBodyWeights < ActiveRecord::Migration[5.2]
   def up
     execute <<-DDL
           CREATE TYPE weight_units AS ENUM (
@@ -8,7 +8,7 @@ class CreateHealthWeights < ActiveRecord::Migration[5.2]
           );
     DDL
 
-    create_table :health_weights do |t|
+    create_table :health_body_weights do |t|
       t.float :weight
       t.column :unit, :weight_units
       t.string :feeling
@@ -20,7 +20,7 @@ class CreateHealthWeights < ActiveRecord::Migration[5.2]
   end
 
   def down
-    drop_table :health_weights
+    drop_table :health_body_weights
     execute 'DROP type weight_units;'
   end
 end

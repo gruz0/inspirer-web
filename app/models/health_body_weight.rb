@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class HealthWeight < ApplicationRecord
+class HealthBodyWeight < ApplicationRecord
   belongs_to :account
 
   enum unit: {

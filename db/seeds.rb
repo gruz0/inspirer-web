@@ -23,11 +23,11 @@ account = Account.create!(
 end
 
 20.times do |_|
-  unit = HealthWeight.units.keys.sample
+  unit = HealthBodyWeight.units.keys.sample
   weight = rand(85.0..110.0).round(2)
   weight *= KG_TO_LBS_RATIO if unit == 'lbs'
 
-  account.health_weight.create!(
+  account.health_body_weight.create!(
     weight: weight,
     unit: unit,
     feeling: FEELINGS.keys.sample.to_s,
