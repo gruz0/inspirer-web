@@ -12,7 +12,7 @@ services:
       - default
 
   db:
-    image: postgres:10
+    image: postgres:11
     volumes:
       - .data:/var/lib/postgresql/data
     ports:
