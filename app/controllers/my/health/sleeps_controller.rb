@@ -12,7 +12,7 @@ module My
       end
 
       def create
-        @sleep = current_account.health_sleep.new(post_params)
+        @sleep = current_account.health_sleep.new(sleep_params)
 
         if @sleep.save
           redirect_to my_health_sleeps_path, notice: 'Record was successfully created'
@@ -21,10 +21,27 @@ module My
         end
       end
 
+      def edit
+        @sleep = resource
+      end
+
+      def update
+        @sleep = resource
+        if @sleep.update(sleep_params)
+          redirect_to my_health_sleeps_path, notice: 'Record was successfully updated'
+        else
+          render :edit
+        end
+      end
+
       private
 
-      def post_params
+      def sleep_params
         params.require(:health_sleep).permit(:woke_up_at_hour, :woke_up_at_minutes, :feeling, :notes)
+      end
+
+      def resource
+        current_account.health_sleep.find(params[:id])
       end
     end
   end
