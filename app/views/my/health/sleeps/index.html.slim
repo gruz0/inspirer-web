@@ -14,7 +14,7 @@ br
         tr
           th.w-50 scope="col" I woke up at
           th.w-20 scope="col" Feeling
-          th.w-20 scope="col" Updated at
+          th.w-20 scope="col" Created at
           th.w-10 scope="col"
 
       tbody
@@ -23,7 +23,7 @@ br
           tr
             th scope="row" = sleep_presenter.woke_up_at
             td = sleep.feeling
-            td = human_readable_date(sleep.updated_at)
+            td = human_readable_date(sleep.created_at)
             td.pull-right
               .dropdown
                 button.btn.btn-secondary.btn-sm.dropdown-toggle type="button" id="actions" data-toggle="dropdown" aria-haspopup="false" aria-expanded="false"
