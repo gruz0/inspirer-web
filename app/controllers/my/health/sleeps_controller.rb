@@ -12,7 +12,7 @@ module My
       end
 
       def create
-        @sleep = current_account.health_sleep.new(post_params)
+        @sleep = current_account.health_sleep.new(sleep_params)
 
         if @sleep.save
           redirect_to my_health_sleeps_path, notice: 'Record was successfully created'
@@ -27,7 +27,7 @@ module My
 
       def update
         @sleep = resource
-        if @sleep.update(post_params)
+        if @sleep.update(sleep_params)
           redirect_to my_health_sleeps_path, notice: 'Record was successfully updated'
         else
           render :edit
@@ -36,8 +36,7 @@ module My
 
       private
 
-      # FIXME: Rename to sleep_params
-      def post_params
+      def sleep_params
         params.require(:health_sleep).permit(:woke_up_at_hour, :woke_up_at_minutes, :feeling, :notes)
       end
 
