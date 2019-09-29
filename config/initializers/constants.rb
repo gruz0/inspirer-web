@@ -17,3 +17,10 @@ WEIGHT_UNITS = {
 }.freeze
 
 KG_TO_LBS_RATIO = 2.20462
+
+BODY_MEASURE_UNITS = {
+  cm: 'cm',
+  inch: 'inch'
+}.freeze
+
+INCH_TO_CM_RATIO = 2.54

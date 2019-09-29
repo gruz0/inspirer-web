@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
-class HealthBodySize < ApplicationRecord
+class HealthBodyMeasure < ApplicationRecord
   belongs_to :account
+
+  enum unit: BODY_MEASURE_UNITS
 
   validates :chest, presence: true, numericality: { greater_than: 0 }
   validates :waist, presence: true, numericality: { greater_than: 0 }
