@@ -3,7 +3,9 @@
 module My
   module Health
     class BodyWeightsController < BaseController
-      def index; end
+      def index
+        @body_weights = current_account.health_body_weight.order(created_at: :desc)
+      end
 
       def new; end
     end

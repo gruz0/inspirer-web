@@ -12,19 +12,14 @@ br
     table.table.table-sm.table-hover
       thead.thead-light
         tr
-          th scope="col" Weight
-          th scope="col" Updated at
+          th.w-60 scope="col" Weight
+          th.w-20 scope="col" Unit
+          th.w-20 scope="col" Created at
 
       tbody
-        tr
-          th scope="row" 87.5
-          td = long_date(Time.now)
-
-        tr
-          th scope="row" 87.3
-          td = long_date(Time.now)
-
-        tr
-          th scope="row" 88.0
-          td = long_date(Time.now)
-
+        - @body_weights.each do |body_weight|
+          - body_weight_presenter = Health::BodyWeightPresenter.new(body_weight)
+          tr
+            th scope="row" = body_weight_presenter.weight
+            td = body_weight.unit
+            td = human_readable_date(body_weight.created_at)
