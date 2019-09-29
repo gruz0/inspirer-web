@@ -21,10 +21,27 @@ module My
         end
       end
 
+      def edit
+        @body_measure = resource
+      end
+
+      def update
+        @body_measure = resource
+        if @body_measure.update(body_measure_params)
+          redirect_to my_health_body_measures_path, notice: 'Record was successfully updated'
+        else
+          render :edit
+        end
+      end
+
       private
 
       def body_measure_params
         params.require(:health_body_measure).permit(:chest, :waist, :hips, :unit, :feeling, :notes)
+      end
+
+      def resource
+        current_account.health_body_measure.find(params[:id])
       end
     end
   end
