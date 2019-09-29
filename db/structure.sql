@@ -151,6 +151,42 @@ CREATE TABLE public.ar_internal_metadata (
 
 
 --
+-- Name: health_body_sizes; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.health_body_sizes (
+    id bigint NOT NULL,
+    chest integer,
+    waist integer,
+    hips integer,
+    feeling character varying,
+    notes text,
+    account_id bigint,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: health_body_sizes_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.health_body_sizes_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: health_body_sizes_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.health_body_sizes_id_seq OWNED BY public.health_body_sizes.id;
+
+
+--
 -- Name: health_body_weights; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -251,6 +287,13 @@ ALTER TABLE ONLY public.active_storage_blobs ALTER COLUMN id SET DEFAULT nextval
 
 
 --
+-- Name: health_body_sizes id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.health_body_sizes ALTER COLUMN id SET DEFAULT nextval('public.health_body_sizes_id_seq'::regclass);
+
+
+--
 -- Name: health_body_weights id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -294,6 +337,14 @@ ALTER TABLE ONLY public.active_storage_blobs
 
 ALTER TABLE ONLY public.ar_internal_metadata
     ADD CONSTRAINT ar_internal_metadata_pkey PRIMARY KEY (key);
+
+
+--
+-- Name: health_body_sizes health_body_sizes_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.health_body_sizes
+    ADD CONSTRAINT health_body_sizes_pkey PRIMARY KEY (id);
 
 
 --
@@ -363,6 +414,13 @@ CREATE UNIQUE INDEX index_active_storage_blobs_on_key ON public.active_storage_b
 
 
 --
+-- Name: index_health_body_sizes_on_account_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_health_body_sizes_on_account_id ON public.health_body_sizes USING btree (account_id);
+
+
+--
 -- Name: index_health_body_weights_on_account_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -374,6 +432,14 @@ CREATE INDEX index_health_body_weights_on_account_id ON public.health_body_weigh
 --
 
 CREATE INDEX index_health_sleeps_on_account_id ON public.health_sleeps USING btree (account_id);
+
+
+--
+-- Name: health_body_sizes fk_rails_3b088acde9; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.health_body_sizes
+    ADD CONSTRAINT fk_rails_3b088acde9 FOREIGN KEY (account_id) REFERENCES public.accounts(id);
 
 
 --
@@ -411,6 +477,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20190927174637'),
 ('20190928062958'),
 ('20190928153532'),
-('20190929090725');
+('20190929090725'),
+('20190929180650');
 
 
