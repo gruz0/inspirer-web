@@ -35,3 +35,26 @@ end
     created_at: DateTime.now - (rand * 21)
   )
 end
+
+20.times do |_|
+  unit = HealthBodyMeasure.units.keys.sample
+  chest = rand(85..95)
+  waist = rand(58..70)
+  hips = rand(85..95)
+
+  if unit == 'inch'
+    chest /= INCH_TO_CM_RATIO
+    waist /= INCH_TO_CM_RATIO
+    hips /= INCH_TO_CM_RATIO
+  end
+
+  account.health_body_measure.create!(
+    chest: chest.round(2),
+    waist: waist.round(2),
+    hips: hips.round(2),
+    unit: unit,
+    feeling: FEELINGS.keys.sample.to_s,
+    notes: 'Awesome',
+    created_at: DateTime.now - (rand * 21)
+  )
+end
