@@ -3,7 +3,9 @@
 module My
   module Health
     class BodyMeasuresController < BaseController
-      def index; end
+      def index
+        @body_measures = current_account.health_body_measure.order(created_at: :desc)
+      end
 
       def new; end
     end

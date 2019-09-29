@@ -12,27 +12,19 @@ br
     table.table.table-sm.table-hover
       thead.thead-light
         tr
-          th scope="col" Chest
-          th scope="col" Waist
-          th scope="col" Hips
-          th scope="col" Updated at
+          th.w-20 scope="col" Chest
+          th.w-20 scope="col" Waist
+          th.w-20 scope="col" Hips
+          th.w-20 scope="col" Unit
+          th.w-20 scope="col" Created at
 
       tbody
-        tr
-          th scope="row" 100
-          td 75
-          td 115
-          td = long_date(Time.now)
-
-        tr
-          th scope="row" 99.8
-          td 75
-          td 115
-          td = long_date(Time.now)
-
-        tr
-          th scope="row" 99.9
-          td 74.3
-          td 112.7
-          td = long_date(Time.now)
+        - @body_measures.each do |body_measure|
+          - body_measure_presenter = Health::BodyMeasurePresenter.new(body_measure)
+          tr
+            th scope="row" = body_measure_presenter.chest
+            td = body_measure_presenter.waist
+            td = body_measure_presenter.hips
+            td = body_measure.unit
+            td = human_readable_date(body_measure.created_at)
 
