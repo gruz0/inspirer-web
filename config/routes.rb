@@ -19,7 +19,7 @@ Rails.application.routes.draw do
     namespace :health do
       resources :sleeps
       resources :body_weights
-      resources :body_sizes
+      resources :body_measures
     end
 
     resources :productivity
