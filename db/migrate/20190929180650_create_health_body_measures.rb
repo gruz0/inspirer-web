@@ -9,9 +9,9 @@ class CreateHealthBodyMeasures < ActiveRecord::Migration[5.2]
     DDL
 
     create_table :health_body_measures do |t|
-      t.integer :chest
-      t.integer :waist
-      t.integer :hips
+      t.float :chest
+      t.float :waist
+      t.float :hips
       t.column :unit, :body_measure_units
       t.string :feeling
       t.text :notes

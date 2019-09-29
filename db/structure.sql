@@ -166,9 +166,9 @@ CREATE TABLE public.ar_internal_metadata (
 
 CREATE TABLE public.health_body_measures (
     id bigint NOT NULL,
-    chest integer,
-    waist integer,
-    hips integer,
+    chest double precision,
+    waist double precision,
+    hips double precision,
     unit public.body_measure_units,
     feeling character varying,
     notes text,
