@@ -9,4 +9,5 @@ class Account < ApplicationRecord
   has_one_attached :avatar
 
   has_many :health_sleep, dependent: :destroy
+  has_many :health_weight, dependent: :destroy
 end
