@@ -18,7 +18,18 @@ module ApplicationHelper
     end
   end
 
+  # FIXME: It should be replaced with hash_to_options
   def feelings_to_array
     FEELINGS.map { |k, v| [v, k] }
+  end
+
+  def weight_units_to_array
+    hash_to_options(WEIGHT_UNITS)
+  end
+
+  private
+
+  def hash_to_options(hash)
+    hash.map { |k, v| [v, k] }
   end
 end
