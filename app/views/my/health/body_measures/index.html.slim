@@ -1,0 +1,37 @@
+h2 Body Measures
+
+.row
+  .col-sm-4
+    = link_to(new_my_health_body_measure_path, class: 'btn btn-success')
+      | Track Today
+
+br
+
+.row
+  .col
+    table.table.table-sm.table-hover
+      thead.thead-light
+        tr
+          th.w-15 scope="col" Chest
+          th.w-15 scope="col" Waist
+          th.w-15 scope="col" Hips
+          th.w-15 scope="col" Unit
+          th.w-20 scope="col" Created at
+          th.w-20 scope="col"
+
+      tbody
+        - @body_measures.each do |body_measure|
+          - body_measure_presenter = Health::BodyMeasurePresenter.new(body_measure)
+          tr
+            th scope="row" = body_measure_presenter.chest
+            td = body_measure_presenter.waist
+            td = body_measure_presenter.hips
+            td = body_measure.unit
+            td = human_readable_date(body_measure.created_at)
+            td.text-right
+              .dropdown
+                button.btn.btn-secondary.btn-sm.dropdown-toggle type="button" id="actions" data-toggle="dropdown" aria-haspopup="false" aria-expanded="false"
+                  | Actions
+                .dropdown-menu aria-labelledby="actions"
+                  = link_to(edit_my_health_body_measure_path(body_measure), class: 'dropdown-item')
+                    | Edit

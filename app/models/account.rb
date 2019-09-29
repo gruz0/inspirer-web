@@ -10,4 +10,5 @@ class Account < ApplicationRecord
 
   has_many :health_sleep, dependent: :destroy
   has_many :health_body_weight, dependent: :destroy
+  has_many :health_body_measure, dependent: :destroy
 end

@@ -10,6 +10,16 @@ SET client_min_messages = warning;
 SET row_security = off;
 
 --
+-- Name: body_measure_units; Type: TYPE; Schema: public; Owner: -
+--
+
+CREATE TYPE public.body_measure_units AS ENUM (
+    'cm',
+    'inch'
+);
+
+
+--
 -- Name: weight_units; Type: TYPE; Schema: public; Owner: -
 --
 
@@ -151,6 +161,43 @@ CREATE TABLE public.ar_internal_metadata (
 
 
 --
+-- Name: health_body_measures; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.health_body_measures (
+    id bigint NOT NULL,
+    chest double precision,
+    waist double precision,
+    hips double precision,
+    unit public.body_measure_units,
+    feeling character varying,
+    notes text,
+    account_id bigint,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: health_body_measures_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.health_body_measures_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: health_body_measures_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.health_body_measures_id_seq OWNED BY public.health_body_measures.id;
+
+
+--
 -- Name: health_body_weights; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -251,6 +298,13 @@ ALTER TABLE ONLY public.active_storage_blobs ALTER COLUMN id SET DEFAULT nextval
 
 
 --
+-- Name: health_body_measures id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.health_body_measures ALTER COLUMN id SET DEFAULT nextval('public.health_body_measures_id_seq'::regclass);
+
+
+--
 -- Name: health_body_weights id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -294,6 +348,14 @@ ALTER TABLE ONLY public.active_storage_blobs
 
 ALTER TABLE ONLY public.ar_internal_metadata
     ADD CONSTRAINT ar_internal_metadata_pkey PRIMARY KEY (key);
+
+
+--
+-- Name: health_body_measures health_body_measures_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.health_body_measures
+    ADD CONSTRAINT health_body_measures_pkey PRIMARY KEY (id);
 
 
 --
@@ -363,6 +425,13 @@ CREATE UNIQUE INDEX index_active_storage_blobs_on_key ON public.active_storage_b
 
 
 --
+-- Name: index_health_body_measures_on_account_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_health_body_measures_on_account_id ON public.health_body_measures USING btree (account_id);
+
+
+--
 -- Name: index_health_body_weights_on_account_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -374,6 +443,14 @@ CREATE INDEX index_health_body_weights_on_account_id ON public.health_body_weigh
 --
 
 CREATE INDEX index_health_sleeps_on_account_id ON public.health_sleeps USING btree (account_id);
+
+
+--
+-- Name: health_body_measures fk_rails_3e0b72e09b; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.health_body_measures
+    ADD CONSTRAINT fk_rails_3e0b72e09b FOREIGN KEY (account_id) REFERENCES public.accounts(id);
 
 
 --
@@ -411,6 +488,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20190927174637'),
 ('20190928062958'),
 ('20190928153532'),
-('20190929090725');
+('20190929090725'),
+('20190929180650');
 
 

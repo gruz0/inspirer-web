@@ -1,0 +1,43 @@
+- if body_measure.errors.any?
+  .alert.alert-danger
+    h5 = t('errors.messages.not_saved', resource: body_measure.class.model_name.human.downcase, count: body_measure.errors.count)
+    ul
+      - body_measure.errors.full_messages.each do |message|
+        li = message
+
+= form_for [:my, body_measure] do |f|
+  .form-group.row
+    = f.label :unit, class: 'col-sm-3 col-form-label'
+    .col-sm-2
+      = f.select :unit, body_measure_units_to_array, { selected: body_measure.unit }, class: 'form-control'
+
+  .form-group.row
+    = f.label :chest, class: 'col-sm-3 col-form-label'
+    .col-sm-2
+      = f.text_field :chest, class: 'form-control', required: 'required', min: 0, maxlength: 6
+
+  .form-group.row
+    = f.label :waist, class: 'col-sm-3 col-form-label'
+    .col-sm-2
+      = f.text_field :waist, class: 'form-control', required: 'required', min: 0, maxlength: 6
+
+  .form-group.row
+    = f.label :hips, class: 'col-sm-3 col-form-label'
+    .col-sm-2
+      = f.text_field :hips, class: 'form-control', required: 'required', min: 0, maxlength: 6
+
+  .form-group.row
+    = f.label :feeling, class: 'col-sm-3 col-form-label'
+    .col-sm-4
+      = render partial: 'shared/feeling', locals: { form: f, value: body_measure.feeling }, required: 'required'
+
+  .form-group.row
+    = f.label :notes, class: 'col-sm-3 col-form-label'
+    .col-sm-8
+      = f.text_area :notes, class: 'form-control', rows: 3, placeholder: '(optional)'
+
+  .form-group.row
+    .col-sm-3
+    .col-sm-8
+      = f.submit 'Save', class: 'btn btn-success'
+
