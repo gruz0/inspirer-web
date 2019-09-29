@@ -11,4 +11,9 @@ FEELINGS = {
   angry: 'Angry'
 }.freeze
 
+WEIGHT_UNITS = {
+  kg: 'kg',
+  lbs: 'lbs'
+}.freeze
+
 KG_TO_LBS_RATIO = 2.20462
