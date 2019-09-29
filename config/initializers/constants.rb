@@ -10,3 +10,5 @@ FEELINGS = {
   sad: 'Sad',
   angry: 'Angry'
 }.freeze
+
+KG_TO_LBS_RATIO = 2.20462
