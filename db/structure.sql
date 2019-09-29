@@ -9,6 +9,16 @@ SET xmloption = content;
 SET client_min_messages = warning;
 SET row_security = off;
 
+--
+-- Name: weight_units; Type: TYPE; Schema: public; Owner: -
+--
+
+CREATE TYPE public.weight_units AS ENUM (
+    'kg',
+    'lbs'
+);
+
+
 SET default_tablespace = '';
 
 SET default_with_oids = false;
@@ -176,6 +186,41 @@ ALTER SEQUENCE public.health_sleeps_id_seq OWNED BY public.health_sleeps.id;
 
 
 --
+-- Name: health_weights; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.health_weights (
+    id bigint NOT NULL,
+    weight double precision,
+    unit public.weight_units,
+    feeling character varying,
+    notes text,
+    account_id bigint,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: health_weights_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.health_weights_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: health_weights_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.health_weights_id_seq OWNED BY public.health_weights.id;
+
+
+--
 -- Name: schema_migrations; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -210,6 +255,13 @@ ALTER TABLE ONLY public.active_storage_blobs ALTER COLUMN id SET DEFAULT nextval
 --
 
 ALTER TABLE ONLY public.health_sleeps ALTER COLUMN id SET DEFAULT nextval('public.health_sleeps_id_seq'::regclass);
+
+
+--
+-- Name: health_weights id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.health_weights ALTER COLUMN id SET DEFAULT nextval('public.health_weights_id_seq'::regclass);
 
 
 --
@@ -250,6 +302,14 @@ ALTER TABLE ONLY public.ar_internal_metadata
 
 ALTER TABLE ONLY public.health_sleeps
     ADD CONSTRAINT health_sleeps_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: health_weights health_weights_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.health_weights
+    ADD CONSTRAINT health_weights_pkey PRIMARY KEY (id);
 
 
 --
@@ -307,6 +367,21 @@ CREATE UNIQUE INDEX index_active_storage_blobs_on_key ON public.active_storage_b
 --
 
 CREATE INDEX index_health_sleeps_on_account_id ON public.health_sleeps USING btree (account_id);
+
+
+--
+-- Name: index_health_weights_on_account_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_health_weights_on_account_id ON public.health_weights USING btree (account_id);
+
+
+--
+-- Name: health_weights fk_rails_1ad86c7951; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.health_weights
+    ADD CONSTRAINT fk_rails_1ad86c7951 FOREIGN KEY (account_id) REFERENCES public.accounts(id);
 
 
 --
