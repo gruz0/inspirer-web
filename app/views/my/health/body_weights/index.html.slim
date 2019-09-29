@@ -12,9 +12,10 @@ br
     table.table.table-sm.table-hover
       thead.thead-light
         tr
-          th.w-60 scope="col" Weight
+          th.w-50 scope="col" Weight
           th.w-20 scope="col" Unit
           th.w-20 scope="col" Created at
+          th.w-10 scope="col"
 
       tbody
         - @body_weights.each do |body_weight|
@@ -23,3 +24,10 @@ br
             th scope="row" = body_weight_presenter.weight
             td = body_weight.unit
             td = human_readable_date(body_weight.created_at)
+            td.pull-right
+              .dropdown
+                button.btn.btn-secondary.btn-sm.dropdown-toggle type="button" id="actions" data-toggle="dropdown" aria-haspopup="false" aria-expanded="false"
+                  | Actions
+                .dropdown-menu aria-labelledby="actions"
+                  = link_to(edit_my_health_body_weight_path(body_weight), class: 'dropdown-item')
+                    | Edit

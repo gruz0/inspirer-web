@@ -21,10 +21,27 @@ module My
         end
       end
 
+      def edit
+        @body_weight = resource
+      end
+
+      def update
+        @body_weight = resource
+        if @body_weight.update(body_weight_params)
+          redirect_to my_health_body_weights_path, notice: 'Record was successfully updated'
+        else
+          render :edit
+        end
+      end
+
       private
 
       def body_weight_params
         params.require(:health_body_weight).permit(:weight, :unit, :feeling, :notes)
+      end
+
+      def resource
+        current_account.health_body_weight.find(params[:id])
       end
     end
   end
