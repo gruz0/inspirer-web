@@ -1,0 +1,6 @@
+- if model.errors.any?
+  .alert.alert-danger
+    h5 = t('errors.messages.not_saved', resource: model.class.model_name.human.downcase, count: model.errors.count)
+    ul
+      - model.errors.full_messages.each do |message|
+        li = message

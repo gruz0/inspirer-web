@@ -1,9 +1,4 @@
-- if body_measure.errors.any?
-  .alert.alert-danger
-    h5 = t('errors.messages.not_saved', resource: body_measure.class.model_name.human.downcase, count: body_measure.errors.count)
-    ul
-      - body_measure.errors.full_messages.each do |message|
-        li = message
+= render partial: 'shared/validation_errors', locals: { model: body_measure }
 
 = form_for [:my, body_measure] do |f|
   .form-group.row
