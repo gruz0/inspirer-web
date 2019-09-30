@@ -1,9 +1,4 @@
-- if sleep.errors.any?
-  .alert.alert-danger
-    h5 = t('errors.messages.not_saved', resource: sleep.class.model_name.human.downcase, count: sleep.errors.count)
-    ul
-      - sleep.errors.full_messages.each do |message|
-        li = message
+= render partial: 'shared/validation_errors', locals: { model: sleep }
 
 = form_for [:my, sleep] do |f|
   .form-group.row
