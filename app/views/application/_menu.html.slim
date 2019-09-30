@@ -1,24 +1,14 @@
-nav.navbar.navbar-expand-lg.bg-dark.navbar-dark
+nav.navbar.navbar-expand-xl.navbar-expand-lg.navbar-expand-md.bg-dark.navbar-dark
   = fa_icon 'lightbulb-o inverse 2x'
   = link_to('/', class: 'navbar-brand pl-2') do
     = 'Inspire Me!'
+  button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menuNavbar" aria-controls="menuNavbar" aria-expanded="false" aria-label="Toggle navigation"
+    span class="navbar-toggler-icon"
 
-  .collapse.navbar-collapse
+  #menuNavbar.collapse.navbar-collapse
+    .mr-auto
+
     - if account_signed_in?
-        ul.navbar-nav.mr-auto
-          li.nav-item
-            = link_to("#", class: 'nav-link') do
-              = 'Overview'
-
-          li.nav-item
-            = link_to("#", class: 'nav-link') do
-              = 'Reports'
-
-        ul.navbar-nav
-          li.nav-item
-            = link_to("#", class: 'nav-link') do
-              = fa_icon 'bell'
-
         ul.navbar-nav
           li.nav-item.dropdown
             a#navbar-dictionaries.nav-link.dropdown-toggle href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
@@ -47,7 +37,6 @@ nav.navbar.navbar-expand-lg.bg-dark.navbar-dark
               = link_to(destroy_account_session_path, class: 'dropdown-item')
                 | Log out
     - else
-      .m-auto
       ul.navbar-nav
         li.nav-item.pull-left
           = link_to(new_account_session_path, class: 'nav-link') do

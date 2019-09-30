@@ -12,15 +12,16 @@ html lang="en"
 
     .container-fluid
       .row
-        .col-md-2.pt-3.bg-light.sidebar
+        .col-12.col-sm-3.col-lg-2.col-xl-2.pt-3.bg-light.sidebar
           = render 'application/left_sidebar'
 
-        main.col-md-7.mt-3 role="main"
-          = render 'application/flash_messages'
+        .col-12.col-sm-9.col-lg-6.col-xl-7.pt-3
+          main.mt-3 role="main"
+            = render 'application/flash_messages'
 
-          = yield
+            = yield
 
-        .col-md-3.pt-3.bg-light.sidebar
+        .col-12.col-lg-4.col-xl-3.pt-3.bg-light.sidebar
           = render 'application/right_sidebar'
 
     footer
