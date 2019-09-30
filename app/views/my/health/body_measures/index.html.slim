@@ -29,9 +29,5 @@ br
             td = body_measure.unit
             td = human_readable_date(body_measure.created_at)
             td.text-right
-              .dropdown
-                button.btn.btn-secondary.btn-sm.dropdown-toggle type="button" id="actions" data-toggle="dropdown" aria-haspopup="false" aria-expanded="false"
-                  | Actions
-                .dropdown-menu aria-labelledby="actions"
-                  = link_to(edit_my_health_body_measure_path(body_measure), class: 'dropdown-item')
-                    | Edit
+              = link_to(edit_my_health_body_measure_path(body_measure), class: 'btn btn-secondary btn-sm')
+                = fa_icon('edit')

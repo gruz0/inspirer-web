@@ -25,10 +25,5 @@ br
             td = sleep.feeling
             td = human_readable_date(sleep.created_at)
             td.text-right
-              .dropdown
-                button.btn.btn-secondary.btn-sm.dropdown-toggle type="button" id="actions" data-toggle="dropdown" aria-haspopup="false" aria-expanded="false"
-                  | Actions
-                .dropdown-menu aria-labelledby="actions"
-                  = link_to(edit_my_health_sleep_path(sleep), class: 'dropdown-item')
-                    | Edit
-
+              = link_to(edit_my_health_sleep_path(sleep), class: 'btn btn-secondary btn-sm')
+                = fa_icon('edit')
