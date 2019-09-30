@@ -7,37 +7,37 @@
 
 = form_for [:my, body_measure] do |f|
   .form-group.row
-    = f.label :unit, class: 'col-sm-3 col-form-label'
-    .col-sm-2
+    = f.label :unit, class: 'col-4 col-lg-3 col-form-label'
+    .col-4.col-sm-3.col-lg-3.col-xl-2
       = f.select :unit, body_measure_units_to_array, { selected: body_measure.unit }, class: 'form-control'
 
   .form-group.row
-    = f.label :chest, class: 'col-sm-3 col-form-label'
-    .col-sm-2
+    = f.label :chest, class: 'col-4 col-lg-3 col-form-label'
+    .col-4.col-sm-3.col-lg-3.col-xl-2
       = f.text_field :chest, class: 'form-control', required: 'required', min: 0, maxlength: 6
 
   .form-group.row
-    = f.label :waist, class: 'col-sm-3 col-form-label'
-    .col-sm-2
+    = f.label :waist, class: 'col-4 col-lg-3 col-form-label'
+    .col-4.col-sm-3.col-lg-3.col-xl-2
       = f.text_field :waist, class: 'form-control', required: 'required', min: 0, maxlength: 6
 
   .form-group.row
-    = f.label :hips, class: 'col-sm-3 col-form-label'
-    .col-sm-2
+    = f.label :hips, class: 'col-4 col-lg-3 col-form-label'
+    .col-4.col-sm-3.col-lg-3.col-xl-2
       = f.text_field :hips, class: 'form-control', required: 'required', min: 0, maxlength: 6
 
   .form-group.row
-    = f.label :feeling, class: 'col-sm-3 col-form-label'
-    .col-sm-4
+    = f.label :feeling, class: 'col-4 col-lg-3 col-form-label'
+    .col-6.col-sm-6.col-md-4.col-lg-5.col-xl-4
       = render partial: 'shared/feeling', locals: { form: f, value: body_measure.feeling }, required: 'required'
 
   .form-group.row
-    = f.label :notes, class: 'col-sm-3 col-form-label'
-    .col-sm-8
+    = f.label :notes, class: 'col-4 col-lg-3 col-form-label'
+    .col-8
       = f.text_area :notes, class: 'form-control', rows: 3, placeholder: '(optional)'
 
   .form-group.row
-    .col-sm-3
-    .col-sm-8
+    .col-4.col-lg-3
+    .col-8
       = f.submit 'Save', class: 'btn btn-success'
 
