@@ -7,9 +7,9 @@
     .col-8.col-sm-5.col-md-4
       .row
         .col-6
-          = f.number_field :woke_up_at_hour, class: 'form-control', required: 'required', placeholder: 'Hour', min: 0, max: 23, maxlength: 2
+          = select_hour(sleep.woke_up_at_hour, { prefix: 'health_sleep', field_name: 'woke_up_at_hour' }, class: 'form-control', required: 'required')
         .col-6
-          = f.number_field :woke_up_at_minutes, class: 'form-control', required: 'required', placeholder: 'Minutes', min: 0, max: 59, maxlength: 2
+          = select_minute(sleep.woke_up_at_minutes, { prefix: 'health_sleep', field_name: 'woke_up_at_minutes' }, class: 'form-control', required: 'required')
 
   .form-group.row
     = f.label :feeling, class: 'col-4 col-lg-3 col-form-label'
