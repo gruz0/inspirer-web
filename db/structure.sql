@@ -20,6 +20,22 @@ CREATE TYPE public.body_measure_units AS ENUM (
 
 
 --
+-- Name: feelings; Type: TYPE; Schema: public; Owner: -
+--
+
+CREATE TYPE public.feelings AS ENUM (
+    'amazing',
+    'happy',
+    'energetic',
+    'good',
+    'depressed',
+    'afraid',
+    'sad',
+    'angry'
+);
+
+
+--
 -- Name: weight_units; Type: TYPE; Schema: public; Owner: -
 --
 
@@ -170,7 +186,7 @@ CREATE TABLE public.health_body_measures (
     waist double precision,
     hips double precision,
     unit public.body_measure_units,
-    feeling character varying,
+    feeling public.feelings,
     notes text,
     account_id bigint,
     created_at timestamp without time zone NOT NULL,
@@ -205,7 +221,7 @@ CREATE TABLE public.health_body_weights (
     id bigint NOT NULL,
     weight double precision,
     unit public.weight_units,
-    feeling character varying,
+    feeling public.feelings,
     notes text,
     account_id bigint,
     created_at timestamp without time zone NOT NULL,
@@ -240,7 +256,7 @@ CREATE TABLE public.health_sleeps (
     id bigint NOT NULL,
     woke_up_at_hour integer,
     woke_up_at_minutes integer,
-    feeling character varying,
+    feeling public.feelings,
     notes text,
     account_id bigint,
     created_at timestamp without time zone NOT NULL,
@@ -489,6 +505,8 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20190928062958'),
 ('20190928153532'),
 ('20190929090725'),
-('20190929180650');
+('20190929180650'),
+('20191001063046'),
+('20191001071518');
 
 
