@@ -75,4 +75,7 @@ Rails.application.configure do
   end
 
   config.active_storage.service = :local
+
+  config.assets.digest = true
+  config.assets.gzip = true
 end
