@@ -12,10 +12,11 @@ br
     table.table.table-sm.table-hover
       thead.thead-light
         tr
-          th.w-50 scope="col" Weight
-          th.w-20 scope="col" Unit
-          th.w-20 scope="col" Created at
-          th.w-10 scope="col"
+          th scope="col" Weight
+          th scope="col" Unit
+          th scope="col" Feeling
+          th scope="col" Created at
+          th scope="col"
 
       tbody
         - @body_weights.each do |body_weight|
@@ -23,6 +24,7 @@ br
           tr
             th scope="row" = body_weight_presenter.weight
             td = body_weight.unit
+            td = body_weight.feeling
             td = human_readable_date(body_weight.created_at)
             td.text-right
               = link_to(edit_my_health_body_weight_path(body_weight), class: 'btn btn-secondary btn-sm')
