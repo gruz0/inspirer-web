@@ -1,0 +1,15 @@
+- %w(57 60 72 76 114 120 144 152 180).each do |size|
+  = favicon_link_tag "favicons/apple-touch-icon-#{size}x#{size}.png", rel: 'apple-touch-icon', type: 'image/png', sizes: "#{size}x#{size}"
+
+- %w(16 32).each do |size|
+  = favicon_link_tag "favicons/favicon-#{size}x#{size}.png", rel: 'icon', type: 'image/png', sizes: "#{size}x#{size}"
+
+link rel="icon" type="image/png" sizes="32x32" href="#{asset_path('favicons/favicon-32x32.png')}"
+link rel="icon" type="image/png" sizes="16x16" href="#{asset_path('favicons/favicon-16x16.png')}"
+
+link rel="manifest" href="#{asset_path('favicons/site.webmanifest')}"
+link rel="mask-icon" href="#{asset_path('favicons/safari-pinned-tab.svg')}" color="#ffc40d"
+
+meta name="msapplication-TileColor" content="#ffc40d"
+meta name="msapplication-config" content="#{image_path('favicons/browserconfig.xml')}"
+meta name="theme-color" content="#ffc40d"
