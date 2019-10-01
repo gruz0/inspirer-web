@@ -11,10 +11,10 @@ module ApplicationHelper
   end
 
   def human_readable_date(date)
-    if date > (Time.zone.now - 3.days)
-      "#{distance_of_time_in_words(date, Time.zone.now, include_seconds: true)} ago"
-    else
-      l(date, format: :long)
+    content_tag(:abbr, title: l(date, format: :long)) do
+      time_tag(date) do
+        "#{distance_of_time_in_words(date, Time.zone.now, include_seconds: true)} ago"
+      end
     end
   end
 
