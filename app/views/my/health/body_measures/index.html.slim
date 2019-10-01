@@ -12,12 +12,13 @@ br
     table.table.table-sm.table-hover
       thead.thead-light
         tr
-          th.w-15 scope="col" Chest
-          th.w-15 scope="col" Waist
-          th.w-15 scope="col" Hips
-          th.w-15 scope="col" Unit
-          th.w-20 scope="col" Created at
-          th.w-20 scope="col"
+          th scope="col" Chest
+          th scope="col" Waist
+          th scope="col" Hips
+          th scope="col" Unit
+          th scope="col" Feeling
+          th scope="col" Created at
+          th scope="col"
 
       tbody
         - @body_measures.each do |body_measure|
@@ -27,6 +28,7 @@ br
             td = body_measure_presenter.waist
             td = body_measure_presenter.hips
             td = body_measure.unit
+            td = body_measure.feeling
             td = human_readable_date(body_measure.created_at)
             td.text-right
               = link_to(edit_my_health_body_measure_path(body_measure), class: 'btn btn-secondary btn-sm')
