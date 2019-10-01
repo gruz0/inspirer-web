@@ -15,6 +15,7 @@ gem 'mini_racer', platforms: :ruby
 gem 'pg'
 gem 'puma', '~> 3.11'
 gem 'rails', '~> 5.2.3'
+gem 'rollbar'
 gem 'sass-rails', '~> 5.0'
 gem 'slim-rails'
 gem 'sprockets'
