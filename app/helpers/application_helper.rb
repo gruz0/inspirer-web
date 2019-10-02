@@ -31,6 +31,10 @@ module ApplicationHelper
     hash_to_options(BODY_MEASURE_UNITS)
   end
 
+  def distance_units_to_array
+    hash_to_options(DISTANCE_UNITS)
+  end
+
   private
 
   def hash_to_options(hash)

@@ -24,3 +24,10 @@ BODY_MEASURE_UNITS = {
 }.freeze
 
 INCH_TO_CM_RATIO = 2.54
+
+DISTANCE_UNITS = {
+  km: 'km',
+  mi: 'mi'
+}.freeze
+
+MI_TO_KM_RATIO = 1.609344
