@@ -58,3 +58,18 @@ end
     created_at: DateTime.now - (rand * 21)
   )
 end
+
+20.times do |_|
+  unit = ActivityWalking.units.keys.sample
+  distance = rand(3_000.00..7_000.00)
+  distance /= MI_TO_KM_RATIO if unit == 'mi'
+
+  account.activity_walking.create!(
+    distance: distance,
+    distance_unit: unit,
+    steps: rand(5_000..15_000),
+    feeling: FEELINGS.keys.sample.to_s,
+    notes: 'Awesome Day!',
+    created_at: DateTime.now - (rand * 21)
+  )
+end
