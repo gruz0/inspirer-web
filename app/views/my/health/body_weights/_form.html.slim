@@ -10,10 +10,7 @@
         .col-6.col-md-4.col-lg-5.col-xl-4
           = f.select :unit, weight_units_to_array, { selected: body_weight.unit }, class: 'form-control'
 
-  .form-group.row
-    = f.label :feeling, class: 'col-4 col-lg-3 col-form-label'
-    .col-8.col-sm-5.col-md-4.col-lg-5.col-xl-4
-      = render partial: 'shared/feeling', locals: { form: f, value: body_weight.feeling }
+  = render partial: 'shared/feeling', locals: { form: f, value: body_weight.feeling }
 
   .form-group.row
     = f.label :notes, class: 'col-4 col-lg-3 col-form-label'
