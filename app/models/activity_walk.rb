@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class ActivityWalking < ApplicationRecord
+class ActivityWalk < ApplicationRecord
   belongs_to :account
 
   enum unit: DISTANCE_UNITS

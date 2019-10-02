@@ -1,0 +1,27 @@
+h2 Walks
+
+.row
+  .col-sm-4
+    = link_to(new_my_activity_walk_path, class: 'btn btn-success')
+      | Track Today
+
+br
+
+.row
+  .col
+    table.table.table-sm.table-hover
+      thead.thead-light
+        tr
+          th scope="col" Distance
+          th scope="col" Unit
+          th scope="col" Steps
+          th scope="col" Created at
+
+      tbody
+        - @walks.each do |walk|
+          - walk_presenter = Activity::WalkPresenter.new(walk)
+          tr
+            th scope="row" = walk_presenter.distance
+            td = walk.distance_unit
+            td = walk.steps
+            td = human_readable_date(walk.created_at)

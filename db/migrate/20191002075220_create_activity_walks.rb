@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-class CreateActivityWalkings < ActiveRecord::Migration[5.2]
+class CreateActivityWalks < ActiveRecord::Migration[5.2]
   def change
-    create_table :activity_walkings do |t|
+    create_table :activity_walks do |t|
       t.float :distance, null: false
       t.column :distance_unit, :distance_units
       t.integer :steps, null: false
