@@ -175,6 +175,42 @@ ALTER SEQUENCE public.active_storage_blobs_id_seq OWNED BY public.active_storage
 
 
 --
+-- Name: activity_walkings; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.activity_walkings (
+    id bigint NOT NULL,
+    distance double precision NOT NULL,
+    distance_unit public.distance_units,
+    steps integer NOT NULL,
+    feeling public.feelings,
+    notes text,
+    account_id bigint,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: activity_walkings_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.activity_walkings_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: activity_walkings_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.activity_walkings_id_seq OWNED BY public.activity_walkings.id;
+
+
+--
 -- Name: ar_internal_metadata; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -324,6 +360,13 @@ ALTER TABLE ONLY public.active_storage_blobs ALTER COLUMN id SET DEFAULT nextval
 
 
 --
+-- Name: activity_walkings id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.activity_walkings ALTER COLUMN id SET DEFAULT nextval('public.activity_walkings_id_seq'::regclass);
+
+
+--
 -- Name: health_body_measures id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -366,6 +409,14 @@ ALTER TABLE ONLY public.active_storage_attachments
 
 ALTER TABLE ONLY public.active_storage_blobs
     ADD CONSTRAINT active_storage_blobs_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: activity_walkings activity_walkings_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.activity_walkings
+    ADD CONSTRAINT activity_walkings_pkey PRIMARY KEY (id);
 
 
 --
@@ -451,6 +502,13 @@ CREATE UNIQUE INDEX index_active_storage_blobs_on_key ON public.active_storage_b
 
 
 --
+-- Name: index_activity_walkings_on_account_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_activity_walkings_on_account_id ON public.activity_walkings USING btree (account_id);
+
+
+--
 -- Name: index_health_body_measures_on_account_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -488,6 +546,14 @@ ALTER TABLE ONLY public.health_sleeps
 
 
 --
+-- Name: activity_walkings fk_rails_af22bef1ee; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.activity_walkings
+    ADD CONSTRAINT fk_rails_af22bef1ee FOREIGN KEY (account_id) REFERENCES public.accounts(id);
+
+
+--
 -- Name: health_body_weights fk_rails_b5376eb8b0; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -518,6 +584,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20190929180650'),
 ('20191001063046'),
 ('20191001071518'),
-('20191002074140');
+('20191002074140'),
+('20191002075220');
 
 
