@@ -20,6 +20,16 @@ CREATE TYPE public.body_measure_units AS ENUM (
 
 
 --
+-- Name: distance_units; Type: TYPE; Schema: public; Owner: -
+--
+
+CREATE TYPE public.distance_units AS ENUM (
+    'km',
+    'mi'
+);
+
+
+--
 -- Name: feelings; Type: TYPE; Schema: public; Owner: -
 --
 
@@ -507,6 +517,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20190929090725'),
 ('20190929180650'),
 ('20191001063046'),
-('20191001071518');
+('20191001071518'),
+('20191002074140');
 
 
