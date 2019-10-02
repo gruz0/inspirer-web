@@ -1,0 +1,26 @@
+= render partial: 'shared/validation_errors', locals: { model: walking }
+
+= form_for [:my, walking], url: my_activity_walking_index_path do |f|
+  .form-group.row
+    = f.label :distance_unit, class: 'col-4 col-lg-3 col-form-label'
+    .col-4.col-sm-3.col-lg-3.col-xl-2
+      = f.select :distance_unit, distance_units_to_array, { selected: walking.distance_unit }, class: 'form-control'
+
+  .form-group.row
+    = f.label :distance, class: 'col-4 col-lg-3 col-form-label'
+    .col-4.col-sm-3.col-lg-3.col-xl-2
+      = f.text_field :distance, class: 'form-control', required: 'required', min: 0, maxlength: 6
+
+  .form-group.row
+    = f.label :steps, class: 'col-4 col-lg-3 col-form-label'
+    .col-4.col-sm-3.col-lg-3.col-xl-2
+      = f.text_field :steps, class: 'form-control', required: 'required', min: 0, maxlength: 6
+
+  = render partial: 'shared/feeling', locals: { form: f, value: walking.feeling }
+  = render partial: 'shared/notes', locals: { form: f }
+
+  .form-group.row
+    .col-4.col-lg-3
+    .col-8
+      = f.submit 'Save', class: 'btn btn-success'
+
