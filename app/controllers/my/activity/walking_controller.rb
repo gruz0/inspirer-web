@@ -3,7 +3,9 @@
 module My
   module Activity
     class WalkingController < BaseController
-      def index; end
+      def index
+        @walkings = current_account.activity_walking.order(created_at: :desc)
+      end
     end
   end
 end
