@@ -8,7 +8,12 @@ module My
       end
 
       def new
-        @walk = current_account.activity_walk.new
+        created_today = FindByCreatedToday.call(current_account.activity_walk)
+        if created_today
+          redirect_to edit_my_activity_walk_path(created_today)
+        else
+          @walk = current_account.activity_walk.new
+        end
       end
 
       def create
