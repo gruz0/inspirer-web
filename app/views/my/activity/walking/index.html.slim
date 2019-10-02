@@ -19,8 +19,9 @@ br
 
       tbody
         - @walkings.each do |walking|
+          - walking_presenter = Activity::WalkingPresenter.new(walking)
           tr
-            th scope="row" = walking.distance
+            th scope="row" = walking_presenter.distance
             td = walking.distance_unit
             td = walking.steps
             td = human_readable_date(walking.created_at)
