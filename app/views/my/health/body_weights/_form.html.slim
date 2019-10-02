@@ -11,11 +11,7 @@
           = f.select :unit, weight_units_to_array, { selected: body_weight.unit }, class: 'form-control'
 
   = render partial: 'shared/feeling', locals: { form: f, value: body_weight.feeling }
-
-  .form-group.row
-    = f.label :notes, class: 'col-4 col-lg-3 col-form-label'
-    .col-8
-      = f.text_area :notes, class: 'form-control', rows: 3, placeholder: '(optional)'
+  = render partial: 'shared/notes', locals: { form: f }
 
   .form-group.row
     .col-4.col-lg-3
