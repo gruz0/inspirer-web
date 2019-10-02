@@ -183,7 +183,7 @@ CREATE TABLE public.activity_walks (
     distance double precision NOT NULL,
     distance_unit public.distance_units,
     steps integer NOT NULL,
-    feeling public.feelings,
+    feeling public.feelings NOT NULL,
     notes text,
     account_id bigint,
     created_at timestamp without time zone NOT NULL,
@@ -228,11 +228,11 @@ CREATE TABLE public.ar_internal_metadata (
 
 CREATE TABLE public.health_body_measures (
     id bigint NOT NULL,
-    chest double precision,
-    waist double precision,
-    hips double precision,
+    chest double precision NOT NULL,
+    waist double precision NOT NULL,
+    hips double precision NOT NULL,
     unit public.body_measure_units,
-    feeling public.feelings,
+    feeling public.feelings NOT NULL,
     notes text,
     account_id bigint,
     created_at timestamp without time zone NOT NULL,
@@ -265,9 +265,9 @@ ALTER SEQUENCE public.health_body_measures_id_seq OWNED BY public.health_body_me
 
 CREATE TABLE public.health_body_weights (
     id bigint NOT NULL,
-    weight double precision,
+    weight double precision NOT NULL,
     unit public.weight_units,
-    feeling public.feelings,
+    feeling public.feelings NOT NULL,
     notes text,
     account_id bigint,
     created_at timestamp without time zone NOT NULL,
@@ -300,9 +300,9 @@ ALTER SEQUENCE public.health_body_weights_id_seq OWNED BY public.health_body_wei
 
 CREATE TABLE public.health_sleeps (
     id bigint NOT NULL,
-    woke_up_at_hour integer,
-    woke_up_at_minutes integer,
-    feeling public.feelings,
+    woke_up_at_hour integer NOT NULL,
+    woke_up_at_minutes integer NOT NULL,
+    feeling public.feelings NOT NULL,
     notes text,
     account_id bigint,
     created_at timestamp without time zone NOT NULL,
@@ -585,6 +585,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20191001063046'),
 ('20191001071518'),
 ('20191002074140'),
-('20191002075220');
+('20191002075220'),
+('20191002192310');
 
 
