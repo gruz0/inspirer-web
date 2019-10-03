@@ -18,7 +18,8 @@ br
 
       tbody
         - @articles.each do |article|
+          - article_presenter = Learning::ArticlePresenter.new(article)
           tr
-            th scope="row" = article.title
+            th scope="row" = article_presenter.clickable_title
             td = article.feeling
             td = human_readable_date(article.created_at)
