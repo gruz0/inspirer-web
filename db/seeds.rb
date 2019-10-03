@@ -60,11 +60,11 @@ end
 end
 
 20.times do |_|
-  unit = ActivityWalk.units.keys.sample
+  unit = ActivityOutdoorWalk.units.keys.sample
   distance = rand(3.0..10.5)
   distance /= MI_TO_KM_RATIO if unit == 'mi'
 
-  account.activity_walk.create!(
+  account.activity_outdoor_walk.create!(
     distance: distance,
     distance_unit: unit,
     steps: rand(5_000..15_000),

@@ -28,7 +28,7 @@ Rails.application.routes.draw do
     namespace :activity do
       resources :gym
       resources :running
-      resources :walks
+      resources :outdoor_walks
       resources :cycling
       resources :yoga, only: [:index]
       namespace :yoga do
