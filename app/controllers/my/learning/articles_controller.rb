@@ -21,10 +21,27 @@ module My
         end
       end
 
+      def edit
+        @article = resource
+      end
+
+      def update
+        @article = resource
+        if @article.update(article_params)
+          redirect_to my_learning_articles_path, notice: 'Record was successfully updated'
+        else
+          render :edit
+        end
+      end
+
       private
 
       def article_params
         params.require(:learning_article).permit(:url, :title, :feeling, :notes)
+      end
+
+      def resource
+        current_account.learning_article.find(params[:id])
       end
     end
   end

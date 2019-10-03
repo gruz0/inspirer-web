@@ -15,6 +15,7 @@ br
           th scope="col" Article
           th scope="col" Feeling
           th scope="col" Created at
+          th scope="col"
 
       tbody
         - @articles.each do |article|
@@ -23,3 +24,6 @@ br
             th scope="row" = article_presenter.clickable_title
             td = article.feeling
             td = human_readable_date(article.created_at)
+            td.text-right
+              = link_to(edit_my_learning_article_path(article), class: 'btn btn-secondary btn-sm')
+                = fa_icon('edit')
