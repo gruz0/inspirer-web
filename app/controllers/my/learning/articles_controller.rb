@@ -7,7 +7,25 @@ module My
         @articles = current_account.learning_article.order(created_at: :desc)
       end
 
-      def new; end
+      def new
+        @article = current_account.learning_article.new
+      end
+
+      def create
+        @article = current_account.learning_article.new(article_params)
+
+        if @article.save
+          redirect_to my_learning_articles_path, notice: 'Record was successfully created'
+        else
+          render :new
+        end
+      end
+
+      private
+
+      def article_params
+        params.require(:learning_article).permit(:url, :title, :feeling, :notes)
+      end
     end
   end
 end
