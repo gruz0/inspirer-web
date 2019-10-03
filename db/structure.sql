@@ -175,10 +175,10 @@ ALTER SEQUENCE public.active_storage_blobs_id_seq OWNED BY public.active_storage
 
 
 --
--- Name: activity_walks; Type: TABLE; Schema: public; Owner: -
+-- Name: activity_outdoor_walks; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE public.activity_walks (
+CREATE TABLE public.activity_outdoor_walks (
     id bigint NOT NULL,
     distance double precision NOT NULL,
     distance_unit public.distance_units,
@@ -192,10 +192,10 @@ CREATE TABLE public.activity_walks (
 
 
 --
--- Name: activity_walks_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+-- Name: activity_outdoor_walks_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE public.activity_walks_id_seq
+CREATE SEQUENCE public.activity_outdoor_walks_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -204,10 +204,10 @@ CREATE SEQUENCE public.activity_walks_id_seq
 
 
 --
--- Name: activity_walks_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+-- Name: activity_outdoor_walks_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE public.activity_walks_id_seq OWNED BY public.activity_walks.id;
+ALTER SEQUENCE public.activity_outdoor_walks_id_seq OWNED BY public.activity_outdoor_walks.id;
 
 
 --
@@ -360,10 +360,10 @@ ALTER TABLE ONLY public.active_storage_blobs ALTER COLUMN id SET DEFAULT nextval
 
 
 --
--- Name: activity_walks id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: activity_outdoor_walks id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.activity_walks ALTER COLUMN id SET DEFAULT nextval('public.activity_walks_id_seq'::regclass);
+ALTER TABLE ONLY public.activity_outdoor_walks ALTER COLUMN id SET DEFAULT nextval('public.activity_outdoor_walks_id_seq'::regclass);
 
 
 --
@@ -412,11 +412,11 @@ ALTER TABLE ONLY public.active_storage_blobs
 
 
 --
--- Name: activity_walks activity_walks_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: activity_outdoor_walks activity_outdoor_walks_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.activity_walks
-    ADD CONSTRAINT activity_walks_pkey PRIMARY KEY (id);
+ALTER TABLE ONLY public.activity_outdoor_walks
+    ADD CONSTRAINT activity_outdoor_walks_pkey PRIMARY KEY (id);
 
 
 --
@@ -502,10 +502,10 @@ CREATE UNIQUE INDEX index_active_storage_blobs_on_key ON public.active_storage_b
 
 
 --
--- Name: index_activity_walks_on_account_id; Type: INDEX; Schema: public; Owner: -
+-- Name: index_activity_outdoor_walks_on_account_id; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX index_activity_walks_on_account_id ON public.activity_walks USING btree (account_id);
+CREATE INDEX index_activity_outdoor_walks_on_account_id ON public.activity_outdoor_walks USING btree (account_id);
 
 
 --
@@ -530,10 +530,10 @@ CREATE INDEX index_health_sleeps_on_account_id ON public.health_sleeps USING btr
 
 
 --
--- Name: activity_walks fk_rails_021613d145; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: activity_outdoor_walks fk_rails_021613d145; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.activity_walks
+ALTER TABLE ONLY public.activity_outdoor_walks
     ADD CONSTRAINT fk_rails_021613d145 FOREIGN KEY (account_id) REFERENCES public.accounts(id);
 
 
@@ -586,6 +586,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20191001071518'),
 ('20191002074140'),
 ('20191002075220'),
-('20191002192310');
+('20191002192310'),
+('20191003181315');
 
 
