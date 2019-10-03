@@ -3,7 +3,9 @@
 module My
   module Learning
     class ArticlesController < BaseController
-      def index; end
+      def index
+        @articles = current_account.learning_article.order(created_at: :desc)
+      end
 
       def new; end
     end
