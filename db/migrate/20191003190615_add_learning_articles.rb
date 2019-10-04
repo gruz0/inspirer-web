@@ -11,5 +11,7 @@ class AddLearningArticles < ActiveRecord::Migration[5.2]
 
       t.timestamps
     end
+
+    add_index :learning_articles, %i[account_id url], unique: true
   end
 end

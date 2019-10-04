@@ -587,6 +587,13 @@ CREATE INDEX index_learning_articles_on_account_id ON public.learning_articles U
 
 
 --
+-- Name: index_learning_articles_on_account_id_and_url; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX index_learning_articles_on_account_id_and_url ON public.learning_articles USING btree (account_id, url);
+
+
+--
 -- Name: activity_outdoor_walks fk_rails_021613d145; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
