@@ -19,6 +19,7 @@ gem 'rollbar'
 gem 'sass-rails', '~> 5.0'
 gem 'slim-rails'
 gem 'sprockets'
+gem 'validate_url'
 
 group :development do
   gem 'better_errors'
