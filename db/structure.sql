@@ -330,6 +330,41 @@ ALTER SEQUENCE public.health_sleeps_id_seq OWNED BY public.health_sleeps.id;
 
 
 --
+-- Name: learning_articles; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.learning_articles (
+    id bigint NOT NULL,
+    url character varying NOT NULL,
+    title character varying,
+    feeling public.feelings NOT NULL,
+    notes text,
+    account_id bigint,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: learning_articles_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.learning_articles_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: learning_articles_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.learning_articles_id_seq OWNED BY public.learning_articles.id;
+
+
+--
 -- Name: schema_migrations; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -385,6 +420,13 @@ ALTER TABLE ONLY public.health_body_weights ALTER COLUMN id SET DEFAULT nextval(
 --
 
 ALTER TABLE ONLY public.health_sleeps ALTER COLUMN id SET DEFAULT nextval('public.health_sleeps_id_seq'::regclass);
+
+
+--
+-- Name: learning_articles id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.learning_articles ALTER COLUMN id SET DEFAULT nextval('public.learning_articles_id_seq'::regclass);
 
 
 --
@@ -449,6 +491,14 @@ ALTER TABLE ONLY public.health_body_weights
 
 ALTER TABLE ONLY public.health_sleeps
     ADD CONSTRAINT health_sleeps_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: learning_articles learning_articles_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.learning_articles
+    ADD CONSTRAINT learning_articles_pkey PRIMARY KEY (id);
 
 
 --
@@ -530,6 +580,20 @@ CREATE INDEX index_health_sleeps_on_account_id ON public.health_sleeps USING btr
 
 
 --
+-- Name: index_learning_articles_on_account_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_learning_articles_on_account_id ON public.learning_articles USING btree (account_id);
+
+
+--
+-- Name: index_learning_articles_on_account_id_and_url; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX index_learning_articles_on_account_id_and_url ON public.learning_articles USING btree (account_id, url);
+
+
+--
 -- Name: activity_outdoor_walks fk_rails_021613d145; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -543,6 +607,14 @@ ALTER TABLE ONLY public.activity_outdoor_walks
 
 ALTER TABLE ONLY public.health_body_measures
     ADD CONSTRAINT fk_rails_3e0b72e09b FOREIGN KEY (account_id) REFERENCES public.accounts(id);
+
+
+--
+-- Name: learning_articles fk_rails_a0af29c697; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.learning_articles
+    ADD CONSTRAINT fk_rails_a0af29c697 FOREIGN KEY (account_id) REFERENCES public.accounts(id);
 
 
 --
@@ -587,6 +659,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20191002074140'),
 ('20191002075220'),
 ('20191002192310'),
-('20191003181315');
+('20191003181315'),
+('20191003190615');
 
 

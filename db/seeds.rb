@@ -73,3 +73,13 @@ end
     created_at: DateTime.now - (rand * 21)
   )
 end
+
+20.times do |idx|
+  account.learning_article.create!(
+    url: "https://example.com/#{idx}",
+    title: "Post ##{idx}",
+    feeling: FEELINGS.keys.sample.to_s,
+    notes: 'Awesome Post!',
+    created_at: DateTime.now - (rand * 21)
+  )
+end

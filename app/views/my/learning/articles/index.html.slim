@@ -12,23 +12,18 @@ br
     table.table.table-sm.table-hover
       thead.thead-light
         tr
-          th scope="col" Title
-          th scope="col" Rating
-          th scope="col" Updated at
+          th scope="col" Article
+          th scope="col" Feeling
+          th scope="col" Created at
+          th scope="col"
 
       tbody
-        tr
-          th scope="row" Oprah' Diary
-          td 4
-          td = long_date(Time.now)
-
-        tr
-          th scope="row" 5 A.M. Miracle
-          td 4
-          td = long_date(Time.now)
-
-        tr
-          th scope="row" Уборка дома
-          td 5
-          td = long_date(Time.now)
-
+        - @articles.each do |article|
+          - article_presenter = Learning::ArticlePresenter.new(article)
+          tr
+            th scope="row" = article_presenter.clickable_title
+            td = article.feeling
+            td = human_readable_date(article.created_at)
+            td.text-right
+              = link_to(edit_my_learning_article_path(article), class: 'btn btn-secondary btn-sm')
+                = fa_icon('edit')
