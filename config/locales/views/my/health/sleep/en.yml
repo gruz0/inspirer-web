@@ -1,0 +1,11 @@
+en:
+  views:
+    my:
+      health:
+        sleep:
+          index:
+            title: Sleeps
+          new:
+            title: Add Sleep
+          edit:
+            title: Edit Sleep

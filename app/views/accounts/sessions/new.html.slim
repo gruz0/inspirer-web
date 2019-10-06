@@ -1,4 +1,7 @@
-h2 Log in
+- title = t('views.account.session.new.title')
+- content_for :title, title
+
+h2 = title
 
 = form_for(resource, as: resource_name, url: session_path(resource_name), class: 'form') do |f|
   .form-group

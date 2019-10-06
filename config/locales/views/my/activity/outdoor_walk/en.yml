@@ -1,0 +1,11 @@
+en:
+  views:
+    my:
+      activity:
+        outdoor_walk:
+          index:
+            title: Outdoor Walks
+          new:
+            title: New Outdoor Walk
+          edit:
+            title: Edit Outdoor Walk

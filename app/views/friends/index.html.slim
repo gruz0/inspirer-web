@@ -1,4 +1,7 @@
-h1 Friends
+- title = t('views.friends.index.title')
+- content_for :title, title
+
+h2 = title
 
 - if @friends.any?
   - @friends.each do |friend|

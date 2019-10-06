@@ -1,0 +1,11 @@
+en:
+  views:
+    my:
+      learning:
+        article:
+          index:
+            title: Articles
+          new:
+            title: New Article
+          edit:
+            title: Edit Article

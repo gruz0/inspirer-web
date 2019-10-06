@@ -1,0 +1,6 @@
+en:
+  views:
+    account:
+      unlock:
+        new:
+          title: Resend unlock instructions

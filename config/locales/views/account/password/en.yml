@@ -1,0 +1,8 @@
+en:
+  views:
+    account:
+      password:
+        new:
+          title: Forgot your password?
+        edit:
+          title: Change your password

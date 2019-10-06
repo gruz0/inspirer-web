@@ -1,0 +1,8 @@
+en:
+  views:
+    account:
+      registration:
+        new:
+          title: Sign up
+        edit:
+          title: Edit %{resource}

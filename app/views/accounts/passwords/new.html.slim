@@ -1,4 +1,7 @@
-h2 Forgot your password?
+- title = t('views.account.password.new.title')
+- content_for :title, title
+
+h2 = title
 
 = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }, class: 'form') do |f|
   = render "accounts/shared/error_messages", resource: resource

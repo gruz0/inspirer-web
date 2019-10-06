@@ -1,0 +1,6 @@
+en:
+  views:
+    my:
+      activity:
+        index:
+          title: Activity
