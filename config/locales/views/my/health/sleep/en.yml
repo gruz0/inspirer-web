@@ -5,3 +5,7 @@ en:
         sleep:
           index:
             title: Sleeps
+          new:
+            title: Add Sleep
+          edit:
+            title: Edit Sleep
