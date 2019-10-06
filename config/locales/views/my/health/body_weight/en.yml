@@ -5,3 +5,7 @@ en:
         body_weight:
           index:
             title: Body Weights
+          new:
+            title: Add Body Weight
+          edit:
+            title: Edit Body Weight
