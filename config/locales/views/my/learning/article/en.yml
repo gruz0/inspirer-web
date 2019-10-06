@@ -1,0 +1,7 @@
+en:
+  views:
+    my:
+      learning:
+        article:
+          index:
+            title: Articles

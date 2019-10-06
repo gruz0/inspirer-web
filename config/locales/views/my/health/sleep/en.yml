@@ -1,0 +1,7 @@
+en:
+  views:
+    my:
+      health:
+        sleep:
+          index:
+            title: Sleeps

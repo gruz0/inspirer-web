@@ -1,0 +1,7 @@
+en:
+  views:
+    my:
+      health:
+        body_weight:
+          index:
+            title: Body Weights

@@ -1,0 +1,7 @@
+en:
+  views:
+    my:
+      activity:
+        outdoor_walk:
+          index:
+            title: Outdoor Walks
