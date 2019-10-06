@@ -15,6 +15,7 @@ br
           th scope="col" Distance
           th scope="col" Unit
           th scope="col" Steps
+          th scope="col" Feeling
           th scope="col" Created at
           th scope="col"
 
@@ -25,6 +26,7 @@ br
             th scope="row" = outdoor_walk_presenter.distance
             td = outdoor_walk.distance_unit
             td = outdoor_walk.steps
+            td = outdoor_walk.feeling
             td = human_readable_date(outdoor_walk.created_at)
             td.text-right
               = link_to(edit_my_activity_outdoor_walk_path(outdoor_walk), class: 'btn btn-secondary btn-sm')
