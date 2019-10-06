@@ -35,5 +35,10 @@ module InspirerApp
     config.generators.system_tests = nil
 
     config.active_record.schema_format = :sql
+
+    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', 'controllers', '**', '*.yml').to_s]
+    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', 'models', '**', '*.yml').to_s]
+    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', 'views', '**', '*.yml').to_s]
+    config.i18n.default_locale = :en
   end
 end
