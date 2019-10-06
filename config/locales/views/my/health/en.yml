@@ -1,0 +1,6 @@
+en:
+  views:
+    my:
+      health:
+        index:
+          title: Health
