@@ -1,0 +1,6 @@
+en:
+  views:
+    account:
+      confirmation:
+        new:
+          title: Resend confirmation instructions

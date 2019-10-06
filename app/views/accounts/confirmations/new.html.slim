@@ -1,4 +1,7 @@
-h2 Resend confirmation instructions
+- title = t('views.account.confirmation.new.title')
+- content_for :title, title
+
+h2 = title
 
 = form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }, class: 'form') do |f|
   = render "accounts/shared/error_messages", resource: resource

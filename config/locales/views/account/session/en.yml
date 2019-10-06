@@ -1,0 +1,6 @@
+en:
+  views:
+    account:
+      session:
+        new:
+          title: Log in

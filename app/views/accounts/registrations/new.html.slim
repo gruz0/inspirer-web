@@ -1,4 +1,7 @@
-h2 Sign up
+- title = t('views.account.registration.new.title')
+- content_for :title, title
+
+h2 = title
 
 = form_for(resource, as: resource_name, url: registration_path(resource_name), class: 'form') do |f|
   = render "accounts/shared/error_messages", resource: resource
