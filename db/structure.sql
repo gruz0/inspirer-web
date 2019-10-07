@@ -187,7 +187,8 @@ CREATE TABLE public.activity_outdoor_walks (
     notes text,
     account_id bigint,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    created_date date DEFAULT ('now'::text)::date NOT NULL
 );
 
 
@@ -236,7 +237,8 @@ CREATE TABLE public.health_body_measures (
     notes text,
     account_id bigint,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    created_date date DEFAULT ('now'::text)::date NOT NULL
 );
 
 
@@ -271,7 +273,8 @@ CREATE TABLE public.health_body_weights (
     notes text,
     account_id bigint,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    created_date date DEFAULT ('now'::text)::date NOT NULL
 );
 
 
@@ -306,7 +309,8 @@ CREATE TABLE public.health_sleeps (
     notes text,
     account_id bigint,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    created_date date DEFAULT ('now'::text)::date NOT NULL
 );
 
 
@@ -559,10 +563,24 @@ CREATE INDEX index_activity_outdoor_walks_on_account_id ON public.activity_outdo
 
 
 --
+-- Name: index_activity_outdoor_walks_on_account_id_and_created_date; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX index_activity_outdoor_walks_on_account_id_and_created_date ON public.activity_outdoor_walks USING btree (account_id, created_date);
+
+
+--
 -- Name: index_health_body_measures_on_account_id; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX index_health_body_measures_on_account_id ON public.health_body_measures USING btree (account_id);
+
+
+--
+-- Name: index_health_body_measures_on_account_id_and_created_date; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX index_health_body_measures_on_account_id_and_created_date ON public.health_body_measures USING btree (account_id, created_date);
 
 
 --
@@ -573,10 +591,24 @@ CREATE INDEX index_health_body_weights_on_account_id ON public.health_body_weigh
 
 
 --
+-- Name: index_health_body_weights_on_account_id_and_created_date; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX index_health_body_weights_on_account_id_and_created_date ON public.health_body_weights USING btree (account_id, created_date);
+
+
+--
 -- Name: index_health_sleeps_on_account_id; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX index_health_sleeps_on_account_id ON public.health_sleeps USING btree (account_id);
+
+
+--
+-- Name: index_health_sleeps_on_account_id_and_created_date; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX index_health_sleeps_on_account_id_and_created_date ON public.health_sleeps USING btree (account_id, created_date);
 
 
 --
@@ -660,6 +692,10 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20191002075220'),
 ('20191002192310'),
 ('20191003181315'),
-('20191003190615');
+('20191003190615'),
+('20191006175521'),
+('20191007181126'),
+('20191007182016'),
+('20191007182944');
 
 
