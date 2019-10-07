@@ -75,6 +75,7 @@ GEM
       railties (>= 3.2, < 6.1)
     erubi (1.8.0)
     execjs (2.7.0)
+    ffaker (2.13.0)
     ffi (1.11.1)
     font-awesome-rails (4.7.0.5)
       railties (>= 3.2, < 6.1)
@@ -234,6 +235,7 @@ DEPENDENCIES
   database_cleaner
   devise
   dotenv-rails
+  ffaker
   font-awesome-rails
   jquery-rails
   mini_racer
