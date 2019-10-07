@@ -4,9 +4,9 @@ class AddOneRecordPerDayConstraintsToActivityOutdoorWalks < ActiveRecord::Migrat
   def up
     # Try to find records with non-unique created_at values
     query = <<-SQL
-      SELECT COUNT((created_at::text)::date) AS cnt, (created_at::text)::date AS dd
+      SELECT COUNT((created_at::text)::date) AS cnt, (created_at::text)::date AS dd, account_id
         FROM activity_outdoor_walks
-        GROUP BY dd
+        GROUP BY dd, account_id
         ORDER BY cnt
         DESC LIMIT 1
     SQL
