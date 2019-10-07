@@ -12,15 +12,12 @@ account = Account.create!(
   bio: 'Some text about me'
 )
 
-20.times do |_|
-  account.health_sleep.create!(
-    woke_up_at_hour: (0...23).to_a.sample,
-    woke_up_at_minutes: (0...59).to_a.sample,
-    feeling: FEELINGS.keys.sample.to_s,
-    notes: 'Some Text',
-    created_at: DateTime.now - (rand * 21)
-  )
-end
+account.health_sleep.create!(
+  woke_up_at_hour: (0...23).to_a.sample,
+  woke_up_at_minutes: (0...59).to_a.sample,
+  feeling: FEELINGS.keys.sample.to_s,
+  notes: 'Some Text'
+)
 
 20.times do |_|
   unit = HealthBodyWeight.units.keys.sample
