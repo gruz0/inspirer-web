@@ -50,20 +50,17 @@ account.health_body_measure.create!(
   notes: 'Awesome'
 )
 
-20.times do |_|
-  unit = ActivityOutdoorWalk.units.keys.sample
-  distance = rand(3.0..10.5)
-  distance /= MI_TO_KM_RATIO if unit == 'mi'
+distance_unit = ActivityOutdoorWalk.units.keys.sample
+distance = rand(3.0..10.5)
+distance /= MI_TO_KM_RATIO if distance_unit == 'mi'
 
-  account.activity_outdoor_walk.create!(
-    distance: distance,
-    distance_unit: unit,
-    steps: rand(5_000..15_000),
-    feeling: FEELINGS.keys.sample.to_s,
-    notes: 'Awesome Day!',
-    created_at: DateTime.now - (rand * 21)
-  )
-end
+account.activity_outdoor_walk.create!(
+  distance: distance,
+  distance_unit: distance_unit,
+  steps: rand(5_000..15_000),
+  feeling: FEELINGS.keys.sample.to_s,
+  notes: 'Awesome Day!'
+)
 
 20.times do |idx|
   account.learning_article.create!(
