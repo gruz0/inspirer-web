@@ -187,7 +187,8 @@ CREATE TABLE public.activity_outdoor_walks (
     notes text,
     account_id bigint,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    created_date date DEFAULT ('now'::text)::date NOT NULL
 );
 
 
@@ -562,6 +563,13 @@ CREATE INDEX index_activity_outdoor_walks_on_account_id ON public.activity_outdo
 
 
 --
+-- Name: index_activity_outdoor_walks_on_account_id_and_created_date; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX index_activity_outdoor_walks_on_account_id_and_created_date ON public.activity_outdoor_walks USING btree (account_id, created_date);
+
+
+--
 -- Name: index_health_body_measures_on_account_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -687,6 +695,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20191003190615'),
 ('20191006175521'),
 ('20191007181126'),
-('20191007182016');
+('20191007182016'),
+('20191007182944');
 
 
