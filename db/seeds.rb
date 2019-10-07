@@ -19,19 +19,16 @@ account.health_sleep.create!(
   notes: 'Some Text'
 )
 
-20.times do |_|
-  unit = HealthBodyWeight.units.keys.sample
-  weight = rand(85.0..110.0).round(2)
-  weight *= KG_TO_LBS_RATIO if unit == 'lbs'
+body_weight_unit = HealthBodyWeight.units.keys.sample
+body_weight = rand(85.0..110.0).round(2)
+body_weight *= KG_TO_LBS_RATIO if body_weight_unit == 'lbs'
 
-  account.health_body_weight.create!(
-    weight: weight,
-    unit: unit,
-    feeling: FEELINGS.keys.sample.to_s,
-    notes: 'Awesome',
-    created_at: DateTime.now - (rand * 21)
-  )
-end
+account.health_body_weight.create!(
+  weight: body_weight,
+  unit: body_weight_unit,
+  feeling: FEELINGS.keys.sample.to_s,
+  notes: 'Awesome'
+)
 
 20.times do |_|
   unit = HealthBodyMeasure.units.keys.sample
