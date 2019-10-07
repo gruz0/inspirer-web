@@ -31,3 +31,7 @@ end
 group :development, :test do
   gem 'rspec-rails', '~> 3.8'
 end
+
+group :test do
+  gem 'database_cleaner'
+end
