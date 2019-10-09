@@ -49,7 +49,7 @@ RSpec.describe 'Creating a Health Sleep', type: :system do
     end
 
     it 'renders errors count' do
-      expect(page).to have_text('4 errors prohibited this health sleep from being saved')
+      expect(page).to have_text('5 errors prohibited this health sleep from being saved')
     end
 
     it 'renders error message if woke_up_at_hour is blank' do
@@ -66,6 +66,10 @@ RSpec.describe 'Creating a Health Sleep', type: :system do
 
     it 'renders error message if woke_up_at_minutes is not a number' do
       expect(page).to have_text('Woke up at minutes is not a number')
+    end
+
+    it 'renders error message if feeling is blank' do
+      expect(page).to have_text('Feeling can\'t be blank')
     end
   end
 end

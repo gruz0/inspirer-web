@@ -9,6 +9,7 @@ class HealthSleep < ApplicationRecord
 
   validates :woke_up_at_hour, presence: true, numericality: { greater_than_or_equal_to: 0, less_than: 24 }
   validates :woke_up_at_minutes, presence: true, numericality: { greater_than_or_equal_to: 0, less_than: 60 }
+  validates :feeling, presence: true
   validates :created_date, uniqueness: { scope: :account_id, message: 'should happen once per day' }
 
   private
