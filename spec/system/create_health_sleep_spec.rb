@@ -72,4 +72,18 @@ RSpec.describe 'Creating a Health Sleep', type: :system do
       expect(page).to have_text('Feeling can\'t be blank')
     end
   end
+
+  context 'when record for this day already exists' do
+    before do
+      visit new_my_health_sleep_path
+
+      create(:health_sleep, account: account)
+
+      click_button 'Save'
+    end
+
+    it 'renders error message' do
+      expect(page).to have_text('Created date should happen once per day')
+    end
+  end
 end
