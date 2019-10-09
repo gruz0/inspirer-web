@@ -9,6 +9,8 @@ class HealthBodyWeight < ApplicationRecord
   enum feeling: FEELINGS
 
   validates :weight, presence: true, numericality: { greater_than: 0 }
+  validates :unit, presence: true
+  validates :feeling, presence: true
   validates :created_date, uniqueness: { scope: :account_id, message: 'should happen once per day' }
 
   private
