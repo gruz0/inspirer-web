@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Sign In', type: :system do
-  let(:account) { Account.create!(email: 'me@example.com', password: 'password', password_confirmation: 'password') }
+  let(:account) { create(:account) }
 
   context 'with valid credentials' do
     it 'redirects to Dashboard' do
