@@ -4,7 +4,9 @@
   .form-group.row
     = f.label :unit, class: 'col-4 col-lg-3 col-form-label'
     .col-4.col-sm-3.col-lg-3.col-xl-2
-      = f.select :unit, body_measure_units_to_array, { selected: body_measure.unit }, class: 'form-control'
+      = f.select :unit, body_measure_units_to_array, \
+        { selected: body_measure.unit, prompt: 'Unit' }, \
+        class: 'form-control'
 
   .form-group.row
     = f.label :chest, class: 'col-4 col-lg-3 col-form-label'
