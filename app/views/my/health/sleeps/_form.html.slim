@@ -7,9 +7,13 @@
     .col-8.col-sm-5.col-md-4
       .row
         .col-6
-          = select_hour(sleep.woke_up_at_hour, { prefix: 'health_sleep', field_name: 'woke_up_at_hour' }, class: 'form-control', required: 'required')
+          = select_hour(sleep.woke_up_at_hour, \
+            { prefix: 'health_sleep', field_name: 'woke_up_at_hour', prompt: 'Hour' }, \
+            class: 'form-control', required: 'required')
         .col-6
-          = select_minute(sleep.woke_up_at_minutes, { prefix: 'health_sleep', field_name: 'woke_up_at_minutes' }, class: 'form-control', required: 'required')
+          = select_minute(sleep.woke_up_at_minutes, \
+            { prefix: 'health_sleep', field_name: 'woke_up_at_minutes', prompt: 'Minutes' }, \
+            class: 'form-control', required: 'required')
 
   = render partial: 'shared/feeling', locals: { form: f, value: sleep.feeling }
   = render partial: 'shared/notes', locals: { form: f }
