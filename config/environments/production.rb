@@ -87,7 +87,7 @@ Rails.application.configure do
     port: ENV.fetch('MAILER_PORT'),
     user_name: ENV.fetch('MAILER_USER_NAME'),
     password: ENV.fetch('MAILER_PASSWORD'),
-    authentication: 'plain',
+    authentication: 'login',
     enable_starttls_auto: true
   }
 end
