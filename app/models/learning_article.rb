@@ -5,5 +5,11 @@ class LearningArticle < ApplicationRecord
 
   enum feeling: FEELINGS
 
-  validates :url, url: true, presence: true, uniqueness: { scope: :account, case_sensitive: false }
+  validates :url, url: true, presence: true,
+                  uniqueness: {
+                    scope: :account,
+                    case_sensitive: false,
+                    message: 'already exists'
+                  }
+  validates :feeling, presence: true
 end
