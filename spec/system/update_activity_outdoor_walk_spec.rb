@@ -37,9 +37,8 @@ RSpec.describe 'Updating an Activity Outdoor Walk', type: :system do
     end
 
     it 'renders table with a new record' do
-      values = { 'Distance' => '14.3', 'Unit' => 'km', 'Steps' => '15901', 'Feeling' => 'good' }
-
-      expect(find('#activity_outdoor_walks')).to have_table_row(values)
+      rows = [{ 'Distance' => '14.3', 'Unit' => 'km', 'Steps' => '15901', 'Feeling' => 'good' }]
+      expect(page).to have_table('activity_outdoor_walks', with_rows: rows)
     end
   end
 end

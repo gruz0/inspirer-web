@@ -34,7 +34,6 @@ end
 
 group :test do
   gem 'capybara', require: 'capybara/rspec'
-  gem 'capybara_table', require: 'capybara_table/rspec'
   gem 'database_cleaner'
   gem 'factory_bot_rails'
   gem 'ffaker'

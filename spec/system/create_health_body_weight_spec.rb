@@ -28,9 +28,8 @@ RSpec.describe 'Creating a Health Body Weight', type: :system do
     end
 
     it 'renders table with a new record' do
-      values = { 'Weight' => '115.4', 'Unit' => 'kg', 'Feeling' => 'good' }
-
-      expect(find('#health_body_weights')).to have_table_row(values)
+      rows = [{ 'Weight' => '115.4', 'Unit' => 'kg', 'Feeling' => 'good' }]
+      expect(page).to have_table('health_body_weights', with_rows: rows)
     end
   end
 

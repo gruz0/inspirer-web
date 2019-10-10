@@ -28,12 +28,8 @@ RSpec.describe 'Creating a Health Sleep', type: :system do
     end
 
     it 'renders table with a new record' do
-      values = {
-        'I woke up at' => '02:35',
-        'Feeling' => 'good'
-      }
-
-      expect(find('#health_sleeps')).to have_table_row(values)
+      rows = [{ 'I woke up at' => '02:35', 'Feeling' => 'good' }]
+      expect(page).to have_table('health_sleeps', with_rows: rows)
     end
   end
 

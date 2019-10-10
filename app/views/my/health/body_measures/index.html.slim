@@ -27,7 +27,7 @@ br
         - @body_measures.each do |body_measure|
           - body_measure_presenter = Health::BodyMeasurePresenter.new(body_measure)
           tr
-            th scope="row" = body_measure_presenter.chest
+            td scope="row" = body_measure_presenter.chest
             td = body_measure_presenter.waist
             td = body_measure_presenter.hips
             td = body_measure.unit

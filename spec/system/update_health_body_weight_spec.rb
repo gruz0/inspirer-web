@@ -35,9 +35,8 @@ RSpec.describe 'Updating a Health Body Weight', type: :system do
     end
 
     it 'renders table with a new record' do
-      values = { 'Weight' => '103.2', 'Unit' => 'lbs', 'Feeling' => 'amazing' }
-
-      expect(find('#health_body_weights')).to have_table_row(values)
+      rows = [{ 'Weight' => '103.2', 'Unit' => 'lbs', 'Feeling' => 'amazing' }]
+      expect(page).to have_table('health_body_weights', with_rows: rows)
     end
   end
 end
