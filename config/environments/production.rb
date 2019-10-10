@@ -78,4 +78,16 @@ Rails.application.configure do
 
   config.assets.digest = true
   config.assets.gzip = true
+
+  config.action_mailer.default_url_options = { host: ENV.fetch('MAILER_HOST') }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address: ENV.fetch('MAILER_SERVER'),
+    domain: ENV.fetch('MAILER_DOMAIN'),
+    port: ENV.fetch('MAILER_PORT'),
+    user_name: ENV.fetch('MAILER_USER_NAME'),
+    password: ENV.fetch('MAILER_PASSWORD'),
+    authentication: 'plain',
+    enable_starttls_auto: true
+  }
 end
