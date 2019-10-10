@@ -24,7 +24,7 @@ br
         - @sleeps.each do |sleep|
           - sleep_presenter = Health::SleepPresenter.new(sleep)
           tr
-            th scope="row" = sleep_presenter.woke_up_at
+            td scope="row" = sleep_presenter.woke_up_at
             td = sleep.feeling
             td = human_readable_date(sleep.created_at)
             td.text-right

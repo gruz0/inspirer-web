@@ -26,7 +26,7 @@ br
         - @outdoor_walks.each do |outdoor_walk|
           - outdoor_walk_presenter = Activity::OutdoorWalkPresenter.new(outdoor_walk)
           tr
-            th scope="row" = outdoor_walk_presenter.distance
+            td scope="row" = outdoor_walk_presenter.distance
             td = outdoor_walk.distance_unit
             td = outdoor_walk.steps
             td = outdoor_walk.feeling

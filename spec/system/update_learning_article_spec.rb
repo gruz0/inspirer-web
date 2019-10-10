@@ -35,12 +35,8 @@ RSpec.describe 'Updating a Learning Article', type: :system do
     end
 
     it 'renders table with a new record' do
-      values = {
-        'Article' => 'Article Title',
-        'Feeling' => 'good'
-      }
-
-      expect(find('#learning_articles')).to have_table_row(values)
+      rows = [{ 'Article' => 'Article Title', 'Feeling' => 'good' }]
+      expect(page).to have_table('learning_articles', with_rows: rows)
     end
   end
 end
