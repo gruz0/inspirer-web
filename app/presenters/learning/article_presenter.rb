@@ -17,7 +17,8 @@ module Learning
     private
 
     def title
-      article.title.present? ? article.title : article.url
+      sanitized_title = sanitize_fragment(article.title)
+      sanitized_title.blank? ? article.url : sanitized_title
     end
   end
 end
