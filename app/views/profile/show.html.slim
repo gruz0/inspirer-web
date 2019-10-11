@@ -20,19 +20,19 @@
                 | Unfriend
 
   .col-md-8
-    h1 #{@profile.name}
+    h1 = sanitize_fragment(@profile.name)
 
     - if @profile.website.present?
       .row
         .col-md-3
           | Website:
         .col-md-9
-          = link_to(h(sanitize(@profile.website)), target: '_blank', rel: 'noopener noreferrer')
-            = h(sanitize(@profile.website))
+          = link_to(sanitize_fragment(@profile.website), target: '_blank', rel: 'noopener noreferrer')
+            = sanitize_fragment(@profile.website)
 
     - if @profile.bio.present?
       .row
         .col-md-3
           | Bio:
         .col-md-9
-          = @profile.bio
+          = sanitize_fragment(@profile.bio)
