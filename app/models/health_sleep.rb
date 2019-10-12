@@ -1,9 +1,12 @@
 # frozen_string_literal: true
 
 class HealthSleep < ApplicationRecord
+  include HTMLSanitizer
+
   belongs_to :account
 
   before_validation :set_created_date, on: [:create]
+  before_validation :sanitize_notes
 
   enum feeling: FEELINGS
 
@@ -13,6 +16,10 @@ class HealthSleep < ApplicationRecord
   validates :created_date, uniqueness: { scope: :account_id, message: 'should happen once per day' }
 
   private
+
+  def sanitize_notes
+    self.notes = sanitize_html(notes)
+  end
 
   # NOTE: It uses for validate uniqueness with database constraints
   def set_created_date
