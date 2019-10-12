@@ -14,7 +14,7 @@ RSpec.describe Account, type: :model do
   describe 'sanitizers' do
     describe '#sanitize_username' do
       it 'removes HTML tags' do
-        model.username = '<a href="#">test</a>heisenberg<script>alert("qwe");</script>'
+        model.username = html_ipsum('heisenberg')
         model.validate
         expect(model.username).to eq('heisenberg')
       end
@@ -22,7 +22,7 @@ RSpec.describe Account, type: :model do
 
     describe '#sanitize_name' do
       it 'removes HTML tags' do
-        model.name = '<a href="#">test</a>Walter White<script>alert("qwe");</script>'
+        model.name = html_ipsum('Walter White')
         model.validate
         expect(model.name).to eq('Walter White')
       end
@@ -30,7 +30,7 @@ RSpec.describe Account, type: :model do
 
     describe '#sanitize_bio' do
       it 'removes HTML tags' do
-        model.bio = '<a href="#">test</a>School Teacher<script>alert("qwe");</script>'
+        model.bio = html_ipsum('School Teacher')
         model.validate
         expect(model.bio).to eq('School Teacher')
       end
