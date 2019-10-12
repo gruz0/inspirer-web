@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 def sanitize_fragment(fragment)
-  sanitize_wrapper.fragment(fragment.strip)
+  sanitize_wrapper.fragment(fragment.to_s.strip)
 end
 
 def sanitize_wrapper
