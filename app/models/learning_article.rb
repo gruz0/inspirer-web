@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 class LearningArticle < ApplicationRecord
+  include HTMLSanitizer
+  include NotesSanitizer
+
   belongs_to :account
 
   enum feeling: FEELINGS

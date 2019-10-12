@@ -16,11 +16,11 @@ h2 = title
           .card-body
             h5.card-title
               = link_to(profile_path(friend))
-                = friend.name
+                = sanitize_fragment(friend.name)
 
             - if friend.bio.present?
               p.card-text
-                = friend.bio
+                = sanitize_fragment(friend.bio)
 
             = link_to('#', class: 'btn btn-sm btn-secondary')
               = fa_icon('email')

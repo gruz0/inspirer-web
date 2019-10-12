@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 class HealthSleep < ApplicationRecord
+  include HTMLSanitizer
+  include NotesSanitizer
+
   belongs_to :account
 
   before_validation :set_created_date, on: [:create]
