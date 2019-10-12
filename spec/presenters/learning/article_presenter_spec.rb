@@ -7,11 +7,7 @@ RSpec.describe Learning::ArticlePresenter do
 
   let(:url) { FFaker::Internet.http_url }
   let(:title) { 'Test' }
-  let(:learning_article) do
-    create(:learning_article,
-           url: url,
-           title: '<script>alert("qwe");</script>' + title + '<strong>content</strong>')
-  end
+  let(:learning_article) { create(:learning_article, url: url, title: html_ipsum(title)) }
 
   describe '#clickable_title' do
     context 'when title provided' do
