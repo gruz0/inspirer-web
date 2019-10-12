@@ -39,4 +39,6 @@ group :test do
   gem 'factory_bot_rails'
   gem 'ffaker'
   gem 'selenium-webdriver'
+  gem 'shoulda-callback-matchers'
+  gem 'shoulda-matchers'
 end
