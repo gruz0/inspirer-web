@@ -7,7 +7,7 @@ module HTMLSanitizer
     private
 
     def sanitize_html(value)
-      sanitize_fragment(value).strip
+      sanitize_fragment(value)
     end
   end
 end
