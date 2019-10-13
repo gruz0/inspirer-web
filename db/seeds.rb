@@ -50,7 +50,7 @@ account.health_body_measure.create!(
   notes: 'Awesome'
 )
 
-distance_unit = ActivityOutdoorWalk.units.keys.sample
+distance_unit = ActivityOutdoorWalk.distance_units.keys.sample
 distance = rand(3.0..10.5)
 distance /= MI_TO_KM_RATIO if distance_unit == 'mi'
 
