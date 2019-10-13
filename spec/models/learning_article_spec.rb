@@ -11,20 +11,11 @@ RSpec.describe LearningArticle, type: :model do
   it { is_expected.to allow_value('https://example.com/?page=123').for(:url) }
   it { is_expected.not_to allow_value('example.com').for(:url) }
 
+  # Title
   it { is_expected.to validate_length_of(:title).is_at_most(100) }
+  it { is_expected.to allow_values([nil, '']).for(:title) }
+  it { is_expected.not_to allow_value(FFaker::Lorem.paragraph).for(:title) }
 
+  # Notes
   it_behaves_like 'it sanitizes notes'
-
-  describe 'validations' do
-    describe '#title' do
-      it 'is valid' do
-        expect(model).to be_valid
-      end
-
-      it 'is invalid if length is above than 100 characters' do
-        model.title = FFaker::Lorem.paragraph
-        expect(model).to be_invalid
-      end
-    end
-  end
 end
