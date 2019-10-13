@@ -5,6 +5,9 @@ require 'rails_helper'
 RSpec.describe LearningArticle, type: :model do
   subject(:model) { build(:learning_article) }
 
+  # Account
+  it { is_expected.to belong_to(:account) }
+
   # URL
   it { is_expected.to validate_presence_of(:url) }
   it { is_expected.to validate_uniqueness_of(:url).scoped_to(:account_id).case_insensitive }
