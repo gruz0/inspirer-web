@@ -310,7 +310,7 @@ CREATE TABLE public.health_sleeps (
     woke_up_at_hour integer NOT NULL,
     woke_up_at_minutes integer NOT NULL,
     feeling public.feelings NOT NULL,
-    notes text,
+    notes text DEFAULT ''::text NOT NULL,
     account_id bigint,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
