@@ -35,20 +35,7 @@ RSpec.describe HealthSleep, type: :model do
   end
 
   # Created at
-  context 'when have another record for this day' do
-    before do
-      model.account = create(:health_sleep).account
-      model.validate
-    end
-
-    it 'is invalid' do
-      expect(model).to be_invalid
-    end
-
-    it 'has error' do
-      expect(model.errors.messages[:created_date]).to include('should happen once per day')
-    end
-  end
+  it_behaves_like 'it validates created_date'
 
   # Feeling
   it_behaves_like 'it validates feeling'
