@@ -14,5 +14,6 @@ class LearningArticle < ApplicationRecord
                     case_sensitive: false,
                     message: 'already exists'
                   }
+  validates :title, length: { maximum: 100 }
   validates :feeling, presence: true
 end
