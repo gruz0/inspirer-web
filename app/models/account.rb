@@ -20,6 +20,8 @@ class Account < ApplicationRecord
   before_validation :sanitize_name
   before_validation :sanitize_bio
 
+  validates :website, url: true, allow_blank: true
+
   private
 
   def sanitize_username

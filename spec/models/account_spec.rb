@@ -36,4 +36,22 @@ RSpec.describe Account, type: :model do
       end
     end
   end
+
+  describe 'validations' do
+    describe '#website' do
+      it 'is valid if website is a valid url' do
+        expect(model).to be_valid
+      end
+
+      it 'is valid if website is not set' do
+        model.website = nil
+        expect(model).to be_valid
+      end
+
+      it 'is invalid if website is not a valid url' do
+        model.website = 'invalid'
+        expect(model).to be_invalid
+      end
+    end
+  end
 end
