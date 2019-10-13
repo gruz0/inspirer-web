@@ -238,7 +238,7 @@ CREATE TABLE public.health_body_measures (
     hips double precision NOT NULL,
     unit public.body_measure_units,
     feeling public.feelings NOT NULL,
-    notes text,
+    notes text DEFAULT ''::text NOT NULL,
     account_id bigint,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,

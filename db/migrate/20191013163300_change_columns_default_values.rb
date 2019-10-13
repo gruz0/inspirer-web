@@ -14,5 +14,9 @@ class ChangeColumnsDefaultValues < ActiveRecord::Migration[5.2]
     change_table :health_body_weights do |t|
       t.change :notes, :text, null: false, default: ''
     end
+
+    change_table :health_body_measures do |t|
+      t.change :notes, :text, null: false, default: ''
+    end
   end
 end
