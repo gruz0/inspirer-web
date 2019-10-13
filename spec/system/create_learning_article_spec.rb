@@ -78,4 +78,17 @@ RSpec.describe 'Creating a Learning Article', type: :system do
       expect(page).to have_text('Url already exists')
     end
   end
+
+  context 'when title length is above 100 characters' do
+    before do
+      visit new_my_learning_article_path
+
+      fill_in 'learning_article[title]', with: FFaker::Lorem.paragraph
+      click_button 'Save'
+    end
+
+    it 'renders error message' do
+      expect(page).to have_text('Title is too long (maximum is 100 characters)')
+    end
+  end
 end

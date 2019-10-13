@@ -9,7 +9,9 @@
   .form-group.row
     = f.label :title, class: 'col-4 col-lg-3 col-form-label'
     .col.col-lg-8
-      = f.text_field :title, class: 'form-control'
+      = f.text_field :title, class: 'form-control', max: 100
+      small.form-text.text-muted
+        | (100 characters maximum)
 
   = render partial: 'shared/feeling', locals: { form: f, value: article.feeling }
   = render partial: 'shared/notes', locals: { form: f }
