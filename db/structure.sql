@@ -83,7 +83,11 @@ CREATE TABLE public.accounts (
     username character varying,
     name character varying,
     website character varying,
-    bio text
+    bio text,
+    confirmation_token character varying,
+    confirmed_at timestamp without time zone,
+    confirmation_sent_at timestamp without time zone,
+    unconfirmed_email character varying
 );
 
 
@@ -514,6 +518,13 @@ ALTER TABLE ONLY public.schema_migrations
 
 
 --
+-- Name: index_accounts_on_confirmation_token; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX index_accounts_on_confirmation_token ON public.accounts USING btree (confirmation_token);
+
+
+--
 -- Name: index_accounts_on_email; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -696,6 +707,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20191006175521'),
 ('20191007181126'),
 ('20191007182016'),
-('20191007182944');
+('20191007182944'),
+('20191013130845');
 
 
