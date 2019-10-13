@@ -344,7 +344,7 @@ ALTER SEQUENCE public.health_sleeps_id_seq OWNED BY public.health_sleeps.id;
 CREATE TABLE public.learning_articles (
     id bigint NOT NULL,
     url character varying NOT NULL,
-    title character varying,
+    title character varying(100) DEFAULT ''::character varying NOT NULL,
     feeling public.feelings NOT NULL,
     notes text,
     account_id bigint,
@@ -708,6 +708,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20191007181126'),
 ('20191007182016'),
 ('20191007182944'),
-('20191013130845');
+('20191013130845'),
+('20191013163300');
 
 
