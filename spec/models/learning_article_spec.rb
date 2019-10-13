@@ -16,6 +16,9 @@ RSpec.describe LearningArticle, type: :model do
   it { is_expected.to allow_values([nil, '']).for(:title) }
   it { is_expected.not_to allow_value(FFaker::Lorem.paragraph).for(:title) }
 
+  # Feeling
+  it_behaves_like 'it validates feeling'
+
   # Notes
   it_behaves_like 'it sanitizes notes'
 end
