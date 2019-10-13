@@ -3,7 +3,13 @@
 require 'rails_helper'
 
 RSpec.describe LearningArticle, type: :model do
-  subject(:model) { build_stubbed(:learning_article) }
+  subject(:model) { build(:learning_article) }
+
+  # URL
+  it { is_expected.to validate_presence_of(:url) }
+  it { is_expected.to validate_uniqueness_of(:url).scoped_to(:account_id).case_insensitive }
+  it { is_expected.to allow_value('https://example.com/?page=123').for(:url) }
+  it { is_expected.not_to allow_value('example.com').for(:url) }
 
   it { is_expected.to validate_length_of(:title).is_at_most(100) }
 

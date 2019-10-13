@@ -75,7 +75,7 @@ RSpec.describe 'Creating a Learning Article', type: :system do
     end
 
     it 'renders error message' do
-      expect(page).to have_text('Url already exists')
+      expect(page).to have_text('Url has already been taken')
     end
   end
 
