@@ -5,6 +5,18 @@ require 'rails_helper'
 RSpec.describe Account, type: :model do
   subject(:model) { build_stubbed(:account) }
 
+  # Relations
+  it { is_expected.to have_many(:health_sleep).dependent(:destroy) }
+  it { is_expected.to have_many(:health_body_weight).dependent(:destroy) }
+  it { is_expected.to have_many(:health_body_measure).dependent(:destroy) }
+  it { is_expected.to have_many(:activity_outdoor_walk).dependent(:destroy) }
+  it { is_expected.to have_many(:learning_article).dependent(:destroy) }
+
+  # Website
+  it { is_expected.to allow_value(nil).for(:website) }
+  it { is_expected.to allow_value('https://example.com/?page=123').for(:website) }
+  it { is_expected.not_to allow_value('example.com').for(:website) }
+
   describe 'callbacks' do
     it { is_expected.to callback(:sanitize_username).before(:validation) }
     it { is_expected.to callback(:sanitize_name).before(:validation) }

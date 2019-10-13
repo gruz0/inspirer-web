@@ -6,8 +6,8 @@ RSpec.describe Learning::ArticlePresenter do
   subject(:presenter) { described_class.new(learning_article) }
 
   let(:url) { FFaker::Internet.http_url }
-  let(:title) { 'Test' }
-  let(:learning_article) { create(:learning_article, url: url, title: html_ipsum(title)) }
+  let(:title) { FFaker::Lorem.sentence }
+  let(:learning_article) { create(:learning_article, url: url, title: "<strong>a</strong>#{title}") }
 
   describe '#clickable_title' do
     context 'when title provided' do

@@ -188,7 +188,7 @@ CREATE TABLE public.activity_outdoor_walks (
     distance_unit public.distance_units,
     steps integer NOT NULL,
     feeling public.feelings NOT NULL,
-    notes text,
+    notes text DEFAULT ''::text NOT NULL,
     account_id bigint,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
@@ -238,7 +238,7 @@ CREATE TABLE public.health_body_measures (
     hips double precision NOT NULL,
     unit public.body_measure_units,
     feeling public.feelings NOT NULL,
-    notes text,
+    notes text DEFAULT ''::text NOT NULL,
     account_id bigint,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
@@ -274,7 +274,7 @@ CREATE TABLE public.health_body_weights (
     weight double precision NOT NULL,
     unit public.weight_units,
     feeling public.feelings NOT NULL,
-    notes text,
+    notes text DEFAULT ''::text NOT NULL,
     account_id bigint,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
@@ -310,7 +310,7 @@ CREATE TABLE public.health_sleeps (
     woke_up_at_hour integer NOT NULL,
     woke_up_at_minutes integer NOT NULL,
     feeling public.feelings NOT NULL,
-    notes text,
+    notes text DEFAULT ''::text NOT NULL,
     account_id bigint,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
@@ -344,9 +344,9 @@ ALTER SEQUENCE public.health_sleeps_id_seq OWNED BY public.health_sleeps.id;
 CREATE TABLE public.learning_articles (
     id bigint NOT NULL,
     url character varying NOT NULL,
-    title character varying,
+    title character varying(100) DEFAULT ''::character varying NOT NULL,
     feeling public.feelings NOT NULL,
-    notes text,
+    notes text DEFAULT ''::text NOT NULL,
     account_id bigint,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
@@ -708,6 +708,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20191007181126'),
 ('20191007182016'),
 ('20191007182944'),
-('20191013130845');
+('20191013130845'),
+('20191013163300');
 
 
