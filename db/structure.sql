@@ -346,7 +346,7 @@ CREATE TABLE public.learning_articles (
     url character varying NOT NULL,
     title character varying(100) DEFAULT ''::character varying NOT NULL,
     feeling public.feelings NOT NULL,
-    notes text,
+    notes text DEFAULT ''::text NOT NULL,
     account_id bigint,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
