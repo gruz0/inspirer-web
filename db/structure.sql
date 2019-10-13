@@ -188,7 +188,7 @@ CREATE TABLE public.activity_outdoor_walks (
     distance_unit public.distance_units,
     steps integer NOT NULL,
     feeling public.feelings NOT NULL,
-    notes text,
+    notes text DEFAULT ''::text NOT NULL,
     account_id bigint,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
