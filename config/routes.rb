@@ -17,40 +17,40 @@ Rails.application.routes.draw do
   namespace :my do
     resources :health, only: [:index]
     namespace :health do
-      resources :sleeps
-      resources :body_weights
-      resources :body_measures
+      resources :sleeps, only: %i[index new create edit update]
+      resources :body_weights, only: %i[index new create edit update]
+      resources :body_measures, only: %i[index new create edit update]
     end
 
-    resources :productivity
+    resources :productivity, only: [:index]
 
     resources :activity, only: [:index]
     namespace :activity do
-      resources :gym
-      resources :running
-      resources :outdoor_walks
-      resources :cycling
+      resources :gym, only: [:index]
+      resources :running, only: [:index]
+      resources :outdoor_walks, only: %i[index new create edit update]
+      resources :cycling, only: [:index]
       resources :yoga, only: [:index]
       namespace :yoga do
-        resources :asana
-        resources :pranayama
-        resources :uddiyana
-        resources :affirmation
+        resources :asana, only: [:index]
+        resources :pranayama, only: [:index]
+        resources :uddiyana, only: [:index]
+        resources :affirmation, only: [:index]
       end
-      resources :stretching
+      resources :stretching, only: [:index]
     end
 
-    resources :emotions
+    resources :emotions, only: [:index]
 
     resources :learning, only: [:index]
     namespace :learning do
-      resources :videos
-      resources :podcasts
-      resources :articles
-      resources :books
+      resources :videos, only: [:index]
+      resources :podcasts, only: [:index]
+      resources :articles, only: %i[index new create edit update]
+      resources :books, only: [:index]
     end
 
-    resources :family
+    resources :family, only: [:index]
   end
 
   root 'home#index'

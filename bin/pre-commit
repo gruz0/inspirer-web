@@ -5,7 +5,12 @@ green='\033[0;32m'
 yellow='\033[0;33m'
 NC='\033[0m'
 
+# Install gems
 gem update rubocop rubocop-rspec brakeman bundle-audit rails_best_practices
+if [ $? -ne 0 ]; then
+  echo "${red}[Install gems][Error]: Fix the issues and commit again${NC}"
+  exit 1
+fi
 
 # Code styling
 echo "${green}[Ruby Style][Info]: Checking Ruby Style${NC}"
@@ -34,6 +39,13 @@ fi
 brakeman -A -z
 if [ $? -ne 0 ]; then
   echo "${red}[Brakeman][Error]: Fix the issues and commit again${NC}"
+  exit 1
+fi
+
+# Unused routes
+rake unused_routes
+if [ $? -ne 0 ]; then
+  echo "${red}[Unused Routes][Error]: Fix the issues and commit again${NC}"
   exit 1
 fi
 
