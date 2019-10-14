@@ -2,15 +2,21 @@
 
 Account.destroy_all
 
+email = 'robot@inspirer.app'
+password = '8DC!Wtf#Wdt'
+
 account = Account.create!(
-  email: 'me@example.com',
-  password: 'password',
-  password_confirmation: 'password',
+  email: email,
+  password: password,
+  password_confirmation: password,
   name: 'Firstname Lastname',
   username: 'username',
   website: 'https://example.com/',
   bio: 'Some text about me'
 )
+
+puts "Email:    #{email}"
+puts "Password: #{password}"
 
 account.health_sleep.create!(
   woke_up_at_hour: (0...23).to_a.sample,
