@@ -15,6 +15,15 @@ RSpec.describe HealthBodyWeight, type: :model do
   # Unit
   it_behaves_like 'it has enum', :unit, WEIGHT_UNITS
 
+  describe '#normalize_weight' do
+    it 'returns rounded by 1' do
+      model.weight = 95.99
+      model.validate
+
+      expect(model.weight).to eq(95.9)
+    end
+  end
+
   # Created at
   it_behaves_like 'it validates created_date'
 
