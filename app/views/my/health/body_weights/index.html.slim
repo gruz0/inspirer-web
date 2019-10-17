@@ -23,9 +23,8 @@ br
 
       tbody
         - @body_weights.each do |body_weight|
-          - body_weight_presenter = Health::BodyWeightPresenter.new(body_weight)
           tr
-            td scope="row" = body_weight_presenter.weight
+            td scope="row" = body_weight.weight
             td = body_weight.unit
             td = body_weight.feeling
             td = human_readable_date(body_weight.created_at)

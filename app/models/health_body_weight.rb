@@ -7,6 +7,7 @@ class HealthBodyWeight < ApplicationRecord
   belongs_to :account
 
   before_validation :set_created_date, on: [:create]
+  after_validation :normalize_weight
 
   enum unit: WEIGHT_UNITS
   enum feeling: FEELINGS
@@ -21,5 +22,11 @@ class HealthBodyWeight < ApplicationRecord
   # NOTE: It uses for validate uniqueness with database constraints
   def set_created_date
     self.created_date = Time.zone.now
+  end
+
+  def normalize_weight
+    return unless weight
+
+    self.weight = weight.floor(1)
   end
 end

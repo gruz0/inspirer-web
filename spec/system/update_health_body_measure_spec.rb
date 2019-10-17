@@ -39,7 +39,7 @@ RSpec.describe 'Updating a Health Body Measure', type: :system do
     end
 
     it 'renders table with a new record' do
-      rows = [{ 'Chest' => '96', 'Waist' => '70', 'Hips' => '101', 'Unit' => 'cm', 'Feeling' => 'amazing' }]
+      rows = [{ 'Chest' => '95.7', 'Waist' => '69.8', 'Hips' => '100.5', 'Unit' => 'cm', 'Feeling' => 'amazing' }]
       expect(page).to have_table('health_body_measures', with_rows: rows)
     end
   end

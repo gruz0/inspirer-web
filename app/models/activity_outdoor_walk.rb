@@ -7,6 +7,7 @@ class ActivityOutdoorWalk < ApplicationRecord
   belongs_to :account
 
   before_validation :set_created_date, on: [:create]
+  after_validation :normalize_distance
 
   enum distance_unit: DISTANCE_UNITS
   enum feeling: FEELINGS
@@ -22,5 +23,11 @@ class ActivityOutdoorWalk < ApplicationRecord
   # NOTE: It uses for validate uniqueness with database constraints
   def set_created_date
     self.created_date = Time.zone.now
+  end
+
+  def normalize_distance
+    return unless distance
+
+    self.distance = distance.floor(1)
   end
 end

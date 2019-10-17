@@ -13,10 +13,10 @@ RSpec.describe 'Creating a Health Body Measure', type: :system do
     before do
       visit new_my_health_body_measure_path
 
-      select 'cm', from: 'health_body_measure[unit]'
-      fill_in 'health_body_measure[chest]', with: 98.51
-      fill_in 'health_body_measure[waist]', with: 75.38
-      fill_in 'health_body_measure[hips]', with: 103.27
+      select 'inch', from: 'health_body_measure[unit]'
+      fill_in 'health_body_measure[chest]', with: 38.7
+      fill_in 'health_body_measure[waist]', with: 29.6
+      fill_in 'health_body_measure[hips]', with: 40.6
       select 'good', from: 'health_body_measure[feeling]'
       click_button 'Save'
     end
@@ -29,10 +29,19 @@ RSpec.describe 'Creating a Health Body Measure', type: :system do
       expect(page).to have_text('Record was successfully created')
     end
 
+    # rubocop:disable RSpec/ExampleLength
     it 'renders table with a new record' do
-      rows = [{ 'Chest' => '99', 'Waist' => '75', 'Hips' => '103', 'Unit' => 'cm', 'Feeling' => 'good' }]
+      rows = [{
+        'Chest' => '38 11/16',
+        'Waist' => '29 10/16',
+        'Hips' => '40 10/16',
+        'Unit' => 'inch',
+        'Feeling' => 'good'
+      }]
+
       expect(page).to have_table('health_body_measures', with_rows: rows)
     end
+    # rubocop:enable RSpec/ExampleLength
   end
 
   context 'with invalid inputs' do
