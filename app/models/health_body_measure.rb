@@ -7,6 +7,9 @@ class HealthBodyMeasure < ApplicationRecord
   belongs_to :account
 
   before_validation :set_created_date, on: [:create]
+  after_validation :normalize_chest
+  after_validation :normalize_waist
+  after_validation :normalize_hips
 
   enum unit: BODY_MEASURE_UNITS
   enum feeling: FEELINGS
@@ -23,5 +26,23 @@ class HealthBodyMeasure < ApplicationRecord
   # NOTE: It uses for validate uniqueness with database constraints
   def set_created_date
     self.created_date = Time.zone.now
+  end
+
+  def normalize_chest
+    return unless chest
+
+    self.chest = chest.floor(inch? ? 2 : 1)
+  end
+
+  def normalize_waist
+    return unless waist
+
+    self.waist = waist.floor(inch? ? 2 : 1)
+  end
+
+  def normalize_hips
+    return unless hips
+
+    self.hips = hips.floor(inch? ? 2 : 1)
   end
 end

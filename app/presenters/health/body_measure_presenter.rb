@@ -10,26 +10,42 @@ module Health
 
     def chest
       if body_measure.inch?
-        body_measure.chest.round(1)
+        convert_decimal_inches(body_measure.chest)
       else
-        body_measure.chest.round
+        body_measure.chest.floor(1)
       end
     end
 
     def waist
       if body_measure.inch?
-        body_measure.waist.round(1)
+        convert_decimal_inches(body_measure.waist)
       else
-        body_measure.waist.round
+        body_measure.waist.floor(1)
       end
     end
 
     def hips
       if body_measure.inch?
-        body_measure.hips.round(1)
+        convert_decimal_inches(body_measure.hips)
       else
-        body_measure.hips.round
+        body_measure.hips.floor(1)
       end
+    end
+
+    private
+
+    # http://syzygy.virtualave.net/decimal_inch_to_fractions.html
+    def convert_decimal_inches(value, denominator = 16)
+      # Subtract the number of whole inches
+      fixed = value.floor
+
+      # Subtract modulo
+      modulo = value.modulo(1).floor(2)
+
+      # Multiply module and denomiator to get the number of denominator's inches remaining
+      fraction = (modulo * denominator).round
+
+      "#{fixed} #{fraction}/#{denominator}"
     end
   end
 end
