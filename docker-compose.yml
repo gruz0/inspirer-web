@@ -8,6 +8,9 @@ services:
       - 3000:3000
     volumes:
       - .:/app
+    depends_on:
+      - db
+      - redis
     networks:
       - default
 
@@ -17,6 +20,11 @@ services:
       - .data:/var/lib/postgresql/data
     ports:
       - 5432:5432
+    networks:
+      - default
+
+  redis:
+    image: redis:5-alpine
     networks:
       - default
 
