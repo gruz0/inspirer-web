@@ -16,6 +16,7 @@ class Account < ApplicationRecord
   has_many :health_body_measure, dependent: :destroy
   has_many :activity_outdoor_walk, dependent: :destroy
   has_many :learning_article, dependent: :destroy
+  has_many :learning_podcast, dependent: :destroy
 
   before_validation :sanitize_username
   before_validation :sanitize_name
