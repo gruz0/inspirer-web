@@ -373,6 +373,41 @@ ALTER SEQUENCE public.learning_articles_id_seq OWNED BY public.learning_articles
 
 
 --
+-- Name: learning_podcasts; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.learning_podcasts (
+    id bigint NOT NULL,
+    url character varying NOT NULL,
+    title character varying(100) DEFAULT ''::character varying NOT NULL,
+    feeling public.feelings NOT NULL,
+    notes text DEFAULT ''::text NOT NULL,
+    account_id bigint,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: learning_podcasts_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.learning_podcasts_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: learning_podcasts_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.learning_podcasts_id_seq OWNED BY public.learning_podcasts.id;
+
+
+--
 -- Name: schema_migrations; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -435,6 +470,13 @@ ALTER TABLE ONLY public.health_sleeps ALTER COLUMN id SET DEFAULT nextval('publi
 --
 
 ALTER TABLE ONLY public.learning_articles ALTER COLUMN id SET DEFAULT nextval('public.learning_articles_id_seq'::regclass);
+
+
+--
+-- Name: learning_podcasts id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.learning_podcasts ALTER COLUMN id SET DEFAULT nextval('public.learning_podcasts_id_seq'::regclass);
 
 
 --
@@ -507,6 +549,14 @@ ALTER TABLE ONLY public.health_sleeps
 
 ALTER TABLE ONLY public.learning_articles
     ADD CONSTRAINT learning_articles_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: learning_podcasts learning_podcasts_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.learning_podcasts
+    ADD CONSTRAINT learning_podcasts_pkey PRIMARY KEY (id);
 
 
 --
@@ -637,11 +687,33 @@ CREATE UNIQUE INDEX index_learning_articles_on_account_id_and_url ON public.lear
 
 
 --
+-- Name: index_learning_podcasts_on_account_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_learning_podcasts_on_account_id ON public.learning_podcasts USING btree (account_id);
+
+
+--
+-- Name: index_learning_podcasts_on_account_id_and_url; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX index_learning_podcasts_on_account_id_and_url ON public.learning_podcasts USING btree (account_id, url);
+
+
+--
 -- Name: activity_outdoor_walks fk_rails_021613d145; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.activity_outdoor_walks
     ADD CONSTRAINT fk_rails_021613d145 FOREIGN KEY (account_id) REFERENCES public.accounts(id);
+
+
+--
+-- Name: learning_podcasts fk_rails_2351573e8e; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.learning_podcasts
+    ADD CONSTRAINT fk_rails_2351573e8e FOREIGN KEY (account_id) REFERENCES public.accounts(id);
 
 
 --
@@ -709,6 +781,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20191007182016'),
 ('20191007182944'),
 ('20191013130845'),
-('20191013163300');
+('20191013163300'),
+('20191018155237');
 
 
