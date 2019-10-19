@@ -29,7 +29,7 @@ RSpec.describe 'Creating a Learning Article', type: :system do
 
     it 'renders table with a new record' do
       # FIXME: It should be replaced with link matcher
-      rows = [{ 'Article' => 'Some text', 'Feeling' => 'good' }]
+      rows = [{ 'Title' => 'Some text', 'Feeling' => 'good' }]
       expect(page).to have_table('learning_articles', with_rows: rows)
     end
   end
