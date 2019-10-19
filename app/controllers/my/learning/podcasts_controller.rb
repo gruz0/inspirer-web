@@ -21,10 +21,27 @@ module My
         end
       end
 
+      def edit
+        @podcast = resource
+      end
+
+      def update
+        @podcast = resource
+        if @podcast.update(podcast_params)
+          redirect_to my_learning_podcasts_path, notice: 'Record was successfully updated'
+        else
+          render :edit
+        end
+      end
+
       private
 
       def podcast_params
         params.require(:learning_podcast).permit(:url, :title, :feeling, :notes)
+      end
+
+      def resource
+        current_account.learning_podcast.find(params[:id])
       end
     end
   end

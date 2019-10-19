@@ -7,4 +7,5 @@ en:
             title: Podcasts
           new:
             title: New Podcast
-
+          edit:
+            title: Edit Podcast
