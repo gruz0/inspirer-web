@@ -35,7 +35,7 @@ RSpec.describe 'Updating a Learning Article', type: :system do
     end
 
     it 'renders table with a new record' do
-      rows = [{ 'Article' => 'Article Title', 'Feeling' => 'good' }]
+      rows = [{ 'Title' => 'Article Title', 'Feeling' => 'good' }]
       expect(page).to have_table('learning_articles', with_rows: rows)
     end
   end
