@@ -1,4 +1,7 @@
-h2 Podcasts
+- title = t('views.my.learning.podcast.index.title')
+- content_for :title, title
+
+h2 = title
 
 .row
   .col-sm-4
@@ -9,32 +12,21 @@ br
 
 .row
   .col
-    table.table.table-sm.table-hover
+    table#learning_podcasts.table.table-sm.table-hover
       thead.thead-light
         tr
           th scope="col" Title
-          th scope="col" Rating
-          th scope="col" Updated at
+          th scope="col" Feeling
+          th scope="col" Created at
+          th scope="col"
 
       tbody
-        tr
-          td
-            a href="https://youtube.com/" target="_blank" rel="nofollow noreferrer"
-              | Jim Carrey Stand-Up
-          td 5
-          td = long_date(Time.now)
-
-        tr
-          td
-            a href="https://youtube.com/" target="_blank" rel="nofollow noreferrer"
-              | Jim Carrey Stand-Up
-          td 4
-          td = long_date(Time.now)
-
-        tr
-          td
-            a href="https://youtube.com/" target="_blank" rel="nofollow noreferrer"
-              | Jim Carrey Stand-Up
-          td 3
-          td = long_date(Time.now)
-
+        - @podcasts.each do |podcast|
+          - podcast_presenter = Learning::PodcastPresenter.new(podcast)
+          tr
+            td scope="row" = podcast_presenter.clickable_title
+            td = podcast.feeling
+            td = human_readable_date(podcast.created_at)
+            td.text-right
+              = link_to(edit_my_learning_podcast_path(podcast), class: 'btn btn-secondary btn-sm')
+                = fa_icon('edit')

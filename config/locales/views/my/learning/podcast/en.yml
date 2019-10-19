@@ -1,0 +1,10 @@
+en:
+  views:
+    my:
+      learning:
+        podcast:
+          index:
+            title: Podcasts
+          new:
+            title: New Podcast
+
