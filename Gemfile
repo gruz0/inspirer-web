@@ -27,6 +27,7 @@ gem 'sprockets'
 gem 'validate_url'
 
 group :development do
+  gem 'active_record_query_trace'
   gem 'better_errors'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
