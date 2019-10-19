@@ -3,6 +3,7 @@
 class LearningPodcast < ApplicationRecord
   include HTMLSanitizer
   include NotesSanitizer
+  include Normalizers
 
   belongs_to :account
 
@@ -18,18 +19,4 @@ class LearningPodcast < ApplicationRecord
                   }
   validates :title, length: { maximum: 100 }
   validates :feeling, presence: true
-
-  private
-
-  def normalize_url
-    return unless url
-
-    self.url = url.downcase.strip
-  end
-
-  def normalize_title
-    return unless title
-
-    self.title = title.strip
-  end
 end
