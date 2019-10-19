@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+return if Rails.env.test?
+
 Rails.application.config.session_store(
   :redis_session_store,
   key: ENV.fetch('COOKIE_SESSION_KEY'),
