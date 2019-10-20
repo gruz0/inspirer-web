@@ -3,12 +3,14 @@
 module My
   module Health
     class BodyMeasuresController < BaseController
+      include Import['find_by_created_today']
+
       def index
         @body_measures = current_account.health_body_measure.order(created_at: :desc)
       end
 
       def new
-        created_today = FindByCreatedToday.call(current_account.health_body_measure)
+        created_today = find_by_created_today.call(current_account.health_body_measure)
         if created_today
           redirect_to edit_my_health_body_measure_path(created_today)
         else

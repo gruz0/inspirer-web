@@ -3,12 +3,14 @@
 module My
   module Health
     class SleepsController < BaseController
+      include Import['find_by_created_today']
+
       def index
         @sleeps = current_account.health_sleep.order(created_at: :desc)
       end
 
       def new
-        created_today = FindByCreatedToday.call(current_account.health_sleep)
+        created_today = find_by_created_today.call(current_account.health_sleep)
         if created_today
           redirect_to edit_my_health_sleep_path(created_today)
         else
