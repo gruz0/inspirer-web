@@ -3,12 +3,14 @@
 module My
   module Activity
     class OutdoorWalksController < BaseController
+      include Import['find_by_created_today']
+
       def index
         @outdoor_walks = current_account.activity_outdoor_walk.order(created_at: :desc)
       end
 
       def new
-        created_today = FindByCreatedToday.call(current_account.activity_outdoor_walk)
+        created_today = find_by_created_today.call(current_account.activity_outdoor_walk)
         if created_today
           redirect_to edit_my_activity_outdoor_walk_path(created_today)
         else
