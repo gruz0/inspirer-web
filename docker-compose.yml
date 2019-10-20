@@ -14,6 +14,17 @@ services:
     networks:
       - default
 
+  sidekiq:
+    build: .
+    command: bundle exec sidekiq -C config/sidekiq.yml
+    volumes:
+      - .:/app
+    depends_on:
+      - db
+      - redis
+    networks:
+      - default
+
   db:
     image: postgres:11
     volumes:
