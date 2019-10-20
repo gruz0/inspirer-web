@@ -72,6 +72,7 @@ GEM
     childprocess (3.0.0)
     coderay (1.1.2)
     concurrent-ruby (1.1.5)
+    connection_pool (2.2.2)
     crass (1.0.4)
     database_cleaner (1.7.0)
     devise (4.7.1)
@@ -316,6 +317,7 @@ DEPENDENCIES
   bootsnap (>= 1.1.0)
   bootstrap (>= 4.3.1)
   capybara
+  connection_pool
   database_cleaner
   devise
   devise_zxcvbn

@@ -7,6 +7,7 @@ ruby '2.5.5'
 
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'bootstrap', '>= 4.3.1'
+gem 'connection_pool'
 gem 'devise'
 gem 'devise_zxcvbn'
 gem 'dotenv-rails'
