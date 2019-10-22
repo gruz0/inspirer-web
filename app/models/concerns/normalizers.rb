@@ -15,7 +15,7 @@ module Normalizers
     def normalize_title
       return unless title
 
-      self.title = title.strip
+      self.title = title.delete("\n").gsub(/\s+/, ' ').strip
     end
   end
 end
