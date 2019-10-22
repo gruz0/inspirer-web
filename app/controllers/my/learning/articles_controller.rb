@@ -15,6 +15,8 @@ module My
         @article = current_account.learning_article.new(article_params)
 
         if @article.save
+          FetchLinkTitleWorker.perform_async(@article.class, @article.id, @article.url) if @article.title.blank?
+
           redirect_to my_learning_articles_path, notice: 'Record was successfully created'
         else
           render :new
@@ -28,6 +30,8 @@ module My
       def update
         @article = resource
         if @article.update(article_params)
+          FetchLinkTitleWorker.perform_async(@article.class, @article.id, @article.url) if @article.title.blank?
+
           redirect_to my_learning_articles_path, notice: 'Record was successfully updated'
         else
           render :edit
