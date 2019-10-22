@@ -15,6 +15,8 @@ module My
         @podcast = current_account.learning_podcast.new(podcast_params)
 
         if @podcast.save
+          FetchLinkTitleWorker.perform_async(@podcast.class, @podcast.id, @podcast.url) if @podcast.title.blank?
+
           redirect_to my_learning_podcasts_path, notice: 'Record was successfully created'
         else
           render :new
@@ -28,6 +30,8 @@ module My
       def update
         @podcast = resource
         if @podcast.update(podcast_params)
+          FetchLinkTitleWorker.perform_async(@podcast.class, @podcast.id, @podcast.url) if @podcast.title.blank?
+
           redirect_to my_learning_podcasts_path, notice: 'Record was successfully updated'
         else
           render :edit
