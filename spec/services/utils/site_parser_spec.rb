@@ -16,11 +16,7 @@ RSpec.describe Utils::SiteParser do
   let(:h1) { '<h1>Header 1</h1><h1>Header 2</h1>' }
   let(:url) { 'http://example.com' }
 
-  before do
-    method_open = double
-    allow(method_open).to receive(:open).and_return(html)
-    allow(URI).to receive(:parse).with(url).and_return(method_open)
-  end
+  before { allow(URI).to receive(:open).and_return(html) }
 
   describe 'exceptions' do
     context 'when url is not present' do

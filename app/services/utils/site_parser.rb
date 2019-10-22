@@ -15,7 +15,7 @@ module Utils
     end
 
     def open_url(url)
-      URI.parse(url).open
+      URI.open(Addressable::URI.parse(url).normalize)
     end
 
     def build_response(document)
