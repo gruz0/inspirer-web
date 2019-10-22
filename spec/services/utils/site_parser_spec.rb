@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.describe Utils::SiteParser do
   subject(:site_parser) { described_class.new }
 
-  let(:result) { site_parser.parse(html) }
+  let(:result) { site_parser.call(url) }
 
   let(:html) do
     <<-HTML
@@ -14,11 +14,28 @@ RSpec.describe Utils::SiteParser do
   end
   let(:title) { '<title>Page Title</title>' }
   let(:h1) { '<h1>Header 1</h1><h1>Header 2</h1>' }
+  let(:url) { 'http://example.com' }
+
+  before do
+    method_open = double
+    allow(method_open).to receive(:open).and_return(html)
+    allow(URI).to receive(:parse).with(url).and_return(method_open)
+  end
+
+  describe 'exceptions' do
+    context 'when url is not present' do
+      let(:url) {}
+
+      it 'raises exception' do
+        expect { result }.to raise_exception(ArgumentError, 'URL could not be empty')
+      end
+    end
+  end
 
   describe '#title' do
     context 'when title present' do
       it 'returns title' do
-        expect(result.title).to eq('Page Title')
+        expect(result[:title]).to eq('Page Title')
       end
     end
 
@@ -26,7 +43,7 @@ RSpec.describe Utils::SiteParser do
       let(:title) {}
 
       it 'returns nil' do
-        expect(result.title).to be_nil
+        expect(result[:title]).to be_nil
       end
     end
 
@@ -34,7 +51,7 @@ RSpec.describe Utils::SiteParser do
       let(:title) { '<title>  </title>' }
 
       it 'returns nil' do
-        expect(result.title).to be_nil
+        expect(result[:title]).to be_nil
       end
     end
   end
@@ -42,7 +59,7 @@ RSpec.describe Utils::SiteParser do
   describe '#h1' do
     context 'when h1 present' do
       it 'returns h1' do
-        expect(result.title).to eq('Page Title')
+        expect(result[:h1]).to eq('Header 1')
       end
     end
 
@@ -50,7 +67,7 @@ RSpec.describe Utils::SiteParser do
       let(:h1) {}
 
       it 'returns nil' do
-        expect(result.h1).to be_nil
+        expect(result[:h1]).to be_nil
       end
     end
 
@@ -58,7 +75,7 @@ RSpec.describe Utils::SiteParser do
       let(:h1) { '<h1>  </h1>' }
 
       it 'returns nil' do
-        expect(result.h1).to be_nil
+        expect(result[:h1]).to be_nil
       end
     end
 
@@ -66,7 +83,7 @@ RSpec.describe Utils::SiteParser do
       let(:h1) { '<h1>Header 1</h1><h1>Another Header</h1>' }
 
       it 'returns first tag' do
-        expect(result.h1).to eq('Header 1')
+        expect(result[:h1]).to eq('Header 1')
       end
     end
   end
