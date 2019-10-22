@@ -29,11 +29,11 @@ RSpec.describe LearningPodcast, type: :model do
   it { is_expected.not_to allow_value(FFaker::Lorem.paragraph).for(:title) }
 
   describe '#normalize_title' do
-    it 'returns value without spaces' do
-      model.title = '  My Awesome Podcast    '
+    it 'returns value without spaces and newline symbols' do
+      model.title = "\n  БС119: Сознание есть? А если найду?\n  Личная эффективность |   Продуктивность\n \n"
       model.validate
 
-      expect(model.title).to eq('My Awesome Podcast')
+      expect(model.title).to eq('БС119: Сознание есть? А если найду? Личная эффективность | Продуктивность')
     end
   end
 
