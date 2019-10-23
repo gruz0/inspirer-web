@@ -2,7 +2,7 @@
 
 class FetchLinkTitleWorker
   include Sidekiq::Worker
-  include Import[site_parser: 'utils.site_parser']
+  include Import['rollbar', site_parser: 'utils.site_parser']
 
   def perform(model, record_id, url)
     tags = parse_tags(url)
@@ -12,7 +12,7 @@ class FetchLinkTitleWorker
 
     find_record(model, record_id).update!(title: title)
   rescue StandardError => e
-    Rollbar.error(e.message, model: model, record_id: record_id, url: url, title: title.presence)
+    rollbar.error(e.message, model: model, record_id: record_id, url: url, title: title.presence)
   end
 
   private
