@@ -7,9 +7,10 @@ html lang="en"
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
     = render 'application/favicons'
-    = render 'application/analytics/yandex_metrika' if Rails.env.production?
-    = render 'application/analytics/google_analytics' if Rails.env.production?
-    = render 'application/jivosite' if Rails.env.production?
+    - if Rails.env.production?
+      = render 'application/analytics/yandex_metrika'
+      = render 'application/analytics/google_analytics'
+      = render 'application/jivosite'
   body style="padding-bottom:55px;"
     header
       = render 'application/menu'
