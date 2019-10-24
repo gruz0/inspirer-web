@@ -9,6 +9,7 @@ html lang="en"
     = render 'application/favicons'
     = render 'application/analytics/yandex_metrika' if Rails.env.production?
     = render 'application/analytics/google_analytics' if Rails.env.production?
+    = render 'application/jivosite' if Rails.env.production?
   body style="padding-bottom:55px;"
     header
       = render 'application/menu'
