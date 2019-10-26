@@ -84,4 +84,12 @@ account.activity_outdoor_walk.create!(
     notes: 'Awesome Podcast!',
     created_at: DateTime.now - (rand * 21)
   )
+
+  account.learning_video.create!(
+    url: "https://example.com/#{idx}",
+    title: "Video ##{idx}",
+    feeling: FEELINGS.keys.sample.to_s,
+    notes: 'Awesome Video!',
+    created_at: DateTime.now - (rand * 21)
+  )
 end
