@@ -1,0 +1,10 @@
+en:
+  views:
+    my:
+      learning:
+        video:
+          index:
+            title: Videos
+          new:
+            title: New Video
+

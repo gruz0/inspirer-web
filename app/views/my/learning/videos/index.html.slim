@@ -1,4 +1,7 @@
-h2 Videos
+- title = t('views.my.learning.video.index.title')
+- content_for :title, title
+
+h2 = title
 
 .row
   .col-sm-4
@@ -8,30 +11,18 @@ h2 Videos
 br
 
 .row
-  .col-sm-4
-    .card.mb-3.text-center
-      .card-body.rounded
-        p.card-text
-          = image_tag("placeholders/360x240.png", style: 'width:200px;')
-        h5.card-title
-          = link_to('#', class: 'stretched-link')
-            | Jim Carey Stand-Up
+  .col
+    table#learning_videos.table.table-sm.table-hover
+      thead.thead-light
+        tr
+          th scope="col" Title
+          th scope="col" Feeling
+          th scope="col" Created at
 
-  .col-sm-4
-    .card.mb-3.text-center
-      .card-body.rounded
-        p.card-text
-          = image_tag("placeholders/360x240.png", style: 'width:200px;')
-        h5.card-title
-          = link_to('#', class: 'stretched-link')
-            | Jim Carey Stand-Up
-
-  .col-sm-4
-    .card.mb-3.text-center
-      .card-body.rounded
-        p.card-text
-          = image_tag("placeholders/360x240.png", style: 'width:200px;')
-        h5.card-title
-          = link_to('#', class: 'stretched-link')
-            | Jim Carey Stand-Up
-
+      tbody
+        - @videos.each do |video|
+          - video_presenter = Learning::VideoPresenter.new(video)
+          tr
+            td scope="row" = video_presenter.clickable_title
+            td = video.feeling
+            td = human_readable_date(video.created_at)
