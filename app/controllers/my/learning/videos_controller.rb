@@ -23,10 +23,29 @@ module My
         end
       end
 
+      def edit
+        @video = resource
+      end
+
+      def update
+        @video = resource
+        if @video.update(video_params)
+          FetchLinkTitleWorker.perform_async(@video.class, @video.id, @video.url) if @video.title.blank?
+
+          redirect_to my_learning_videos_path, notice: 'Record was successfully updated'
+        else
+          render :edit
+        end
+      end
+
       private
 
       def video_params
         params.require(:learning_video).permit(:url, :title, :feeling, :notes)
+      end
+
+      def resource
+        current_account.learning_video.find(params[:id])
       end
     end
   end

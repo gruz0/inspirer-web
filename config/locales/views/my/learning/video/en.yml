@@ -7,4 +7,5 @@ en:
             title: Videos
           new:
             title: New Video
-
+          edit:
+            title: Edit Video

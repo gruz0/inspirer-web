@@ -44,7 +44,7 @@ Rails.application.routes.draw do
 
     resources :learning, only: [:index]
     namespace :learning do
-      resources :videos, only: %i[index new create]
+      resources :videos, only: %i[index new create edit update]
       resources :podcasts, only: %i[index new create edit update]
       resources :articles, only: %i[index new create edit update]
       resources :books, only: [:index]
