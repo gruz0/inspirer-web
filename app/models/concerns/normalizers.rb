@@ -9,7 +9,7 @@ module Normalizers
     def normalize_url
       return unless url
 
-      self.url = url.downcase.strip
+      self.url = url.strip
     end
 
     def normalize_title
