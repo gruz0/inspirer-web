@@ -14,28 +14,14 @@ RSpec.describe LearningArticle, type: :model do
   it { is_expected.to allow_value('https://example.com/?page=123').for(:url) }
   it { is_expected.not_to allow_value('example.com').for(:url) }
 
-  describe '#normalize_url' do
-    it 'returns value without spaces' do
-      model.url = '  http://example.com    '
-      model.validate
-
-      expect(model.url).to eq('http://example.com')
-    end
-  end
+  it_behaves_like 'it normalizes url'
 
   # Title
   it { is_expected.to validate_length_of(:title).is_at_most(100) }
   it { is_expected.to allow_values([nil, '']).for(:title) }
   it { is_expected.not_to allow_value(FFaker::Lorem.paragraph).for(:title) }
 
-  describe '#normalize_title' do
-    it 'returns value without spaces and newline symbols' do
-      model.title = "\n  БС119: Сознание есть? А если найду?\n  Личная эффективность |   Продуктивность\n \n"
-      model.validate
-
-      expect(model.title).to eq('БС119: Сознание есть? А если найду? Личная эффективность | Продуктивность')
-    end
-  end
+  it_behaves_like 'it normalizes title'
 
   # Feeling
   it_behaves_like 'it validates feeling'
