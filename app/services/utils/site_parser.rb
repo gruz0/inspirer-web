@@ -5,35 +5,56 @@ module Utils
     def call(url)
       raise ArgumentError, 'URL could not be empty' if url.blank?
 
-      build_response(parse_page(url))
+      file        = open_url(url)
+      document    = download_page(file)
+      parsed_page = parse_page(document)
+
+      build_response(url, parsed_page)
     end
 
     private
-
-    def parse_page(url)
-      Nokogiri::HTML.parse(open_url(url))
-    end
 
     def open_url(url)
       URI.open(Addressable::URI.parse(url).normalize)
     end
 
-    def build_response(document)
+    def download_page(file)
+      File.read(file)
+    end
+
+    def parse_page(document)
+      Nokogiri::HTML::DocumentFragment.parse(document)
+    end
+
+    def build_response(url, html)
+      page_title = send(default_tag(url), html)
+
+      raise StandardError, 'Could not find TITLE and H1 on the page' if page_title.blank?
+
       {
-        title: title(document),
-        h1: h1(document)
+        title: page_title
       }
     end
 
+    def default_tag(url)
+      provider_detector.detect!(url).default_tag
+    end
+
+    def provider_detector
+      @provider_detector ||= ProviderDetector.new
+    end
+
     def title(document)
-      document.title.presence
+      document.css('title').text.presence
     end
 
     def h1(document)
-      tags = document.css('h1')
-      return if tags.empty?
+      value = document.css('h1')
+                      .reject { |tag| tag.text.blank? }
+                      .map { |tag| tag.text.strip }
+                      .first
 
-      tags.first.text.presence
+      value || title(document)
     end
   end
 end
