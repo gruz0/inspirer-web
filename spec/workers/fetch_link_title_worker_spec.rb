@@ -12,7 +12,7 @@ RSpec.describe FetchLinkTitleWorker do
 
   before do
     method_call = double
-    allow(method_call).to receive(:call).with(url).and_return(title: 'Title', h1: 'Header 1')
+    allow(method_call).to receive(:call).with(url).and_return(title: 'Title')
     allow(Utils::SiteParser).to receive(:new).and_return(method_call)
   end
 
@@ -20,7 +20,7 @@ RSpec.describe FetchLinkTitleWorker do
     it 'updates title' do
       worker.perform(model, record_id, url)
 
-      expect(learning_article.reload.title).to eq('Header 1')
+      expect(learning_article.reload.title).to eq('Title')
     end
   end
 
@@ -52,7 +52,11 @@ RSpec.describe FetchLinkTitleWorker do
     context 'when TITLE and H1 tags were not found on the page' do
       before do
         method_call = double
-        allow(method_call).to receive(:call).with(url).and_return({})
+        allow(method_call)
+          .to receive(:call)
+          .with(url)
+          .and_raise(StandardError, 'Could not find TITLE and H1 on the page')
+
         allow(Utils::SiteParser).to receive(:new).and_return(method_call)
       end
 
