@@ -1,0 +1,42 @@
+dist: trusty
+sudo: required
+
+language: ruby
+rvm:
+  - 2.5.5
+
+before_install:
+  - sudo apt-get update
+  - sudo apt-get --yes remove postgresql\*
+  - sudo apt-get install -y postgresql-11 postgresql-client-11
+  - sudo cp /etc/postgresql/{9.6,11}/main/pg_hba.conf
+  - sudo service postgresql restart 11
+  - gem update --system
+  - gem install bundler
+
+cache:
+  directories:
+    - $HOME/.rvm
+    - $HOME/bundle
+
+bundler_args: --without production development --path $HOME/bundle
+
+before_script:
+  - psql -c 'CREATE DATABASE inspirer_test;' -U postgres
+  - psql -c 'CREATE ROLE travis SUPERUSER LOGIN CREATEDB;' -U postgres
+  - bundle exec rake db:migrate
+  - make install_linters
+
+script:
+  - make test
+  - brakeman -A -z
+  - bundle audit update && bundle audit check
+  - rubocop -DS --force-exclusion -c .rubocop.yml -d -E
+  - bundle exec rake unused_routes
+
+services:
+  - postgresql
+  - redis-server
+
+addons:
+  postgresql: '11.2'
