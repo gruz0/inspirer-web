@@ -6,7 +6,7 @@ yellow='\033[0;33m'
 NC='\033[0m'
 
 # Install gems
-gem update rubocop rubocop-rspec brakeman bundle-audit rails_best_practices
+gem install rubocop rubocop-rails rubocop-rspec rubocop-performance brakeman bundle-audit
 if [ $? -ne 0 ]; then
   echo "${red}[Install gems][Error]: Fix the issues and commit again${NC}"
   exit 1

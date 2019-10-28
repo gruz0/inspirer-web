@@ -14,7 +14,7 @@ shell:
 	docker-compose exec app bash
 
 test:
-	DB_HOST=localhost rspec
+	DB_HOST=localhost bundle exec rspec
 
 install_linters:
 	bin/install_linters_dependencies.sh

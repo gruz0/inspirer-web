@@ -1,5 +1,8 @@
 # Inspirer App
 
+[![Build Status](https://travis-ci.org/gruz0/inspirer-web.svg?branch=master)](https://travis-ci.org/gruz0/inspirer-web)
+[![Security](https://hakiri.io/github/gruz0/inspirer-web/master.svg)](https://hakiri.io/github/gruz0/inspirer-web/master)
+
 Habbits tracker for you
 
 ## System dependencies
