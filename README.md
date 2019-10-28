@@ -1,24 +1,65 @@
-# README
+# Inspirer App
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Habbits tracker for you
 
-Things you may want to cover:
+## System dependencies
 
-* Ruby version
+* Docker
+* docker-compose
 
-* System dependencies
+Docker exposes these ports on localhost:
 
-* Configuration
+* 3000 for the web
+* 5432 for PostgreSQL
+* 6379 for Redis
 
-* Database creation
+## Configuration
 
-* Database initialization
+```bash
+cp .env.sample .env
+```
 
-* How to run the test suite
+## How to run project
 
-* Services (job queues, cache servers, search engines, etc.)
+Simply run in the terminal:
 
-* Deployment instructions
+```bash
+make dockerize
+```
 
-* ...
+## Database creation
+
+Open Docker shell in your terminal:
+
+```bash
+make shell
+```
+
+Then execute:
+
+```bash
+rake db:create db:migrate db:seed
+```
+
+If you want to drop database, use:
+
+```bash
+rake db:drop
+```
+
+## How to login as administator
+
+Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+Use credentials from `db/seeds.rake` file.
+
+* Email: `robot@inspirer.app`
+* Password: `8DC!Wtf#Wdt`
+
+## How to run the test suite
+
+Simply run in the terminal:
+
+```bash
+make test
+```
