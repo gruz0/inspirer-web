@@ -10,8 +10,8 @@ class AddLearningArticles < ActiveRecord::Migration[5.2]
       t.references :account, foreign_key: true
 
       t.timestamps
-    end
 
-    add_index :learning_articles, %i[account_id url], unique: true
+      t.index %i[account_id url], unique: true
+    end
   end
 end
