@@ -10,7 +10,9 @@ module My
       end
 
       def new
+        # rubocop:disable Rails/DynamicFindBy
         created_today = find_by_created_today.call(current_account.health_sleep)
+        # rubocop:enable Rails/DynamicFindBy
         if created_today
           redirect_to edit_my_health_sleep_path(created_today)
         else
