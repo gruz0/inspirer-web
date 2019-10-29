@@ -2,9 +2,11 @@
 
 class AddMoreFieldsToAccounts < ActiveRecord::Migration[5.2]
   def change
-    add_column :accounts, :username, :string
-    add_column :accounts, :name, :string
-    add_column :accounts, :website, :string
-    add_column :accounts, :bio, :text
+    change_table :accounts, bulk: true do |t|
+      t.column :username, :string
+      t.column :name, :string
+      t.column :website, :string
+      t.column :bio, :text
+    end
   end
 end
