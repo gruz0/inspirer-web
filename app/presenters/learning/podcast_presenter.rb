@@ -18,7 +18,7 @@ module Learning
 
     def title
       sanitized_title = sanitize_fragment(podcast.title)
-      sanitized_title.blank? ? podcast.url : sanitized_title
+      sanitized_title.presence || podcast.url
     end
   end
 end
