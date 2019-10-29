@@ -2,10 +2,10 @@
 
 class CreateHealthBodyMeasures < ActiveRecord::Migration[5.2]
   def up
-    execute <<-DDL
-          CREATE TYPE body_measure_units AS ENUM (
-            'cm', 'inch'
-          );
+    execute <<-DDL.squish
+      CREATE TYPE body_measure_units AS ENUM (
+        'cm', 'inch'
+      );
     DDL
 
     create_table :health_body_measures do |t|
