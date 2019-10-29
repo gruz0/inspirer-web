@@ -4,6 +4,12 @@ sudo: required
 language: ruby
 rvm:
   - 2.5.5
+  - 2.6.5
+  - ruby-head
+
+jobs:
+  allow_failures:
+  - rvm: ruby-head
 
 before_install:
   - sudo apt-get update
