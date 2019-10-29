@@ -22,6 +22,16 @@ Docker exposes these ports on localhost:
 cp .env.sample .env
 ```
 
+## How to install linters
+
+Linters used by git pre-commit hook to check project's files.
+
+It runs every time when you try to commit your changes into repository.
+
+```bash
+make install_linters
+```
+
 ## How to run project
 
 Simply run in the terminal:
