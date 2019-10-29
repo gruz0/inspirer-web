@@ -54,6 +54,10 @@ Style/Documentation:
 Rails:
   Enabled: true
 
+Rails/Output:
+  Exclude:
+    - db/seeds.rb
+
 #
 # RSpec
 #

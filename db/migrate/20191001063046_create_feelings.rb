@@ -2,7 +2,7 @@
 
 class CreateFeelings < ActiveRecord::Migration[5.2]
   def up
-    execute <<-DDL
+    execute <<-DDL.squish
       CREATE TYPE feelings AS ENUM (
         'amazing', 'happy', 'energetic', 'good', 'depressed', 'afraid', 'sad', 'angry'
       );

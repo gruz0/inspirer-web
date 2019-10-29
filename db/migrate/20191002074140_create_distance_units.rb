@@ -2,7 +2,7 @@
 
 class CreateDistanceUnits < ActiveRecord::Migration[5.2]
   def up
-    execute <<-DDL
+    execute <<-DDL.squish
       CREATE TYPE distance_units AS ENUM (
         'km', 'mi'
       );

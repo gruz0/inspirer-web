@@ -2,7 +2,7 @@
 
 class MigrateFeelingColumnToFeelingsEnum < ActiveRecord::Migration[5.2]
   def up
-    cases = <<-DDL
+    cases = <<-DDL.squish
       USING CASE feeling
         WHEN 'amazing' THEN 'amazing'::feelings
         WHEN 'happy' THEN 'happy'::feelings
@@ -15,19 +15,19 @@ class MigrateFeelingColumnToFeelingsEnum < ActiveRecord::Migration[5.2]
       END
     DDL
 
-    execute <<-DDL
+    execute <<-DDL.squish
       ALTER TABLE health_sleeps
       ALTER COLUMN feeling TYPE feelings
       #{cases}
     DDL
 
-    execute <<-DDL
+    execute <<-DDL.squish
       ALTER TABLE health_body_weights
       ALTER COLUMN feeling TYPE feelings
       #{cases}
     DDL
 
-    execute <<-DDL
+    execute <<-DDL.squish
       ALTER TABLE health_body_measures
       ALTER COLUMN feeling TYPE feelings
       #{cases}
@@ -35,22 +35,22 @@ class MigrateFeelingColumnToFeelingsEnum < ActiveRecord::Migration[5.2]
   end
 
   def down
-    alter_column = <<-DDL
+    alter_column = <<-DDL.squish
       ALTER COLUMN feeling TYPE text
       USING feeling::text;
     DDL
 
-    execute <<-DDL
+    execute <<-DDL.squish
       ALTER TABLE health_sleeps
       #{alter_column}
     DDL
 
-    execute <<-DDL
+    execute <<-DDL.squish
       ALTER TABLE health_body_weights
       #{alter_column}
     DDL
 
-    execute <<-DDL
+    execute <<-DDL.squish
       ALTER TABLE health_body_measures
       #{alter_column}
     DDL

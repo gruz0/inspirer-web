@@ -2,10 +2,10 @@
 
 class CreateHealthBodyWeights < ActiveRecord::Migration[5.2]
   def up
-    execute <<-DDL
-          CREATE TYPE weight_units AS ENUM (
-            'kg', 'lbs'
-          );
+    execute <<-DDL.squish
+      CREATE TYPE weight_units AS ENUM (
+        'kg', 'lbs'
+      );
     DDL
 
     create_table :health_body_weights do |t|

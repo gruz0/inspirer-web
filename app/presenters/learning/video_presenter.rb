@@ -18,7 +18,7 @@ module Learning
 
     def title
       sanitized_title = sanitize_fragment(video.title)
-      sanitized_title.blank? ? video.url : sanitized_title
+      sanitized_title.presence || video.url
     end
   end
 end
