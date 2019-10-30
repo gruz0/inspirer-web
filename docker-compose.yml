@@ -8,6 +8,8 @@ services:
       - 3000:3000
     volumes:
       - .:/app
+      # Don't mount tmp directory because of: https://github.com/Shopify/bootsnap/issues/177#issuecomment-491711481
+      - /app/tmp
     depends_on:
       - db
       - redis
@@ -19,6 +21,8 @@ services:
     command: bundle exec sidekiq -C config/sidekiq.yml
     volumes:
       - .:/app
+      # Don't mount tmp directory because of: https://github.com/Shopify/bootsnap/issues/177#issuecomment-491711481
+      - /app/tmp
     depends_on:
       - db
       - redis
