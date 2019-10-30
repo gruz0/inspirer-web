@@ -15,8 +15,7 @@ Rails.application.configure do
   config.consider_all_requests_local = true
   config.action_controller.perform_caching = true
 
-  # Print deprecation notices to the Rails logger.
-  config.active_support.deprecation = :log
+  config.active_support.deprecation = :raise
 
   # Raises error for missing translations
   config.action_view.raise_on_missing_translations = true
