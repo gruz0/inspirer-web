@@ -1,4 +1,4 @@
-FROM ruby:2.5.5
+FROM ruby:2.6.5
 MAINTAINER Alexander Kadyrov <gruz0.mail@gmail.com>
 
 RUN echo '\
