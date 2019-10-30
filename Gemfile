@@ -16,7 +16,7 @@ gem 'jquery-rails'
 gem 'mini_racer', platforms: :ruby
 gem 'pg'
 gem 'puma', '~> 3.11'
-gem 'rails', '~> 5.2.3'
+gem 'rails', '~> 6.0.0'
 gem 'redis-session-store'
 gem 'rollbar'
 gem 'sanitize'
