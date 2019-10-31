@@ -32,7 +32,7 @@ about a feature you are championing.
 Here's a quick guide:
 
 1. Fork the repo.
-2. Run the tests. See [How to run tests](#how-to-run-tests) section below.
+2. Run the tests. See [How to run the test suite](#how-to-run-the-test-suite) section below.
 3. Create a new branch and make your changes. This includes tests for features!
 4. Push to your fork and submit a pull request. For more information, see
 [Github's pull request help section](https://help.github.com/articles/using-pull-requests/).
