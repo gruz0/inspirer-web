@@ -6,6 +6,7 @@ Habbits tracker for you
 
 * Docker
 * docker-compose
+* Ruby 2.6.0
 
 Docker exposes these ports on localhost:
 
