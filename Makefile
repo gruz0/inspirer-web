@@ -14,7 +14,7 @@ shell:
 	docker-compose exec app bash
 
 test:
-	DB_HOST=localhost bundle exec rspec
+	DATABASE_URL=postgresql://postgres@localhost/inspirer_test bundle exec rspec
 
 install_linters:
 	bin/install_linters_dependencies.sh
