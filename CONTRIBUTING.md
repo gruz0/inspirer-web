@@ -45,6 +45,7 @@ request, questions, clarifications, and so on.
 
 * Docker
 * docker-compose
+* Ruby 2.6.0
 
 Docker exposes these ports on localhost:
 
