@@ -20,7 +20,7 @@ if [ ! -f '.rubocop.yml' ]; then
   exit 1
 fi
 
-rubocop -DS --force-exclusion -c .rubocop.yml -d -E
+rubocop -DSE --force-exclusion -c .rubocop.yml
 
 if [ $? -ne 0 ]; then
   echo "${red}[Ruby Style][Error]: Fix the issues and commit again${NC}"

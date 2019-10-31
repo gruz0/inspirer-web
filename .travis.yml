@@ -38,7 +38,7 @@ script:
   - make test
   - brakeman -A -z
   - bundle audit update && bundle audit check
-  - rubocop -DS --force-exclusion -c .rubocop.yml -d -E
+  - rubocop -DSE --force-exclusion -c .rubocop.yml
   - bundle exec rake unused_routes
 
 services:
