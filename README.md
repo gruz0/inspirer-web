@@ -14,74 +14,12 @@ Habbits tracker for you
 | ![Learning](https://user-images.githubusercontent.com/335095/67886379-69131f00-fb5a-11e9-9c4a-b1eba543e192.png) |
 | ![New Article](https://user-images.githubusercontent.com/335095/67886380-69131f00-fb5a-11e9-8ad7-cf93e79a9d92.png) |
 
-## System dependencies
+## Contributing
 
-* Docker
-* docker-compose
+Please, read [CONTRIBUTING.md](https://github.com/gruz0/inspirer-web/blob/master/CONTRIBUTING.md) file.
 
-Docker exposes these ports on localhost:
+## Copyright
 
-* 3000 for the web
-* 5432 for PostgreSQL
-* 6379 for Redis
+Released under MIT License.
 
-## Configuration
-
-```bash
-cp .env.sample .env
-```
-
-## How to install linters
-
-Linters used by git pre-commit hook to check project's files.
-
-It runs every time when you try to commit your changes into repository.
-
-```bash
-make install_linters
-```
-
-## How to run project
-
-Simply run in the terminal:
-
-```bash
-make dockerize
-```
-
-## Database creation
-
-Open Docker shell in your terminal:
-
-```bash
-make shell
-```
-
-Then execute:
-
-```bash
-rake db:create db:migrate db:seed
-```
-
-If you want to drop database, use:
-
-```bash
-rake db:drop
-```
-
-## How to login as administator
-
-Open [http://localhost:3000](http://localhost:3000) in your browser.
-
-Use credentials from `db/seeds.rake` file.
-
-* Email: `robot@inspirer.app`
-* Password: `8DC!Wtf#Wdt`
-
-## How to run the test suite
-
-Simply run in the terminal:
-
-```bash
-make test
-```
+Copyright © 2019 [Alexander Kadyrov](https://t.me/gruz0).
