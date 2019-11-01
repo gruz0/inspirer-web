@@ -1,0 +1,40 @@
+# Ignore all logfiles and tempfiles.
+/log/*
+/tmp/*
+/public/packs/*
+!/log/.keep
+!/tmp/.keep
+.DS_Store
+.idea
+*.log
+
+.env*
+
+# Ignore node_modules
+/node_modules/*
+
+# Ignore bundler config.
+/.bundle
+
+# Ignore the tags file used by VIM
+tags
+
+# Ignore Byebug command history file.
+.byebug_history
+
+# Ignore .git, .github and .cache as it's not needed with the docker built.
+.git*
+.cache
+
+# Other files
+TODO
+*.md
+.data
+.dockerignore
+.editorconfig
+.rspec
+.rubocop.yml
+.travis.yml
+docker-compose.yml
+Dockerfile*
+storage/*
