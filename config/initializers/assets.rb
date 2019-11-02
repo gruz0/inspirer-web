@@ -5,3 +5,6 @@ Rails.application.config do |config|
     env.register_mime_type('application/manifest+json', extensions: ['.webmanifest'])
   end
 end
+
+Rails.application.config.assets.version = '1.0'
+Rails.application.config.assets.paths << Rails.root.join('node_modules')
