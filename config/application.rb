@@ -10,10 +10,11 @@ require 'active_record/railtie'
 require 'active_storage/engine'
 require 'action_controller/railtie'
 require 'action_mailer/railtie'
+require 'action_mailbox/engine'
+require 'action_text/engine'
 require 'action_view/railtie'
 # require "action_cable/engine"
 require 'sprockets/railtie'
-# require "rails/test_unit/railtie"
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -24,12 +25,7 @@ Dotenv::Railtie.load
 module InspirerApp
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
-    config.load_defaults 5.2
-
-    # Settings in config/environments/* take precedence over those specified here.
-    # Application configuration can go into files in config/initializers
-    # -- all .rb files in that directory are automatically loaded after loading
-    # the framework and any gems in your application.
+    config.load_defaults 6.0
 
     # Don't generate system test files.
     config.generators.system_tests = nil
@@ -42,5 +38,9 @@ module InspirerApp
     config.i18n.default_locale = :en
 
     config.cache_store = :redis_cache_store, { driver: :hiredis, url: ENV.fetch('REDIS_CACHE_URL') }
+
+    # When assigning to a collection of attachments declared via `has_many_attached`, replace existing
+    # attachments instead of appending. Use #attach to add new attachments without replacing existing ones.
+    config.active_storage.replace_on_assign_to_many = true
   end
 end

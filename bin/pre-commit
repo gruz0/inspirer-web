@@ -12,6 +12,17 @@ if [ $? -ne 0 ]; then
   exit 1
 fi
 
+# Check compatibility with Zeitwerk
+echo "${green}[Zeitwerk Check][Info]: Checking Zeitwerk Check${NC}"
+
+bin/rails zeitwerk:check
+
+if [ $? -ne 0 ]; then
+  echo "${red}[Zeitwerk Check][Error]: Fix the issues and commit again${NC}"
+  exit 1
+fi
+
+
 # Code styling
 echo "${green}[Ruby Style][Info]: Checking Ruby Style${NC}"
 

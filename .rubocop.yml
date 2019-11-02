@@ -12,6 +12,7 @@ AllCops:
     - tmp/**/*
     - lib/tasks/import/*.rake
     - storage/**/*
+    - node_modules/**/*
 
 #
 # Linters
