@@ -33,3 +33,5 @@ coverage
 /.data/*
 
 /storage/*
+
+.*_history

@@ -11,7 +11,7 @@ dockerize:
 	docker-compose up --build
 
 shell:
-	docker-compose exec app bash
+	docker-compose exec app sh
 
 test:
 	DATABASE_URL=postgresql://postgres@localhost/inspirer_test bundle exec rspec
