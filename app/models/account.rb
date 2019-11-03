@@ -18,6 +18,7 @@ class Account < ApplicationRecord
   has_many :learning_article, dependent: :destroy
   has_many :learning_podcast, dependent: :destroy
   has_many :learning_video, dependent: :destroy
+  has_many :learning_book, dependent: :destroy
 
   before_validation :sanitize_username
   before_validation :sanitize_name

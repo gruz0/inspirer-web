@@ -31,3 +31,10 @@ DISTANCE_UNITS = {
 }.freeze
 
 MI_TO_KM_RATIO = 1.609344
+
+LEARNING_BOOK_STATUSES = {
+  new_book: 'new_book',
+  want_to_read: 'want_to_read',
+  reading_now: 'reading_now',
+  finished: 'finished'
+}.freeze
