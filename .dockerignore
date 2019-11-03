@@ -35,6 +35,7 @@ TODO
 .rspec
 .rubocop.yml
 .travis.yml
+.*_history
 docker-compose.yml
 Dockerfile*
 storage/*
