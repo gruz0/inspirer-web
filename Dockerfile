@@ -1,26 +1,22 @@
-FROM ruby:2.6.5
+FROM ruby:2.6.5-alpine
 MAINTAINER Alexander Kadyrov <gruz0.mail@gmail.com>
 
-RUN echo '\
-Dpkg {\n\
-  Cache "";\n\
-  Cache::archives "";\n\
-  Post-Invoke {"rm -rf /var/lib/apt/lists";};\n\
-}\n\
-APT {\n\
-  Install-Recommends "false";\n\
-}\n\
-DSELECT::Clean "always";' >> /etc/apt/apt.conf.d/docker-no-cache
+RUN apk --update add --no-cache build-base tzdata nodejs postgresql-dev postgresql-client
 
-RUN apt-get update -qq && \
-    apt-get install -y build-essential libpq-dev postgresql-client-11 && \
-    gem install bundler && \
-    mkdir /app
+# Create an user for running the application
+RUN adduser -D inspirer
+USER inspirer
+WORKDIR /home/inspirer
 
-WORKDIR /app
-COPY Gemfile Gemfile.lock /app/
-RUN bundle install
-COPY . /app
+# Copy the Gemfile as well as the Gemfile.lock and install
+# the RubyGems. This is a separate step so the dependencies
+# will be cached unless changes to one of those two files
+# are made.
+COPY --chown=inspirer Gemfile Gemfile.lock ./
+RUN gem install bundler
+RUN bundle install --jobs 20 --retry 5
+
+COPY --chown=inspirer . ./
 
 EXPOSE 3000
 CMD ./docker-entrypoint.sh
