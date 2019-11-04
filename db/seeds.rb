@@ -68,6 +68,7 @@ account.activity_outdoor_walk.create!(
   notes: 'Awesome Day!'
 )
 
+# rubocop:disable Metrics/BlockLength
 20.times do |idx|
   account.learning_article.create!(
     url: "https://example.com/#{idx}",
@@ -92,4 +93,15 @@ account.activity_outdoor_walk.create!(
     notes: 'Awesome Video!',
     created_at: DateTime.now - (rand * 21)
   )
+
+  account.learning_book.create!(
+    title: "Book ##{idx}",
+    author: "Author #{idx}",
+    url: "https://example.com/#{idx}",
+    status: LEARNING_BOOK_STATUSES.keys.sample.to_s,
+    feeling: FEELINGS.keys.sample.to_s,
+    notes: 'Awesome Book!',
+    created_at: DateTime.now - (rand * 21)
+  )
 end
+# rubocop:enable Metrics/BlockLength
