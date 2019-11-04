@@ -1,19 +1,6 @@
-h2 Asana Card
+- title = t('views.my.activity.yoga.asana.new.title')
+- content_for :title, title
 
-form
-  .form-group.row
-    label.col-sm-3.col-form-label for="textarea1" Notes
-    .col-sm-8
-      textarea#textarea1.form-control rows="3"
+h2 = title
 
-  .form-group.row
-    label.col-sm-3.col-form-label for="privacyOptions" Privacy
-
-    .col-sm-3
-      = render partial: 'shared/privacy_options'
-
-  .form-group.row
-    .col-sm-3
-    .col-sm-8
-      button.btn.btn-primary Save
-
+= render 'form', asana: @asana

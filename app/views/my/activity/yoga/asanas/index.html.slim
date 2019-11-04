@@ -1,30 +1,28 @@
-h2 Asana
+- title = t('views.my.activity.yoga.asana.index.title')
+- content_for :title, title
+
+h2 = title
 
 .row
   .col-sm-4
     = link_to(new_my_activity_yoga_asana_path, class: 'btn btn-success')
-      | Track Today
+      | Add new
 
 br
 
 .row
   .col
-    table.table.table-sm.table-hover
+    table#activity_yoga_asanas.table.table-sm.table-hover
       thead.thead-light
         tr
           th scope="col" Notes
-          th scope="col" Updated at
+          th scope="col" Feeling
+          th scope="col" Created at
 
       tbody
-        tr
-          th scope="row" Lorem Ipsum
-          td = long_date(Time.now)
-
-        tr
-          th scope="row" Lorem Ipsum
-          td = long_date(Time.now)
-
-        tr
-          th scope="row" Lorem Ipsum
-          td = long_date(Time.now)
+        - @asanas.each do |asana|
+          tr
+            td scope="row" = asana.notes
+            td = asana.feeling
+            td = human_readable_date(asana.created_at)
 
