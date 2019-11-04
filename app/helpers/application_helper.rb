@@ -35,6 +35,10 @@ module ApplicationHelper
     hash_to_options(DISTANCE_UNITS)
   end
 
+  def book_statuses_to_array
+    hash_to_options(LEARNING_BOOK_STATUSES)
+  end
+
   private
 
   def hash_to_options(hash)
