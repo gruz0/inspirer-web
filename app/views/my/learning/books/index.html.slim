@@ -20,6 +20,7 @@ br
           th scope="col" Status
           th scope="col" Feeling
           th scope="col" Created at
+          th scope="col"
 
       tbody
         - @books.each do |book|
@@ -30,3 +31,6 @@ br
             td = book.status
             td = book.feeling
             td = human_readable_date(book.created_at)
+            td.text-right
+              = link_to(edit_my_learning_book_path(book), class: 'btn btn-secondary btn-sm')
+                = fa_icon('edit')

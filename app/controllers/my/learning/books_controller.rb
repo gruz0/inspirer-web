@@ -21,10 +21,27 @@ module My
         end
       end
 
+      def edit
+        @book = resource
+      end
+
+      def update
+        @book = resource
+        if @book.update(book_params)
+          redirect_to my_learning_books_path, notice: 'Record was successfully updated'
+        else
+          render :edit
+        end
+      end
+
       private
 
       def book_params
         params.require(:learning_book).permit(:title, :author, :url, :status, :feeling, :notes)
+      end
+
+      def resource
+        current_account.learning_book.find(params[:id])
       end
     end
   end
