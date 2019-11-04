@@ -3,8 +3,10 @@
 module My
   module Activity
     module Yoga
-      class AsanaController < BaseController
+      class AsanasController < BaseController
         def index; end
+
+        def new; end
       end
     end
   end

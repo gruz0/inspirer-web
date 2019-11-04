@@ -32,7 +32,7 @@ Rails.application.routes.draw do
       resources :cycling, only: [:index]
       resources :yoga, only: [:index]
       namespace :yoga do
-        resources :asana, only: [:index]
+        resources :asanas, only: %i[index new]
         resources :pranayama, only: [:index]
         resources :uddiyana, only: [:index]
         resources :affirmation, only: [:index]
