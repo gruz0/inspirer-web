@@ -13,6 +13,7 @@ RSpec.describe Account, type: :model do
   it { is_expected.to have_many(:learning_article).dependent(:destroy) }
   it { is_expected.to have_many(:learning_podcast).dependent(:destroy) }
   it { is_expected.to have_many(:learning_video).dependent(:destroy) }
+  it { is_expected.to have_many(:learning_book).dependent(:destroy) }
 
   # Website
   it { is_expected.to allow_value(nil).for(:website) }

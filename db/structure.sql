@@ -46,6 +46,18 @@ CREATE TYPE public.feelings AS ENUM (
 
 
 --
+-- Name: learning_book_statuses; Type: TYPE; Schema: public; Owner: -
+--
+
+CREATE TYPE public.learning_book_statuses AS ENUM (
+    'new_book',
+    'want_to_read',
+    'reading_now',
+    'finished'
+);
+
+
+--
 -- Name: weight_units; Type: TYPE; Schema: public; Owner: -
 --
 
@@ -373,6 +385,43 @@ ALTER SEQUENCE public.learning_articles_id_seq OWNED BY public.learning_articles
 
 
 --
+-- Name: learning_books; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.learning_books (
+    id bigint NOT NULL,
+    title character varying(100) NOT NULL,
+    author character varying(100) DEFAULT ''::character varying NOT NULL,
+    url character varying DEFAULT ''::character varying NOT NULL,
+    status public.learning_book_statuses NOT NULL,
+    feeling public.feelings NOT NULL,
+    notes text DEFAULT ''::text NOT NULL,
+    account_id bigint,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
+-- Name: learning_books_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.learning_books_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: learning_books_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.learning_books_id_seq OWNED BY public.learning_books.id;
+
+
+--
 -- Name: learning_podcasts; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -508,6 +557,13 @@ ALTER TABLE ONLY public.learning_articles ALTER COLUMN id SET DEFAULT nextval('p
 
 
 --
+-- Name: learning_books id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.learning_books ALTER COLUMN id SET DEFAULT nextval('public.learning_books_id_seq'::regclass);
+
+
+--
 -- Name: learning_podcasts id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -591,6 +647,14 @@ ALTER TABLE ONLY public.health_sleeps
 
 ALTER TABLE ONLY public.learning_articles
     ADD CONSTRAINT learning_articles_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: learning_books learning_books_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.learning_books
+    ADD CONSTRAINT learning_books_pkey PRIMARY KEY (id);
 
 
 --
@@ -737,6 +801,13 @@ CREATE UNIQUE INDEX index_learning_articles_on_account_id_and_url ON public.lear
 
 
 --
+-- Name: index_learning_books_on_account_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_learning_books_on_account_id ON public.learning_books USING btree (account_id);
+
+
+--
 -- Name: index_learning_podcasts_on_account_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -813,6 +884,14 @@ ALTER TABLE ONLY public.health_sleeps
 
 
 --
+-- Name: learning_books fk_rails_ab2fcc0cae; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.learning_books
+    ADD CONSTRAINT fk_rails_ab2fcc0cae FOREIGN KEY (account_id) REFERENCES public.accounts(id);
+
+
+--
 -- Name: health_body_weights fk_rails_b5376eb8b0; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -856,6 +935,8 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20191013163300'),
 ('20191018155237'),
 ('20191026102514'),
-('20191031175856');
+('20191031175856'),
+('20191031185135'),
+('20191031185307');
 
 

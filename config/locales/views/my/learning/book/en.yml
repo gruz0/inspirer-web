@@ -1,0 +1,11 @@
+en:
+  views:
+    my:
+      learning:
+        book:
+          index:
+            title: Books
+          new:
+            title: New Book
+          edit:
+            title: Edit Book
