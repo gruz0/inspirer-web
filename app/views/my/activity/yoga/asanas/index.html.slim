@@ -1,0 +1,31 @@
+- title = t('views.my.activity.yoga.asana.index.title')
+- content_for :title, title
+
+h2 = title
+
+.row
+  .col-sm-4
+    = link_to(new_my_activity_yoga_asana_path, class: 'btn btn-success')
+      | Add new
+
+br
+
+.row
+  .col
+    table#activity_yoga_asanas.table.table-sm.table-hover
+      thead.thead-light
+        tr
+          th scope="col" Notes
+          th scope="col" Feeling
+          th scope="col" Created at
+          th scope="col"
+
+      tbody
+        - @asanas.each do |asana|
+          tr
+            td scope="row" = asana.notes
+            td = asana.feeling
+            td = human_readable_date(asana.created_at)
+            td.text-right
+              = link_to(edit_my_activity_yoga_asana_path(asana), class: 'btn btn-secondary btn-sm')
+                = fa_icon('edit')

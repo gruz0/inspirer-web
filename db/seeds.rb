@@ -68,6 +68,11 @@ account.activity_outdoor_walk.create!(
   notes: 'Awesome Day!'
 )
 
+account.activity_yoga_asana.create!(
+  notes: 'New Asana',
+  feeling: FEELINGS.keys.sample.to_s
+)
+
 # rubocop:disable Metrics/BlockLength
 20.times do |idx|
   account.learning_article.create!(

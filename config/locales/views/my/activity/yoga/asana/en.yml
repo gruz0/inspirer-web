@@ -1,0 +1,12 @@
+en:
+  views:
+    my:
+      activity:
+        yoga:
+          asana:
+            index:
+              title: Asanas
+            new:
+              title: New Asana
+            edit:
+              title: Edit Asana

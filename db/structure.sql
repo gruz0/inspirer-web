@@ -228,6 +228,39 @@ ALTER SEQUENCE public.activity_outdoor_walks_id_seq OWNED BY public.activity_out
 
 
 --
+-- Name: activity_yoga_asanas; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.activity_yoga_asanas (
+    id bigint NOT NULL,
+    feeling public.feelings,
+    notes text,
+    account_id bigint,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
+-- Name: activity_yoga_asanas_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.activity_yoga_asanas_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: activity_yoga_asanas_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.activity_yoga_asanas_id_seq OWNED BY public.activity_yoga_asanas.id;
+
+
+--
 -- Name: ar_internal_metadata; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -529,6 +562,13 @@ ALTER TABLE ONLY public.activity_outdoor_walks ALTER COLUMN id SET DEFAULT nextv
 
 
 --
+-- Name: activity_yoga_asanas id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.activity_yoga_asanas ALTER COLUMN id SET DEFAULT nextval('public.activity_yoga_asanas_id_seq'::regclass);
+
+
+--
 -- Name: health_body_measures id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -607,6 +647,14 @@ ALTER TABLE ONLY public.active_storage_blobs
 
 ALTER TABLE ONLY public.activity_outdoor_walks
     ADD CONSTRAINT activity_outdoor_walks_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: activity_yoga_asanas activity_yoga_asanas_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.activity_yoga_asanas
+    ADD CONSTRAINT activity_yoga_asanas_pkey PRIMARY KEY (id);
 
 
 --
@@ -742,6 +790,13 @@ CREATE INDEX index_activity_outdoor_walks_on_account_id ON public.activity_outdo
 --
 
 CREATE UNIQUE INDEX index_activity_outdoor_walks_on_account_id_and_created_date ON public.activity_outdoor_walks USING btree (account_id, created_date);
+
+
+--
+-- Name: index_activity_yoga_asanas_on_account_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_activity_yoga_asanas_on_account_id ON public.activity_yoga_asanas USING btree (account_id);
 
 
 --
@@ -900,6 +955,14 @@ ALTER TABLE ONLY public.health_body_weights
 
 
 --
+-- Name: activity_yoga_asanas fk_rails_bbd7b33a72; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.activity_yoga_asanas
+    ADD CONSTRAINT fk_rails_bbd7b33a72 FOREIGN KEY (account_id) REFERENCES public.accounts(id);
+
+
+--
 -- Name: active_storage_attachments fk_rails_c3b3935057; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -937,6 +1000,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20191026102514'),
 ('20191031175856'),
 ('20191031185135'),
-('20191031185307');
+('20191031185307'),
+('20191104132420');
 
 
