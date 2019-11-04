@@ -8,3 +8,5 @@ en:
               title: Asanas
             new:
               title: New Asana
+            edit:
+              title: Edit Asana
