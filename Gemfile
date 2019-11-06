@@ -25,6 +25,17 @@ gem 'slim-rails'
 gem 'sprockets'
 gem 'validate_url'
 
+# NOTE: When we'll try to build this Docker image for production,
+# we'll have this issue when try to install mini_racer with v8 on Alpine Linux:
+# LoadError: Error relocating /usr/local/bundle/gems/mini_racer-0.2.6/lib/mini_racer_extension.so:
+# backtrace_symbols: symbol not found - /usr/local/bundle/gems/mini_racer-0.2.6/lib/mini_racer_extension.so
+#
+# To fix this we need to use ruby-slim image instead of alpine :-(
+# Alexander Kadyrov, 2019-11-05
+group :production do
+  gem 'mini_racer'
+end
+
 group :development do
   gem 'active_record_query_trace'
   gem 'better_errors'
