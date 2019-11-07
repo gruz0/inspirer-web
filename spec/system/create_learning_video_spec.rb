@@ -79,16 +79,7 @@ RSpec.describe 'Creating a Learning Video', type: :system do
     end
   end
 
-  context 'when title length is above 100 characters' do
-    before do
-      visit new_my_learning_video_path
-
-      fill_in 'learning_video[title]', with: FFaker::Lorem.paragraph
-      click_button 'Save'
-    end
-
-    it 'renders error message' do
-      expect(page).to have_text('Title is too long (maximum is 100 characters)')
-    end
+  it_behaves_like 'value is too long', 'learning_video', 'title', 'Title' do
+    let(:path) { new_my_learning_video_path }
   end
 end

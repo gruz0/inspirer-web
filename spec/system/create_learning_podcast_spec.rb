@@ -79,16 +79,7 @@ RSpec.describe 'Creating a Learning Podcast', type: :system do
     end
   end
 
-  context 'when title length is above 100 characters' do
-    before do
-      visit new_my_learning_podcast_path
-
-      fill_in 'learning_podcast[title]', with: FFaker::Lorem.paragraph
-      click_button 'Save'
-    end
-
-    it 'renders error message' do
-      expect(page).to have_text('Title is too long (maximum is 100 characters)')
-    end
+  it_behaves_like 'value is too long', 'learning_podcast', 'title', 'Title' do
+    let(:path) { new_my_learning_podcast_path }
   end
 end

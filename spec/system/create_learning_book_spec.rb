@@ -70,29 +70,11 @@ RSpec.describe 'Creating a Learning Book', type: :system do
     end
   end
 
-  context 'when title length is above 100 characters' do
-    before do
-      visit new_my_learning_book_path
-
-      fill_in 'learning_book[title]', with: FFaker::Lorem.paragraph
-      click_button 'Save'
-    end
-
-    it 'renders error message' do
-      expect(page).to have_text('Title is too long (maximum is 100 characters)')
-    end
+  it_behaves_like 'value is too long', 'learning_book', 'title', 'Title' do
+    let(:path) { new_my_learning_book_path }
   end
 
-  context 'when author length is above 100 characters' do
-    before do
-      visit new_my_learning_book_path
-
-      fill_in 'learning_book[author]', with: FFaker::Lorem.paragraph
-      click_button 'Save'
-    end
-
-    it 'renders error message' do
-      expect(page).to have_text('Author is too long (maximum is 100 characters)')
-    end
+  it_behaves_like 'value is too long', 'learning_book', 'author', 'Author' do
+    let(:path) { new_my_learning_book_path }
   end
 end
