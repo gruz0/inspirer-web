@@ -5,12 +5,14 @@ require 'rails_helper'
 RSpec.describe 'Creating an Activity Yoga Asana', type: :system do
   let(:account) { create(:account) }
 
-  before do
-    sign_in(account)
+  it_behaves_like 'unauthorized' do
+    let(:path) { new_my_activity_yoga_asana_path }
   end
 
   context 'with valid inputs' do
     before do
+      sign_in(account)
+
       visit new_my_activity_yoga_asana_path
 
       fill_in 'activity_yoga_asana[notes]', with: 'Some notes'
@@ -34,6 +36,8 @@ RSpec.describe 'Creating an Activity Yoga Asana', type: :system do
 
   context 'with invalid inputs' do
     before do
+      sign_in(account)
+
       visit new_my_activity_yoga_asana_path
 
       click_button 'Save'

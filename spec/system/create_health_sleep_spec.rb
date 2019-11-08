@@ -5,12 +5,14 @@ require 'rails_helper'
 RSpec.describe 'Creating a Health Sleep', type: :system do
   let(:account) { create(:account) }
 
-  before do
-    sign_in(account)
+  it_behaves_like 'unauthorized' do
+    let(:path) { new_my_health_sleep_path }
   end
 
   context 'with valid inputs' do
     before do
+      sign_in(account)
+
       visit new_my_health_sleep_path
 
       select '02', from: 'health_sleep[woke_up_at_hour]'
@@ -35,6 +37,8 @@ RSpec.describe 'Creating a Health Sleep', type: :system do
 
   context 'with invalid inputs' do
     before do
+      sign_in(account)
+
       visit new_my_health_sleep_path
 
       click_button 'Save'
@@ -71,6 +75,8 @@ RSpec.describe 'Creating a Health Sleep', type: :system do
 
   context 'when record for this day already exists' do
     before do
+      sign_in(account)
+
       visit new_my_health_sleep_path
 
       create(:health_sleep, account: account)

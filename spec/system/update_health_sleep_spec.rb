@@ -12,12 +12,14 @@ RSpec.describe 'Updating a Health Sleep', type: :system do
            account: account)
   end
 
-  before do
-    sign_in(account)
+  it_behaves_like 'unauthorized' do
+    let(:path) { edit_my_health_sleep_path(health_sleep) }
   end
 
   context 'with valid inputs' do
     before do
+      sign_in(account)
+
       visit edit_my_health_sleep_path(health_sleep)
 
       select '15', from: 'health_sleep[woke_up_at_hour]'

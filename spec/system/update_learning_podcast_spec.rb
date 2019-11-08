@@ -12,12 +12,14 @@ RSpec.describe 'Updating a Learning Podcast', type: :system do
            account: account)
   end
 
-  before do
-    sign_in(account)
+  it_behaves_like 'unauthorized' do
+    let(:path) { edit_my_learning_podcast_path(learning_podcast) }
   end
 
   context 'with valid inputs' do
     before do
+      sign_in(account)
+
       visit edit_my_learning_podcast_path(learning_podcast)
 
       fill_in 'learning_podcast[url]', with: 'http://example.com/test'

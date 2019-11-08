@@ -12,12 +12,14 @@ RSpec.describe 'Updating a Learning Article', type: :system do
            account: account)
   end
 
-  before do
-    sign_in(account)
+  it_behaves_like 'unauthorized' do
+    let(:path) { edit_my_learning_article_path(learning_article) }
   end
 
   context 'with valid inputs' do
     before do
+      sign_in(account)
+
       visit edit_my_learning_article_path(learning_article)
 
       fill_in 'learning_article[url]', with: 'http://example.com/test'
