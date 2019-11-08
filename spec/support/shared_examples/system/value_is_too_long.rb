@@ -2,6 +2,8 @@
 
 RSpec.shared_examples 'value is too long' do |form_name, field, label, length = 100|
   before do
+    sign_in(account)
+
     visit path
 
     fill_in "#{form_name}[#{field}]", with: FFaker::Lorem.paragraph

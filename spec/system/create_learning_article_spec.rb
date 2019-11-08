@@ -5,12 +5,14 @@ require 'rails_helper'
 RSpec.describe 'Creating a Learning Article', type: :system do
   let(:account) { create(:account) }
 
-  before do
-    sign_in(account)
+  it_behaves_like 'unauthorized' do
+    let(:path) { new_my_learning_article_path }
   end
 
   context 'with valid inputs' do
     before do
+      sign_in(account)
+
       visit new_my_learning_article_path
 
       fill_in 'learning_article[url]', with: 'http://example.com/test'
@@ -36,6 +38,8 @@ RSpec.describe 'Creating a Learning Article', type: :system do
 
   context 'with invalid inputs' do
     before do
+      sign_in(account)
+
       visit new_my_learning_article_path
 
       click_button 'Save'
@@ -64,6 +68,8 @@ RSpec.describe 'Creating a Learning Article', type: :system do
 
   context 'when url is not unique' do
     before do
+      sign_in(account)
+
       article = create(:learning_article, account: account)
 
       visit new_my_learning_article_path

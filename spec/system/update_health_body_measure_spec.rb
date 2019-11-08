@@ -14,12 +14,14 @@ RSpec.describe 'Updating a Health Body Measure', type: :system do
            account: account)
   end
 
-  before do
-    sign_in(account)
+  it_behaves_like 'unauthorized' do
+    let(:path) { edit_my_health_body_measure_path(health_body_measure) }
   end
 
   context 'with valid inputs' do
     before do
+      sign_in(account)
+
       visit edit_my_health_body_measure_path(health_body_measure)
 
       select 'cm', from: 'health_body_measure[unit]'

@@ -13,12 +13,14 @@ RSpec.describe 'Updating an Activity Outdoor Walk', type: :system do
            account: account)
   end
 
-  before do
-    sign_in(account)
+  it_behaves_like 'unauthorized' do
+    let(:path) { edit_my_activity_outdoor_walk_path(activity_outdoor_walk) }
   end
 
   context 'with valid inputs' do
     before do
+      sign_in(account)
+
       visit edit_my_activity_outdoor_walk_path(activity_outdoor_walk)
 
       select 'km', from: 'activity_outdoor_walk[distance_unit]'

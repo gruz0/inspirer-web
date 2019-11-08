@@ -5,12 +5,14 @@ require 'rails_helper'
 RSpec.describe 'Creating a Learning Book', type: :system do
   let(:account) { create(:account) }
 
-  before do
-    sign_in(account)
+  it_behaves_like 'unauthorized' do
+    let(:path) { new_my_learning_book_path }
   end
 
   context 'with valid inputs' do
     before do
+      sign_in(account)
+
       visit new_my_learning_book_path
 
       fill_in 'learning_book[title]', with: 'Book Title'
@@ -38,6 +40,8 @@ RSpec.describe 'Creating a Learning Book', type: :system do
 
   context 'with invalid inputs' do
     before do
+      sign_in(account)
+
       visit new_my_learning_book_path
 
       fill_in 'learning_book[url]', with: 'example.com/test'

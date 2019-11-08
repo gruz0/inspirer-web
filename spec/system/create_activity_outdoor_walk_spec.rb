@@ -5,12 +5,14 @@ require 'rails_helper'
 RSpec.describe 'Creating an Activity Outdoor Walk', type: :system do
   let(:account) { create(:account) }
 
-  before do
-    sign_in(account)
+  it_behaves_like 'unauthorized' do
+    let(:path) { new_my_activity_outdoor_walk_path }
   end
 
   context 'with valid inputs' do
     before do
+      sign_in(account)
+
       visit new_my_activity_outdoor_walk_path
 
       select 'km', from: 'activity_outdoor_walk[distance_unit]'
@@ -36,6 +38,8 @@ RSpec.describe 'Creating an Activity Outdoor Walk', type: :system do
 
   context 'with invalid inputs' do
     before do
+      sign_in(account)
+
       visit new_my_activity_outdoor_walk_path
 
       click_button 'Save'
@@ -76,6 +80,8 @@ RSpec.describe 'Creating an Activity Outdoor Walk', type: :system do
 
   context 'when record for this day already exists' do
     before do
+      sign_in(account)
+
       visit new_my_activity_outdoor_walk_path
 
       create(:activity_outdoor_walk, account: account)

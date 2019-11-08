@@ -12,12 +12,14 @@ RSpec.describe 'Updating a Learning Video', type: :system do
            account: account)
   end
 
-  before do
-    sign_in(account)
+  it_behaves_like 'unauthorized' do
+    let(:path) { edit_my_learning_video_path(learning_video) }
   end
 
   context 'with valid inputs' do
     before do
+      sign_in(account)
+
       visit edit_my_learning_video_path(learning_video)
 
       fill_in 'learning_video[url]', with: 'http://example.com/test'

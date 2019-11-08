@@ -5,12 +5,14 @@ require 'rails_helper'
 RSpec.describe 'Creating a Health Body Weight', type: :system do
   let(:account) { create(:account) }
 
-  before do
-    sign_in(account)
+  it_behaves_like 'unauthorized' do
+    let(:path) { new_my_health_body_weight_path }
   end
 
   context 'with valid inputs' do
     before do
+      sign_in(account)
+
       visit new_my_health_body_weight_path
 
       fill_in 'health_body_weight[weight]', with: 115.423
@@ -35,6 +37,8 @@ RSpec.describe 'Creating a Health Body Weight', type: :system do
 
   context 'with invalid inputs' do
     before do
+      sign_in(account)
+
       visit new_my_health_body_weight_path
 
       click_button 'Save'
@@ -67,6 +71,8 @@ RSpec.describe 'Creating a Health Body Weight', type: :system do
 
   context 'when record for this day already exists' do
     before do
+      sign_in(account)
+
       visit new_my_health_body_weight_path
 
       create(:health_body_weight, account: account)

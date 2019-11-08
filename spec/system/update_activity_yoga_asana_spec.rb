@@ -11,12 +11,14 @@ RSpec.describe 'Updating an Activity Yoga Asana', type: :system do
            account: account)
   end
 
-  before do
-    sign_in(account)
+  it_behaves_like 'unauthorized' do
+    let(:path) { edit_my_activity_yoga_asana_path(activity_yoga_asana) }
   end
 
   context 'with valid inputs' do
     before do
+      sign_in(account)
+
       visit edit_my_activity_yoga_asana_path(activity_yoga_asana)
 
       fill_in 'activity_yoga_asana[notes]', with: 'New Notes'

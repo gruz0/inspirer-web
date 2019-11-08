@@ -14,12 +14,14 @@ RSpec.describe 'Updating a Learning Book', type: :system do
            account: account)
   end
 
-  before do
-    sign_in(account)
+  it_behaves_like 'unauthorized' do
+    let(:path) { edit_my_learning_book_path(learning_book) }
   end
 
   context 'with valid inputs' do
     before do
+      sign_in(account)
+
       visit edit_my_learning_book_path(learning_book)
 
       fill_in 'learning_book[title]', with: 'New Title'

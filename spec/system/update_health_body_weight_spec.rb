@@ -12,12 +12,14 @@ RSpec.describe 'Updating a Health Body Weight', type: :system do
            account: account)
   end
 
-  before do
-    sign_in(account)
+  it_behaves_like 'unauthorized' do
+    let(:path) { edit_my_health_body_weight_path(health_body_weight) }
   end
 
   context 'with valid inputs' do
     before do
+      sign_in(account)
+
       visit edit_my_health_body_weight_path(health_body_weight)
 
       fill_in 'health_body_weight[weight]', with: 103.267
