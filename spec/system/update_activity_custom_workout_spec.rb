@@ -7,6 +7,7 @@ RSpec.describe 'Updating an Activity Custom Workout', type: :system do
   let(:activity_custom_workout) do
     create(:activity_custom_workout,
            title: 'Pushups',
+           notes: '10, 9, 9, 8, 7',
            feeling: 'amazing',
            account: account)
   end
@@ -22,6 +23,7 @@ RSpec.describe 'Updating an Activity Custom Workout', type: :system do
       visit edit_my_activity_custom_workout_path(activity_custom_workout)
 
       fill_in 'activity_custom_workout[title]', with: 'Pull-ups'
+      fill_in 'activity_custom_workout[notes]', with: '10, 9, 9, 7, 5'
       select 'good', from: 'activity_custom_workout[feeling]'
       click_button 'Save'
     end
@@ -35,7 +37,7 @@ RSpec.describe 'Updating an Activity Custom Workout', type: :system do
     end
 
     it 'renders table with a new record' do
-      rows = [{ 'Title' => 'Pull-ups', 'Feeling' => 'good' }]
+      rows = [{ 'Title' => 'Pull-ups', 'Notes' => '10, 9, 9, 7, 5', 'Feeling' => 'good' }]
       expect(page).to have_table('activity_custom_workouts', with_rows: rows)
     end
   end

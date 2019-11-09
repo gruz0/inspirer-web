@@ -16,6 +16,7 @@ br
       thead.thead-light
         tr
           th scope="col" Title
+          th scope="col" Notes
           th scope="col" Feeling
           th scope="col" Created at
           th scope="col"
@@ -24,6 +25,7 @@ br
         - @custom_workouts.each do |custom_workout|
           tr
             td scope="row" = custom_workout.title
+            td = custom_workout.notes
             td = custom_workout.feeling
             td = human_readable_date(custom_workout.created_at)
             td.text-right
