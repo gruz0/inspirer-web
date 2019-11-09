@@ -1,0 +1,27 @@
+- title = t('views.my.activity.custom_workout.index.title')
+- content_for :title, title
+
+h2 = title
+
+.row
+  .col-sm-4
+    = link_to(new_my_activity_custom_workout_path, class: 'btn btn-success')
+      = t('shared.buttons.add_new')
+
+br
+
+.row
+  .col
+    table#activity_custom_workouts.table.table-sm.table-hover
+      thead.thead-light
+        tr
+          th scope="col" Title
+          th scope="col" Feeling
+          th scope="col" Created at
+
+      tbody
+        - @custom_workouts.each do |custom_workout|
+          tr
+            td scope="row" = custom_workout.title
+            td = custom_workout.feeling
+            td = human_readable_date(custom_workout.created_at)
