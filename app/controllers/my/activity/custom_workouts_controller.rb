@@ -21,10 +21,27 @@ module My
         end
       end
 
+      def edit
+        @custom_workout = resource
+      end
+
+      def update
+        @custom_workout = resource
+        if @custom_workout.update(custom_workout_params)
+          redirect_to my_activity_custom_workouts_path, notice: 'Record was successfully updated'
+        else
+          render :edit
+        end
+      end
+
       private
 
       def custom_workout_params
         params.require(:activity_custom_workout).permit(:title, :notes, :feeling)
+      end
+
+      def resource
+        current_account.activity_custom_workout.find(params[:id])
       end
     end
   end

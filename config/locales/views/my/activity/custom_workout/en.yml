@@ -7,3 +7,5 @@ en:
             title: Custom Workouts
           new:
             title: New Custom Workout
+          edit:
+            title: Edit Custom Workout
