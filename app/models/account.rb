@@ -16,6 +16,7 @@ class Account < ApplicationRecord
   has_many :health_body_measure, dependent: :destroy
   has_many :activity_outdoor_walk, dependent: :destroy
   has_many :activity_yoga_asana, dependent: :destroy
+  has_many :activity_custom_workout, dependent: :destroy
   has_many :learning_article, dependent: :destroy
   has_many :learning_podcast, dependent: :destroy
   has_many :learning_video, dependent: :destroy

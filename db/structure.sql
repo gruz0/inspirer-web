@@ -191,6 +191,40 @@ ALTER SEQUENCE public.active_storage_blobs_id_seq OWNED BY public.active_storage
 
 
 --
+-- Name: activity_custom_workouts; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.activity_custom_workouts (
+    id bigint NOT NULL,
+    title character varying(100) NOT NULL,
+    notes text DEFAULT ''::text NOT NULL,
+    feeling public.feelings NOT NULL,
+    account_id bigint,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
+-- Name: activity_custom_workouts_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.activity_custom_workouts_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: activity_custom_workouts_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.activity_custom_workouts_id_seq OWNED BY public.activity_custom_workouts.id;
+
+
+--
 -- Name: activity_outdoor_walks; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -233,8 +267,8 @@ ALTER SEQUENCE public.activity_outdoor_walks_id_seq OWNED BY public.activity_out
 
 CREATE TABLE public.activity_yoga_asanas (
     id bigint NOT NULL,
-    feeling public.feelings,
-    notes text,
+    feeling public.feelings NOT NULL,
+    notes text DEFAULT ''::text NOT NULL,
     account_id bigint,
     created_at timestamp(6) without time zone NOT NULL,
     updated_at timestamp(6) without time zone NOT NULL
@@ -555,6 +589,13 @@ ALTER TABLE ONLY public.active_storage_blobs ALTER COLUMN id SET DEFAULT nextval
 
 
 --
+-- Name: activity_custom_workouts id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.activity_custom_workouts ALTER COLUMN id SET DEFAULT nextval('public.activity_custom_workouts_id_seq'::regclass);
+
+
+--
 -- Name: activity_outdoor_walks id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -639,6 +680,14 @@ ALTER TABLE ONLY public.active_storage_attachments
 
 ALTER TABLE ONLY public.active_storage_blobs
     ADD CONSTRAINT active_storage_blobs_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: activity_custom_workouts activity_custom_workouts_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.activity_custom_workouts
+    ADD CONSTRAINT activity_custom_workouts_pkey PRIMARY KEY (id);
 
 
 --
@@ -779,6 +828,13 @@ CREATE UNIQUE INDEX index_active_storage_blobs_on_key ON public.active_storage_b
 
 
 --
+-- Name: index_activity_custom_workouts_on_account_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_activity_custom_workouts_on_account_id ON public.activity_custom_workouts USING btree (account_id);
+
+
+--
 -- Name: index_activity_outdoor_walks_on_account_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -907,6 +963,14 @@ ALTER TABLE ONLY public.activity_outdoor_walks
 
 
 --
+-- Name: activity_custom_workouts fk_rails_1758e66730; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.activity_custom_workouts
+    ADD CONSTRAINT fk_rails_1758e66730 FOREIGN KEY (account_id) REFERENCES public.accounts(id);
+
+
+--
 -- Name: learning_podcasts fk_rails_2351573e8e; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -1001,6 +1065,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20191031175856'),
 ('20191031185135'),
 ('20191031185307'),
-('20191104132420');
+('20191104132420'),
+('20191108060150');
 
 
