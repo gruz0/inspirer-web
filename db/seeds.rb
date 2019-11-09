@@ -68,6 +68,12 @@ account.activity_outdoor_walk.create!(
   notes: 'Awesome Day!'
 )
 
+account.activity_custom_workout.create!(
+  title: 'Pushups',
+  notes: '20, 20, 20, 15, 10',
+  feeling: FEELINGS.keys.sample.to_s
+)
+
 account.activity_yoga_asana.create!(
   notes: 'New Asana',
   feeling: FEELINGS.keys.sample.to_s
