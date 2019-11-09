@@ -11,14 +11,12 @@ RSpec.describe LearningBook, type: :model do
   # Title
   it { is_expected.to validate_presence_of(:title) }
   it { is_expected.to validate_length_of(:title).is_at_most(100) }
-  it { is_expected.not_to allow_value(FFaker::Lorem.paragraph).for(:title) }
 
   it_behaves_like 'it normalizes title'
 
   # Author
   it { is_expected.to validate_length_of(:author).is_at_most(100) }
   it { is_expected.to allow_values([nil, '']).for(:author) }
-  it { is_expected.not_to allow_value(FFaker::Lorem.paragraph).for(:author) }
 
   describe '#normalize_author' do
     it 'returns value without spaces and newline symbols' do
