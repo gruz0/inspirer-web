@@ -3,7 +3,7 @@
 module My
   module Health
     class BodyWeightsController < BaseController
-      include Import['find_by_created_today']
+      include Import['find_by_created_today', service: 'health.body_weights.service']
 
       def index
         @body_weights = current_account.health_body_weight.order(created_at: :desc)
@@ -21,11 +21,13 @@ module My
       end
 
       def create
-        @body_weight = current_account.health_body_weight.new(body_weight_params)
+        result = service.create(resource: resource, attributes: body_weight_params)
 
-        if @body_weight.save
+        if result.success?
           redirect_to my_health_body_weights_path, notice: 'Record was successfully created'
         else
+          @errors, attributes = result.failure.values_at(:errors, :attributes)
+          @body_weight = current_account.health_body_weight.new(attributes)
           render :new
         end
       end
@@ -46,11 +48,15 @@ module My
       private
 
       def body_weight_params
-        params.require(:health_body_weight).permit(:weight, :unit, :feeling, :notes)
+        params.require(:health_body_weight).permit(:weight, :unit, :feeling, :notes).to_h.symbolize_keys
       end
 
       def resource
-        current_account.health_body_weight.find(params[:id])
+        if params[:id]
+          current_account.health_body_weight.find(params[:id])
+        else
+          current_account.health_body_weight.new
+        end
       end
     end
   end
