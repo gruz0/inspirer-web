@@ -7,6 +7,7 @@ module Health
 
       step :validate
       step :build
+      step :assign_attributes
       step :persist
 
       private
@@ -22,6 +23,12 @@ module Health
       end
 
       def build(input)
+        resource = input[:resource].new(input[:attributes])
+
+        Success input.merge(resource: resource)
+      end
+
+      def assign_attributes(input)
         resource, attributes = input.values_at(:resource, :attributes)
 
         attributes[:weight] = attributes[:weight].to_s.tr(',', '.').to_f

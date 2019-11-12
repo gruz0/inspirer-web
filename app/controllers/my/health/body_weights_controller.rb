@@ -55,7 +55,7 @@ module My
         if params[:id]
           current_account.health_body_weight.find(params[:id])
         else
-          current_account.health_body_weight.new
+          current_account.health_body_weight
         end
       end
     end

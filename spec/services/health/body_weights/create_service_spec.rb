@@ -8,7 +8,7 @@ RSpec.describe Health::BodyWeights::CreateService do
   let(:account) { create(:account) }
   let(:input) do
     {
-      resource: account.health_body_weight.new,
+      resource: account.health_body_weight,
       attributes: attributes
     }
   end
