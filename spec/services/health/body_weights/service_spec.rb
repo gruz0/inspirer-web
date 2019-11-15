@@ -3,15 +3,16 @@
 require 'rails_helper'
 
 RSpec.describe Health::BodyWeights::Service do
-  let(:service) { described_class.new }
+  subject(:service) { described_class.new }
+
   let(:account) { create(:account) }
 
   describe '#create' do
-    subject(:result) { service.create(input) }
+    subject(:result) { service.send(:create, input) }
 
     let(:input) do
       {
-        resource: account.health_body_weight.new,
+        resource: account.health_body_weight,
         attributes: attributes_for(:health_body_weight)
       }
     end

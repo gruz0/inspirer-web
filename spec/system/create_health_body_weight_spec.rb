@@ -75,12 +75,26 @@ RSpec.describe 'Creating a Health Body Weight', type: :system do
     end
 
     it 'renders error message if unit is blank' do
-      expect(page).to have_text('unit must be one of: kg, lbs')
+      expect(page).to have_text('unit must be filled')
     end
 
     it 'renders error message if feeling is blank' do
-      expect(page)
-        .to have_text('feeling must be one of: amazing, happy, energetic, good, depressed, afraid, sad, angry')
+      expect(page).to have_text('feeling must be filled')
+    end
+  end
+
+  context 'when weight is not a float' do
+    before do
+      sign_in(account)
+
+      visit new_my_health_body_weight_path
+
+      fill_in 'health_body_weight[weight]', with: 'abc'
+      click_button 'Save'
+    end
+
+    it 'renders error message' do
+      expect(page).to have_text('weight must be a float')
     end
   end
 

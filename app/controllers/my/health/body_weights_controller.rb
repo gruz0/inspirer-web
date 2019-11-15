@@ -3,6 +3,10 @@
 module My
   module Health
     class BodyWeightsController < BaseController
+      ACTION_MAP = {
+        create: :create
+      }.freeze
+
       include Import['find_by_created_today', service: 'health.body_weights.service']
 
       def index
@@ -21,13 +25,11 @@ module My
       end
 
       def create
-        result = service.create(resource: resource, attributes: body_weight_params)
-
         if result.success?
           redirect_to my_health_body_weights_path, notice: 'Record was successfully created'
         else
-          @errors, attributes = result.failure.values_at(:errors, :attributes)
-          @body_weight = current_account.health_body_weight.new(attributes)
+          @errors = result.failure
+          @body_weight = current_account.health_body_weight.new(body_weight_params)
           render :new
         end
       end
@@ -46,6 +48,14 @@ module My
       end
 
       private
+
+      def result
+        @result ||= service.send(action, resource: resource, attributes: body_weight_params)
+      end
+
+      def action
+        ACTION_MAP[params[:action].to_sym]
+      end
 
       def body_weight_params
         params.require(:health_body_weight).permit(:weight, :unit, :feeling, :notes).to_h.symbolize_keys
