@@ -18,5 +18,15 @@ RSpec.describe Health::BodyWeights::Service do
     end
 
     it { is_expected.to be_success }
+
+    context 'when record for this day already exists' do
+      before { create(:health_body_weight, account: account) }
+
+      it { is_expected.to be_failure }
+
+      it 'has error message' do
+        expect(result.failure).to include('Record for this day already exists')
+      end
+    end
   end
 end

@@ -114,7 +114,7 @@ RSpec.describe 'Creating a Health Body Weight', type: :system do
     end
 
     it 'renders error message' do
-      expect(page).to have_text('Created date should happen once per day')
+      expect(page).to have_text('Record for this day already exists')
     end
   end
 end

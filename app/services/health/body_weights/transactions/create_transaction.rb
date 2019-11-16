@@ -7,6 +7,7 @@ module Health
         step :validate, with: 'shared.validate'
         step :build, with: 'build'
         step :assign_attributes, with: 'assign_attributes'
+        step :must_be_created_once_per_day, with: 'shared.must_be_created_once_per_day'
         step :persist, with: 'persist'
       end
     end
