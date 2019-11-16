@@ -9,13 +9,13 @@ RSpec.describe 'Creating a Health Body Weight', type: :system do
     let(:path) { new_my_health_body_weight_path }
   end
 
-  shared_examples 'created successful' do
+  context 'with valid inputs' do
     before do
       sign_in(account)
 
       visit new_my_health_body_weight_path
 
-      fill_in 'health_body_weight[weight]', with: weight
+      fill_in 'health_body_weight[weight]', with: '115,423'
       select 'kg', from: 'health_body_weight[unit]'
       select 'good', from: 'health_body_weight[feeling]'
       click_button 'Save'
@@ -33,24 +33,6 @@ RSpec.describe 'Creating a Health Body Weight', type: :system do
       rows = [{ 'Weight' => '115.4', 'Unit' => 'kg', 'Feeling' => 'good' }]
       expect(page).to have_table('health_body_weights', with_rows: rows)
     end
-  end
-
-  context 'with valid inputs' do
-    let(:weight) { 115.423 }
-
-    it_behaves_like 'created successful'
-  end
-
-  context 'when weight is a string' do
-    let(:weight) { '115.423' }
-
-    it_behaves_like 'created successful'
-  end
-
-  context 'when weight uses a comma as a separator' do
-    let(:weight) { '115,423' }
-
-    it_behaves_like 'created successful'
   end
 
   context 'with invalid inputs' do
@@ -80,41 +62,6 @@ RSpec.describe 'Creating a Health Body Weight', type: :system do
 
     it 'renders error message if feeling is blank' do
       expect(page).to have_text('feeling must be filled')
-    end
-  end
-
-  context 'when weight is not a float' do
-    before do
-      sign_in(account)
-
-      visit new_my_health_body_weight_path
-
-      fill_in 'health_body_weight[weight]', with: 'abc'
-      click_button 'Save'
-    end
-
-    it 'renders error message' do
-      expect(page).to have_text('weight must be a float')
-    end
-  end
-
-  context 'when record for this day already exists' do
-    before do
-      sign_in(account)
-
-      visit new_my_health_body_weight_path
-
-      create(:health_body_weight, account: account)
-
-      fill_in 'health_body_weight[weight]', with: 99.1
-      select 'kg', from: 'health_body_weight[unit]'
-      select 'good', from: 'health_body_weight[feeling]'
-
-      click_button 'Save'
-    end
-
-    it 'renders error message' do
-      expect(page).to have_text('Record for this day already exists')
     end
   end
 end
