@@ -3,5 +3,5 @@
 module Types
   include Dry.Types()
 
-  Coercible::FloatWithComma = Types::Float.constructor { |f| Float(f.tr(',', '.')) if f }
+  Coercible::FloatWithComma = Types::Float.constructor { |f| Float(f.to_s.tr(',', '.')) if f }
 end
