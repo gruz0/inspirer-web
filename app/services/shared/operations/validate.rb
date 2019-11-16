@@ -11,7 +11,7 @@ module Shared
         result = contract.new.call(input)
 
         if result.success?
-          Success input.merge(attributes: result.to_h)
+          Success input.merge(attributes: result[:attributes])
         else
           error_handler(result)
         end

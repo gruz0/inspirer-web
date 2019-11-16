@@ -7,7 +7,9 @@ module Health
         def call(input)
           resource, attributes = input.values_at(:resource, :attributes)
 
-          resource.assign_attributes(attributes)
+          weight = attributes[:weight].floor(1)
+
+          resource.assign_attributes(attributes.merge(weight: weight))
 
           Success input.merge(resource: resource)
         end
