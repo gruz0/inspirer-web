@@ -2,6 +2,6 @@
 
 class FindByCreatedToday
   def call(klass)
-    klass.find_by('DATE(created_at) = ?', Date.parse(Time.zone.now.to_s))
+    klass.exists?(['DATE(created_at) = ?', Date.current])
   end
 end
