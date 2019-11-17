@@ -29,4 +29,40 @@ RSpec.describe Health::BodyWeights::Service do
       end
     end
   end
+
+  describe '#update' do
+    subject(:result) { service.send(:update, input) }
+
+    let(:resource) { create(:health_body_weight, unit: 'kg', weight: 99.5, feeling: 'good') }
+
+    let(:input) do
+      {
+        resource: resource,
+        attributes: {
+          weight: 100.3,
+          unit: 'lbs',
+          feeling: 'amazing',
+          notes: html_ipsum('Awesome Day')
+        }
+      }
+    end
+
+    it { is_expected.to be_success }
+
+    it 'updates weight' do
+      expect { result }.to change(resource.reload, :weight).from(99.5).to(100.3)
+    end
+
+    it 'updates unit' do
+      expect { result }.to change(resource.reload, :unit).from('kg').to('lbs')
+    end
+
+    it 'updates feeling' do
+      expect { result }.to change(resource.reload, :feeling).from('good').to('amazing')
+    end
+
+    it 'updates notes' do
+      expect { result }.to change(resource.reload, :notes).from('').to('Awesome Day')
+    end
+  end
 end

@@ -5,7 +5,8 @@ module Health
     class Service < BaseService
       def self.transactions
         {
-          create: Transactions::CreateTransaction
+          create: Transactions::CreateTransaction,
+          update: Transactions::UpdateTransaction
         }
       end
     end

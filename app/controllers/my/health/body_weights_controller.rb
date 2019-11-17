@@ -4,7 +4,8 @@ module My
   module Health
     class BodyWeightsController < BaseController
       ACTION_MAP = {
-        create: :create
+        create: :create,
+        update: :update
       }.freeze
 
       include Import['find_by_created_today', service: 'health.body_weights.service']
@@ -39,10 +40,11 @@ module My
       end
 
       def update
-        @body_weight = resource
-        if @body_weight.update(body_weight_params)
+        if result.success?
           redirect_to my_health_body_weights_path, notice: 'Record was successfully updated'
         else
+          @errors = result.failure
+          @body_weight = current_account.health_body_weight.new(body_weight_params)
           render :edit
         end
       end
