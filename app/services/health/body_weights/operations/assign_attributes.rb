@@ -4,12 +4,15 @@ module Health
   module BodyWeights
     module Operations
       class AssignAttributes < BaseOperation
+        include Shared::Utils::Import['html_sanitizer']
+
         def call(input)
           resource, attributes = input.values_at(:resource, :attributes)
 
-          weight = attributes[:weight].floor(1)
+          attributes[:weight] = attributes[:weight].floor(1)
+          attributes[:notes] = html_sanitizer.call(attributes[:notes])
 
-          resource.assign_attributes(attributes.merge(weight: weight))
+          resource.assign_attributes(attributes)
 
           Success input.merge(resource: resource)
         end
