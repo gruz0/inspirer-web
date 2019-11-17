@@ -8,7 +8,7 @@ module Health
         step :validate, with: 'shared.validate'
         step :build, with: 'shared.build'
         step :assign_attributes, with: 'assign_attributes'
-        step :persist, with: 'persist'
+        step :persist, with: 'shared.persist'
       end
     end
   end
