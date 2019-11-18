@@ -22,13 +22,7 @@ RSpec.describe Health::BodyWeights::Schemas::BodyWeightSchema do
 
   it_behaves_like 'it allows to use comma as a delimiter', :weight
 
-  describe 'unit' do
-    context 'when unit has invalid value' do
-      let(:unit) { 'unknown' }
-
-      it { is_expected.to be_failure }
-    end
-  end
+  it_behaves_like 'it validates unit'
 
   describe 'feeling' do
     context 'when feeling has invalid value' do
