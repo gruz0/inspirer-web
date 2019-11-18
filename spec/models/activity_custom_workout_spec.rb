@@ -15,7 +15,7 @@ RSpec.describe ActivityCustomWorkout, type: :model do
   it_behaves_like 'it normalizes title'
 
   # Feeling
-  it_behaves_like 'it validates feeling'
+  it_behaves_like 'it has enum', :feeling, FEELINGS
 
   # Notes
   it_behaves_like 'it sanitizes notes'

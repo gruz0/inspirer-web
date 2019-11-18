@@ -14,5 +14,5 @@ RSpec.describe ActivityYogaAsana, type: :model do
   it_behaves_like 'it sanitizes notes'
 
   # Feeling
-  it_behaves_like 'it validates feeling'
+  it_behaves_like 'it has enum', :feeling, FEELINGS
 end

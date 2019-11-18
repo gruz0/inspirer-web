@@ -38,7 +38,7 @@ RSpec.describe LearningBook, type: :model do
   it_behaves_like 'it has enum', :status, LEARNING_BOOK_STATUSES
 
   # Feeling
-  it_behaves_like 'it validates feeling'
+  it_behaves_like 'it has enum', :feeling, FEELINGS
 
   # Notes
   it_behaves_like 'it sanitizes notes'
