@@ -24,11 +24,5 @@ RSpec.describe Health::BodyWeights::Schemas::BodyWeightSchema do
 
   it_behaves_like 'it validates unit'
 
-  describe 'feeling' do
-    context 'when feeling has invalid value' do
-      let(:feeling) { 'unknown' }
-
-      it { is_expected.to be_failure }
-    end
-  end
+  it_behaves_like 'it validates feeling'
 end
