@@ -20,43 +20,7 @@ RSpec.describe Health::BodyWeights::Schemas::BodyWeightSchema do
 
   it { is_expected.to be_success }
 
-  describe 'weight' do
-    context 'when it is a string and uses point as a delimiter' do
-      let(:weight) { '123.45' }
-
-      it { is_expected.to be_success }
-    end
-
-    context 'when it uses a comma as a delimiter' do
-      let(:weight) { '123,45' }
-
-      it { is_expected.to be_success }
-    end
-
-    context 'when it is not a float' do
-      let(:weight) { 'abc123,45a' }
-
-      it { is_expected.to be_failure }
-    end
-
-    context 'when it is an integer' do
-      let(:weight) { 1 }
-
-      it { is_expected.to be_success }
-    end
-
-    context 'when it is zero' do
-      let(:weight) { 0 }
-
-      it { is_expected.to be_failure }
-    end
-
-    context 'when it is less than zero' do
-      let(:weight) { -1 }
-
-      it { is_expected.to be_failure }
-    end
-  end
+  it_behaves_like 'it allows to use comma as a delimiter', :weight
 
   describe 'unit' do
     context 'when unit has invalid value' do
