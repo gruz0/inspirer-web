@@ -22,4 +22,22 @@ RSpec.describe 'Redirects to #edit if record for this day already exists', type:
       expect(page).to have_current_path(edit_my_health_body_weight_path(health_body_weight))
     end
   end
+
+  describe 'Health > Body Measure' do
+    let(:health_body_measure) { create(:health_body_measure, account: account) }
+
+    before do
+      sign_in(account)
+
+      health_body_measure
+
+      visit my_health_body_measures_path
+
+      click_link 'Track Today'
+    end
+
+    it 'redirects to #edit' do
+      expect(page).to have_current_path(edit_my_health_body_measure_path(health_body_measure))
+    end
+  end
 end

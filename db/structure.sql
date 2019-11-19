@@ -320,8 +320,7 @@ CREATE TABLE public.health_body_measures (
     notes text DEFAULT ''::text NOT NULL,
     account_id bigint,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL,
-    created_date date DEFAULT ('now'::text)::date NOT NULL
+    updated_at timestamp without time zone NOT NULL
 );
 
 
@@ -859,13 +858,6 @@ CREATE INDEX index_activity_yoga_asanas_on_account_id ON public.activity_yoga_as
 --
 
 CREATE INDEX index_health_body_measures_on_account_id ON public.health_body_measures USING btree (account_id);
-
-
---
--- Name: index_health_body_measures_on_account_id_and_created_date; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE UNIQUE INDEX index_health_body_measures_on_account_id_and_created_date ON public.health_body_measures USING btree (account_id, created_date);
 
 
 --
