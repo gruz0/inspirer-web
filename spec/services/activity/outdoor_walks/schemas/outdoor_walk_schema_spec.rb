@@ -26,7 +26,7 @@ RSpec.describe Activity::OutdoorWalks::Schemas::OutdoorWalkSchema do
 
   it_behaves_like 'it validates positive integer', :steps
 
-  it_behaves_like 'it validates unit', :distance_unit
+  it_behaves_like 'it validates enum', :distance_unit
 
-  it_behaves_like 'it validates feeling'
+  it_behaves_like 'it validates enum', :feeling
 end

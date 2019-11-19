@@ -28,7 +28,7 @@ RSpec.describe Health::BodyMeasures::Schemas::BodyMeasureSchema do
   it_behaves_like 'it allows to use comma as a delimiter', :waist
   it_behaves_like 'it allows to use comma as a delimiter', :hips
 
-  it_behaves_like 'it validates unit', :unit
+  it_behaves_like 'it validates enum', :unit
 
-  it_behaves_like 'it validates feeling'
+  it_behaves_like 'it validates enum', :feeling
 end
