@@ -6,28 +6,11 @@ class ActivityOutdoorWalk < ApplicationRecord
 
   belongs_to :account
 
-  before_validation :set_created_date, on: [:create]
-  after_validation :normalize_distance
-
   enum distance_unit: DISTANCE_UNITS
   enum feeling: FEELINGS
 
-  validates :distance, presence: true, numericality: { greater_than: 0 }
-  validates :steps, presence: true, numericality: { only_integer: true, greater_than: 0 }
+  validates :distance, presence: true
+  validates :steps, presence: true
   validates :distance_unit, presence: true
   validates :feeling, presence: true
-  validates :created_date, uniqueness: { scope: :account_id, message: 'should happen once per day' }
-
-  private
-
-  # NOTE: It uses for validate uniqueness with database constraints
-  def set_created_date
-    self.created_date = Time.zone.now
-  end
-
-  def normalize_distance
-    return unless distance
-
-    self.distance = distance.floor(1)
-  end
 end

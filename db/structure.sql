@@ -237,8 +237,7 @@ CREATE TABLE public.activity_outdoor_walks (
     notes text DEFAULT ''::text NOT NULL,
     account_id bigint,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL,
-    created_date date DEFAULT ('now'::text)::date NOT NULL
+    updated_at timestamp without time zone NOT NULL
 );
 
 
@@ -837,13 +836,6 @@ CREATE INDEX index_activity_custom_workouts_on_account_id ON public.activity_cus
 --
 
 CREATE INDEX index_activity_outdoor_walks_on_account_id ON public.activity_outdoor_walks USING btree (account_id);
-
-
---
--- Name: index_activity_outdoor_walks_on_account_id_and_created_date; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE UNIQUE INDEX index_activity_outdoor_walks_on_account_id_and_created_date ON public.activity_outdoor_walks USING btree (account_id, created_date);
 
 
 --

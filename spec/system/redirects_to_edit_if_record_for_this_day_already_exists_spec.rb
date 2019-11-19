@@ -40,4 +40,22 @@ RSpec.describe 'Redirects to #edit if record for this day already exists', type:
       expect(page).to have_current_path(edit_my_health_body_measure_path(health_body_measure))
     end
   end
+
+  describe 'Activity > Outdoor Walk' do
+    let(:activity_outdoor_walk) { create(:activity_outdoor_walk, account: account) }
+
+    before do
+      sign_in(account)
+
+      activity_outdoor_walk
+
+      visit my_activity_outdoor_walks_path
+
+      click_link 'Track Today'
+    end
+
+    it 'redirects to #edit' do
+      expect(page).to have_current_path(edit_my_activity_outdoor_walk_path(activity_outdoor_walk))
+    end
+  end
 end
