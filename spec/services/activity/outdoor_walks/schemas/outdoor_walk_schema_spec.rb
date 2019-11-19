@@ -24,7 +24,7 @@ RSpec.describe Activity::OutdoorWalks::Schemas::OutdoorWalkSchema do
 
   it_behaves_like 'it allows to use comma as a delimiter', :distance
 
-  it_behaves_like 'it validates integer', :steps
+  it_behaves_like 'it validates positive integer', :steps
 
   it_behaves_like 'it validates unit', :distance_unit
 

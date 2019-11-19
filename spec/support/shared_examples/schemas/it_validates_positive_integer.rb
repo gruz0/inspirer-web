@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.shared_examples 'it validates integer' do |key|
+RSpec.shared_examples 'it validates positive integer' do |key|
   context 'when it is a float' do
     let(key) { 123.45 }
 
