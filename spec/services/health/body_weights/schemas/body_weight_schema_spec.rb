@@ -22,7 +22,7 @@ RSpec.describe Health::BodyWeights::Schemas::BodyWeightSchema do
 
   it_behaves_like 'it allows to use comma as a delimiter', :weight
 
-  it_behaves_like 'it validates unit'
+  it_behaves_like 'it validates unit', :unit
 
   it_behaves_like 'it validates feeling'
 end
