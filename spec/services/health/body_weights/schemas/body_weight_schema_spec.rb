@@ -20,9 +20,7 @@ RSpec.describe Health::BodyWeights::Schemas::BodyWeightSchema do
 
   it { is_expected.to be_success }
 
-  it_behaves_like 'it allows to use comma as a delimiter', :weight
+  include_examples 'it allows to use comma as a delimiter', :weight
 
-  it_behaves_like 'it validates enum', :unit
-
-  it_behaves_like 'it validates enum', :feeling
+  %i[unit feeling].each { |key| include_examples 'it validates enum', key }
 end

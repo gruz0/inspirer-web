@@ -18,11 +18,11 @@ RSpec.describe HealthBodyMeasure, type: :model do
   it { is_expected.to validate_presence_of(:hips) }
 
   # Unit
-  it_behaves_like 'it has enum', :unit, BODY_MEASURE_UNITS
+  include_examples 'it has enum', :unit, BODY_MEASURE_UNITS
 
   # Feeling
-  it_behaves_like 'it has enum', :feeling, FEELINGS
+  include_examples 'it has enum', :feeling, FEELINGS
 
   # Notes
-  it_behaves_like 'it sanitizes notes'
+  include_examples 'it sanitizes notes'
 end

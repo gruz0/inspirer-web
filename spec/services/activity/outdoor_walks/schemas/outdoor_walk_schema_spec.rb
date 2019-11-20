@@ -22,11 +22,9 @@ RSpec.describe Activity::OutdoorWalks::Schemas::OutdoorWalkSchema do
 
   it { is_expected.to be_success }
 
-  it_behaves_like 'it allows to use comma as a delimiter', :distance
+  include_examples 'it allows to use comma as a delimiter', :distance
 
-  it_behaves_like 'it validates positive integer', :steps
+  include_examples 'it validates positive integer', :steps
 
-  it_behaves_like 'it validates enum', :distance_unit
-
-  it_behaves_like 'it validates enum', :feeling
+  %i[distance_unit feeling].each { |key| include_examples 'it validates enum', key }
 end
