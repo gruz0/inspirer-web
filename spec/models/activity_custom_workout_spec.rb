@@ -12,11 +12,11 @@ RSpec.describe ActivityCustomWorkout, type: :model do
   it { is_expected.to validate_presence_of(:title) }
   it { is_expected.to validate_length_of(:title).is_at_most(100) }
 
-  it_behaves_like 'it normalizes title'
+  include_examples 'it normalizes title'
 
   # Feeling
-  it_behaves_like 'it has enum', :feeling, FEELINGS
+  include_examples 'it has enum', :feeling, FEELINGS
 
   # Notes
-  it_behaves_like 'it sanitizes notes'
+  include_examples 'it sanitizes notes'
 end

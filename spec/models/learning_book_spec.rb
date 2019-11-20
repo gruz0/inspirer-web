@@ -12,7 +12,7 @@ RSpec.describe LearningBook, type: :model do
   it { is_expected.to validate_presence_of(:title) }
   it { is_expected.to validate_length_of(:title).is_at_most(100) }
 
-  it_behaves_like 'it normalizes title'
+  include_examples 'it normalizes title'
 
   # Author
   it { is_expected.to validate_length_of(:author).is_at_most(100) }
@@ -32,14 +32,14 @@ RSpec.describe LearningBook, type: :model do
   it { is_expected.to allow_value('https://example.com/?page=123').for(:url) }
   it { is_expected.not_to allow_value('example.com').for(:url) }
 
-  it_behaves_like 'it normalizes url'
+  include_examples 'it normalizes url'
 
   # Status
-  it_behaves_like 'it has enum', :status, LEARNING_BOOK_STATUSES
+  include_examples 'it has enum', :status, LEARNING_BOOK_STATUSES
 
   # Feeling
-  it_behaves_like 'it has enum', :feeling, FEELINGS
+  include_examples 'it has enum', :feeling, FEELINGS
 
   # Notes
-  it_behaves_like 'it sanitizes notes'
+  include_examples 'it sanitizes notes'
 end

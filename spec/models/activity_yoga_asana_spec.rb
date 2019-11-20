@@ -11,8 +11,8 @@ RSpec.describe ActivityYogaAsana, type: :model do
   # Notes
   it { is_expected.to validate_presence_of(:notes) }
 
-  it_behaves_like 'it sanitizes notes'
+  include_examples 'it sanitizes notes'
 
   # Feeling
-  it_behaves_like 'it has enum', :feeling, FEELINGS
+  include_examples 'it has enum', :feeling, FEELINGS
 end
