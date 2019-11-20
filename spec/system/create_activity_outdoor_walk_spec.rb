@@ -53,20 +53,8 @@ RSpec.describe 'Creating an Activity Outdoor Walk', type: :system do
       expect(page).to have_text('4 errors prohibited this activity outdoor walk from being saved')
     end
 
-    it 'renders error message if distance_unit is blank' do
-      expect(page).to have_text('distance_unit must be filled')
-    end
-
-    it 'renders error message if distance is blank' do
-      expect(page).to have_text('distance must be filled')
-    end
-
-    it 'renders error message if steps is blank' do
-      expect(page).to have_text('steps must be filled')
-    end
-
-    it 'renders error message if feeling is blank' do
-      expect(page).to have_text('feeling must be filled')
+    %i[distance_unit distance steps feeling].each do |key|
+      include_examples 'when field is blank', key
     end
   end
 end

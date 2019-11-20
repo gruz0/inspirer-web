@@ -52,16 +52,8 @@ RSpec.describe 'Creating a Health Body Weight', type: :system do
       expect(page).to have_text('3 errors prohibited this health body weight from being saved')
     end
 
-    it 'renders error message if weight is blank' do
-      expect(page).to have_text('weight must be filled')
-    end
-
-    it 'renders error message if unit is blank' do
-      expect(page).to have_text('unit must be filled')
-    end
-
-    it 'renders error message if feeling is blank' do
-      expect(page).to have_text('feeling must be filled')
+    %i[unit weight feeling].each do |key|
+      include_examples 'when field is blank', key
     end
   end
 end
