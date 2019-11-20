@@ -1,4 +1,4 @@
-= render partial: 'shared/validation_errors', locals: { model: outdoor_walk }
+= render partial: 'shared/validation_errors', locals: { model: outdoor_walk, errors: local_assigns[:errors].presence }
 
 = form_for [:my, outdoor_walk] do |f|
   .form-group.row

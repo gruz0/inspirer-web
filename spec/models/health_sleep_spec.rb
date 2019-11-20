@@ -35,11 +35,11 @@ RSpec.describe HealthSleep, type: :model do
   end
 
   # Created at
-  it_behaves_like 'it validates created_date'
+  include_examples 'it validates created_date'
 
   # Feeling
-  it_behaves_like 'it validates feeling'
+  include_examples 'it has enum', :feeling, FEELINGS
 
   # Notes
-  it_behaves_like 'it sanitizes notes'
+  include_examples 'it sanitizes notes'
 end

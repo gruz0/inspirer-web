@@ -3,7 +3,12 @@
 module My
   module Health
     class BodyWeightsController < BaseController
-      include Import['find_by_created_today']
+      ACTION_MAP = {
+        create: :create,
+        update: :update
+      }.freeze
+
+      include Import['find_by_created_today', service: 'health.body_weights.service']
 
       def index
         @body_weights = current_account.health_body_weight.order(created_at: :desc)
@@ -11,7 +16,7 @@ module My
 
       def new
         # rubocop:disable Rails/DynamicFindBy
-        created_today = find_by_created_today.call(current_account.health_body_weight)
+        created_today = find_by_created_today.call(resource)
         # rubocop:enable Rails/DynamicFindBy
         if created_today
           redirect_to edit_my_health_body_weight_path(created_today)
@@ -21,11 +26,11 @@ module My
       end
 
       def create
-        @body_weight = current_account.health_body_weight.new(body_weight_params)
-
-        if @body_weight.save
+        if result.success?
           redirect_to my_health_body_weights_path, notice: 'Record was successfully created'
         else
+          @errors = result.failure
+          @body_weight = current_account.health_body_weight.new(body_weight_params)
           render :new
         end
       end
@@ -35,22 +40,35 @@ module My
       end
 
       def update
-        @body_weight = resource
-        if @body_weight.update(body_weight_params)
+        if result.success?
           redirect_to my_health_body_weights_path, notice: 'Record was successfully updated'
         else
+          @errors = result.failure
+          @body_weight = current_account.health_body_weight.new(body_weight_params)
           render :edit
         end
       end
 
       private
 
+      def result
+        @result ||= service.send(action, resource: resource, attributes: body_weight_params)
+      end
+
+      def action
+        ACTION_MAP[params[:action].to_sym]
+      end
+
       def body_weight_params
-        params.require(:health_body_weight).permit(:weight, :unit, :feeling, :notes)
+        params.require(:health_body_weight).permit(:weight, :unit, :feeling, :notes).to_h.symbolize_keys
       end
 
       def resource
-        current_account.health_body_weight.find(params[:id])
+        if params[:id]
+          current_account.health_body_weight.find(params[:id])
+        else
+          current_account.health_body_weight
+        end
       end
     end
   end

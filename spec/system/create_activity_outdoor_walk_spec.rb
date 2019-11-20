@@ -16,7 +16,7 @@ RSpec.describe 'Creating an Activity Outdoor Walk', type: :system do
       visit new_my_activity_outdoor_walk_path
 
       select 'km', from: 'activity_outdoor_walk[distance_unit]'
-      fill_in 'activity_outdoor_walk[distance]', with: 10.5
+      fill_in 'activity_outdoor_walk[distance]', with: '10,55'
       fill_in 'activity_outdoor_walk[steps]', with: 13_500
       select 'good', from: 'activity_outdoor_walk[feeling]'
       click_button 'Save'
@@ -50,47 +50,11 @@ RSpec.describe 'Creating an Activity Outdoor Walk', type: :system do
     end
 
     it 'renders errors count' do
-      expect(page).to have_text('6 errors prohibited this activity outdoor walk from being saved')
+      expect(page).to have_text('4 errors prohibited this activity outdoor walk from being saved')
     end
 
-    it 'renders error message if distance_unit is blank' do
-      expect(page).to have_text('Distance unit can\'t be blank')
-    end
-
-    it 'renders error message if distance is blank' do
-      expect(page).to have_text('Distance can\'t be blank')
-    end
-
-    it 'renders error message if distance is not a number' do
-      expect(page).to have_text('Distance is not a number')
-    end
-
-    it 'renders error message if steps is blank' do
-      expect(page).to have_text('Steps can\'t be blank')
-    end
-
-    it 'renders error message if steps is not a number' do
-      expect(page).to have_text('Steps is not a number')
-    end
-
-    it 'renders error message if feeling is blank' do
-      expect(page).to have_text('Feeling can\'t be blank')
-    end
-  end
-
-  context 'when record for this day already exists' do
-    before do
-      sign_in(account)
-
-      visit new_my_activity_outdoor_walk_path
-
-      create(:activity_outdoor_walk, account: account)
-
-      click_button 'Save'
-    end
-
-    it 'renders error message' do
-      expect(page).to have_text('Created date should happen once per day')
+    %i[distance_unit distance steps feeling].each do |key|
+      include_examples 'when field is blank', key
     end
   end
 end

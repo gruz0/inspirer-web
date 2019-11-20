@@ -10,26 +10,13 @@ RSpec.describe HealthBodyWeight, type: :model do
 
   # Weight
   it { is_expected.to validate_presence_of(:weight) }
-  it { is_expected.to validate_numericality_of(:weight).is_greater_than(0) }
 
   # Unit
-  it_behaves_like 'it has enum', :unit, WEIGHT_UNITS
-
-  describe '#normalize_weight' do
-    it 'returns rounded by 1' do
-      model.weight = 95.99
-      model.validate
-
-      expect(model.weight).to eq(95.9)
-    end
-  end
-
-  # Created at
-  it_behaves_like 'it validates created_date'
+  include_examples 'it has enum', :unit, WEIGHT_UNITS
 
   # Feeling
-  it_behaves_like 'it validates feeling'
+  include_examples 'it has enum', :feeling, FEELINGS
 
   # Notes
-  it_behaves_like 'it sanitizes notes'
+  include_examples 'it sanitizes notes'
 end

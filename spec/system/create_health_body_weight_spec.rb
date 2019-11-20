@@ -15,7 +15,7 @@ RSpec.describe 'Creating a Health Body Weight', type: :system do
 
       visit new_my_health_body_weight_path
 
-      fill_in 'health_body_weight[weight]', with: 115.423
+      fill_in 'health_body_weight[weight]', with: '115,423'
       select 'kg', from: 'health_body_weight[unit]'
       select 'good', from: 'health_body_weight[feeling]'
       click_button 'Save'
@@ -49,39 +49,11 @@ RSpec.describe 'Creating a Health Body Weight', type: :system do
     end
 
     it 'renders errors count' do
-      expect(page).to have_text('4 errors prohibited this health body weight from being saved')
+      expect(page).to have_text('3 errors prohibited this health body weight from being saved')
     end
 
-    it 'renders error message if weight is blank' do
-      expect(page).to have_text('Weight can\'t be blank')
-    end
-
-    it 'renders error message if weight is not a number' do
-      expect(page).to have_text('Weight is not a number')
-    end
-
-    it 'renders error message if unit is blank' do
-      expect(page).to have_text('Unit can\'t be blank')
-    end
-
-    it 'renders error message if feeling is blank' do
-      expect(page).to have_text('Feeling can\'t be blank')
-    end
-  end
-
-  context 'when record for this day already exists' do
-    before do
-      sign_in(account)
-
-      visit new_my_health_body_weight_path
-
-      create(:health_body_weight, account: account)
-
-      click_button 'Save'
-    end
-
-    it 'renders error message' do
-      expect(page).to have_text('Created date should happen once per day')
+    %i[unit weight feeling].each do |key|
+      include_examples 'when field is blank', key
     end
   end
 end
