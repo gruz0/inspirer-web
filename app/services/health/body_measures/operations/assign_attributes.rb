@@ -4,8 +4,6 @@ module Health
   module BodyMeasures
     module Operations
       class AssignAttributes < BaseOperation
-        include Shared::Utils::Import['html_sanitizer']
-
         def call(input)
           resource, attributes = input.values_at(:resource, :attributes)
 
@@ -13,8 +11,6 @@ module Health
           attributes[:chest] = attributes[:chest].floor(precision)
           attributes[:waist] = attributes[:waist].floor(precision)
           attributes[:hips] = attributes[:hips].floor(precision)
-
-          attributes[:notes] = html_sanitizer.call(attributes[:notes])
 
           resource.assign_attributes(attributes)
 

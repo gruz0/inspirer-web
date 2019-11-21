@@ -12,7 +12,8 @@ RSpec.describe Health::BodyMeasures::Schemas::BodyMeasureSchema do
         waist: waist,
         hips: hips,
         unit: unit,
-        feeling: feeling
+        feeling: feeling,
+        notes: notes
       }
     }
   end
@@ -21,10 +22,13 @@ RSpec.describe Health::BodyMeasures::Schemas::BodyMeasureSchema do
   let(:hips) { 92.8 }
   let(:unit) { 'cm' }
   let(:feeling) { 'good' }
+  let(:notes) { html_ipsum('My Notes') }
 
   it { is_expected.to be_success }
 
   %i[chest waist hips].each { |key| include_examples 'it allows to use comma as a delimiter', key }
 
   %i[unit feeling].each { |key| include_examples 'it validates enum', key }
+
+  include_examples 'it sanitizes html', :notes
 end

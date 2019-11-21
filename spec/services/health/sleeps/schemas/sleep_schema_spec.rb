@@ -10,13 +10,15 @@ RSpec.describe Health::Sleeps::Schemas::SleepSchema do
       attributes: {
         woke_up_at_hour: woke_up_at_hour,
         woke_up_at_minutes: woke_up_at_minutes,
-        feeling: feeling
+        feeling: feeling,
+        notes: notes
       }
     }
   end
   let(:woke_up_at_hour) { 7 }
   let(:woke_up_at_minutes) { 15 }
   let(:feeling) { 'good' }
+  let(:notes) { html_ipsum('My Notes') }
 
   it { is_expected.to be_success }
 
@@ -35,4 +37,6 @@ RSpec.describe Health::Sleeps::Schemas::SleepSchema do
   end
 
   include_examples 'it validates enum', :feeling
+
+  include_examples 'it sanitizes html', :notes
 end

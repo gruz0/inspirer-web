@@ -8,7 +8,7 @@ module Health
           required(:weight).filled(Types::Coercible::FloatWithComma) { gt?(0) }
           required(:unit).filled.value(included_in?: WEIGHT_UNITS.keys.map(&:to_s))
           required(:feeling).filled.value(included_in?: FEELINGS.keys.map(&:to_s))
-          optional(:notes).value(:string)
+          optional(:notes).value(Types::Coercible::Notes)
         end
       end
     end

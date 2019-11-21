@@ -18,8 +18,7 @@ RSpec.describe Activity::OutdoorWalks::Operations::AssignAttributes do
         distance: 15.35,
         steps: 18_815,
         distance_unit: 'km',
-        feeling: 'good',
-        notes: html_ipsum('My Notes')
+        feeling: 'good'
       }
     }
   end
@@ -42,9 +41,5 @@ RSpec.describe Activity::OutdoorWalks::Operations::AssignAttributes do
 
   it 'assigns feeling' do
     expect(resource.feeling).to eq('good')
-  end
-
-  it 'assigns notes' do
-    expect(resource.notes).to eq('My Notes')
   end
 end

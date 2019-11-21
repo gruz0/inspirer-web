@@ -11,7 +11,8 @@ RSpec.describe Activity::OutdoorWalks::Schemas::OutdoorWalkSchema do
         distance: distance,
         steps: steps,
         distance_unit: distance_unit,
-        feeling: feeling
+        feeling: feeling,
+        notes: notes
       }
     }
   end
@@ -19,6 +20,7 @@ RSpec.describe Activity::OutdoorWalks::Schemas::OutdoorWalkSchema do
   let(:steps) { 15_931 }
   let(:distance_unit) { 'km' }
   let(:feeling) { 'good' }
+  let(:notes) { html_ipsum('My Notes') }
 
   it { is_expected.to be_success }
 
@@ -27,4 +29,6 @@ RSpec.describe Activity::OutdoorWalks::Schemas::OutdoorWalkSchema do
   include_examples 'it validates positive integer', :steps
 
   %i[distance_unit feeling].each { |key| include_examples 'it validates enum', key }
+
+  include_examples 'it sanitizes html', :notes
 end
