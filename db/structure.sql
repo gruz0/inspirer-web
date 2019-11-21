@@ -389,8 +389,7 @@ CREATE TABLE public.health_sleeps (
     notes text DEFAULT ''::text NOT NULL,
     account_id bigint,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL,
-    created_date date DEFAULT ('now'::text)::date NOT NULL
+    updated_at timestamp without time zone NOT NULL
 );
 
 
@@ -867,13 +866,6 @@ CREATE INDEX index_health_sleeps_on_account_id ON public.health_sleeps USING btr
 
 
 --
--- Name: index_health_sleeps_on_account_id_and_created_date; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE UNIQUE INDEX index_health_sleeps_on_account_id_and_created_date ON public.health_sleeps USING btree (account_id, created_date);
-
-
---
 -- Name: index_learning_articles_on_account_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -1043,6 +1035,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20191031185307'),
 ('20191104132420'),
 ('20191108060150'),
-('20191116164957');
+('20191116164957'),
+('20191121061222');
 
 
