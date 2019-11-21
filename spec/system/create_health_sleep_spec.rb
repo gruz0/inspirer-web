@@ -49,43 +49,11 @@ RSpec.describe 'Creating a Health Sleep', type: :system do
     end
 
     it 'renders errors count' do
-      expect(page).to have_text('5 errors prohibited this health sleep from being saved')
+      expect(page).to have_text('3 errors prohibited this health sleep from being saved')
     end
 
-    it 'renders error message if woke_up_at_hour is blank' do
-      expect(page).to have_text('Woke up at hour can\'t be blank')
-    end
-
-    it 'renders error message if woke_up_at_hour is not a number' do
-      expect(page).to have_text('Woke up at hour is not a number')
-    end
-
-    it 'renders error message if woke_up_at_minutes is blank' do
-      expect(page).to have_text('Woke up at minutes can\'t be blank')
-    end
-
-    it 'renders error message if woke_up_at_minutes is not a number' do
-      expect(page).to have_text('Woke up at minutes is not a number')
-    end
-
-    it 'renders error message if feeling is blank' do
-      expect(page).to have_text('Feeling can\'t be blank')
-    end
-  end
-
-  context 'when record for this day already exists' do
-    before do
-      sign_in(account)
-
-      visit new_my_health_sleep_path
-
-      create(:health_sleep, account: account)
-
-      click_button 'Save'
-    end
-
-    it 'renders error message' do
-      expect(page).to have_text('Created date should happen once per day')
+    %i[woke_up_at_hour woke_up_at_minutes feeling].each do |key|
+      include_examples 'when field is blank', key
     end
   end
 end

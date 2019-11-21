@@ -3,7 +3,12 @@
 module My
   module Health
     class SleepsController < BaseController
-      include Import['find_by_created_today']
+      ACTION_MAP = {
+        create: :create,
+        update: :update
+      }.freeze
+
+      include Import['find_by_created_today', service: 'health.sleeps.service']
 
       def index
         @sleeps = current_account.health_sleep.order(created_at: :desc)
@@ -11,7 +16,7 @@ module My
 
       def new
         # rubocop:disable Rails/DynamicFindBy
-        created_today = find_by_created_today.call(current_account.health_sleep)
+        created_today = find_by_created_today.call(resource)
         # rubocop:enable Rails/DynamicFindBy
         if created_today
           redirect_to edit_my_health_sleep_path(created_today)
@@ -21,11 +26,11 @@ module My
       end
 
       def create
-        @sleep = current_account.health_sleep.new(sleep_params)
-
-        if @sleep.save
+        if result.success?
           redirect_to my_health_sleeps_path, notice: 'Record was successfully created'
         else
+          @errors = result.failure
+          @sleep = current_account.health_sleep.new(sleep_params)
           render :new
         end
       end
@@ -35,22 +40,37 @@ module My
       end
 
       def update
-        @sleep = resource
-        if @sleep.update(sleep_params)
+        if result.success?
           redirect_to my_health_sleeps_path, notice: 'Record was successfully updated'
         else
+          @errors = result.failure
+          @sleep = current_account.health_sleep.new(sleep_params)
           render :edit
         end
       end
 
       private
 
+      def result
+        @result ||= service.send(action, resource: resource, attributes: sleep_params)
+      end
+
+      def action
+        ACTION_MAP[params[:action].to_sym]
+      end
+
       def sleep_params
-        params.require(:health_sleep).permit(:woke_up_at_hour, :woke_up_at_minutes, :feeling, :notes)
+        params.require(:health_sleep)
+              .permit(:woke_up_at_hour, :woke_up_at_minutes, :feeling, :notes)
+              .to_h.symbolize_keys
       end
 
       def resource
-        current_account.health_sleep.find(params[:id])
+        if params[:id]
+          current_account.health_sleep.find(params[:id])
+        else
+          current_account.health_sleep
+        end
       end
     end
   end

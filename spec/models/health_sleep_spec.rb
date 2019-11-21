@@ -11,31 +11,8 @@ RSpec.describe HealthSleep, type: :model do
   # Woke up at hour
   it { is_expected.to validate_presence_of(:woke_up_at_hour) }
 
-  it do
-    # rubocop:disable RSpec/ImplicitSubject
-    is_expected
-      .to validate_numericality_of(:woke_up_at_hour)
-      .only_integer
-      .is_greater_than_or_equal_to(0)
-      .is_less_than(24)
-    # rubocop:enable RSpec/ImplicitSubject
-  end
-
   # Woke up at minutes
   it { is_expected.to validate_presence_of(:woke_up_at_minutes) }
-
-  it do
-    # rubocop:disable RSpec/ImplicitSubject
-    is_expected
-      .to validate_numericality_of(:woke_up_at_minutes)
-      .only_integer
-      .is_greater_than_or_equal_to(0)
-      .is_less_than(60)
-    # rubocop:enable RSpec/ImplicitSubject
-  end
-
-  # Created at
-  include_examples 'it validates created_date'
 
   # Feeling
   include_examples 'it has enum', :feeling, FEELINGS
