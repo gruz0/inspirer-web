@@ -17,8 +17,7 @@ RSpec.describe Health::Sleeps::Operations::AssignAttributes do
       attributes: {
         woke_up_at_hour: 7,
         woke_up_at_minutes: 18,
-        feeling: 'good',
-        notes: html_ipsum('My Notes')
+        feeling: 'good'
       }
     }
   end
@@ -37,9 +36,5 @@ RSpec.describe Health::Sleeps::Operations::AssignAttributes do
 
   it 'assigns feeling' do
     expect(resource.feeling).to eq('good')
-  end
-
-  it 'assigns notes' do
-    expect(resource.notes).to eq('My Notes')
   end
 end

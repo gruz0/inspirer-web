@@ -19,8 +19,7 @@ RSpec.describe Health::BodyMeasures::Operations::AssignAttributes do
         waist: 65.150,
         hips: 89.391,
         unit: 'cm',
-        feeling: 'good',
-        notes: html_ipsum('My Notes')
+        feeling: 'good'
       }
     }
   end
@@ -47,9 +46,5 @@ RSpec.describe Health::BodyMeasures::Operations::AssignAttributes do
 
   it 'assigns feeling' do
     expect(resource.feeling).to eq('good')
-  end
-
-  it 'assigns notes' do
-    expect(resource.notes).to eq('My Notes')
   end
 end

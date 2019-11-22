@@ -17,8 +17,7 @@ RSpec.describe Health::BodyWeights::Operations::AssignAttributes do
       attributes: {
         weight: 115.641,
         unit: 'kg',
-        feeling: 'good',
-        notes: html_ipsum('My Notes')
+        feeling: 'good'
       }
     }
   end
@@ -37,9 +36,5 @@ RSpec.describe Health::BodyWeights::Operations::AssignAttributes do
 
   it 'assigns feeling' do
     expect(resource.feeling).to eq('good')
-  end
-
-  it 'assigns notes' do
-    expect(resource.notes).to eq('My Notes')
   end
 end
