@@ -10,7 +10,7 @@ module Health
           required(:waist).filled(Types::Coercible::FloatWithComma) { gt?(0) }
           required(:unit).filled.value(included_in?: BODY_MEASURE_UNITS.keys.map(&:to_s))
           required(:feeling).filled.value(included_in?: FEELINGS.keys.map(&:to_s))
-          optional(:notes).value(Types::Coercible::Notes)
+          optional(:notes).value(Types::Coercible::SanitizedHTML)
         end
       end
     end
