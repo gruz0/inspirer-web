@@ -32,9 +32,9 @@ module InspirerApp
 
     config.active_record.schema_format = :sql
 
-    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', 'controllers', '**', '*.yml').to_s]
-    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', 'models', '**', '*.yml').to_s]
-    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', 'views', '**', '*.yml').to_s]
+    config.i18n.load_path += Dir[Rails.root.join('config/locales/controllers/**/*.yml').to_s]
+    config.i18n.load_path += Dir[Rails.root.join('config/locales/models/**/*.yml').to_s]
+    config.i18n.load_path += Dir[Rails.root.join('config/locales/views/**/*.yml').to_s]
     config.i18n.default_locale = :en
 
     config.cache_store = :redis_cache_store, { driver: :hiredis, url: ENV.fetch('REDIS_CACHE_URL') }
