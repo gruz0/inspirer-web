@@ -15,8 +15,8 @@ RSpec.describe 'Creating a Health Sleep', type: :system do
 
       visit new_my_health_sleep_path
 
-      select '02', from: 'health_sleep[woke_up_at_hour]'
-      select '35', from: 'health_sleep[woke_up_at_minutes]'
+      select '08', from: 'health_sleep[woke_up_at_hour]'
+      select '04', from: 'health_sleep[woke_up_at_minutes]'
       select 'good', from: 'health_sleep[feeling]'
       click_button 'Save'
     end
@@ -30,7 +30,7 @@ RSpec.describe 'Creating a Health Sleep', type: :system do
     end
 
     it 'renders table with a new record' do
-      rows = [{ 'I woke up at' => '02:35', 'Feeling' => 'good' }]
+      rows = [{ 'I woke up at' => '08:04', 'Feeling' => 'good' }]
       expect(page).to have_table('health_sleeps', with_rows: rows)
     end
   end
