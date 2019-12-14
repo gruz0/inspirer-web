@@ -15,8 +15,8 @@ RSpec.describe Health::Sleeps::Operations::AssignAttributes do
     {
       resource: health_sleep,
       attributes: {
-        woke_up_at_hour: 7,
-        woke_up_at_minutes: 18,
+        woke_up_at_hour: '07',
+        woke_up_at_minutes: '04',
         feeling: 'good'
       }
     }
@@ -31,7 +31,7 @@ RSpec.describe Health::Sleeps::Operations::AssignAttributes do
   end
 
   it 'assigns woke_up_at_minutes' do
-    expect(resource.woke_up_at_minutes).to eq(18)
+    expect(resource.woke_up_at_minutes).to eq(4)
   end
 
   it 'assigns feeling' do
