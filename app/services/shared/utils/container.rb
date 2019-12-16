@@ -6,6 +6,7 @@ module Shared
       extend Dry::Container::Mixin
 
       register('normalizer') { Normalizer.new }
+      register('sanitizer') { Sanitizer.new }
     end
   end
 end
