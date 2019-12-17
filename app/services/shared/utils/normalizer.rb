@@ -3,8 +3,6 @@
 module Shared
   module Utils
     class Normalizer
-      extend Dry::Initializer
-
       def normalize_url(url)
         url.to_s.strip
       end
