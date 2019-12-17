@@ -36,7 +36,7 @@ RSpec.describe 'Creating a Learning Article', type: :system do
     end
   end
 
-  context 'with invalid inputs' do
+  context 'with empty input' do
     before do
       sign_in(account)
 
@@ -50,42 +50,7 @@ RSpec.describe 'Creating a Learning Article', type: :system do
     end
 
     it 'renders errors count' do
-      expect(page).to have_text('3 errors prohibited this learning article from being saved')
+      expect(page).to have_text('2 errors prohibited this learning article from being saved')
     end
-
-    it 'renders error message if url is blank' do
-      expect(page).to have_text('Url can\'t be blank')
-    end
-
-    it 'renders error message if url is not valid' do
-      expect(page).to have_text('Url is not a valid URL')
-    end
-
-    it 'renders error message if feeling is blank' do
-      expect(page).to have_text('Feeling can\'t be blank')
-    end
-  end
-
-  context 'when url is not unique' do
-    before do
-      sign_in(account)
-
-      article = create(:learning_article, account: account)
-
-      visit new_my_learning_article_path
-
-      fill_in 'learning_article[url]', with: article.url
-      fill_in 'learning_article[title]', with: 'Some text'
-      select 'good', from: 'learning_article[feeling]'
-      click_button 'Save'
-    end
-
-    it 'renders error message' do
-      expect(page).to have_text('Url has already been taken')
-    end
-  end
-
-  it_behaves_like 'value is too long', 'learning_article', 'title', 'Title' do
-    let(:path) { new_my_learning_article_path }
   end
 end
