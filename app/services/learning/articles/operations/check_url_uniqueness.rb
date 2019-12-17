@@ -7,7 +7,8 @@ module Learning
         def call(input)
           resource, attributes = input.values_at(:resource, :attributes)
 
-          if resource.class.find_by('url = ?', attributes[:url])
+          record = resource.class.find_by('url = ?', attributes[:url])
+          if record && record.id != resource.id
             Failure ['URL has already been taken']
           else
             Success input

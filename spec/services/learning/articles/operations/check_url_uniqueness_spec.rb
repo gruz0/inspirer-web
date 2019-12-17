@@ -18,12 +18,21 @@ RSpec.describe Learning::Articles::Operations::CheckURLUniqueness do
   it { is_expected.to be_success }
 
   context 'when URL already exists' do
-    before { learning_article.update(input[:attributes]) }
+    before { account.learning_article.create!(input[:attributes]) }
 
     it { is_expected.to be_failure }
 
     it 'returns error' do
       expect(operation.failure).to eq(['URL has already been taken'])
     end
+  end
+
+  context 'when try to update current resource' do
+    before do
+      resource = account.learning_article.create!(input[:attributes])
+      input[:resource] = resource
+    end
+
+    it { is_expected.to be_success }
   end
 end
