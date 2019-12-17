@@ -17,8 +17,7 @@ before_install:
   - sudo apt-get install -y postgresql-11 postgresql-client-11
   - sudo cp /etc/postgresql/{9.6,11}/main/pg_hba.conf
   - sudo service postgresql restart 11
-  - gem update --system
-  - gem install bundler
+  - gem install bundler -v 2.0.2
 
 cache:
   directories:
