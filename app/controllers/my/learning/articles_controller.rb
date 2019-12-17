@@ -3,6 +3,13 @@
 module My
   module Learning
     class ArticlesController < BaseController
+      ACTION_MAP = {
+        create: :create,
+        update: :update
+      }.freeze
+
+      include Import[service: 'learning.articles.service']
+
       def index
         @articles = current_account.learning_article.order(created_at: :desc)
       end
@@ -12,13 +19,13 @@ module My
       end
 
       def create
-        @article = current_account.learning_article.new(article_params)
-
-        if @article.save
-          FetchLinkTitleWorker.perform_async(@article.class, @article.id, @article.url) if @article.title.blank?
+        if result.success?
+          fetch_link_title(result.success[:resource])
 
           redirect_to my_learning_articles_path, notice: 'Record was successfully created'
         else
+          @errors = result.failure
+          @article = current_account.learning_article.new(article_params)
           render :new
         end
       end
@@ -28,24 +35,37 @@ module My
       end
 
       def update
-        @article = resource
-        if @article.update(article_params)
-          FetchLinkTitleWorker.perform_async(@article.class, @article.id, @article.url) if @article.title.blank?
+        if result.success?
+          fetch_link_title(result.success[:resource])
 
           redirect_to my_learning_articles_path, notice: 'Record was successfully updated'
         else
+          @errors = result.failure
+          @article = current_account.learning_article.new(article_params)
           render :edit
         end
       end
 
       private
 
+      def result
+        @result ||= service.send(action, resource: resource, attributes: article_params)
+      end
+
+      def action
+        ACTION_MAP[params[:action].to_sym]
+      end
+
       def article_params
-        params.require(:learning_article).permit(:url, :title, :feeling, :notes)
+        params.require(:learning_article).permit(:url, :title, :feeling, :notes).to_h.symbolize_keys
       end
 
       def resource
-        current_account.learning_article.find(params[:id])
+        if params[:id]
+          current_account.learning_article.find(params[:id])
+        else
+          current_account.learning_article
+        end
       end
     end
   end

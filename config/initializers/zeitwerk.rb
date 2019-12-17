@@ -2,6 +2,7 @@
 
 Rails.autoloaders.each do |autoloader|
   autoloader.inflector.inflect(
-    'html_sanitizer' => 'HTMLSanitizer'
+    'html_sanitizer' => 'HTMLSanitizer',
+    'check_url_uniqueness' => 'CheckURLUniqueness'
   )
 end
