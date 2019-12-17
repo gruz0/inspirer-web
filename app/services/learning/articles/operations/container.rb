@@ -7,10 +7,8 @@ module Learning
         extend Dry::Container::Mixin
         import Shared::Container
 
-        register('build') { Shared::Operations::Build.new }
         register('check_url_uniqueness') { CheckURLUniqueness.new }
         register('assign_attributes') { AssignAttributes.new }
-        register('persist') { Shared::Operations::Persist.new }
       end
     end
   end
