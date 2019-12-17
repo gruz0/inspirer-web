@@ -10,7 +10,7 @@ RSpec.describe Learning::Articles::Transactions::CreateTransaction do
     {
       validate: 'shared.validate',
       build: 'shared.build',
-      check_url_uniqueness: 'check_url_uniqueness',
+      check_url_uniqueness: 'shared.check_url_uniqueness',
       assign_attributes: 'assign_attributes',
       persist: 'shared.persist'
     }

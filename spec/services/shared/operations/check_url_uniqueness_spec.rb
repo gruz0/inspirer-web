@@ -3,7 +3,7 @@
 require 'rails_helper'
 require 'dry/transaction/operation'
 
-RSpec.describe Learning::Articles::Operations::CheckURLUniqueness do
+RSpec.describe Shared::Operations::CheckURLUniqueness do
   subject(:operation) { described_class.new.call(input) }
 
   let(:account) { create(:account) }
