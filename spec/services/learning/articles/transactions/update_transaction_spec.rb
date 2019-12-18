@@ -3,9 +3,6 @@
 require 'rails_helper'
 
 RSpec.describe Learning::Articles::Transactions::UpdateTransaction do
-  subject(:transaction) { described_class.new }
-
-  let(:steps) { transaction.steps.map { |step| [step.name, step.operation_name] }.to_h }
   let(:expected_steps) do
     {
       validate: 'shared.validate',
@@ -15,7 +12,5 @@ RSpec.describe Learning::Articles::Transactions::UpdateTransaction do
     }
   end
 
-  it 'has required steps' do
-    expect(steps).to eq(expected_steps)
-  end
+  include_examples 'it validates transaction steps'
 end
