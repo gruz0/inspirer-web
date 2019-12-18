@@ -11,8 +11,7 @@ RSpec.describe Activity::OutdoorWalks::Schemas::OutdoorWalkSchema do
         distance: distance,
         steps: steps,
         distance_unit: distance_unit,
-        feeling: feeling,
-        notes: notes
+        feeling: feeling
       }
     }
   end
@@ -20,15 +19,23 @@ RSpec.describe Activity::OutdoorWalks::Schemas::OutdoorWalkSchema do
   let(:steps) { 15_931 }
   let(:distance_unit) { 'km' }
   let(:feeling) { 'good' }
-  let(:notes) { html_ipsum('My Notes') }
 
   it { is_expected.to be_success }
 
-  include_examples 'it allows to use comma as a delimiter', :distance
+  describe 'distance' do
+    include_examples 'it allows to use comma as a delimiter', :distance
+    include_examples 'it validates positive integer', :distance
+  end
 
-  include_examples 'it validates positive integer', :steps
+  describe 'steps' do
+    include_examples 'it validates positive integer', :steps
+  end
 
-  %i[distance_unit feeling].each { |key| include_examples 'it validates enum', key }
+  describe 'distance_unit' do
+    include_examples 'it validates enum', :distance_unit, DISTANCE_UNITS
+  end
 
-  include_examples 'it sanitizes html', :notes
+  describe 'feeling' do
+    include_examples 'it validates enum', :feeling, FEELINGS
+  end
 end
