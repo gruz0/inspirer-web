@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require 'rails_helper'
-require 'dry/transaction'
 require 'dry/transaction/operation'
 
 RSpec.describe Activity::OutdoorWalks::Operations::AssignAttributes do
@@ -18,7 +17,8 @@ RSpec.describe Activity::OutdoorWalks::Operations::AssignAttributes do
         distance: 15.35,
         steps: 18_815,
         distance_unit: 'km',
-        feeling: 'good'
+        feeling: 'good',
+        notes: html_ipsum('My Notes')
       }
     }
   end
@@ -41,5 +41,9 @@ RSpec.describe Activity::OutdoorWalks::Operations::AssignAttributes do
 
   it 'assigns feeling' do
     expect(resource.feeling).to eq('good')
+  end
+
+  it 'assigns notes' do
+    expect(resource.notes).to eq('My Notes')
   end
 end

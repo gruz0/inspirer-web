@@ -6,10 +6,10 @@ module Activity
       OutdoorWalkSchema = Dry::Schema.Params do
         required(:attributes).hash do
           required(:distance).filled(Types::Coercible::FloatWithComma) { gt?(0) }
-          required(:steps).filled(Types::Coercible::Integer) { gt?(0) }
+          required(:steps).filled(:integer) { gt?(0) }
           required(:distance_unit).filled.value(included_in?: DISTANCE_UNITS.keys.map(&:to_s))
           required(:feeling).filled.value(included_in?: FEELINGS.keys.map(&:to_s))
-          optional(:notes).value(Types::Coercible::SanitizedHTML)
+          optional(:notes).value(:string)
         end
       end
     end
