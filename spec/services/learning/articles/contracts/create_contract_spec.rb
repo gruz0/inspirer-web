@@ -8,7 +8,10 @@ RSpec.describe Learning::Articles::Contracts::CreateContract do
   let(:errors) { contract.errors.to_h }
   let(:input) do
     {
-      attributes: attributes_for(:learning_article)
+      attributes: {
+        url: 'https://example.com/123',
+        feeling: 'good'
+      }
     }
   end
 
