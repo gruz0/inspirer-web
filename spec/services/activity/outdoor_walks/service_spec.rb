@@ -47,7 +47,7 @@ RSpec.describe Activity::OutdoorWalks::Service do
       {
         resource: resource,
         attributes: {
-          distance: 12.5,
+          distance: '12,53',
           steps: 15_583,
           distance_unit: 'mi',
           feeling: 'amazing',
