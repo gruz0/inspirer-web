@@ -4,8 +4,12 @@ module Health
   module Sleeps
     module Operations
       class AssignAttributes < BaseOperation
+        include Shared::Utils::Import['sanitizer']
+
         def call(input)
           resource, attributes = input.values_at(:resource, :attributes)
+
+          attributes[:notes] = sanitizer.sanitize_html(attributes[:notes])
 
           resource.assign_attributes(attributes)
 
