@@ -24,7 +24,13 @@ RSpec.describe Health::BodyWeights::Schemas::BodyWeightSchema do
 
   include_examples 'it allows to use comma as a delimiter', :weight
 
-  %i[unit feeling].each { |key| include_examples 'it validates enum', key }
+  describe 'unit' do
+    include_examples 'it validates enum', :unit, WEIGHT_UNITS
+  end
+
+  describe 'feeling' do
+    include_examples 'it validates enum', :feeling, FEELINGS
+  end
 
   include_examples 'it sanitizes html', :notes
 end

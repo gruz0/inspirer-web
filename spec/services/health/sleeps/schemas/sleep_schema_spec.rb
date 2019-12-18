@@ -36,7 +36,9 @@ RSpec.describe Health::Sleeps::Schemas::SleepSchema do
     it { is_expected.to be_failure }
   end
 
-  include_examples 'it validates enum', :feeling
+  describe 'feeling' do
+    include_examples 'it validates enum', :feeling, FEELINGS
+  end
 
   include_examples 'it sanitizes html', :notes
 end

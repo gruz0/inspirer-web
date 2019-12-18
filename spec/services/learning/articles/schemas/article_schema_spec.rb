@@ -46,14 +46,6 @@ RSpec.describe Learning::Articles::Schemas::ArticleSchema do
   end
 
   describe 'feeling' do
-    context 'when value is in array' do
-      FEELINGS.keys.map(&:to_s).each do |valid_feeling|
-        let(:feeling) { valid_feeling }
-
-        it { is_expected.to be_success }
-      end
-    end
-
-    include_examples 'it validates enum', :feeling
+    include_examples 'it validates enum', :feeling, FEELINGS
   end
 end
