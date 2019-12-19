@@ -10,19 +10,20 @@ RSpec.describe Health::BodyWeights::Schemas::BodyWeightSchema do
       attributes: {
         weight: weight,
         unit: unit,
-        feeling: feeling,
-        notes: notes
+        feeling: feeling
       }
     }
   end
   let(:weight) { 123.45 }
   let(:unit) { 'kg' }
   let(:feeling) { 'good' }
-  let(:notes) { html_ipsum('My Notes') }
 
   it { is_expected.to be_success }
 
-  include_examples 'it allows to use comma as a delimiter', :weight
+  describe 'weight' do
+    include_examples 'it allows to use comma as a delimiter', :weight
+    include_examples 'it validates integer', :weight
+  end
 
   describe 'unit' do
     include_examples 'it validates enum', :unit, WEIGHT_UNITS
@@ -31,6 +32,4 @@ RSpec.describe Health::BodyWeights::Schemas::BodyWeightSchema do
   describe 'feeling' do
     include_examples 'it validates enum', :feeling, FEELINGS
   end
-
-  include_examples 'it sanitizes html', :notes
 end
