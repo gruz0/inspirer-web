@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require 'rails_helper'
-require 'dry/transaction'
 require 'dry/transaction/operation'
 
 RSpec.describe Health::Sleeps::Operations::AssignAttributes do
@@ -17,7 +16,8 @@ RSpec.describe Health::Sleeps::Operations::AssignAttributes do
       attributes: {
         woke_up_at_hour: '07',
         woke_up_at_minutes: '04',
-        feeling: 'good'
+        feeling: 'good',
+        notes: html_ipsum('My Notes')
       }
     }
   end
@@ -36,5 +36,9 @@ RSpec.describe Health::Sleeps::Operations::AssignAttributes do
 
   it 'assigns feeling' do
     expect(resource.feeling).to eq('good')
+  end
+
+  it 'assigns notes' do
+    expect(resource.notes).to eq('My Notes')
   end
 end
