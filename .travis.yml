@@ -39,6 +39,7 @@ script:
   - bundle audit update && bundle audit check
   - rubocop -DSE --force-exclusion -c .rubocop.yml
   - bundle exec rake unused_routes
+  - bundle exec bin/rails zeitwerk:check
 
 services:
   - postgresql
