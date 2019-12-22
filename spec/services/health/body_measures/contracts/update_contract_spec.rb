@@ -3,9 +3,6 @@
 require 'rails_helper'
 
 RSpec.describe Health::BodyMeasures::Contracts::UpdateContract do
-  subject(:contract) { described_class.new.call(input) }
-
-  let(:errors) { contract.errors.to_h }
   let(:input) do
     {
       attributes: {
@@ -18,5 +15,5 @@ RSpec.describe Health::BodyMeasures::Contracts::UpdateContract do
     }
   end
 
-  it { is_expected.to be_success }
+  include_examples 'it validates contract'
 end
