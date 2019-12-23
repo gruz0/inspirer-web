@@ -38,13 +38,11 @@ RSpec.describe 'Creating a Learning Book', type: :system do
     end
   end
 
-  context 'with invalid inputs' do
+  context 'with empty inputs' do
     before do
       sign_in(account)
 
       visit new_my_learning_book_path
-
-      fill_in 'learning_book[url]', with: 'example.com/test'
 
       click_button 'Save'
     end
@@ -56,29 +54,5 @@ RSpec.describe 'Creating a Learning Book', type: :system do
     it 'renders errors count' do
       expect(page).to have_text('4 errors prohibited this learning book from being saved')
     end
-
-    it 'renders error message if title is blank' do
-      expect(page).to have_text('Title can\'t be blank')
-    end
-
-    it 'renders error message if url is not valid' do
-      expect(page).to have_text('Url is not a valid URL')
-    end
-
-    it 'renders error message if status is blank' do
-      expect(page).to have_text('Status can\'t be blank')
-    end
-
-    it 'renders error message if feeling is blank' do
-      expect(page).to have_text('Feeling can\'t be blank')
-    end
-  end
-
-  it_behaves_like 'value is too long', 'learning_book', 'title', 'Title' do
-    let(:path) { new_my_learning_book_path }
-  end
-
-  it_behaves_like 'value is too long', 'learning_book', 'author', 'Author' do
-    let(:path) { new_my_learning_book_path }
   end
 end
