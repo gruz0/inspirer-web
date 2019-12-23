@@ -6,7 +6,6 @@ RSpec.describe Learning::Books::Transactions::UpdateTransaction do
   let(:expected_steps) do
     {
       validate: 'shared.validate',
-      check_url_uniqueness: 'shared.check_url_uniqueness',
       assign_attributes: 'assign_attributes',
       persist: 'shared.persist'
     }

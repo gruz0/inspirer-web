@@ -7,7 +7,6 @@ RSpec.describe Learning::Books::Transactions::CreateTransaction do
     {
       validate: 'shared.validate',
       build: 'shared.build',
-      check_url_uniqueness: 'shared.check_url_uniqueness',
       assign_attributes: 'assign_attributes',
       persist: 'shared.persist'
     }
