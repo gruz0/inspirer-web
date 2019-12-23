@@ -14,7 +14,7 @@ RSpec.describe Learning::Books::Contracts::CreateContract do
       }
     }
   end
-  let(:url) { 'https://example.com/123' }
+  let(:url) { '' }
 
   include_examples 'it validates contract'
 

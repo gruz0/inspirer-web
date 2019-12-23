@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 Dry::Validation.register_macro(:url_format) do
-  if value
+  if value.present? && !value.empty?
     schemes = %w[http https].freeze
 
     uri    = URI.parse(value.strip)
