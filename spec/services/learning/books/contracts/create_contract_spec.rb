@@ -7,7 +7,6 @@ RSpec.describe Learning::Books::Contracts::CreateContract do
     {
       attributes: {
         title: 'My Book',
-        author: 'Author',
         status: 'new_book',
         feeling: 'good'
       }
