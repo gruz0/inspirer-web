@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
-Dry::Validation.register_macro(:url_format) do
-  if value
+Dry::Validation.register_macro(:url_format) do |macro:|
+  allow_empty = macro.args[0] == :allow_empty
+
+  if value.present? || !allow_empty
     schemes = %w[http https].freeze
 
     uri    = URI.parse(value.strip)

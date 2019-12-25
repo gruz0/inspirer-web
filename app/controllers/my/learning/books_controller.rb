@@ -3,6 +3,13 @@
 module My
   module Learning
     class BooksController < BaseController
+      ACTION_MAP = {
+        create: :create,
+        update: :update
+      }.freeze
+
+      include Import[service: 'learning.books.service']
+
       def index
         @books = current_account.learning_book.order(created_at: :desc)
       end
@@ -12,11 +19,11 @@ module My
       end
 
       def create
-        @book = current_account.learning_book.new(book_params)
-
-        if @book.save
+        if result.success?
           redirect_to my_learning_books_path, notice: 'Record was successfully created'
         else
+          @errors = result.failure
+          @book = current_account.learning_book.new(book_params)
           render :new
         end
       end
@@ -26,22 +33,35 @@ module My
       end
 
       def update
-        @book = resource
-        if @book.update(book_params)
+        if result.success?
           redirect_to my_learning_books_path, notice: 'Record was successfully updated'
         else
+          @errors = result.failure
+          @book = current_account.learning_book.new(book_params)
           render :edit
         end
       end
 
       private
 
+      def result
+        @result ||= service.send(action, resource: resource, attributes: book_params)
+      end
+
+      def action
+        ACTION_MAP[params[:action].to_sym]
+      end
+
       def book_params
-        params.require(:learning_book).permit(:title, :author, :url, :status, :feeling, :notes)
+        params.require(:learning_book).permit(:title, :author, :url, :status, :feeling, :notes).to_h.symbolize_keys
       end
 
       def resource
-        current_account.learning_book.find(params[:id])
+        if params[:id]
+          current_account.learning_book.find(params[:id])
+        else
+          current_account.learning_book
+        end
       end
     end
   end
