@@ -10,7 +10,7 @@ module Learning
           resource, attributes = input.values_at(:resource, :attributes)
 
           attributes[:url]   = normalizer.normalize_url(attributes[:url])
-          attributes[:title] = normalizer.normalize_title(attributes[:title])
+          attributes[:title] = normalizer.remove_extra_whitespaces(attributes[:title])
           attributes[:notes] = sanitizer.sanitize_html(attributes[:notes])
 
           resource.assign_attributes(attributes)
