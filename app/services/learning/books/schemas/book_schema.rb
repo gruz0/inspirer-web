@@ -5,12 +5,12 @@ module Learning
     module Schemas
       BookSchema = Dry::Schema.Params do
         required(:attributes).hash do
-          required(:title).filled(:string, max_size?: 100)
-          optional(:author).value(:string, max_size?: 100)
-          optional(:url).value(:string)
+          required(:title).filled(Types::StrippedString, max_size?: 100)
+          optional(:author).value(Types::StrippedString, max_size?: 100)
+          optional(:url).value(Types::StrippedString)
           required(:status).filled.value(included_in?: LEARNING_BOOK_STATUSES.keys.map(&:to_s))
           required(:feeling).filled.value(included_in?: FEELINGS.keys.map(&:to_s))
-          optional(:notes).value(:string)
+          optional(:notes).value(Types::StrippedString)
         end
       end
     end
