@@ -6,7 +6,7 @@ module Learning
       class UpdateContract < Dry::Validation::Contract
         schema(Schemas::BookSchema)
 
-        rule(%i[attributes url]).validate(:url_format)
+        rule(%i[attributes url]).validate(url_format: :allow_empty)
       end
     end
   end
