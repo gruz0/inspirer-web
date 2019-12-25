@@ -8,13 +8,11 @@ RSpec.describe Learning::Books::Contracts::CreateContract do
       attributes: {
         title: 'My Book',
         author: 'Author',
-        url: url,
         status: 'new_book',
         feeling: 'good'
       }
     }
   end
-  let(:url) { '' }
 
   include_examples 'it validates contract'
 
