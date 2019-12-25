@@ -94,7 +94,7 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
-    devise_zxcvbn (4.4.1)
+    devise_zxcvbn (5.1.0)
       devise
       zxcvbn-js (~> 4.4.1)
     diff-lcs (1.3)
