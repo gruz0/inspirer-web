@@ -1,4 +1,4 @@
-= render partial: 'shared/validation_errors', locals: { model: podcast }
+= render partial: 'shared/validation_errors', locals: { model: podcast, errors: local_assigns[:errors].presence }
 
 = form_for [:my, podcast] do |f|
   .form-group.row
