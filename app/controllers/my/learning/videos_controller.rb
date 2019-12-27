@@ -3,6 +3,13 @@
 module My
   module Learning
     class VideosController < BaseController
+      ACTION_MAP = {
+        create: :create,
+        update: :update
+      }.freeze
+
+      include Import[service: 'learning.videos.service']
+
       def index
         @videos = current_account.learning_video.order(created_at: :desc)
       end
@@ -12,13 +19,13 @@ module My
       end
 
       def create
-        @video = current_account.learning_video.new(video_params)
-
-        if @video.save
-          FetchLinkTitleWorker.perform_async(@video.class, @video.id, @video.url) if @video.title.blank?
+        if result.success?
+          fetch_link_title(result.success[:resource])
 
           redirect_to my_learning_videos_path, notice: 'Record was successfully created'
         else
+          @errors = result.failure
+          @video = current_account.learning_video.new(video_params)
           render :new
         end
       end
@@ -28,24 +35,37 @@ module My
       end
 
       def update
-        @video = resource
-        if @video.update(video_params)
-          FetchLinkTitleWorker.perform_async(@video.class, @video.id, @video.url) if @video.title.blank?
+        if result.success?
+          fetch_link_title(result.success[:resource])
 
           redirect_to my_learning_videos_path, notice: 'Record was successfully updated'
         else
+          @errors = result.failure
+          @video = current_account.learning_video.new(video_params)
           render :edit
         end
       end
 
       private
 
+      def result
+        @result ||= service.send(action, resource: resource, attributes: video_params)
+      end
+
+      def action
+        ACTION_MAP[params[:action].to_sym]
+      end
+
       def video_params
-        params.require(:learning_video).permit(:url, :title, :feeling, :notes)
+        params.require(:learning_video).permit(:url, :title, :feeling, :notes).to_h.symbolize_keys
       end
 
       def resource
-        current_account.learning_video.find(params[:id])
+        if params[:id]
+          current_account.learning_video.find(params[:id])
+        else
+          current_account.learning_video
+        end
       end
     end
   end
