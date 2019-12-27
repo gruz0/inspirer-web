@@ -7,5 +7,6 @@ module Shared
     register('must_be_created_once_per_day') { Operations::MustBeCreatedOncePerDay.new }
     register('check_url_uniqueness') { Operations::CheckURLUniqueness.new }
     register('persist') { Operations::Persist.new }
+    register('fetch_link_title') { Operations::FetchLinkTitle.new }
   end
 end

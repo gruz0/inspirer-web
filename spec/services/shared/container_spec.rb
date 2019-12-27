@@ -12,7 +12,7 @@ RSpec.describe Shared::Container do
   end
 
   it 'has valid operations size' do
-    expect(container.keys.size).to eq(5)
+    expect(container.keys.size).to eq(6)
   end
 
   it 'has shared.validate operation' do
@@ -34,5 +34,9 @@ RSpec.describe Shared::Container do
 
   it 'has shared.persist operation' do
     expect(container['shared.persist']).to be_instance_of(Shared::Operations::Persist)
+  end
+
+  it 'has shared.fetch_link_title operation' do
+    expect(container['shared.fetch_link_title']).to be_instance_of(Shared::Operations::FetchLinkTitle)
   end
 end
