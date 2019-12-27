@@ -35,7 +35,7 @@ RSpec.describe 'Creating an Activity Custom Workout', type: :system do
     end
   end
 
-  context 'with invalid inputs' do
+  context 'with empty inputs' do
     before do
       sign_in(account)
 
@@ -51,17 +51,5 @@ RSpec.describe 'Creating an Activity Custom Workout', type: :system do
     it 'renders errors count' do
       expect(page).to have_text('2 errors prohibited this activity custom workout from being saved')
     end
-
-    it 'renders error message if title is blank' do
-      expect(page).to have_text('Title can\'t be blank')
-    end
-
-    it 'renders error message if feeling is blank' do
-      expect(page).to have_text('Feeling can\'t be blank')
-    end
-  end
-
-  it_behaves_like 'value is too long', 'activity_custom_workout', 'title', 'Title' do
-    let(:path) { new_my_activity_custom_workout_path }
   end
 end
