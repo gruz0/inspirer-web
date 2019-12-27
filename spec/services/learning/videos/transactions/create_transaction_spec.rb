@@ -9,7 +9,8 @@ RSpec.describe Learning::Videos::Transactions::CreateTransaction do
       build: 'shared.build',
       check_url_uniqueness: 'shared.check_url_uniqueness',
       assign_attributes: 'assign_attributes',
-      persist: 'shared.persist'
+      persist: 'shared.persist',
+      fetch_link_title: 'shared.fetch_link_title'
     }
   end
 
