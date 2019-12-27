@@ -266,8 +266,8 @@ ALTER SEQUENCE public.activity_outdoor_walks_id_seq OWNED BY public.activity_out
 
 CREATE TABLE public.activity_yoga_asanas (
     id bigint NOT NULL,
-    feeling public.feelings,
-    notes text,
+    feeling public.feelings NOT NULL,
+    notes text NOT NULL,
     account_id bigint,
     created_at timestamp(6) without time zone NOT NULL,
     updated_at timestamp(6) without time zone NOT NULL
@@ -1036,6 +1036,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20191104132420'),
 ('20191108060150'),
 ('20191116164957'),
-('20191121061222');
+('20191121061222'),
+('20191227210048');
 
 
