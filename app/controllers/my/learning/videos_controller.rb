@@ -20,8 +20,6 @@ module My
 
       def create
         if result.success?
-          fetch_link_title(result.success[:resource])
-
           redirect_to my_learning_videos_path, notice: 'Record was successfully created'
         else
           @errors = result.failure
@@ -36,8 +34,6 @@ module My
 
       def update
         if result.success?
-          fetch_link_title(result.success[:resource])
-
           redirect_to my_learning_videos_path, notice: 'Record was successfully updated'
         else
           @errors = result.failure
