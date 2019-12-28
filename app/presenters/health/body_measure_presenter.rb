@@ -9,7 +9,7 @@ module Health
     end
 
     def chest
-      if body_measure.inch?
+      if inch?
         convert_decimal_inches(body_measure.chest)
       else
         body_measure.chest.floor(1)
@@ -17,7 +17,7 @@ module Health
     end
 
     def waist
-      if body_measure.inch?
+      if inch?
         convert_decimal_inches(body_measure.waist)
       else
         body_measure.waist.floor(1)
@@ -25,7 +25,7 @@ module Health
     end
 
     def hips
-      if body_measure.inch?
+      if inch?
         convert_decimal_inches(body_measure.hips)
       else
         body_measure.hips.floor(1)
@@ -33,6 +33,10 @@ module Health
     end
 
     private
+
+    def inch?
+      body_measure.unit == BODY_MEASURE_UNITS[:inch]
+    end
 
     # http://syzygy.virtualave.net/decimal_inch_to_fractions.html
     def convert_decimal_inches(value, denominator = 16)
