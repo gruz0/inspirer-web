@@ -1,4 +1,4 @@
-= render partial: 'shared/validation_errors', locals: { model: asana }
+= render partial: 'shared/validation_errors', locals: { model: asana, errors: local_assigns[:errors].presence }
 
 = form_for [:my, asana] do |f|
   = render partial: 'shared/notes', locals: { form: f, required: true }

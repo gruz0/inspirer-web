@@ -4,6 +4,13 @@ module My
   module Activity
     module Yoga
       class AsanasController < BaseController
+        ACTION_MAP = {
+          create: :create,
+          update: :update
+        }.freeze
+
+        include Import[service: 'activity.yoga.asanas.service']
+
         def index
           @asanas = current_account.activity_yoga_asana.order(created_at: :desc)
         end
@@ -13,11 +20,11 @@ module My
         end
 
         def create
-          @asana = current_account.activity_yoga_asana.new(asana_params)
-
-          if @asana.save
+          if result.success?
             redirect_to my_activity_yoga_asanas_path, notice: 'Record was successfully created'
           else
+            @errors = result.failure
+            @asana = current_account.activity_yoga_asana.new(asana_params)
             render :new
           end
         end
@@ -27,22 +34,35 @@ module My
         end
 
         def update
-          @asana = resource
-          if @asana.update(asana_params)
+          if result.success?
             redirect_to my_activity_yoga_asanas_path, notice: 'Record was successfully updated'
           else
+            @errors = result.failure
+            @asana = current_account.activity_yoga_asana.new(asana_params)
             render :edit
           end
         end
 
         private
 
+        def result
+          @result ||= service.send(action, resource: resource, attributes: asana_params)
+        end
+
+        def action
+          ACTION_MAP[params[:action].to_sym]
+        end
+
         def asana_params
-          params.require(:activity_yoga_asana).permit(:notes, :feeling)
+          params.require(:activity_yoga_asana).permit(:notes, :feeling).to_h.symbolize_keys
         end
 
         def resource
-          current_account.activity_yoga_asana.find(params[:id])
+          if params[:id]
+            current_account.activity_yoga_asana.find(params[:id])
+          else
+            current_account.activity_yoga_asana
+          end
         end
       end
     end
