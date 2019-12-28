@@ -34,7 +34,7 @@ RSpec.describe 'Creating an Activity Yoga Asana', type: :system do
     end
   end
 
-  context 'with invalid inputs' do
+  context 'with empty inputs' do
     before do
       sign_in(account)
 
@@ -49,14 +49,6 @@ RSpec.describe 'Creating an Activity Yoga Asana', type: :system do
 
     it 'renders errors count' do
       expect(page).to have_text('2 errors prohibited this activity yoga asana from being saved')
-    end
-
-    it 'renders error message if notes is blank' do
-      expect(page).to have_text('Notes can\'t be blank')
-    end
-
-    it 'renders error message if feeling is blank' do
-      expect(page).to have_text('Feeling can\'t be blank')
     end
   end
 end
