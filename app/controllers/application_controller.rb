@@ -16,15 +16,23 @@ class ApplicationController < ActionController::Base
     @result ||= service.send(action, resource: resource, attributes: resource_params)
   end
 
-  def action
-    ACTION_MAP[params[:action].to_sym]
-  end
-
   def service
     throw NotImplementedError
   end
 
+  def action
+    ACTION_MAP[params[:action].to_sym]
+  end
+
   def resource
+    if params[:id]
+      resource_class.find(params[:id])
+    else
+      resource_class
+    end
+  end
+
+  def resource_class
     throw NotImplementedError
   end
 

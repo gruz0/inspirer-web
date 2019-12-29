@@ -43,12 +43,8 @@ module My
         params.require(:learning_book).permit(:title, :author, :url, :status, :feeling, :notes).to_h.symbolize_keys
       end
 
-      def resource
-        if params[:id]
-          current_account.learning_book.find(params[:id])
-        else
-          current_account.learning_book
-        end
+      def resource_class
+        current_account.learning_book
       end
     end
   end

@@ -52,12 +52,8 @@ module My
               .to_h.symbolize_keys
       end
 
-      def resource
-        if params[:id]
-          current_account.activity_outdoor_walk.find(params[:id])
-        else
-          current_account.activity_outdoor_walk
-        end
+      def resource_class
+        current_account.activity_outdoor_walk
       end
     end
   end

@@ -50,12 +50,8 @@ module My
         params.require(:health_body_measure).permit(:chest, :waist, :hips, :unit, :feeling, :notes).to_h.symbolize_keys
       end
 
-      def resource
-        if params[:id]
-          current_account.health_body_measure.find(params[:id])
-        else
-          current_account.health_body_measure
-        end
+      def resource_class
+        current_account.health_body_measure
       end
     end
   end

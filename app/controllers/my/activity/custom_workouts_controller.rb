@@ -43,12 +43,8 @@ module My
         params.require(:activity_custom_workout).permit(:title, :notes, :feeling).to_h.symbolize_keys
       end
 
-      def resource
-        if params[:id]
-          current_account.activity_custom_workout.find(params[:id])
-        else
-          current_account.activity_custom_workout
-        end
+      def resource_class
+        current_account.activity_custom_workout
       end
     end
   end

@@ -44,12 +44,8 @@ module My
           params.require(:activity_yoga_asana).permit(:notes, :feeling).to_h.symbolize_keys
         end
 
-        def resource
-          if params[:id]
-            current_account.activity_yoga_asana.find(params[:id])
-          else
-            current_account.activity_yoga_asana
-          end
+        def resource_class
+          current_account.activity_yoga_asana
         end
       end
     end

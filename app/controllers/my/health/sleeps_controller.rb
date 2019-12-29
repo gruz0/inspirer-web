@@ -52,12 +52,8 @@ module My
               .to_h.symbolize_keys
       end
 
-      def resource
-        if params[:id]
-          current_account.health_sleep.find(params[:id])
-        else
-          current_account.health_sleep
-        end
+      def resource_class
+        current_account.health_sleep
       end
     end
   end

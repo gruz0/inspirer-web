@@ -43,12 +43,8 @@ module My
         params.require(:learning_podcast).permit(:url, :title, :feeling, :notes).to_h.symbolize_keys
       end
 
-      def resource
-        if params[:id]
-          current_account.learning_podcast.find(params[:id])
-        else
-          current_account.learning_podcast
-        end
+      def resource_class
+        current_account.learning_podcast
       end
     end
   end
