@@ -11,11 +11,11 @@ module My
       include Import[service: 'learning.articles.service']
 
       def index
-        @articles = current_account.learning_article.order(created_at: :desc)
+        @articles = resource.order(created_at: :desc)
       end
 
       def new
-        @article = current_account.learning_article.new
+        @article = resource.new
       end
 
       def create
@@ -23,7 +23,7 @@ module My
           redirect_to my_learning_articles_path, notice: 'Record was successfully created'
         else
           @errors = result.failure
-          @article = current_account.learning_article.new(article_params)
+          @article = resource.new(article_params)
           render :new
         end
       end
@@ -37,7 +37,7 @@ module My
           redirect_to my_learning_articles_path, notice: 'Record was successfully updated'
         else
           @errors = result.failure
-          @article = current_account.learning_article.new(article_params)
+          @article = resource.new(article_params)
           render :edit
         end
       end

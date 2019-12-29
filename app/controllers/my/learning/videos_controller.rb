@@ -11,11 +11,11 @@ module My
       include Import[service: 'learning.videos.service']
 
       def index
-        @videos = current_account.learning_video.order(created_at: :desc)
+        @videos = resource.order(created_at: :desc)
       end
 
       def new
-        @video = current_account.learning_video.new
+        @video = resource.new
       end
 
       def create
@@ -23,7 +23,7 @@ module My
           redirect_to my_learning_videos_path, notice: 'Record was successfully created'
         else
           @errors = result.failure
-          @video = current_account.learning_video.new(video_params)
+          @video = resource.new(video_params)
           render :new
         end
       end
@@ -37,7 +37,7 @@ module My
           redirect_to my_learning_videos_path, notice: 'Record was successfully updated'
         else
           @errors = result.failure
-          @video = current_account.learning_video.new(video_params)
+          @video = resource.new(video_params)
           render :edit
         end
       end

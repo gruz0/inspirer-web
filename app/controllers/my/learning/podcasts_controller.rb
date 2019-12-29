@@ -11,11 +11,11 @@ module My
       include Import[service: 'learning.podcasts.service']
 
       def index
-        @podcasts = current_account.learning_podcast.order(created_at: :desc)
+        @podcasts = resource.order(created_at: :desc)
       end
 
       def new
-        @podcast = current_account.learning_podcast.new
+        @podcast = resource.new
       end
 
       def create
@@ -23,7 +23,7 @@ module My
           redirect_to my_learning_podcasts_path, notice: 'Record was successfully created'
         else
           @errors = result.failure
-          @podcast = current_account.learning_podcast.new(podcast_params)
+          @podcast = resource.new(podcast_params)
           render :new
         end
       end
@@ -37,7 +37,7 @@ module My
           redirect_to my_learning_podcasts_path, notice: 'Record was successfully updated'
         else
           @errors = result.failure
-          @podcast = current_account.learning_podcast.new(podcast_params)
+          @podcast = resource.new(podcast_params)
           render :edit
         end
       end

@@ -11,11 +11,11 @@ module My
       include Import[service: 'activity.custom_workouts.service']
 
       def index
-        @custom_workouts = current_account.activity_custom_workout.order(created_at: :desc)
+        @custom_workouts = resource.order(created_at: :desc)
       end
 
       def new
-        @custom_workout = current_account.activity_custom_workout.new
+        @custom_workout = resource.new
       end
 
       def create
@@ -23,7 +23,7 @@ module My
           redirect_to my_activity_custom_workouts_path, notice: 'Record was successfully created'
         else
           @errors = result.failure
-          @custom_workout = current_account.activity_custom_workout.new(custom_workout_params)
+          @custom_workout = resource.new(custom_workout_params)
           render :new
         end
       end
@@ -37,7 +37,7 @@ module My
           redirect_to my_activity_custom_workouts_path, notice: 'Record was successfully updated'
         else
           @errors = result.failure
-          @custom_workout = current_account.activity_custom_workout.new(custom_workout_params)
+          @custom_workout = resource.new(custom_workout_params)
           render :edit
         end
       end
