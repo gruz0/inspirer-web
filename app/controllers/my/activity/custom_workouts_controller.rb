@@ -39,10 +39,6 @@ module My
 
       private
 
-      def result
-        @result ||= service.send(action, resource: resource, attributes: resource_params)
-      end
-
       def resource_params
         params.require(:activity_custom_workout).permit(:title, :notes, :feeling).to_h.symbolize_keys
       end

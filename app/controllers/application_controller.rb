@@ -12,7 +12,23 @@ class ApplicationController < ActionController::Base
     update: :update
   }.freeze
 
+  def result
+    @result ||= service.send(action, resource: resource, attributes: resource_params)
+  end
+
   def action
     ACTION_MAP[params[:action].to_sym]
+  end
+
+  def service
+    throw NotImplementedError
+  end
+
+  def resource
+    throw NotImplementedError
+  end
+
+  def resource_params
+    throw NotImplementedError
   end
 end

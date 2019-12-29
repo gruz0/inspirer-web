@@ -39,10 +39,6 @@ module My
 
       private
 
-      def result
-        @result ||= service.send(action, resource: resource, attributes: resource_params)
-      end
-
       def resource_params
         params.require(:learning_book).permit(:title, :author, :url, :status, :feeling, :notes).to_h.symbolize_keys
       end

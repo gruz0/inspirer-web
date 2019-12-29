@@ -39,10 +39,6 @@ module My
 
       private
 
-      def result
-        @result ||= service.send(action, resource: resource, attributes: resource_params)
-      end
-
       def resource_params
         params.require(:learning_video).permit(:url, :title, :feeling, :notes).to_h.symbolize_keys
       end

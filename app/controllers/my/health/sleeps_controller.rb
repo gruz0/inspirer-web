@@ -46,10 +46,6 @@ module My
 
       private
 
-      def result
-        @result ||= service.send(action, resource: resource, attributes: resource_params)
-      end
-
       def resource_params
         params.require(:health_sleep)
               .permit(:woke_up_at_hour, :woke_up_at_minutes, :feeling, :notes)

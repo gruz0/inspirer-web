@@ -46,10 +46,6 @@ module My
 
       private
 
-      def result
-        @result ||= service.send(action, resource: resource, attributes: resource_params)
-      end
-
       def resource_params
         params.require(:health_body_measure).permit(:chest, :waist, :hips, :unit, :feeling, :notes).to_h.symbolize_keys
       end

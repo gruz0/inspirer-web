@@ -46,10 +46,6 @@ module My
 
       private
 
-      def result
-        @result ||= service.send(action, resource: resource, attributes: resource_params)
-      end
-
       def resource_params
         params.require(:activity_outdoor_walk)
               .permit(:distance_unit, :distance, :steps, :feeling, :notes)
