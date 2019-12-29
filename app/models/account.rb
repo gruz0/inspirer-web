@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 class Account < ApplicationRecord
-  include HTMLSanitizer
-
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable, :lockable,
@@ -31,14 +29,14 @@ class Account < ApplicationRecord
   private
 
   def sanitize_username
-    self.username = sanitize_html(username)
+    self.username = sanitize_fragment(username)
   end
 
   def sanitize_name
-    self.name = sanitize_html(name)
+    self.name = sanitize_fragment(name)
   end
 
   def sanitize_bio
-    self.bio = sanitize_html(bio)
+    self.bio = sanitize_fragment(bio)
   end
 end
