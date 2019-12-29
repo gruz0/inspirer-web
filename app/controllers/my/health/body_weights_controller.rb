@@ -3,11 +3,6 @@
 module My
   module Health
     class BodyWeightsController < BaseController
-      ACTION_MAP = {
-        create: :create,
-        update: :update
-      }.freeze
-
       include Import['find_by_created_today', service: 'health.body_weights.service']
 
       def index
@@ -53,10 +48,6 @@ module My
 
       def result
         @result ||= service.send(action, resource: resource, attributes: body_weight_params)
-      end
-
-      def action
-        ACTION_MAP[params[:action].to_sym]
       end
 
       def body_weight_params

@@ -3,11 +3,6 @@
 module My
   module Learning
     class VideosController < BaseController
-      ACTION_MAP = {
-        create: :create,
-        update: :update
-      }.freeze
-
       include Import[service: 'learning.videos.service']
 
       def index
@@ -46,10 +41,6 @@ module My
 
       def result
         @result ||= service.send(action, resource: resource, attributes: video_params)
-      end
-
-      def action
-        ACTION_MAP[params[:action].to_sym]
       end
 
       def video_params

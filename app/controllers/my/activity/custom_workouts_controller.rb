@@ -3,11 +3,6 @@
 module My
   module Activity
     class CustomWorkoutsController < BaseController
-      ACTION_MAP = {
-        create: :create,
-        update: :update
-      }.freeze
-
       include Import[service: 'activity.custom_workouts.service']
 
       def index
@@ -46,10 +41,6 @@ module My
 
       def result
         @result ||= service.send(action, resource: resource, attributes: custom_workout_params)
-      end
-
-      def action
-        ACTION_MAP[params[:action].to_sym]
       end
 
       def custom_workout_params

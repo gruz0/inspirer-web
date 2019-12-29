@@ -4,11 +4,6 @@ module My
   module Activity
     module Yoga
       class AsanasController < BaseController
-        ACTION_MAP = {
-          create: :create,
-          update: :update
-        }.freeze
-
         include Import[service: 'activity.yoga.asanas.service']
 
         def index
@@ -47,10 +42,6 @@ module My
 
         def result
           @result ||= service.send(action, resource: resource, attributes: asana_params)
-        end
-
-        def action
-          ACTION_MAP[params[:action].to_sym]
         end
 
         def asana_params

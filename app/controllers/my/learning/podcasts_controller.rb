@@ -3,11 +3,6 @@
 module My
   module Learning
     class PodcastsController < BaseController
-      ACTION_MAP = {
-        create: :create,
-        update: :update
-      }.freeze
-
       include Import[service: 'learning.podcasts.service']
 
       def index
@@ -46,10 +41,6 @@ module My
 
       def result
         @result ||= service.send(action, resource: resource, attributes: podcast_params)
-      end
-
-      def action
-        ACTION_MAP[params[:action].to_sym]
       end
 
       def podcast_params
