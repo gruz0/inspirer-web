@@ -18,7 +18,7 @@ module My
           redirect_to my_learning_articles_path, notice: 'Record was successfully created'
         else
           @errors = result.failure
-          @article = resource.new(article_params)
+          @article = resource.new(resource_params)
           render :new
         end
       end
@@ -32,7 +32,7 @@ module My
           redirect_to my_learning_articles_path, notice: 'Record was successfully updated'
         else
           @errors = result.failure
-          @article = resource.new(article_params)
+          @article = resource.new(resource_params)
           render :edit
         end
       end
@@ -40,10 +40,10 @@ module My
       private
 
       def result
-        @result ||= service.send(action, resource: resource, attributes: article_params)
+        @result ||= service.send(action, resource: resource, attributes: resource_params)
       end
 
-      def article_params
+      def resource_params
         params.require(:learning_article).permit(:url, :title, :feeling, :notes).to_h.symbolize_keys
       end
 

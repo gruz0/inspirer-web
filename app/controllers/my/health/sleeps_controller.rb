@@ -25,7 +25,7 @@ module My
           redirect_to my_health_sleeps_path, notice: 'Record was successfully created'
         else
           @errors = result.failure
-          @sleep = resource.new(sleep_params)
+          @sleep = resource.new(resource_params)
           render :new
         end
       end
@@ -39,7 +39,7 @@ module My
           redirect_to my_health_sleeps_path, notice: 'Record was successfully updated'
         else
           @errors = result.failure
-          @sleep = resource.new(sleep_params)
+          @sleep = resource.new(resource_params)
           render :edit
         end
       end
@@ -47,10 +47,10 @@ module My
       private
 
       def result
-        @result ||= service.send(action, resource: resource, attributes: sleep_params)
+        @result ||= service.send(action, resource: resource, attributes: resource_params)
       end
 
-      def sleep_params
+      def resource_params
         params.require(:health_sleep)
               .permit(:woke_up_at_hour, :woke_up_at_minutes, :feeling, :notes)
               .to_h.symbolize_keys

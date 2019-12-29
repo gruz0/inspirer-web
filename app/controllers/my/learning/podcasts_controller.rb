@@ -18,7 +18,7 @@ module My
           redirect_to my_learning_podcasts_path, notice: 'Record was successfully created'
         else
           @errors = result.failure
-          @podcast = resource.new(podcast_params)
+          @podcast = resource.new(resource_params)
           render :new
         end
       end
@@ -32,7 +32,7 @@ module My
           redirect_to my_learning_podcasts_path, notice: 'Record was successfully updated'
         else
           @errors = result.failure
-          @podcast = resource.new(podcast_params)
+          @podcast = resource.new(resource_params)
           render :edit
         end
       end
@@ -40,10 +40,10 @@ module My
       private
 
       def result
-        @result ||= service.send(action, resource: resource, attributes: podcast_params)
+        @result ||= service.send(action, resource: resource, attributes: resource_params)
       end
 
-      def podcast_params
+      def resource_params
         params.require(:learning_podcast).permit(:url, :title, :feeling, :notes).to_h.symbolize_keys
       end
 

@@ -25,7 +25,7 @@ module My
           redirect_to my_activity_outdoor_walks_path, notice: 'Record was successfully created'
         else
           @errors = result.failure
-          @outdoor_walk = resource.new(outdoor_walk_params)
+          @outdoor_walk = resource.new(resource_params)
           render :new
         end
       end
@@ -39,7 +39,7 @@ module My
           redirect_to my_activity_outdoor_walks_path, notice: 'Record was successfully updated'
         else
           @errors = result.failure
-          @outdoor_walk = resource.new(outdoor_walk_params)
+          @outdoor_walk = resource.new(resource_params)
           render :edit
         end
       end
@@ -47,10 +47,10 @@ module My
       private
 
       def result
-        @result ||= service.send(action, resource: resource, attributes: outdoor_walk_params)
+        @result ||= service.send(action, resource: resource, attributes: resource_params)
       end
 
-      def outdoor_walk_params
+      def resource_params
         params.require(:activity_outdoor_walk)
               .permit(:distance_unit, :distance, :steps, :feeling, :notes)
               .to_h.symbolize_keys

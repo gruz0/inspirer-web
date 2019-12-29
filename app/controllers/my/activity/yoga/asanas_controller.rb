@@ -19,7 +19,7 @@ module My
             redirect_to my_activity_yoga_asanas_path, notice: 'Record was successfully created'
           else
             @errors = result.failure
-            @asana = resource.new(asana_params)
+            @asana = resource.new(resource_params)
             render :new
           end
         end
@@ -33,7 +33,7 @@ module My
             redirect_to my_activity_yoga_asanas_path, notice: 'Record was successfully updated'
           else
             @errors = result.failure
-            @asana = resource.new(asana_params)
+            @asana = resource.new(resource_params)
             render :edit
           end
         end
@@ -41,10 +41,10 @@ module My
         private
 
         def result
-          @result ||= service.send(action, resource: resource, attributes: asana_params)
+          @result ||= service.send(action, resource: resource, attributes: resource_params)
         end
 
-        def asana_params
+        def resource_params
           params.require(:activity_yoga_asana).permit(:notes, :feeling).to_h.symbolize_keys
         end
 

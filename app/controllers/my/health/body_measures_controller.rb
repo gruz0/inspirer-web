@@ -25,7 +25,7 @@ module My
           redirect_to my_health_body_measures_path, notice: 'Record was successfully created'
         else
           @errors = result.failure
-          @body_measure = resource.new(body_measure_params)
+          @body_measure = resource.new(resource_params)
           render :new
         end
       end
@@ -39,7 +39,7 @@ module My
           redirect_to my_health_body_measures_path, notice: 'Record was successfully updated'
         else
           @errors = result.failure
-          @body_measure = resource.new(body_measure_params)
+          @body_measure = resource.new(resource_params)
           render :edit
         end
       end
@@ -47,10 +47,10 @@ module My
       private
 
       def result
-        @result ||= service.send(action, resource: resource, attributes: body_measure_params)
+        @result ||= service.send(action, resource: resource, attributes: resource_params)
       end
 
-      def body_measure_params
+      def resource_params
         params.require(:health_body_measure).permit(:chest, :waist, :hips, :unit, :feeling, :notes).to_h.symbolize_keys
       end
 
