@@ -3,19 +3,14 @@
 module My
   module Learning
     class BooksController < BaseController
-      ACTION_MAP = {
-        create: :create,
-        update: :update
-      }.freeze
-
       include Import[service: 'learning.books.service']
 
       def index
-        @books = current_account.learning_book.order(created_at: :desc)
+        @books = resource.order(created_at: :desc)
       end
 
       def new
-        @book = current_account.learning_book.new
+        @book = resource.new
       end
 
       def create
@@ -23,7 +18,7 @@ module My
           redirect_to my_learning_books_path, notice: 'Record was successfully created'
         else
           @errors = result.failure
-          @book = current_account.learning_book.new(book_params)
+          @book = resource_class.new(resource_params)
           render :new
         end
       end
@@ -37,31 +32,19 @@ module My
           redirect_to my_learning_books_path, notice: 'Record was successfully updated'
         else
           @errors = result.failure
-          @book = current_account.learning_book.new(book_params)
+          @book = resource_class.new(resource_params)
           render :edit
         end
       end
 
       private
 
-      def result
-        @result ||= service.send(action, resource: resource, attributes: book_params)
-      end
-
-      def action
-        ACTION_MAP[params[:action].to_sym]
-      end
-
-      def book_params
+      def resource_params
         params.require(:learning_book).permit(:title, :author, :url, :status, :feeling, :notes).to_h.symbolize_keys
       end
 
-      def resource
-        if params[:id]
-          current_account.learning_book.find(params[:id])
-        else
-          current_account.learning_book
-        end
+      def resource_class
+        current_account.learning_book
       end
     end
   end

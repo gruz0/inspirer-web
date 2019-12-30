@@ -3,19 +3,14 @@
 module My
   module Activity
     class CustomWorkoutsController < BaseController
-      ACTION_MAP = {
-        create: :create,
-        update: :update
-      }.freeze
-
       include Import[service: 'activity.custom_workouts.service']
 
       def index
-        @custom_workouts = current_account.activity_custom_workout.order(created_at: :desc)
+        @custom_workouts = resource.order(created_at: :desc)
       end
 
       def new
-        @custom_workout = current_account.activity_custom_workout.new
+        @custom_workout = resource.new
       end
 
       def create
@@ -23,7 +18,7 @@ module My
           redirect_to my_activity_custom_workouts_path, notice: 'Record was successfully created'
         else
           @errors = result.failure
-          @custom_workout = current_account.activity_custom_workout.new(custom_workout_params)
+          @custom_workout = resource_class.new(resource_params)
           render :new
         end
       end
@@ -37,31 +32,19 @@ module My
           redirect_to my_activity_custom_workouts_path, notice: 'Record was successfully updated'
         else
           @errors = result.failure
-          @custom_workout = current_account.activity_custom_workout.new(custom_workout_params)
+          @custom_workout = resource_class.new(resource_params)
           render :edit
         end
       end
 
       private
 
-      def result
-        @result ||= service.send(action, resource: resource, attributes: custom_workout_params)
-      end
-
-      def action
-        ACTION_MAP[params[:action].to_sym]
-      end
-
-      def custom_workout_params
+      def resource_params
         params.require(:activity_custom_workout).permit(:title, :notes, :feeling).to_h.symbolize_keys
       end
 
-      def resource
-        if params[:id]
-          current_account.activity_custom_workout.find(params[:id])
-        else
-          current_account.activity_custom_workout
-        end
+      def resource_class
+        current_account.activity_custom_workout
       end
     end
   end

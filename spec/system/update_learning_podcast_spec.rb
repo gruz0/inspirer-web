@@ -6,7 +6,7 @@ RSpec.describe 'Updating a Learning Podcast', type: :system do
   let(:account) { create(:account) }
   let(:learning_podcast) do
     create(:learning_podcast,
-           url: 'http://domain.tld',
+           url: 'http://example.com',
            title: 'Some Text',
            feeling: 'amazing',
            account: account)
@@ -39,6 +39,22 @@ RSpec.describe 'Updating a Learning Podcast', type: :system do
     it 'renders table with a new record' do
       rows = [{ 'Title' => 'Podcast Title', 'Feeling' => 'good' }]
       expect(page).to have_table('learning_podcasts', with_rows: rows)
+    end
+  end
+
+  context 'with invalid inputs' do
+    before do
+      sign_in(account)
+
+      visit edit_my_learning_podcast_path(learning_podcast)
+
+      fill_in 'learning_podcast[url]', with: ' '
+
+      click_button 'Save'
+    end
+
+    it 'renders errors count' do
+      expect(page).to have_text('1 error prohibited this learning podcast from being saved')
     end
   end
 end

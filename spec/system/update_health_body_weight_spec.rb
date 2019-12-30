@@ -41,4 +41,20 @@ RSpec.describe 'Updating a Health Body Weight', type: :system do
       expect(page).to have_table('health_body_weights', with_rows: rows)
     end
   end
+
+  context 'with invalid inputs' do
+    before do
+      sign_in(account)
+
+      visit edit_my_health_body_weight_path(health_body_weight)
+
+      fill_in 'health_body_weight[weight]', with: ' '
+
+      click_button 'Save'
+    end
+
+    it 'renders errors count' do
+      expect(page).to have_text('1 error prohibited this health body weight from being saved')
+    end
+  end
 end

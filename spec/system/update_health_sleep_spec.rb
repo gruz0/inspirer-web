@@ -41,4 +41,7 @@ RSpec.describe 'Updating a Health Sleep', type: :system do
       expect(page).to have_table('health_sleeps', with_rows: rows)
     end
   end
+
+  # FIXME: It is not possible to test this case because of not enough text fields
+  xcontext 'with invalid inputs'
 end

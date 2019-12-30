@@ -6,7 +6,7 @@ RSpec.describe 'Updating a Learning Video', type: :system do
   let(:account) { create(:account) }
   let(:learning_video) do
     create(:learning_video,
-           url: 'http://domain.tld',
+           url: 'http://example.com',
            title: 'Some Text',
            feeling: 'amazing',
            account: account)
@@ -39,6 +39,22 @@ RSpec.describe 'Updating a Learning Video', type: :system do
     it 'renders table with a new record' do
       rows = [{ 'Title' => 'Video Title', 'Feeling' => 'good' }]
       expect(page).to have_table('learning_videos', with_rows: rows)
+    end
+  end
+
+  context 'with invalid input' do
+    before do
+      sign_in(account)
+
+      visit edit_my_learning_video_path(learning_video)
+
+      fill_in 'learning_video[url]', with: ' '
+
+      click_button 'Save'
+    end
+
+    it 'renders errors count' do
+      expect(page).to have_text('1 error prohibited this learning video from being saved')
     end
   end
 end

@@ -3,15 +3,10 @@
 module My
   module Activity
     class OutdoorWalksController < BaseController
-      ACTION_MAP = {
-        create: :create,
-        update: :update
-      }.freeze
-
       include Import['find_by_created_today', service: 'activity.outdoor_walks.service']
 
       def index
-        @outdoor_walks = current_account.activity_outdoor_walk.order(created_at: :desc)
+        @outdoor_walks = resource.order(created_at: :desc)
       end
 
       def new
@@ -21,7 +16,7 @@ module My
         if created_today
           redirect_to edit_my_activity_outdoor_walk_path(created_today)
         else
-          @outdoor_walk = current_account.activity_outdoor_walk.new
+          @outdoor_walk = resource.new
         end
       end
 
@@ -30,7 +25,7 @@ module My
           redirect_to my_activity_outdoor_walks_path, notice: 'Record was successfully created'
         else
           @errors = result.failure
-          @outdoor_walk = current_account.activity_outdoor_walk.new(outdoor_walk_params)
+          @outdoor_walk = resource_class.new(resource_params)
           render :new
         end
       end
@@ -44,33 +39,21 @@ module My
           redirect_to my_activity_outdoor_walks_path, notice: 'Record was successfully updated'
         else
           @errors = result.failure
-          @outdoor_walk = current_account.activity_outdoor_walk.new(outdoor_walk_params)
+          @outdoor_walk = resource_class.new(resource_params)
           render :edit
         end
       end
 
       private
 
-      def result
-        @result ||= service.send(action, resource: resource, attributes: outdoor_walk_params)
-      end
-
-      def action
-        ACTION_MAP[params[:action].to_sym]
-      end
-
-      def outdoor_walk_params
+      def resource_params
         params.require(:activity_outdoor_walk)
               .permit(:distance_unit, :distance, :steps, :feeling, :notes)
               .to_h.symbolize_keys
       end
 
-      def resource
-        if params[:id]
-          current_account.activity_outdoor_walk.find(params[:id])
-        else
-          current_account.activity_outdoor_walk
-        end
+      def resource_class
+        current_account.activity_outdoor_walk
       end
     end
   end

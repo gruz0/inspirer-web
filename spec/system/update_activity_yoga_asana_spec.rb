@@ -39,4 +39,20 @@ RSpec.describe 'Updating an Activity Yoga Asana', type: :system do
       expect(page).to have_table('activity_yoga_asanas', with_rows: rows)
     end
   end
+
+  context 'with invalid inputs' do
+    before do
+      sign_in(account)
+
+      visit edit_my_activity_yoga_asana_path(activity_yoga_asana)
+
+      fill_in 'activity_yoga_asana[notes]', with: ' '
+
+      click_button 'Save'
+    end
+
+    it 'renders errors count' do
+      expect(page).to have_text('1 error prohibited this activity yoga asana from being saved')
+    end
+  end
 end

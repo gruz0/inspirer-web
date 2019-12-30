@@ -45,4 +45,22 @@ RSpec.describe 'Updating a Health Body Measure', type: :system do
       expect(page).to have_table('health_body_measures', with_rows: rows)
     end
   end
+
+  context 'with invalid inputs' do
+    before do
+      sign_in(account)
+
+      visit edit_my_health_body_measure_path(health_body_measure)
+
+      fill_in 'health_body_measure[chest]', with: ' '
+      fill_in 'health_body_measure[waist]', with: ' '
+      fill_in 'health_body_measure[hips]', with: ' '
+
+      click_button 'Save'
+    end
+
+    it 'renders errors count' do
+      expect(page).to have_text('3 errors prohibited this health body measure from being saved')
+    end
+  end
 end
