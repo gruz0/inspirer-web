@@ -8,7 +8,7 @@ RSpec.describe 'Updating a Learning Book', type: :system do
     create(:learning_book,
            title: 'Book Title',
            author: 'Book Author',
-           url: 'http://domain.tld',
+           url: 'http://example.com',
            status: 'reading_now',
            feeling: 'amazing',
            account: account)
@@ -43,6 +43,22 @@ RSpec.describe 'Updating a Learning Book', type: :system do
     it 'renders table with a new record' do
       rows = [{ 'Title' => 'New Title', 'Author' => 'New Author', 'Status' => 'finished', 'Feeling' => 'good' }]
       expect(page).to have_table('learning_books', with_rows: rows)
+    end
+  end
+
+  context 'with invalid inputs' do
+    before do
+      sign_in(account)
+
+      visit edit_my_learning_book_path(learning_book)
+
+      fill_in 'learning_book[title]', with: ' '
+
+      click_button 'Save'
+    end
+
+    it 'renders errors count' do
+      expect(page).to have_text('1 error prohibited this learning book from being saved')
     end
   end
 end

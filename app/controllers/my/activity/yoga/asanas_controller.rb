@@ -19,7 +19,7 @@ module My
             redirect_to my_activity_yoga_asanas_path, notice: 'Record was successfully created'
           else
             @errors = result.failure
-            @asana = resource.new(resource_params)
+            @asana = resource_class.new(resource_params)
             render :new
           end
         end
@@ -33,7 +33,7 @@ module My
             redirect_to my_activity_yoga_asanas_path, notice: 'Record was successfully updated'
           else
             @errors = result.failure
-            @asana = resource.new(resource_params)
+            @asana = resource_class.new(resource_params)
             render :edit
           end
         end

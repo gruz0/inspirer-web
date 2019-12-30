@@ -18,7 +18,7 @@ module My
           redirect_to my_learning_videos_path, notice: 'Record was successfully created'
         else
           @errors = result.failure
-          @video = resource.new(resource_params)
+          @video = resource_class.new(resource_params)
           render :new
         end
       end
@@ -32,7 +32,7 @@ module My
           redirect_to my_learning_videos_path, notice: 'Record was successfully updated'
         else
           @errors = result.failure
-          @video = resource.new(resource_params)
+          @video = resource_class.new(resource_params)
           render :edit
         end
       end

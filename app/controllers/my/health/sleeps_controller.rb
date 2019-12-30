@@ -25,7 +25,7 @@ module My
           redirect_to my_health_sleeps_path, notice: 'Record was successfully created'
         else
           @errors = result.failure
-          @sleep = resource.new(resource_params)
+          @sleep = resource_class.new(resource_params)
           render :new
         end
       end
@@ -39,7 +39,7 @@ module My
           redirect_to my_health_sleeps_path, notice: 'Record was successfully updated'
         else
           @errors = result.failure
-          @sleep = resource.new(resource_params)
+          @sleep = resource_class.new(resource_params)
           render :edit
         end
       end

@@ -25,7 +25,7 @@ module My
           redirect_to my_activity_outdoor_walks_path, notice: 'Record was successfully created'
         else
           @errors = result.failure
-          @outdoor_walk = resource.new(resource_params)
+          @outdoor_walk = resource_class.new(resource_params)
           render :new
         end
       end
@@ -39,7 +39,7 @@ module My
           redirect_to my_activity_outdoor_walks_path, notice: 'Record was successfully updated'
         else
           @errors = result.failure
-          @outdoor_walk = resource.new(resource_params)
+          @outdoor_walk = resource_class.new(resource_params)
           render :edit
         end
       end

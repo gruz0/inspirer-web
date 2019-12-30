@@ -18,7 +18,7 @@ module My
           redirect_to my_learning_books_path, notice: 'Record was successfully created'
         else
           @errors = result.failure
-          @book = resource.new(resource_params)
+          @book = resource_class.new(resource_params)
           render :new
         end
       end
@@ -32,7 +32,7 @@ module My
           redirect_to my_learning_books_path, notice: 'Record was successfully updated'
         else
           @errors = result.failure
-          @book = resource.new(resource_params)
+          @book = resource_class.new(resource_params)
           render :edit
         end
       end

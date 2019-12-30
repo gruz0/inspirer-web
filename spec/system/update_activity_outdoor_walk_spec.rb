@@ -43,4 +43,21 @@ RSpec.describe 'Updating an Activity Outdoor Walk', type: :system do
       expect(page).to have_table('activity_outdoor_walks', with_rows: rows)
     end
   end
+
+  context 'with invalid inputs' do
+    before do
+      sign_in(account)
+
+      visit edit_my_activity_outdoor_walk_path(activity_outdoor_walk)
+
+      fill_in 'activity_outdoor_walk[distance]', with: ' '
+      fill_in 'activity_outdoor_walk[steps]', with: ' '
+
+      click_button 'Save'
+    end
+
+    it 'renders errors count' do
+      expect(page).to have_text('2 errors prohibited this activity outdoor walk from being saved')
+    end
+  end
 end

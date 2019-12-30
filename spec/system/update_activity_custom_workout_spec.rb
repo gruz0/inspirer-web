@@ -41,4 +41,20 @@ RSpec.describe 'Updating an Activity Custom Workout', type: :system do
       expect(page).to have_table('activity_custom_workouts', with_rows: rows)
     end
   end
+
+  context 'with invalid inputs' do
+    before do
+      sign_in(account)
+
+      visit edit_my_activity_custom_workout_path(activity_custom_workout)
+
+      fill_in 'activity_custom_workout[title]', with: ' '
+
+      click_button 'Save'
+    end
+
+    it 'renders errors count' do
+      expect(page).to have_text('1 error prohibited this activity custom workout from being saved')
+    end
+  end
 end

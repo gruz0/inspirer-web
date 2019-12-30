@@ -18,7 +18,7 @@ module My
           redirect_to my_learning_podcasts_path, notice: 'Record was successfully created'
         else
           @errors = result.failure
-          @podcast = resource.new(resource_params)
+          @podcast = resource_class.new(resource_params)
           render :new
         end
       end
@@ -32,7 +32,7 @@ module My
           redirect_to my_learning_podcasts_path, notice: 'Record was successfully updated'
         else
           @errors = result.failure
-          @podcast = resource.new(resource_params)
+          @podcast = resource_class.new(resource_params)
           render :edit
         end
       end
