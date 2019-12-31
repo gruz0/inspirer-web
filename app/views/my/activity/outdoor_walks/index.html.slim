@@ -23,7 +23,7 @@ br
           th scope="col"
 
       tbody
-        - @outdoor_walks.each do |outdoor_walk|
+        - @records.each do |outdoor_walk|
           tr
             td scope="row" = outdoor_walk.distance
             td = outdoor_walk.distance_unit

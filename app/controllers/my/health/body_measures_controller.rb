@@ -6,7 +6,7 @@ module My
       include Import['find_by_created_today', service: 'health.body_measures.service']
 
       def index
-        @body_measures = resource.order(created_at: :desc)
+        @records = resource.order(created_at: :desc)
       end
 
       def new
@@ -16,7 +16,7 @@ module My
         if created_today
           redirect_to edit_my_health_body_measure_path(created_today)
         else
-          @body_measure = resource.new
+          @record = resource.new
         end
       end
 
@@ -25,13 +25,13 @@ module My
           redirect_to my_health_body_measures_path, notice: 'Record was successfully created'
         else
           @errors = result.failure
-          @body_measure = resource_class.new(resource_params)
+          @record = resource_class.new(resource_params)
           render :new
         end
       end
 
       def edit
-        @body_measure = resource
+        @record = resource
       end
 
       def update
@@ -39,7 +39,7 @@ module My
           redirect_to my_health_body_measures_path, notice: 'Record was successfully updated'
         else
           @errors = result.failure
-          @body_measure = resource_class.new(resource_params)
+          @record = resource_class.new(resource_params)
           render :edit
         end
       end

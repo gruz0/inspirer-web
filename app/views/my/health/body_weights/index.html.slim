@@ -22,7 +22,7 @@ br
           th scope="col"
 
       tbody
-        - @body_weights.each do |body_weight|
+        - @records.each do |body_weight|
           tr
             td scope="row" = body_weight.weight
             td = body_weight.unit

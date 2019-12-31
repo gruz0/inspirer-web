@@ -21,7 +21,7 @@ br
           th scope="col"
 
       tbody
-        - @podcasts.each do |podcast|
+        - @records.each do |podcast|
           - podcast_presenter = Learning::PodcastPresenter.new(podcast)
           tr
             td scope="row" = podcast_presenter.clickable_title

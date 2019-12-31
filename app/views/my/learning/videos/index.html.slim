@@ -21,7 +21,7 @@ br
           th scope="col"
 
       tbody
-        - @videos.each do |video|
+        - @records.each do |video|
           - video_presenter = Learning::VideoPresenter.new(video)
           tr
             td scope="row" = video_presenter.clickable_title

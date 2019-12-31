@@ -23,7 +23,7 @@ br
           th scope="col"
 
       tbody
-        - @books.each do |book|
+        - @records.each do |book|
           - book_presenter = Learning::BookPresenter.new(book)
           tr
             td scope="row" = book_presenter.clickable_title

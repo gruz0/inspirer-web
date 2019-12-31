@@ -21,7 +21,7 @@ br
           th scope="col"
 
       tbody
-        - @asanas.each do |asana|
+        - @records.each do |asana|
           tr
             td scope="row" = asana.notes
             td = asana.feeling

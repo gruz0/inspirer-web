@@ -7,11 +7,11 @@ module My
         include Import[service: 'activity.yoga.asanas.service']
 
         def index
-          @asanas = resource.order(created_at: :desc)
+          @records = resource.order(created_at: :desc)
         end
 
         def new
-          @asana = resource.new
+          @record = resource.new
         end
 
         def create
@@ -19,13 +19,13 @@ module My
             redirect_to my_activity_yoga_asanas_path, notice: 'Record was successfully created'
           else
             @errors = result.failure
-            @asana = resource_class.new(resource_params)
+            @record = resource_class.new(resource_params)
             render :new
           end
         end
 
         def edit
-          @asana = resource
+          @record = resource
         end
 
         def update
@@ -33,7 +33,7 @@ module My
             redirect_to my_activity_yoga_asanas_path, notice: 'Record was successfully updated'
           else
             @errors = result.failure
-            @asana = resource_class.new(resource_params)
+            @record = resource_class.new(resource_params)
             render :edit
           end
         end
