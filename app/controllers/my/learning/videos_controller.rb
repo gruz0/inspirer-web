@@ -6,35 +6,23 @@ module My
       include Import[service: 'learning.videos.service']
 
       def index
-        @records = resource.order(created_at: :desc)
+        super
       end
 
       def new
-        @record = resource.new
+        super
       end
 
       def create
-        if result.success?
-          redirect_to my_learning_videos_path, notice: 'Record was successfully created'
-        else
-          @errors = result.failure
-          @record = resource_class.new(resource_params)
-          render :new
-        end
+        super { my_learning_videos_path }
       end
 
       def edit
-        @record = resource
+        super
       end
 
       def update
-        if result.success?
-          redirect_to my_learning_videos_path, notice: 'Record was successfully updated'
-        else
-          @errors = result.failure
-          @record = resource_class.new(resource_params)
-          render :edit
-        end
+        super { my_learning_videos_path }
       end
 
       private
