@@ -1,11 +1,3 @@
-/ FIXME: It should be deleted after extracting all business login into Service Objects
-- if defined?(:model) && model.errors.any?
-  .alert.alert-danger
-    h5 = t('errors.messages.not_saved', resource: model.class.model_name.human.downcase, count: model.errors.count)
-    ul
-      - model.errors.full_messages.each do |message|
-        li = message
-
 - if local_assigns[:errors].present?
   .alert.alert-danger
     h5 = t('errors.messages.not_saved', resource: model.class.model_name.human.downcase, count: local_assigns[:errors].count)
