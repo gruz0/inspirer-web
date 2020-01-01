@@ -25,7 +25,7 @@ account.health_sleep.create!(
   notes: 'Some Text'
 )
 
-body_weight_unit = HealthBodyWeight.units.keys.sample
+body_weight_unit = WEIGHT_UNITS.keys.sample
 body_weight = rand(85.0..110.0).round(2)
 body_weight *= KG_TO_LBS_RATIO if body_weight_unit == 'lbs'
 
@@ -36,7 +36,7 @@ account.health_body_weight.create!(
   notes: 'Awesome'
 )
 
-body_measure_unit = HealthBodyMeasure.units.keys.sample
+body_measure_unit = BODY_MEASURE_UNITS.keys.sample
 chest = rand(85..95)
 waist = rand(58..70)
 hips = rand(85..95)
@@ -56,7 +56,7 @@ account.health_body_measure.create!(
   notes: 'Awesome'
 )
 
-distance_unit = ActivityOutdoorWalk.distance_units.keys.sample
+distance_unit = DISTANCE_UNITS.keys.sample
 distance = rand(3.0..10.5)
 distance /= MI_TO_KM_RATIO if distance_unit == 'mi'
 
