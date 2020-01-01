@@ -21,7 +21,7 @@ br
           th scope="col"
 
       tbody
-        - @articles.each do |article|
+        - @records.each do |article|
           - article_presenter = Learning::ArticlePresenter.new(article)
           tr
             td scope="row" = article_presenter.clickable_title

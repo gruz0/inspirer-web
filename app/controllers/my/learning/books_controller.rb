@@ -6,35 +6,23 @@ module My
       include Import[service: 'learning.books.service']
 
       def index
-        @books = resource.order(created_at: :desc)
+        super
       end
 
       def new
-        @book = resource.new
+        super
       end
 
       def create
-        if result.success?
-          redirect_to my_learning_books_path, notice: 'Record was successfully created'
-        else
-          @errors = result.failure
-          @book = resource_class.new(resource_params)
-          render :new
-        end
+        super { my_learning_books_path }
       end
 
       def edit
-        @book = resource
+        super
       end
 
       def update
-        if result.success?
-          redirect_to my_learning_books_path, notice: 'Record was successfully updated'
-        else
-          @errors = result.failure
-          @book = resource_class.new(resource_params)
-          render :edit
-        end
+        super { my_learning_books_path }
       end
 
       private

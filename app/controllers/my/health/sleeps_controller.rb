@@ -6,7 +6,7 @@ module My
       include Import['find_by_created_today', service: 'health.sleeps.service']
 
       def index
-        @sleeps = resource.order(created_at: :desc)
+        super
       end
 
       def new
@@ -16,32 +16,20 @@ module My
         if created_today
           redirect_to edit_my_health_sleep_path(created_today)
         else
-          @sleep = resource.new
+          @record = resource.new
         end
       end
 
       def create
-        if result.success?
-          redirect_to my_health_sleeps_path, notice: 'Record was successfully created'
-        else
-          @errors = result.failure
-          @sleep = resource_class.new(resource_params)
-          render :new
-        end
+        super { my_health_sleeps_path }
       end
 
       def edit
-        @sleep = resource
+        super
       end
 
       def update
-        if result.success?
-          redirect_to my_health_sleeps_path, notice: 'Record was successfully updated'
-        else
-          @errors = result.failure
-          @sleep = resource_class.new(resource_params)
-          render :edit
-        end
+        super { my_health_sleeps_path }
       end
 
       private

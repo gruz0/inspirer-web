@@ -22,7 +22,7 @@ br
           th scope="col"
 
       tbody
-        - @custom_workouts.each do |custom_workout|
+        - @records.each do |custom_workout|
           tr
             td scope="row" = custom_workout.title
             td = custom_workout.notes

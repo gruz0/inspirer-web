@@ -6,35 +6,23 @@ module My
       include Import[service: 'activity.custom_workouts.service']
 
       def index
-        @custom_workouts = resource.order(created_at: :desc)
+        super
       end
 
       def new
-        @custom_workout = resource.new
+        super
       end
 
       def create
-        if result.success?
-          redirect_to my_activity_custom_workouts_path, notice: 'Record was successfully created'
-        else
-          @errors = result.failure
-          @custom_workout = resource_class.new(resource_params)
-          render :new
-        end
+        super { my_activity_custom_workouts_path }
       end
 
       def edit
-        @custom_workout = resource
+        super
       end
 
       def update
-        if result.success?
-          redirect_to my_activity_custom_workouts_path, notice: 'Record was successfully updated'
-        else
-          @errors = result.failure
-          @custom_workout = resource_class.new(resource_params)
-          render :edit
-        end
+        super { my_activity_custom_workouts_path }
       end
 
       private

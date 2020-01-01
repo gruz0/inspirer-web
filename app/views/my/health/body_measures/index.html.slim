@@ -24,7 +24,7 @@ br
           th scope="col"
 
       tbody
-        - @body_measures.each do |body_measure|
+        - @records.each do |body_measure|
           - body_measure_presenter = Health::BodyMeasurePresenter.new(body_measure)
           tr
             td scope="row" = body_measure_presenter.chest

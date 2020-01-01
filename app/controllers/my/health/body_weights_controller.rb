@@ -6,7 +6,7 @@ module My
       include Import['find_by_created_today', service: 'health.body_weights.service']
 
       def index
-        @body_weights = resource.order(created_at: :desc)
+        super
       end
 
       def new
@@ -16,32 +16,20 @@ module My
         if created_today
           redirect_to edit_my_health_body_weight_path(created_today)
         else
-          @body_weight = resource.new
+          @record = resource.new
         end
       end
 
       def create
-        if result.success?
-          redirect_to my_health_body_weights_path, notice: 'Record was successfully created'
-        else
-          @errors = result.failure
-          @body_weight = resource_class.new(resource_params)
-          render :new
-        end
+        super { my_health_body_weights_path }
       end
 
       def edit
-        @body_weight = resource
+        super
       end
 
       def update
-        if result.success?
-          redirect_to my_health_body_weights_path, notice: 'Record was successfully updated'
-        else
-          @errors = result.failure
-          @body_weight = resource_class.new(resource_params)
-          render :edit
-        end
+        super { my_health_body_weights_path }
       end
 
       private

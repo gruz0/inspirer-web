@@ -21,7 +21,7 @@ br
           th scope="col"
 
       tbody
-        - @sleeps.each do |sleep|
+        - @records.each do |sleep|
           - sleep_presenter = Health::SleepPresenter.new(sleep)
           tr
             td scope="row" = sleep_presenter.woke_up_at
