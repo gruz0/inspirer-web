@@ -40,6 +40,7 @@ script:
   - rubocop -DSE --force-exclusion -c .rubocop.yml
   - bundle exec rake unused_routes
   - bundle exec bin/rails zeitwerk:check
+  - bundle exec bin/rails db:seed
 
 services:
   - postgresql
