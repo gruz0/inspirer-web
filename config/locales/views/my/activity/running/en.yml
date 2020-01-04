@@ -1,0 +1,9 @@
+en:
+  views:
+    my:
+      activity:
+        running:
+          index:
+            title: Running
+          new:
+            title: New Record

@@ -1,34 +1,29 @@
-h2 Running
+- title = t('views.my.activity.running.index.title')
+- content_for :title, title
+
+h2 = title
 
 .row
   .col-sm-4
     = link_to(new_my_activity_running_path, class: 'btn btn-success')
-      = t('shared.buttons.track_today')
+      = t('shared.buttons.add_new')
 
 br
 
 .row
   .col
-    table.table.table-sm.table-hover
+    table#activity_running.table.table-sm.table-hover
       thead.thead-light
         tr
           th scope="col" Distance
-          th scope="col" Time spent
-          th scope="col" Updated at
+          th scope="col" Unit
+          th scope="col" Feeling
+          th scope="col" Created at
 
       tbody
-        tr
-          th scope="row" 5.02 km
-          td 00:37:15
-          td = long_date(Time.now)
-
-        tr
-          th scope="row" 5.55 km
-          td 00:38:10
-          td = long_date(Time.now)
-
-        tr
-          th scope="row" 4.38 km
-          td 00:33:23
-          td = long_date(Time.now)
-
+        - @records.each do |running|
+          tr
+            td scope="row" = running.distance
+            td = running.distance_unit
+            td = running.feeling
+            td = human_readable_date(running.created_at)
