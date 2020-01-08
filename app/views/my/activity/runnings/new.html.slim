@@ -1,0 +1,6 @@
+- title = t('views.my.activity.running.new.title')
+- content_for :title, title
+
+h2 = title
+
+= render 'form', running: @record, errors: @errors

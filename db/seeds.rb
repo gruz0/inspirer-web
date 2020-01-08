@@ -68,6 +68,13 @@ account.activity_outdoor_walk.create!(
   notes: 'Awesome Day!'
 )
 
+account.activity_running.create!(
+  distance: distance,
+  distance_unit: distance_unit,
+  feeling: FEELINGS.keys.sample.to_s,
+  notes: 'Awesome Day!'
+)
+
 account.activity_custom_workout.create!(
   title: 'Pushups',
   notes: '20, 20, 20, 15, 10',

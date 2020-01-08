@@ -1,0 +1,11 @@
+en:
+  views:
+    my:
+      activity:
+        running:
+          index:
+            title: Running
+          new:
+            title: New Record
+          edit:
+            title: Edit Record
