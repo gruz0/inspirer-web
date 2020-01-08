@@ -3,7 +3,7 @@
 module My
   module Activity
     class RunningsController < BaseController
-      include Import[service: 'activity.running.service']
+      include Import[service: 'activity.runnings.service']
 
       def index
         super

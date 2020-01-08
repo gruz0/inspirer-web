@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe Activity::Running::Schemas::RunningSchema do
+RSpec.describe Activity::Runnings::Schemas::RunningSchema do
   subject(:result) { described_class.call(input) }
 
   let(:input) do

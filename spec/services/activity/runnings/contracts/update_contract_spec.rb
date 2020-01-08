@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe Activity::Running::Contracts::UpdateContract do
+RSpec.describe Activity::Runnings::Contracts::UpdateContract do
   let(:input) do
     {
       attributes: {

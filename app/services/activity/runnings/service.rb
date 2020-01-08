@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Activity
-  module Running
+  module Runnings
     class Service < BaseService
       def self.transactions
         {

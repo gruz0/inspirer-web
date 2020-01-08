@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe Activity::Running::Transactions::UpdateTransaction do
+RSpec.describe Activity::Runnings::Transactions::UpdateTransaction do
   let(:expected_steps) do
     {
       validate: 'shared.validate',

@@ -3,7 +3,7 @@
 require 'rails_helper'
 require 'dry/transaction/operation'
 
-RSpec.describe Activity::Running::Operations::AssignAttributes do
+RSpec.describe Activity::Runnings::Operations::AssignAttributes do
   subject(:resource) { operation.value![:resource] }
 
   let(:operation) { described_class.new.call(input) }

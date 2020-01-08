@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Activity
-  module Running
+  module Runnings
     module Schemas
       RunningSchema = Dry::Schema.Params do
         required(:attributes).hash do

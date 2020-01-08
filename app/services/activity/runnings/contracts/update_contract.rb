@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 module Activity
-  module Running
+  module Runnings
     module Contracts
-      class CreateContract < Dry::Validation::Contract
+      class UpdateContract < Dry::Validation::Contract
         schema(Schemas::RunningSchema)
       end
     end

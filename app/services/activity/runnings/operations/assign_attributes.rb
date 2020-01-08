@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Activity
-  module Running
+  module Runnings
     module Operations
       class AssignAttributes < BaseOperation
         include Shared::Utils::Import['sanitizer']

@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe Activity::Running::Service do
+RSpec.describe Activity::Runnings::Service do
   subject(:service) { described_class.new }
 
   let(:account) { create(:account) }
