@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-class AddActivityRunning < ActiveRecord::Migration[6.0]
+class AddActivityRunnings < ActiveRecord::Migration[6.0]
   def change
-    create_table :activity_running do |t|
+    create_table :activity_runnings do |t|
       t.float :distance, null: false
       t.column :distance_unit, :distance_units, null: false
       t.column :feeling, :feelings, null: false
