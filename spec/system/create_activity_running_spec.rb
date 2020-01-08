@@ -31,7 +31,7 @@ RSpec.describe 'Creating an Activity Runnings', type: :system do
 
     it 'renders table with a new record' do
       rows = [{ 'Distance' => '10.5', 'Unit' => 'km', 'Feeling' => 'good' }]
-      expect(page).to have_table('activity_running', with_rows: rows)
+      expect(page).to have_table('activity_runnings', with_rows: rows)
     end
   end
 

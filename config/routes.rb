@@ -27,7 +27,7 @@ Rails.application.routes.draw do
     resources :activity, only: [:index]
     namespace :activity do
       resources :gym, only: [:index]
-      resources :runnings, only: %i[index new create]
+      resources :runnings, only: %i[index new create edit update]
       resources :outdoor_walks, only: %i[index new create edit update]
       resources :cycling, only: [:index]
       resources :yoga, only: [:index]

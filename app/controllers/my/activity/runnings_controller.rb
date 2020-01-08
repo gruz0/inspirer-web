@@ -17,6 +17,14 @@ module My
         super { my_activity_runnings_path }
       end
 
+      def edit
+        super
+      end
+
+      def update
+        super { my_activity_runnings_path }
+      end
+
       private
 
       def resource_params
