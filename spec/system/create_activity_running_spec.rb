@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe 'Creating an Activity Running', type: :system do
+RSpec.describe 'Creating an Activity Runnings', type: :system do
   let(:account) { create(:account) }
 
   it_behaves_like 'unauthorized' do
@@ -21,8 +21,8 @@ RSpec.describe 'Creating an Activity Running', type: :system do
       click_button 'Save'
     end
 
-    it 'redirects to my_activity_running_index_path' do
-      expect(page).to have_current_path(my_activity_running_index_path)
+    it 'redirects to my_activity_runnings_path' do
+      expect(page).to have_current_path(my_activity_runnings_path)
     end
 
     it 'renders confirmation message' do
@@ -44,8 +44,8 @@ RSpec.describe 'Creating an Activity Running', type: :system do
       click_button 'Save'
     end
 
-    it 'redirects to my_activity_running_index_path' do
-      expect(page).to have_current_path(my_activity_running_index_path)
+    it 'redirects to my_activity_runnings_path' do
+      expect(page).to have_current_path(my_activity_runnings_path)
     end
 
     it 'renders errors count' do

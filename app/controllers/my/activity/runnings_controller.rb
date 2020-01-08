@@ -2,7 +2,7 @@
 
 module My
   module Activity
-    class RunningController < BaseController
+    class RunningsController < BaseController
       include Import[service: 'activity.running.service']
 
       def index
@@ -14,7 +14,7 @@ module My
       end
 
       def create
-        super { my_activity_running_index_path }
+        super { my_activity_runnings_path }
       end
 
       private
