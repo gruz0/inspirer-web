@@ -25,7 +25,7 @@ RSpec.describe 'Updating a Learning Podcast', type: :system do
       fill_in 'learning_podcast[url]', with: 'http://example.com/test'
       fill_in 'learning_podcast[title]', with: 'Podcast Title'
       select 'good', from: 'learning_podcast[feeling]'
-      click_button 'Save'
+      click_button I18n.t('shared.buttons.save')
     end
 
     it 'redirects to my_learning_podcasts_path' do
@@ -50,7 +50,7 @@ RSpec.describe 'Updating a Learning Podcast', type: :system do
 
       fill_in 'learning_podcast[url]', with: ' '
 
-      click_button 'Save'
+      click_button I18n.t('shared.buttons.save')
     end
 
     it 'renders errors count' do

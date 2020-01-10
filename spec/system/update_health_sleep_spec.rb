@@ -25,7 +25,7 @@ RSpec.describe 'Updating a Health Sleep', type: :system do
       select '15', from: 'health_sleep[woke_up_at_hour]'
       select '59', from: 'health_sleep[woke_up_at_minutes]'
       select 'amazing', from: 'health_sleep[feeling]'
-      click_button 'Save'
+      click_button I18n.t('shared.buttons.save')
     end
 
     it 'redirects to my_health_sleeps_path' do

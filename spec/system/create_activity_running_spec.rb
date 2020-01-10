@@ -18,7 +18,7 @@ RSpec.describe 'Creating an Activity Runnings', type: :system do
       select 'km', from: 'activity_running[distance_unit]'
       fill_in 'activity_running[distance]', with: '10,55'
       select 'good', from: 'activity_running[feeling]'
-      click_button 'Save'
+      click_button I18n.t('shared.buttons.save')
     end
 
     it 'redirects to my_activity_runnings_path' do
@@ -41,7 +41,7 @@ RSpec.describe 'Creating an Activity Runnings', type: :system do
 
       visit new_my_activity_running_path
 
-      click_button 'Save'
+      click_button I18n.t('shared.buttons.save')
     end
 
     it 'redirects to my_activity_runnings_path' do

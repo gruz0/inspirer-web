@@ -9,7 +9,7 @@ RSpec.describe 'Sign Up', type: :system do
       fill_in 'Email', with: email
       fill_in 'Password', with: 'v3r45tr0n(Pass0rd'
       fill_in 'Password confirmation', with: 'v3r45tr0n(Pass0rd'
-      click_button 'Sign up'
+      click_button I18n.t('shared.buttons.sign_up')
     end
 
     let(:email) { 'me@example.com' }
@@ -50,7 +50,7 @@ RSpec.describe 'Sign Up', type: :system do
       fill_in 'Email', with: 'me@example.com'
       fill_in 'Password', with: password
       fill_in 'Password confirmation', with: password
-      click_button 'Sign up'
+      click_button I18n.t('shared.buttons.sign_up')
     end
 
     context 'with only numbers' do

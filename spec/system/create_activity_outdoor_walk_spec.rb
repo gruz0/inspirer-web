@@ -19,7 +19,7 @@ RSpec.describe 'Creating an Activity Outdoor Walk', type: :system do
       fill_in 'activity_outdoor_walk[distance]', with: '10,55'
       fill_in 'activity_outdoor_walk[steps]', with: 13_500
       select 'good', from: 'activity_outdoor_walk[feeling]'
-      click_button 'Save'
+      click_button I18n.t('shared.buttons.save')
     end
 
     it 'redirects to my_activity_outdoor_walks_path' do
@@ -42,7 +42,7 @@ RSpec.describe 'Creating an Activity Outdoor Walk', type: :system do
 
       visit new_my_activity_outdoor_walk_path
 
-      click_button 'Save'
+      click_button I18n.t('shared.buttons.save')
     end
 
     it 'redirects to my_activity_outdoor_walks_path' do

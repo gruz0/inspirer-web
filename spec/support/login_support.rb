@@ -6,7 +6,7 @@ module LoginSupport
     click_link 'Log In'
     fill_in 'Email', with: account.email
     fill_in 'Password', with: account.password
-    click_button 'Log in'
+    click_button I18n.t('shared.buttons.log_in')
   end
 end
 

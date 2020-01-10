@@ -29,7 +29,7 @@ RSpec.describe 'Updating a Learning Book', type: :system do
       fill_in 'learning_book[url]', with: 'http://example.com/test'
       select 'finished', from: 'learning_book[status]'
       select 'good', from: 'learning_book[feeling]'
-      click_button 'Save'
+      click_button I18n.t('shared.buttons.save')
     end
 
     it 'redirects to my_learning_books_path' do
@@ -54,7 +54,7 @@ RSpec.describe 'Updating a Learning Book', type: :system do
 
       fill_in 'learning_book[title]', with: ' '
 
-      click_button 'Save'
+      click_button I18n.t('shared.buttons.save')
     end
 
     it 'renders errors count' do

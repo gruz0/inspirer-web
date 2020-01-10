@@ -25,7 +25,7 @@ RSpec.describe 'Updating a Health Body Weight', type: :system do
       fill_in 'health_body_weight[weight]', with: 103.267
       select 'lbs', from: 'health_body_weight[unit]'
       select 'amazing', from: 'health_body_weight[feeling]'
-      click_button 'Save'
+      click_button I18n.t('shared.buttons.save')
     end
 
     it 'redirects to my_health_body_weights_path' do
@@ -50,7 +50,7 @@ RSpec.describe 'Updating a Health Body Weight', type: :system do
 
       fill_in 'health_body_weight[weight]', with: ' '
 
-      click_button 'Save'
+      click_button I18n.t('shared.buttons.save')
     end
 
     it 'renders errors count' do

@@ -18,7 +18,7 @@ RSpec.describe 'Creating an Activity Custom Workout', type: :system do
       fill_in 'activity_custom_workout[title]', with: 'Pushups'
       fill_in 'activity_custom_workout[notes]', with: '15, 15, 15, 10, 8'
       select 'good', from: 'activity_custom_workout[feeling]'
-      click_button 'Save'
+      click_button I18n.t('shared.buttons.save')
     end
 
     it 'redirects to my_activity_custom_workouts_path' do
@@ -41,7 +41,7 @@ RSpec.describe 'Creating an Activity Custom Workout', type: :system do
 
       visit new_my_activity_custom_workout_path
 
-      click_button 'Save'
+      click_button I18n.t('shared.buttons.save')
     end
 
     it 'redirects to my_activity_custom_workouts_path' do

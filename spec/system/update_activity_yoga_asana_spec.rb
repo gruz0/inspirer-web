@@ -23,7 +23,7 @@ RSpec.describe 'Updating an Activity Yoga Asana', type: :system do
 
       fill_in 'activity_yoga_asana[notes]', with: 'New Notes'
       select 'good', from: 'activity_yoga_asana[feeling]'
-      click_button 'Save'
+      click_button I18n.t('shared.buttons.save')
     end
 
     it 'redirects to my_activity_yoga_asanas_path' do
@@ -48,7 +48,7 @@ RSpec.describe 'Updating an Activity Yoga Asana', type: :system do
 
       fill_in 'activity_yoga_asana[notes]', with: ' '
 
-      click_button 'Save'
+      click_button I18n.t('shared.buttons.save')
     end
 
     it 'renders errors count' do

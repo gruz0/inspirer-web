@@ -25,7 +25,7 @@ RSpec.describe 'Updating an Activity Running', type: :system do
       select 'km', from: 'activity_running[distance_unit]'
       fill_in 'activity_running[distance]', with: 14.3
       select 'good', from: 'activity_running[feeling]'
-      click_button 'Save'
+      click_button I18n.t('shared.buttons.save')
     end
 
     it 'redirects to my_activity_runnings_path' do
@@ -50,7 +50,7 @@ RSpec.describe 'Updating an Activity Running', type: :system do
 
       fill_in 'activity_running[distance]', with: ' '
 
-      click_button 'Save'
+      click_button I18n.t('shared.buttons.save')
     end
 
     it 'renders errors count' do
