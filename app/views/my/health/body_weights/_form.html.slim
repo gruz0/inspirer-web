@@ -8,7 +8,7 @@
         .col-6.col-md-4.col-lg-5.col-xl-4
           = f.text_field :weight, class: 'form-control', required: 'required', min: 0, maxlength: 6
         .col-6.col-md-4.col-lg-5.col-xl-4
-          = f.select :unit, weight_units_to_array, \
+          = f.select :unit, hash_to_options(WEIGHT_UNITS), \
             { selected: body_weight.unit, prompt: 'Unit' }, \
             class: 'form-control'
 
