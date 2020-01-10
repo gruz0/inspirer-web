@@ -7,7 +7,7 @@ module Learning
         required(:attributes).hash do
           required(:url).filled(Types::StrippedString)
           optional(:title).value(Types::StrippedString, max_size?: 100)
-          required(:feeling).filled.value(included_in?: FEELINGS.keys.map(&:to_s))
+          required(:feeling).filled(Types::Feeling)
           optional(:notes).value(Types::StrippedString)
         end
       end
