@@ -51,9 +51,5 @@ RSpec.describe 'Creating an Activity Runnings', type: :system do
     it 'renders errors count' do
       expect(page).to have_text('3 errors prohibited this activity running from being saved')
     end
-
-    %i[distance_unit distance feeling].each do |key|
-      include_examples 'when field is blank', key
-    end
   end
 end

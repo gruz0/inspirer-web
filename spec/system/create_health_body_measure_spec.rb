@@ -62,9 +62,5 @@ RSpec.describe 'Creating a Health Body Measure', type: :system do
     it 'renders errors count' do
       expect(page).to have_text('5 errors prohibited this health body measure from being saved')
     end
-
-    %i[unit chest waist hips feeling].each do |key|
-      include_examples 'when field is blank', key
-    end
   end
 end

@@ -52,9 +52,5 @@ RSpec.describe 'Creating an Activity Outdoor Walk', type: :system do
     it 'renders errors count' do
       expect(page).to have_text('4 errors prohibited this activity outdoor walk from being saved')
     end
-
-    %i[distance_unit distance steps feeling].each do |key|
-      include_examples 'when field is blank', key
-    end
   end
 end
