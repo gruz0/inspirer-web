@@ -25,7 +25,7 @@ RSpec.describe 'Updating a Learning Video', type: :system do
       fill_in 'learning_video[url]', with: 'http://example.com/test'
       fill_in 'learning_video[title]', with: 'Video Title'
       select 'good', from: 'learning_video[feeling]'
-      click_button 'Save'
+      click_button I18n.t('shared.buttons.save')
     end
 
     it 'redirects to my_learning_videos_path' do
@@ -50,7 +50,7 @@ RSpec.describe 'Updating a Learning Video', type: :system do
 
       fill_in 'learning_video[url]', with: ' '
 
-      click_button 'Save'
+      click_button I18n.t('shared.buttons.save')
     end
 
     it 'renders errors count' do

@@ -25,7 +25,7 @@ RSpec.describe 'Sign In', type: :system do
       click_link 'Log In'
       fill_in 'Email', with: account.email
       fill_in 'Password', with: 'invalid'
-      click_button 'Log in'
+      click_button I18n.t('shared.buttons.log_in')
     end
 
     it 'redirects to login page' do

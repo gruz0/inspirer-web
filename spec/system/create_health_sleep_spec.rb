@@ -18,7 +18,7 @@ RSpec.describe 'Creating a Health Sleep', type: :system do
       select '08', from: 'health_sleep[woke_up_at_hour]'
       select '04', from: 'health_sleep[woke_up_at_minutes]'
       select 'good', from: 'health_sleep[feeling]'
-      click_button 'Save'
+      click_button I18n.t('shared.buttons.save')
     end
 
     it 'redirects to my_health_sleeps_path' do
@@ -41,7 +41,7 @@ RSpec.describe 'Creating a Health Sleep', type: :system do
 
       visit new_my_health_sleep_path
 
-      click_button 'Save'
+      click_button I18n.t('shared.buttons.save')
     end
 
     it 'redirects to my_health_sleeps_path' do

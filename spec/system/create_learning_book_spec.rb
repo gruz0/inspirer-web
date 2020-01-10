@@ -18,7 +18,7 @@ RSpec.describe 'Creating a Learning Book', type: :system do
       fill_in 'learning_book[title]', with: 'Book Title'
       select 'want_to_read', from: 'learning_book[status]'
       select 'good', from: 'learning_book[feeling]'
-      click_button 'Save'
+      click_button I18n.t('shared.buttons.save')
     end
 
     it 'redirects to my_learning_books_path' do
@@ -42,7 +42,7 @@ RSpec.describe 'Creating a Learning Book', type: :system do
 
       visit new_my_learning_book_path
 
-      click_button 'Save'
+      click_button I18n.t('shared.buttons.save')
     end
 
     it 'redirects to my_learning_books_path' do

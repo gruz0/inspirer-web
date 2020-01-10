@@ -18,7 +18,7 @@ RSpec.describe 'Creating a Learning Video', type: :system do
       fill_in 'learning_video[url]', with: 'http://example.com/test'
       fill_in 'learning_video[title]', with: 'Some text'
       select 'good', from: 'learning_video[feeling]'
-      click_button 'Save'
+      click_button I18n.t('shared.buttons.save')
     end
 
     it 'redirects to my_learning_videos_path' do
@@ -42,7 +42,7 @@ RSpec.describe 'Creating a Learning Video', type: :system do
 
       visit new_my_learning_video_path
 
-      click_button 'Save'
+      click_button I18n.t('shared.buttons.save')
     end
 
     it 'redirects to my_learning_videos_path' do

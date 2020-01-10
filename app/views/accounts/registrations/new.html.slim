@@ -21,7 +21,7 @@ h2 = title
     = f.label :password_confirmation
     = f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control'
 
-  = f.submit "Sign up", class: 'btn btn-primary'
+  = f.submit t('shared.buttons.sign_up'), class: 'btn btn-primary'
 
 = render "accounts/shared/links"
 

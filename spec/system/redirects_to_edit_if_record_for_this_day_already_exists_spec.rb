@@ -15,7 +15,7 @@ RSpec.describe 'Redirects to #edit if record for this day already exists', type:
 
       visit my_health_sleeps_path
 
-      click_link 'Track Today'
+      click_link I18n.t('shared.buttons.track_today')
     end
 
     it 'redirects to #edit' do
@@ -33,7 +33,7 @@ RSpec.describe 'Redirects to #edit if record for this day already exists', type:
 
       visit my_health_body_weights_path
 
-      click_link 'Track Today'
+      click_link I18n.t('shared.buttons.track_today')
     end
 
     it 'redirects to #edit' do
@@ -51,7 +51,7 @@ RSpec.describe 'Redirects to #edit if record for this day already exists', type:
 
       visit my_health_body_measures_path
 
-      click_link 'Track Today'
+      click_link I18n.t('shared.buttons.track_today')
     end
 
     it 'redirects to #edit' do
@@ -69,7 +69,7 @@ RSpec.describe 'Redirects to #edit if record for this day already exists', type:
 
       visit my_activity_outdoor_walks_path
 
-      click_link 'Track Today'
+      click_link I18n.t('shared.buttons.track_today')
     end
 
     it 'redirects to #edit' do

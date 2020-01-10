@@ -18,7 +18,7 @@ RSpec.describe 'Creating a Health Body Weight', type: :system do
       fill_in 'health_body_weight[weight]', with: '115,423'
       select 'kg', from: 'health_body_weight[unit]'
       select 'good', from: 'health_body_weight[feeling]'
-      click_button 'Save'
+      click_button I18n.t('shared.buttons.save')
     end
 
     it 'redirects to my_health_body_weights_path' do
@@ -41,7 +41,7 @@ RSpec.describe 'Creating a Health Body Weight', type: :system do
 
       visit new_my_health_body_weight_path
 
-      click_button 'Save'
+      click_button I18n.t('shared.buttons.save')
     end
 
     it 'redirects to my_health_body_weights_path' do

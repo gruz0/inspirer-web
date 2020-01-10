@@ -18,7 +18,7 @@ RSpec.describe 'Creating a Learning Article', type: :system do
       fill_in 'learning_article[url]', with: 'http://example.com/test'
       fill_in 'learning_article[title]', with: 'Some text'
       select 'good', from: 'learning_article[feeling]'
-      click_button 'Save'
+      click_button I18n.t('shared.buttons.save')
     end
 
     it 'redirects to my_learning_articles_path' do
@@ -42,7 +42,7 @@ RSpec.describe 'Creating a Learning Article', type: :system do
 
       visit new_my_learning_article_path
 
-      click_button 'Save'
+      click_button I18n.t('shared.buttons.save')
     end
 
     it 'redirects to my_learning_articles_path' do

@@ -20,7 +20,7 @@ RSpec.describe 'Creating a Health Body Measure', type: :system do
       fill_in 'health_body_measure[waist]', with: '29,651'
       fill_in 'health_body_measure[hips]', with: '40,613'
       select 'good', from: 'health_body_measure[feeling]'
-      click_button 'Save'
+      click_button I18n.t('shared.buttons.save')
     end
 
     it 'redirects to my_health_body_measures_path' do
@@ -52,7 +52,7 @@ RSpec.describe 'Creating a Health Body Measure', type: :system do
 
       visit new_my_health_body_measure_path
 
-      click_button 'Save'
+      click_button I18n.t('shared.buttons.save')
     end
 
     it 'redirects to my_health_body_measures_path' do
