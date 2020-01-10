@@ -5,11 +5,6 @@ module ApplicationHelper
     title.presence || t('views.layout.title')
   end
 
-  # FIXME: It should be deleted after updates all #index views
-  def long_date(value)
-    l(value, format: :long)
-  end
-
   def human_readable_date(date)
     content_tag(:abbr, title: l(date, format: :long)) do
       time_tag(date) do
