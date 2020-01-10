@@ -51,9 +51,5 @@ RSpec.describe 'Creating a Health Sleep', type: :system do
     it 'renders errors count' do
       expect(page).to have_text('3 errors prohibited this health sleep from being saved')
     end
-
-    %i[woke_up_at_hour woke_up_at_minutes feeling].each do |key|
-      include_examples 'when field is blank', key
-    end
   end
 end
