@@ -23,7 +23,8 @@
   .form-group.row
     = f.label :status, class: 'col-4 col-lg-3 col-form-label'
     = content_tag(:div, class: 'col-8 col-sm-5 col-md-4 col-lg-5 col-xl-4')
-      = f.select :status, book_statuses_to_array, { selected: book.status, prompt: 'Choose' }, class: 'form-control'
+      = f.select :status, hash_to_options(LEARNING_BOOK_STATUSES), { selected: book.status, prompt: 'Choose' }, \
+        class: 'form-control'
 
   = render partial: 'shared/feeling', locals: { form: f, value: book.feeling }
   = render partial: 'shared/notes', locals: { form: f }
