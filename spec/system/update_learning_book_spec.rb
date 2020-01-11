@@ -44,6 +44,10 @@ RSpec.describe 'Updating a Learning Book', type: :system do
       rows = [{ 'Title' => 'New Title', 'Author' => 'New Author', 'Status' => 'finished', 'Feeling' => 'good' }]
       expect(page).to have_table('learning_books', with_rows: rows)
     end
+
+    it 'renders clickable link' do
+      expect(page).to have_link(nil, href: 'http://example.com/test', text: 'New Title')
+    end
   end
 
   context 'with invalid inputs' do

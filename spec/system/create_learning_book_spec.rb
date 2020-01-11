@@ -16,6 +16,7 @@ RSpec.describe 'Creating a Learning Book', type: :system do
       visit new_my_learning_book_path
 
       fill_in 'learning_book[title]', with: 'Book Title'
+      fill_in 'learning_book[url]', with: 'http://example.com/test'
       select 'want_to_read', from: 'learning_book[status]'
       select 'good', from: 'learning_book[feeling]'
       click_button I18n.t('shared.buttons.save')
@@ -30,9 +31,12 @@ RSpec.describe 'Creating a Learning Book', type: :system do
     end
 
     it 'renders table with a new record' do
-      # FIXME: It should be replaced with link matcher
       rows = [{ 'Title' => 'Book Title', 'Author' => '', 'Status' => 'want_to_read', 'Feeling' => 'good' }]
       expect(page).to have_table('learning_books', with_rows: rows)
+    end
+
+    it 'renders clickable link' do
+      expect(page).to have_link(nil, href: 'http://example.com/test', text: 'Book Title')
     end
   end
 
