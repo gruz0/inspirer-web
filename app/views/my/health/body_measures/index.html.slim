@@ -36,3 +36,5 @@ br
             td.text-right
               = link_to(edit_my_health_body_measure_path(body_measure), class: 'btn btn-secondary btn-sm')
                 = fa_icon('edit')
+
+    == pagy_bootstrap_nav @pagy

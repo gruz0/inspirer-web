@@ -30,3 +30,5 @@ br
             td.text-right
               = link_to(edit_my_learning_article_path(article), class: 'btn btn-secondary btn-sm')
                 = fa_icon('edit')
+
+    == pagy_bootstrap_nav @pagy
