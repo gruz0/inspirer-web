@@ -6,7 +6,7 @@ module Health
       BodyWeightSchema = Dry::Schema.Params do
         required(:attributes).hash do
           required(:weight).filled(Types::Coercible::FloatWithComma) { gt?(0) }
-          required(:unit).filled.value(included_in?: WEIGHT_UNITS.keys.map(&:to_s))
+          required(:unit).filled(Types::WeightUnit)
           required(:feeling).filled(Types::Feeling)
           optional(:notes).value(Types::StrippedString)
         end
