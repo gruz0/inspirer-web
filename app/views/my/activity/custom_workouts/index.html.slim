@@ -31,3 +31,5 @@ br
             td.text-right
               = link_to(edit_my_activity_custom_workout_path(custom_workout), class: 'btn btn-secondary btn-sm')
                 = fa_icon('edit')
+
+    == pagy_bootstrap_nav @pagy

@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 module ApplicationHelper
+  include Pagy::Frontend
+
   def page_title(title)
     title.presence || t('views.layout.title')
   end

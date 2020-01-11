@@ -15,6 +15,7 @@ gem 'dry-validation'
 gem 'font-awesome-rails'
 gem 'hiredis'
 gem 'jquery-rails'
+gem 'pagy'
 gem 'pg'
 gem 'puma', '~> 4.3'
 # FIXME: It should be updated to '~> 6.0.3' after fixing Zeitwerk's issue

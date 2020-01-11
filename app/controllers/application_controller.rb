@@ -12,8 +12,10 @@ class ApplicationController < ActionController::Base
     update: :update
   }.freeze
 
+  include Pagy::Backend
+
   def index
-    @records = resource.order(created_at: :desc)
+    @pagy, @records = pagy(resource.order(created_at: :desc))
   end
 
   def new
