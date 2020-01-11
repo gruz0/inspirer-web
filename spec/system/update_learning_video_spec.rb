@@ -40,6 +40,10 @@ RSpec.describe 'Updating a Learning Video', type: :system do
       rows = [{ 'Title' => 'Video Title', 'Feeling' => 'good' }]
       expect(page).to have_table('learning_videos', with_rows: rows)
     end
+
+    it 'renders clickable link' do
+      expect(page).to have_link(nil, href: 'http://example.com/test', text: 'Video Title')
+    end
   end
 
   context 'with invalid input' do

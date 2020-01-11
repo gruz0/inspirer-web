@@ -30,9 +30,12 @@ RSpec.describe 'Creating a Learning Video', type: :system do
     end
 
     it 'renders table with a new record' do
-      # FIXME: It should be replaced with link matcher
       rows = [{ 'Title' => 'Some text', 'Feeling' => 'good' }]
       expect(page).to have_table('learning_videos', with_rows: rows)
+    end
+
+    it 'renders clickable link' do
+      expect(page).to have_link(nil, href: 'http://example.com/test', text: 'Some text')
     end
   end
 
