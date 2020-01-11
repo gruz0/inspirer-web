@@ -7,7 +7,7 @@ module Activity
         AsanaSchema = Dry::Schema.Params do
           required(:attributes).hash do
             required(:notes).filled(Types::StrippedString)
-            required(:feeling).filled.value(included_in?: FEELINGS.keys.map(&:to_s))
+            required(:feeling).filled(Types::Feeling)
           end
         end
       end
