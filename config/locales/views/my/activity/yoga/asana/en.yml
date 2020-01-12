@@ -6,6 +6,8 @@ en:
           asana:
             index:
               title: Asanas
+            show:
+              title: Asana
             new:
               title: New Asana
             edit:
