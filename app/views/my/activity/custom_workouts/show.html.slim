@@ -1,0 +1,6 @@
+- title = t('views.my.activity.yoga.asana.show.title')
+- content_for :title, title
+
+h2#title = @record.title.html_safe
+
+p#notes = @record.notes.html_safe

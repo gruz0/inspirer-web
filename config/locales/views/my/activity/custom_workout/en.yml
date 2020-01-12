@@ -5,6 +5,8 @@ en:
         custom_workout:
           index:
             title: Custom Workouts
+          show:
+            title: Custom Workout
           new:
             title: New Custom Workout
           edit:

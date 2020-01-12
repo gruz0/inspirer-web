@@ -38,7 +38,7 @@ Rails.application.routes.draw do
         resources :affirmation, only: [:index]
       end
       resources :stretching, only: [:index]
-      resources :custom_workouts, only: %i[index new create edit update]
+      resources :custom_workouts, only: %i[index show new create edit update]
     end
 
     resources :emotions, only: [:index]
