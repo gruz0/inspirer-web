@@ -9,6 +9,10 @@ module My
         super
       end
 
+      def show
+        super
+      end
+
       def new
         super
       end

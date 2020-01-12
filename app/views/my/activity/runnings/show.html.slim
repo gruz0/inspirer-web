@@ -1,0 +1,10 @@
+- title = t('views.my.activity.running.show.title')
+- content_for :title, title
+
+table
+  tbody
+    tr
+      th Distance
+      td = @record.distance
+
+p#notes = @record.notes.html_safe

@@ -5,6 +5,8 @@ en:
         running:
           index:
             title: Running
+          show:
+            title: Running
           new:
             title: New Record
           edit:
