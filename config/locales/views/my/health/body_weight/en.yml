@@ -5,6 +5,8 @@ en:
         body_weight:
           index:
             title: Body Weights
+          show:
+            title: Body Weight
           new:
             title: Add Body Weight
           edit:
