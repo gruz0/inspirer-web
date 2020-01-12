@@ -5,6 +5,8 @@ en:
         book:
           index:
             title: Books
+          show:
+            title: Book
           new:
             title: New Book
           edit:

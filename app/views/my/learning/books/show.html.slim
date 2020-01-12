@@ -1,0 +1,5 @@
+- title = t('views.my.learning.book.show.title')
+- content_for :title, title
+- book_presenter = Learning::BookPresenter.new(@record)
+
+h2 = book_presenter.clickable_title
