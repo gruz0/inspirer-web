@@ -10,6 +10,7 @@ RSpec.describe 'Viewing the Health Body Measure', type: :system do
            waist: '64.4',
            hips: '98.8',
            unit: :cm,
+           notes: 'My <b>Notes</b>',
            feeling: 'amazing',
            account: account)
   end
@@ -35,6 +36,10 @@ RSpec.describe 'Viewing the Health Body Measure', type: :system do
 
     it 'has hips' do
       expect(page).to have_text('98.8')
+    end
+
+    it 'has notes' do
+      expect(page.find(:id, 'notes')).to have_text('My Notes', exact: true)
     end
   end
 end

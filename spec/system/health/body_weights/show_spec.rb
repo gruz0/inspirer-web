@@ -8,6 +8,7 @@ RSpec.describe 'Viewing the Health Body Weight', type: :system do
     create(:health_body_weight,
            weight: '99.1',
            unit: :kg,
+           notes: 'My <b>Notes</b>',
            feeling: 'amazing',
            account: account)
   end
@@ -25,6 +26,10 @@ RSpec.describe 'Viewing the Health Body Weight', type: :system do
 
     it 'has weight' do
       expect(page).to have_text('99.1')
+    end
+
+    it 'has notes' do
+      expect(page.find(:id, 'notes')).to have_text('My Notes', exact: true)
     end
   end
 end

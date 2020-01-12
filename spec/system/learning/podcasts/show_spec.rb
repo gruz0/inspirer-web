@@ -8,6 +8,7 @@ RSpec.describe 'Viewing the Learning Podcast', type: :system do
     create(:learning_podcast,
            url: 'http://example.com',
            title: 'Some Text',
+           notes: 'My <b>Notes</b>',
            feeling: 'amazing',
            account: account)
   end
@@ -25,6 +26,10 @@ RSpec.describe 'Viewing the Learning Podcast', type: :system do
 
     it 'has clickable title' do
       expect(page).to have_link(nil, href: 'http://example.com', text: 'Some Text')
+    end
+
+    it 'has notes' do
+      expect(page.find(:id, 'notes')).to have_text('My Notes', exact: true)
     end
   end
 end

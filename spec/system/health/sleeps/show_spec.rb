@@ -8,6 +8,7 @@ RSpec.describe 'Viewing the Health Sleep', type: :system do
     create(:health_sleep,
            woke_up_at_hour: 3,
            woke_up_at_minutes: 43,
+           notes: 'My <b>Notes</b>',
            feeling: 'amazing',
            account: account)
   end
@@ -25,6 +26,10 @@ RSpec.describe 'Viewing the Health Sleep', type: :system do
 
     it 'has woke up values' do
       expect(page).to have_text('03:43')
+    end
+
+    it 'has notes' do
+      expect(page.find(:id, 'notes')).to have_text('My Notes', exact: true)
     end
   end
 end

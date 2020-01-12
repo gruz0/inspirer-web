@@ -3,3 +3,5 @@
 - article_presenter = Learning::ArticlePresenter.new(@record)
 
 h2 = article_presenter.clickable_title
+
+p#notes = @record.notes.html_safe

@@ -3,3 +3,5 @@
 - book_presenter = Learning::BookPresenter.new(@record)
 
 h2 = book_presenter.clickable_title
+
+p#notes = @record.notes.html_safe
