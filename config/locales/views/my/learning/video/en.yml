@@ -5,6 +5,8 @@ en:
         video:
           index:
             title: Videos
+          show:
+            title: Video
           new:
             title: New Video
           edit:

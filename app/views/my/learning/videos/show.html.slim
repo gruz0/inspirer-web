@@ -1,0 +1,7 @@
+- title = t('views.my.learning.video.show.title')
+- content_for :title, title
+- video_presenter = Learning::VideoPresenter.new(@record)
+
+h2 = video_presenter.clickable_title
+
+= image_tag('placeholders/360x240.png', class: 'img-thumbnail')
