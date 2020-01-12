@@ -1,0 +1,9 @@
+- title = t('views.my.health.sleep.show.title')
+- content_for :title, title
+- sleep_presenter = Health::SleepPresenter.new(@record)
+
+table
+  tbody
+    tr
+      th Woke up at
+      td = sleep_presenter.woke_up_at
