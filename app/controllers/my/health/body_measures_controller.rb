@@ -9,6 +9,10 @@ module My
         super
       end
 
+      def show
+        super
+      end
+
       def new
         # rubocop:disable Rails/DynamicFindBy
         created_today = find_by_created_today.call(resource)

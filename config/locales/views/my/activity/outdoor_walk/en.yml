@@ -5,6 +5,8 @@ en:
         outdoor_walk:
           index:
             title: Outdoor Walks
+          show:
+            title: Outdoor Walk
           new:
             title: New Outdoor Walk
           edit:

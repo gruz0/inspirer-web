@@ -1,0 +1,7 @@
+- title = t('views.my.learning.article.show.title')
+- content_for :title, title
+- article_presenter = Learning::ArticlePresenter.new(@record)
+
+h2 = article_presenter.clickable_title
+
+p#notes = @record.notes.html_safe

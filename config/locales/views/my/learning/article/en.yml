@@ -5,6 +5,8 @@ en:
         article:
           index:
             title: Articles
+          show:
+            title: Article
           new:
             title: New Article
           edit:

@@ -5,6 +5,8 @@ en:
         podcast:
           index:
             title: Podcasts
+          show:
+            title: Podcast
           new:
             title: New Podcast
           edit:

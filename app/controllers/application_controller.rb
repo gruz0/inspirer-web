@@ -18,6 +18,10 @@ class ApplicationController < ActionController::Base
     @pagy, @records = pagy(resource.order(created_at: :desc))
   end
 
+  def show
+    @record = resource
+  end
+
   def new
     @record = resource.new
   end

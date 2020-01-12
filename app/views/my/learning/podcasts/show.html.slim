@@ -1,0 +1,7 @@
+- title = t('views.my.learning.podcast.show.title')
+- content_for :title, title
+- podcast_presenter = Learning::PodcastPresenter.new(@record)
+
+h2 = podcast_presenter.clickable_title
+
+p#notes = @record.notes.html_safe

@@ -17,9 +17,9 @@ Rails.application.routes.draw do
   namespace :my do
     resources :health, only: [:index]
     namespace :health do
-      resources :sleeps, only: %i[index new create edit update]
-      resources :body_weights, only: %i[index new create edit update]
-      resources :body_measures, only: %i[index new create edit update]
+      resources :sleeps, only: %i[index show new create edit update]
+      resources :body_weights, only: %i[index show new create edit update]
+      resources :body_measures, only: %i[index show new create edit update]
     end
 
     resources :productivity, only: [:index]
@@ -27,28 +27,28 @@ Rails.application.routes.draw do
     resources :activity, only: [:index]
     namespace :activity do
       resources :gym, only: [:index]
-      resources :runnings, only: %i[index new create edit update]
-      resources :outdoor_walks, only: %i[index new create edit update]
+      resources :runnings, only: %i[index show new create edit update]
+      resources :outdoor_walks, only: %i[index show new create edit update]
       resources :cycling, only: [:index]
       resources :yoga, only: [:index]
       namespace :yoga do
-        resources :asanas, only: %i[index new create edit update]
+        resources :asanas, only: %i[index show new create edit update]
         resources :pranayama, only: [:index]
         resources :uddiyana, only: [:index]
         resources :affirmation, only: [:index]
       end
       resources :stretching, only: [:index]
-      resources :custom_workouts, only: %i[index new create edit update]
+      resources :custom_workouts, only: %i[index show new create edit update]
     end
 
     resources :emotions, only: [:index]
 
     resources :learning, only: [:index]
     namespace :learning do
-      resources :videos, only: %i[index new create edit update]
-      resources :podcasts, only: %i[index new create edit update]
-      resources :articles, only: %i[index new create edit update]
-      resources :books, only: %i[index new create edit update]
+      resources :videos, only: %i[index show new create edit update]
+      resources :podcasts, only: %i[index show new create edit update]
+      resources :articles, only: %i[index show new create edit update]
+      resources :books, only: %i[index show new create edit update]
     end
 
     resources :family, only: [:index]
