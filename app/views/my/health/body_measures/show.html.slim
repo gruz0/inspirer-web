@@ -1,0 +1,15 @@
+- title = t('views.my.health.body_measure.show.title')
+- content_for :title, title
+- body_measure_presenter = Health::BodyMeasurePresenter.new(@record)
+
+table
+  tbody
+    tr
+      th Chest
+      td = body_measure_presenter.chest
+    tr
+      th Waist
+      td = body_measure_presenter.waist
+    tr
+      th Hips
+      td = body_measure_presenter.hips

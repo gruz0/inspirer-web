@@ -19,7 +19,7 @@ Rails.application.routes.draw do
     namespace :health do
       resources :sleeps, only: %i[index new create edit update]
       resources :body_weights, only: %i[index new create edit update]
-      resources :body_measures, only: %i[index new create edit update]
+      resources :body_measures, only: %i[index show new create edit update]
     end
 
     resources :productivity, only: [:index]

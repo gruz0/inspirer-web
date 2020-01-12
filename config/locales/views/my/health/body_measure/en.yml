@@ -5,6 +5,8 @@ en:
         body_measure:
           index:
             title: Body Measures
+          show:
+            title: Body Measure
           new:
             title: Add Body Measures
           edit:
