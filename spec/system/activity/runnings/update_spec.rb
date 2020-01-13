@@ -56,5 +56,15 @@ RSpec.describe 'Updating an Activity Running', type: :system do
     it 'renders errors count' do
       expect(page).to have_text('1 error prohibited this activity running from being saved')
     end
+
+    # NOTE: Fixes #338 GitHub's Issue
+    # rubocop:disable RSpec/MultipleExpectations
+    it 'has correct path if Save button clicked twice' do
+      expect(page).to have_current_path(my_activity_running_path(activity_running))
+
+      click_button I18n.t('shared.buttons.save')
+      expect(page).to have_current_path(my_activity_running_path(activity_running))
+    end
+    # rubocop:enable RSpec/MultipleExpectations
   end
 end

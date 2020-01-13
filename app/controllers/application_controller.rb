@@ -44,8 +44,10 @@ class ApplicationController < ActionController::Base
     if result.success?
       redirect_to yield, notice: 'Record was successfully updated'
     else
+      resource.assign_attributes(resource_params)
+
       @errors = result.failure
-      @record = resource_class.new(resource_params)
+      @record = resource
       render :edit
     end
   end
@@ -63,11 +65,11 @@ class ApplicationController < ActionController::Base
   end
 
   def resource
-    if params[:id]
-      resource_class.find(params[:id])
-    else
-      resource_class
-    end
+    @resource ||= if params[:id]
+                    resource_class.find(params[:id])
+                  else
+                    resource_class
+                  end
   end
 
   def resource_class
