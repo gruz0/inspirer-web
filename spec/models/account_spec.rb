@@ -9,6 +9,7 @@ RSpec.describe Account, type: :model do
   it { is_expected.to have_many(:health_sleep).dependent(:destroy) }
   it { is_expected.to have_many(:health_body_weight).dependent(:destroy) }
   it { is_expected.to have_many(:health_body_measure).dependent(:destroy) }
+  it { is_expected.to have_many(:health_meditation).dependent(:destroy) }
   it { is_expected.to have_many(:activity_outdoor_walk).dependent(:destroy) }
   it { is_expected.to have_many(:activity_running).dependent(:destroy) }
   it { is_expected.to have_many(:activity_yoga_asana).dependent(:destroy) }
