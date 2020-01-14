@@ -1,0 +1,33 @@
+- title = t('views.my.health.meditation.index.title')
+- content_for :title, title
+
+h2 = title
+
+.row
+  .col-sm-4
+    = link_to(new_my_health_meditation_path, class: 'btn btn-success')
+      = t('shared.buttons.add_new')
+
+br
+
+.row
+  .col
+    table#health_meditations.table.table-sm.table-hover
+      thead.thead-light
+        tr
+          th scope="col" Notes
+          th scope="col" Feeling
+          th scope="col" Created at
+          th scope="col"
+
+      tbody
+        - @records.each do |meditation|
+          tr
+            td scope="row" = meditation.notes
+            td = meditation.feeling
+            td = human_readable_date(meditation.created_at)
+            td.text-right
+              = link_to(edit_my_health_meditation_path(meditation), class: 'btn btn-secondary btn-sm')
+                = fa_icon('edit')
+
+    == pagy_bootstrap_nav @pagy

@@ -1,0 +1,13 @@
+en:
+  views:
+    my:
+      health:
+        meditation:
+          index:
+            title: Meditations
+          show:
+            title: Meditation
+          new:
+            title: Add Meditation
+          edit:
+            title: Edit Meditation
