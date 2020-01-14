@@ -1,0 +1,6 @@
+- title = t('views.my.health.meditation.edit.title')
+- content_for :title, title
+
+h2 = title
+
+= render 'form', meditation: @record, errors: @errors

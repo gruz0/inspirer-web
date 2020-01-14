@@ -12,6 +12,7 @@ class Account < ApplicationRecord
   has_many :health_sleep, dependent: :destroy
   has_many :health_body_weight, dependent: :destroy
   has_many :health_body_measure, dependent: :destroy
+  has_many :health_meditation, dependent: :destroy
   has_many :activity_outdoor_walk, dependent: :destroy
   has_many :activity_running, dependent: :destroy
   has_many :activity_yoga_asana, dependent: :destroy

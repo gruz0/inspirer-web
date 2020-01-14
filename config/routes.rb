@@ -20,6 +20,7 @@ Rails.application.routes.draw do
       resources :sleeps, only: %i[index show new create edit update]
       resources :body_weights, only: %i[index show new create edit update]
       resources :body_measures, only: %i[index show new create edit update]
+      resources :meditations, only: %i[index show new create edit update]
     end
 
     resources :productivity, only: [:index]
