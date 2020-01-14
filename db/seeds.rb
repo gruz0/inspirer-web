@@ -56,6 +56,11 @@ account.health_body_measure.create!(
   notes: 'Awesome'
 )
 
+account.health_meditation.create!(
+  notes: 'My Meditation',
+  feeling: FEELINGS.keys.sample.to_s
+)
+
 distance_unit = DISTANCE_UNITS.keys.sample
 distance = rand(3.0..10.5)
 distance /= MI_TO_KM_RATIO if distance_unit == 'mi'
