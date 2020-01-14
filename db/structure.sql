@@ -413,6 +413,39 @@ ALTER SEQUENCE public.health_body_weights_id_seq OWNED BY public.health_body_wei
 
 
 --
+-- Name: health_meditations; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.health_meditations (
+    id bigint NOT NULL,
+    notes text NOT NULL,
+    feeling public.feelings NOT NULL,
+    account_id bigint,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
+-- Name: health_meditations_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.health_meditations_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: health_meditations_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.health_meditations_id_seq OWNED BY public.health_meditations.id;
+
+
+--
 -- Name: health_sleeps; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -662,6 +695,13 @@ ALTER TABLE ONLY public.health_body_weights ALTER COLUMN id SET DEFAULT nextval(
 
 
 --
+-- Name: health_meditations id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.health_meditations ALTER COLUMN id SET DEFAULT nextval('public.health_meditations_id_seq'::regclass);
+
+
+--
 -- Name: health_sleeps id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -774,6 +814,14 @@ ALTER TABLE ONLY public.health_body_measures
 
 ALTER TABLE ONLY public.health_body_weights
     ADD CONSTRAINT health_body_weights_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: health_meditations health_meditations_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.health_meditations
+    ADD CONSTRAINT health_meditations_pkey PRIMARY KEY (id);
 
 
 --
@@ -913,6 +961,13 @@ CREATE INDEX index_health_body_measures_on_account_id ON public.health_body_meas
 --
 
 CREATE INDEX index_health_body_weights_on_account_id ON public.health_body_weights USING btree (account_id);
+
+
+--
+-- Name: index_health_meditations_on_account_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_health_meditations_on_account_id ON public.health_meditations USING btree (account_id);
 
 
 --
@@ -1068,6 +1123,14 @@ ALTER TABLE ONLY public.active_storage_attachments
 
 
 --
+-- Name: health_meditations fk_rails_cebaa368c6; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.health_meditations
+    ADD CONSTRAINT fk_rails_cebaa368c6 FOREIGN KEY (account_id) REFERENCES public.accounts(id);
+
+
+--
 -- PostgreSQL database dump complete
 --
 
@@ -1103,6 +1166,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20191116164957'),
 ('20191121061222'),
 ('20191227210048'),
-('20200103091601');
+('20200103091601'),
+('20200114111245');
 
 
