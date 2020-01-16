@@ -16,6 +16,10 @@ RSpec.describe 'Viewing the index view of Health section', type: :system do
       visit my_health_index_path
     end
 
+    it 'has 4 cards' do
+      expect(page.find('main')).to have_selector('.card', count: 4)
+    end
+
     it 'has link to Sleep' do
       expect(page).to have_link(nil, href: my_health_sleeps_path, text: 'Sleep')
     end

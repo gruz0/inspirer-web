@@ -16,6 +16,10 @@ RSpec.describe 'Viewing the index view of Learning section', type: :system do
       visit my_learning_index_path
     end
 
+    it 'has 4 cards' do
+      expect(page.find('main')).to have_selector('.card', count: 4)
+    end
+
     it 'has link to Videos' do
       expect(page).to have_link(nil, href: my_learning_videos_path, text: 'Videos')
     end

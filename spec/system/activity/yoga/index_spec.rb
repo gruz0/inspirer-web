@@ -16,6 +16,10 @@ RSpec.describe 'Viewing the index view of Activity > Yoga section', type: :syste
       visit my_activity_yoga_index_path
     end
 
+    it 'has 4 cards' do
+      expect(page.find('main')).to have_selector('.card', count: 4)
+    end
+
     it 'has link to Asanas' do
       expect(page).to have_link(nil, href: my_activity_yoga_asanas_path, text: 'Asanas')
     end
