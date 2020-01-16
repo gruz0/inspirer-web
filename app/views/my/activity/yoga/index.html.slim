@@ -1,4 +1,7 @@
-h2 What is the Category of your Yoga Activity
+- title = t('views.my.activity.yoga.index.title')
+- content_for :title, title
+
+h2 = title
 
 .row
   .col-sm-4
@@ -6,26 +9,25 @@ h2 What is the Category of your Yoga Activity
       .card-body.rounded style="background-color:#f3a683;"
         h5.card-title
           = link_to(my_activity_yoga_asanas_path, class: 'stretched-link')
-            | Asanas
+            = t('views.my.activity.yoga.index.cards.asanas')
 
   .col-sm-4
     .card.mb-3.text-center.border-0
       .card-body.rounded style="background-color:#a29bfe;"
         h5.card-title
           = link_to(my_activity_yoga_pranayama_index_path, class: 'stretched-link')
-            | Pranayamas
+            = t('views.my.activity.yoga.index.cards.pranayamas')
 
   .col-sm-4
     .card.mb-3.text-center.border-0
       .card-body.rounded style="background-color:#f8a5c2;"
         h5.card-title
           = link_to(my_activity_yoga_uddiyana_index_path, class: 'stretched-link')
-            | Uddiyanas
+            = t('views.my.activity.yoga.index.cards.uddiyanas')
 
   .col-sm-4
     .card.mb-3.text-center.border-0
       .card-body.rounded style="background-color:#fdcb6e;"
         h5.card-title
           = link_to(my_activity_yoga_affirmation_index_path, class: 'stretched-link')
-            | Affirmations
-
+            = t('views.my.activity.yoga.index.cards.affirmations')

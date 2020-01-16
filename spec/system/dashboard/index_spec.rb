@@ -21,27 +21,33 @@ RSpec.describe 'Viewing the index view of Dashboard', type: :system do
     end
 
     it 'has link to Health' do
-      expect(page).to have_link(nil, href: my_health_index_path, text: 'Health')
+      expect(page).to have_link(nil, href: my_health_index_path,
+                                     text: I18n.t('views.dashboard.index.cards.health'))
     end
 
     it 'has link to Productivity' do
-      expect(page).to have_link(nil, href: my_productivity_index_path, text: 'Productivity')
+      expect(page).to have_link(nil, href: my_productivity_index_path,
+                                     text: I18n.t('views.dashboard.index.cards.productivity'))
     end
 
     it 'has link to Activity' do
-      expect(page).to have_link(nil, href: my_activity_index_path, text: 'Activity')
+      expect(page).to have_link(nil, href: my_activity_index_path,
+                                     text: I18n.t('views.dashboard.index.cards.activity'))
     end
 
     it 'has link to Emotions' do
-      expect(page).to have_link(nil, href: my_emotions_path, text: 'Emotions')
+      expect(page).to have_link(nil, href: my_emotions_path,
+                                     text: I18n.t('views.dashboard.index.cards.emotions'))
     end
 
     it 'has link to Learning' do
-      expect(page).to have_link(nil, href: my_learning_index_path, text: 'Learning')
+      expect(page).to have_link(nil, href: my_learning_index_path,
+                                     text: I18n.t('views.dashboard.index.cards.learning'))
     end
 
     it 'has link to Family' do
-      expect(page).to have_link(nil, href: my_family_index_path, text: 'Family')
+      expect(page).to have_link(nil, href: my_family_index_path,
+                                     text: I18n.t('views.dashboard.index.cards.family'))
     end
   end
 end

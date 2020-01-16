@@ -21,19 +21,23 @@ RSpec.describe 'Viewing the index view of Learning section', type: :system do
     end
 
     it 'has link to Videos' do
-      expect(page).to have_link(nil, href: my_learning_videos_path, text: 'Videos')
+      expect(page).to have_link(nil, href: my_learning_videos_path,
+                                     text: I18n.t('views.my.learning.index.cards.videos'))
     end
 
     it 'has link to Podcasts' do
-      expect(page).to have_link(nil, href: my_learning_podcasts_path, text: 'Podcasts')
+      expect(page).to have_link(nil, href: my_learning_podcasts_path,
+                                     text: I18n.t('views.my.learning.index.cards.podcasts'))
     end
 
     it 'has link to Articles' do
-      expect(page).to have_link(nil, href: my_learning_articles_path, text: 'Articles')
+      expect(page).to have_link(nil, href: my_learning_articles_path,
+                                     text: I18n.t('views.my.learning.index.cards.articles'))
     end
 
     it 'has link to Books' do
-      expect(page).to have_link(nil, href: my_learning_books_path, text: 'Books')
+      expect(page).to have_link(nil, href: my_learning_books_path,
+                                     text: I18n.t('views.my.learning.index.cards.books'))
     end
   end
 end

@@ -4,3 +4,11 @@ en:
       activity:
         index:
           title: Activity
+          cards:
+            gym: Gym & Workout
+            running: Running
+            outdoor_walks: Outdoor Walks
+            cycling: Cycling
+            yoga: Yoga
+            stretching: Stretching
+            custom_workouts: Custom Workouts

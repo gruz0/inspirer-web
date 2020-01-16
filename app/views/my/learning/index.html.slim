@@ -9,26 +9,25 @@ h2 = title
       .card-body.rounded style="background-color:#f3a683;"
         h5.card-title
           = link_to(my_learning_videos_path, class: 'stretched-link')
-            | Videos
+            = t('views.my.learning.index.cards.videos')
 
   .col-sm-4
     .card.mb-3.text-center.border-0
       .card-body.rounded style="background-color:#cf6a87;"
         h5.card-title
           = link_to(my_learning_podcasts_path, class: 'stretched-link')
-            | Podcasts
+            = t('views.my.learning.index.cards.podcasts')
 
   .col-sm-4
     .card.mb-3.text-center.border-0
       .card-body.rounded style="background-color:#a3cb38;"
         h5.card-title
           = link_to(my_learning_articles_path, class: 'stretched-link')
-            | Articles
+            = t('views.my.learning.index.cards.articles')
 
   .col-sm-4
     .card.mb-3.text-center.border-0
       .card-body.rounded style="background-color:#fdcb6e;"
         h5.card-title
           = link_to(my_learning_books_path, class: 'stretched-link')
-            | Books
-
+            = t('views.my.learning.index.cards.books')

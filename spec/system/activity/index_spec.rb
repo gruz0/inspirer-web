@@ -21,31 +21,38 @@ RSpec.describe 'Viewing the index view of Activity section', type: :system do
     end
 
     it 'has link to Gym & Workout' do
-      expect(page).to have_link(nil, href: my_activity_gym_index_path, text: 'Gym & Workout')
+      expect(page).to have_link(nil, href: my_activity_gym_index_path,
+                                     text: I18n.t('views.my.activity.index.cards.gym'))
     end
 
     it 'has link to Running' do
-      expect(page).to have_link(nil, href: my_activity_runnings_path, text: 'Running')
+      expect(page).to have_link(nil, href: my_activity_runnings_path,
+                                     text: I18n.t('views.my.activity.index.cards.running'))
     end
 
     it 'has link to Outdoor Walks' do
-      expect(page).to have_link(nil, href: my_activity_outdoor_walks_path, text: 'Outdoor Walks')
+      expect(page).to have_link(nil, href: my_activity_outdoor_walks_path,
+                                     text: I18n.t('views.my.activity.index.cards.outdoor_walks'))
     end
 
     it 'has link to Cycling' do
-      expect(page).to have_link(nil, href: my_activity_cycling_index_path, text: 'Cycling')
+      expect(page).to have_link(nil, href: my_activity_cycling_index_path,
+                                     text: I18n.t('views.my.activity.index.cards.cycling'))
     end
 
     it 'has link to Yoga' do
-      expect(page).to have_link(nil, href: my_activity_yoga_index_path, text: 'Yoga')
+      expect(page).to have_link(nil, href: my_activity_yoga_index_path,
+                                     text: I18n.t('views.my.activity.index.cards.yoga'))
     end
 
     it 'has link to Stretching' do
-      expect(page).to have_link(nil, href: my_activity_stretching_index_path, text: 'Stretching')
+      expect(page).to have_link(nil, href: my_activity_stretching_index_path,
+                                     text: I18n.t('views.my.activity.index.cards.stretching'))
     end
 
-    it 'has link to Custom Workout' do
-      expect(page).to have_link(nil, href: my_activity_custom_workouts_path, text: 'Custom Workout')
+    it 'has link to Custom Workouts' do
+      expect(page).to have_link(nil, href: my_activity_custom_workouts_path,
+                                     text: I18n.t('views.my.activity.index.cards.custom_workouts'))
     end
   end
 end
