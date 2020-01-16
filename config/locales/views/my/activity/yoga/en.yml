@@ -1,0 +1,12 @@
+en:
+  views:
+    my:
+      activity:
+        yoga:
+          index:
+            title: Yoga
+            cards:
+              asanas: Asanas
+              pranayamas: Pranayamas
+              uddiyanas: Uddiyanas
+              affirmations: Affirmations

@@ -4,3 +4,8 @@ en:
       learning:
         index:
           title: Learning
+          cards:
+            videos: Videos
+            podcasts: Podcasts
+            articles: Articles
+            books: Books

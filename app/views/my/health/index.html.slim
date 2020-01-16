@@ -9,26 +9,25 @@ h2 = title
       .card-body.rounded style="background-color:#f3a683;"
         h5.card-title
           = link_to(my_health_sleeps_path, class: 'stretched-link')
-            | Sleep
+            = t('views.my.health.index.cards.sleep')
 
   .col-sm-4
     .card.mb-3.text-center.border-0
       .card-body.rounded style="background-color:#cf6a87;"
         h5.card-title
           = link_to(my_health_body_weights_path, class: 'stretched-link')
-            | Body Weight
+            = t('views.my.health.index.cards.body_weight')
 
   .col-sm-4
     .card.mb-3.text-center.border-0
       .card-body.rounded style="background-color:#fdcb6e;"
         h5.card-title
           = link_to(my_health_body_measures_path, class: 'stretched-link')
-            | Body Measures
+            = t('views.my.health.index.cards.body_measures')
 
   .col-sm-4
     .card.mb-3.text-center.border-0
       .card-body.rounded style="background-color:#a3cb38;"
         h5.card-title
           = link_to(my_health_meditations_path, class: 'stretched-link')
-            | Meditations
-
+            = t('views.my.health.index.cards.meditations')

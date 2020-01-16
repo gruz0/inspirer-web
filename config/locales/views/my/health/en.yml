@@ -4,3 +4,8 @@ en:
       health:
         index:
           title: Health
+          cards:
+            sleep: Sleep
+            body_weight: Body Weight
+            body_measures: Body Measures
+            meditations: Meditations
