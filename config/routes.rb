@@ -24,6 +24,10 @@ Rails.application.routes.draw do
     end
 
     resources :productivity, only: [:index]
+    namespace :productivity do
+      resources :habbits, only: [:index]
+      resources :eat_the_frog_first, only: [:index]
+    end
 
     resources :activity, only: [:index]
     namespace :activity do

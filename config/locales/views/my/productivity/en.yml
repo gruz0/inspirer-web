@@ -1,0 +1,9 @@
+en:
+  views:
+    my:
+      productivity:
+        index:
+          title: Productivity
+          cards:
+            habbits: Habbits
+            eat_the_frog_first: Eat the Frog First
