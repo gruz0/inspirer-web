@@ -32,7 +32,7 @@ module My
       private
 
       def resource_params
-        params.require(:activity_custom_workout).permit(:title, :notes, :feeling).to_h.symbolize_keys
+        params.require(:activity_custom_workout).permit(:title, :notes, :feeling, :created_at).to_h.symbolize_keys
       end
 
       def resource_class
