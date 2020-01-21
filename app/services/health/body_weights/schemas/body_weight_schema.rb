@@ -9,6 +9,7 @@ module Health
           required(:unit).filled(Types::WeightUnit)
           required(:feeling).filled(Types::Feeling)
           optional(:notes).value(Types::StrippedString)
+          optional(:created_at).maybe(Types::Params::DateTime)
         end
       end
     end

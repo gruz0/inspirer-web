@@ -39,7 +39,9 @@ module My
       private
 
       def resource_params
-        params.require(:health_body_weight).permit(:weight, :unit, :feeling, :notes).to_h.symbolize_keys
+        params.require(:health_body_weight)
+              .permit(:weight, :unit, :feeling, :notes, :created_at)
+              .to_h.symbolize_keys
       end
 
       def resource_class
