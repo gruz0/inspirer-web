@@ -32,7 +32,9 @@ module My
       private
 
       def resource_params
-        params.require(:activity_running).permit(:distance_unit, :distance, :feeling, :notes).to_h.symbolize_keys
+        params.require(:activity_running)
+              .permit(:distance_unit, :distance, :feeling, :notes, :created_at)
+              .to_h.symbolize_keys
       end
 
       def resource_class

@@ -13,7 +13,7 @@ RSpec.describe Activity::Runnings::Service do
     let(:input) do
       {
         resource: account.activity_running,
-        attributes: attributes_for(:activity_running)
+        attributes: attributes_for(:activity_running, created_at: '2020-01-19 12:15')
       }
     end
 
@@ -28,7 +28,8 @@ RSpec.describe Activity::Runnings::Service do
         :activity_running,
         distance: 12.1,
         distance_unit: 'km',
-        feeling: 'good'
+        feeling: 'good',
+        created_at: Time.zone.parse('2020-01-19 15:30:03')
       )
     end
 
@@ -39,7 +40,8 @@ RSpec.describe Activity::Runnings::Service do
           distance: '12,53',
           distance_unit: 'mi',
           feeling: 'amazing',
-          notes: html_ipsum('Awesome Day')
+          notes: html_ipsum('Awesome Day'),
+          created_at: '2020-01-18 12:15:31'
         }
       }
     end
@@ -60,6 +62,12 @@ RSpec.describe Activity::Runnings::Service do
 
     it 'updates notes' do
       expect { result }.to change(resource.reload, :notes).from('').to('Awesome Day')
+    end
+
+    it 'updates created_at' do
+      expect { result }.to change(resource.reload, :created_at)
+        .from(Time.zone.parse('2020-01-19 15:30:03'))
+        .to(Time.zone.parse('2020-01-18 12:15:31'))
     end
   end
 end
