@@ -33,7 +33,9 @@ module My
         private
 
         def resource_params
-          params.require(:activity_yoga_asana).permit(:notes, :feeling).to_h.symbolize_keys
+          params.require(:activity_yoga_asana)
+                .permit(:notes, :feeling, :created_at)
+                .to_h.symbolize_keys
         end
 
         def resource_class
