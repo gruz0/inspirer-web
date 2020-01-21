@@ -13,7 +13,7 @@ RSpec.describe Activity::CustomWorkouts::Service do
     let(:input) do
       {
         resource: account.activity_custom_workout,
-        attributes: attributes_for(:activity_custom_workout, created_at: '2020-01-19 12:15')
+        attributes: attributes_for(:activity_custom_workout)
       }
     end
 

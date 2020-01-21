@@ -13,7 +13,7 @@ RSpec.describe Activity::Yoga::Asanas::Service do
     let(:input) do
       {
         resource: account.activity_yoga_asana,
-        attributes: attributes_for(:activity_yoga_asana, created_at: '2020-01-19 12:15')
+        attributes: attributes_for(:activity_yoga_asana)
       }
     end
 

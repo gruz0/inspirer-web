@@ -13,7 +13,7 @@ RSpec.describe Activity::Runnings::Service do
     let(:input) do
       {
         resource: account.activity_running,
-        attributes: attributes_for(:activity_running, created_at: '2020-01-19 12:15')
+        attributes: attributes_for(:activity_running)
       }
     end
 
