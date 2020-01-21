@@ -28,7 +28,8 @@ RSpec.describe Learning::Articles::Service do
         :learning_article,
         url: 'https://example.com',
         title: '',
-        feeling: 'good'
+        feeling: 'good',
+        created_at: Time.zone.parse('2020-01-19 15:30:03')
       )
     end
 
@@ -39,7 +40,8 @@ RSpec.describe Learning::Articles::Service do
           url: '  https://example.com/page1  ',
           title: '  Page Title ',
           feeling: 'amazing',
-          notes: html_ipsum('Awesome Post')
+          notes: html_ipsum('Awesome Post'),
+          created_at: '2020-01-18 12:15:31'
         }
       }
     end
@@ -60,6 +62,12 @@ RSpec.describe Learning::Articles::Service do
 
     it 'updates notes' do
       expect { result }.to change(resource.reload, :notes).from('').to('Awesome Post')
+    end
+
+    it 'updates created_at' do
+      expect { result }.to change(resource.reload, :created_at)
+        .from(Time.zone.parse('2020-01-19 15:30:03'))
+        .to(Time.zone.parse('2020-01-18 12:15:31'))
     end
   end
 end
