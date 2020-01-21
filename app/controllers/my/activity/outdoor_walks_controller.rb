@@ -3,7 +3,7 @@
 module My
   module Activity
     class OutdoorWalksController < BaseController
-      include Import['find_by_created_today', service: 'activity.outdoor_walks.service']
+      include Import['find_for_specific_day', service: 'activity.outdoor_walks.service']
 
       def index
         super
@@ -14,9 +14,7 @@ module My
       end
 
       def new
-        # rubocop:disable Rails/DynamicFindBy
-        created_today = find_by_created_today.call(resource)
-        # rubocop:enable Rails/DynamicFindBy
+        created_today = find_for_specific_day.call(resource.new, Date.current)
         if created_today
           redirect_to edit_my_activity_outdoor_walk_path(created_today)
         else
