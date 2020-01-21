@@ -40,7 +40,7 @@ module My
 
       def resource_params
         params.require(:activity_outdoor_walk)
-              .permit(:distance_unit, :distance, :steps, :feeling, :notes)
+              .permit(:distance_unit, :distance, :steps, :feeling, :notes, :created_at)
               .to_h.symbolize_keys
       end
 
