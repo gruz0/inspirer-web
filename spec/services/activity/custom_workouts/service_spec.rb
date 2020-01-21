@@ -18,12 +18,6 @@ RSpec.describe Activity::CustomWorkouts::Service do
     end
 
     it { is_expected.to be_success }
-
-    it 'creates the record for the given date' do
-      created_at = result.success[:resource].created_at
-
-      expect(created_at).to eq(Time.zone.parse('2020-01-19 12:15:00'))
-    end
   end
 
   describe '#update' do
