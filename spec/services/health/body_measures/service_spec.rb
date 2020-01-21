@@ -18,16 +18,6 @@ RSpec.describe Health::BodyMeasures::Service do
     end
 
     it { is_expected.to be_success }
-
-    context 'when record for this day already exists' do
-      before { create(:health_body_measure, account: account) }
-
-      it { is_expected.to be_failure }
-
-      it 'has error message' do
-        expect(result.failure).to include('Record for this day already exists')
-      end
-    end
   end
 
   describe '#update' do
@@ -40,7 +30,8 @@ RSpec.describe Health::BodyMeasures::Service do
         waist: 66.8,
         hips: 91.9,
         unit: 'cm',
-        feeling: 'good'
+        feeling: 'good',
+        created_at: Time.zone.parse('2020-01-19 15:30:03')
       )
     end
 
@@ -53,7 +44,8 @@ RSpec.describe Health::BodyMeasures::Service do
           hips: 90.1,
           unit: 'inch',
           feeling: 'amazing',
-          notes: html_ipsum('Awesome Day')
+          notes: html_ipsum('Awesome Day'),
+          created_at: '2020-01-18 12:15:31'
         }
       }
     end
@@ -82,6 +74,12 @@ RSpec.describe Health::BodyMeasures::Service do
 
     it 'updates notes' do
       expect { result }.to change(resource.reload, :notes).from('').to('Awesome Day')
+    end
+
+    it 'updates created_at' do
+      expect { result }.to change(resource.reload, :created_at)
+        .from(Time.zone.parse('2020-01-19 15:30:03'))
+        .to(Time.zone.parse('2020-01-18 12:15:31'))
     end
   end
 end
