@@ -40,7 +40,7 @@ module My
 
       def resource_params
         params.require(:health_sleep)
-              .permit(:woke_up_at_hour, :woke_up_at_minutes, :feeling, :notes)
+              .permit(:woke_up_at_hour, :woke_up_at_minutes, :feeling, :notes, :created_at)
               .to_h.symbolize_keys
       end
 
