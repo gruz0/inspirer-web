@@ -3,7 +3,7 @@
 module My
   module Health
     class SleepsController < BaseController
-      include Import['find_by_created_today', service: 'health.sleeps.service']
+      include Import['find_for_specific_day', service: 'health.sleeps.service']
 
       def index
         super
@@ -14,9 +14,7 @@ module My
       end
 
       def new
-        # rubocop:disable Rails/DynamicFindBy
-        created_today = find_by_created_today.call(resource)
-        # rubocop:enable Rails/DynamicFindBy
+        created_today = find_for_specific_day.call(resource.new, Date.current)
         if created_today
           redirect_to edit_my_health_sleep_path(created_today)
         else
@@ -40,7 +38,7 @@ module My
 
       def resource_params
         params.require(:health_sleep)
-              .permit(:woke_up_at_hour, :woke_up_at_minutes, :feeling, :notes)
+              .permit(:woke_up_at_hour, :woke_up_at_minutes, :feeling, :notes, :created_at)
               .to_h.symbolize_keys
       end
 

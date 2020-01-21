@@ -10,6 +10,7 @@ module Activity
           required(:distance_unit).filled(Types::DistanceUnit)
           required(:feeling).filled(Types::Feeling)
           optional(:notes).value(Types::StrippedString)
+          optional(:created_at).maybe(Types::Params::DateTime)
         end
       end
     end

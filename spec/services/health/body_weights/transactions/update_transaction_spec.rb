@@ -6,6 +6,7 @@ RSpec.describe Health::BodyWeights::Transactions::UpdateTransaction do
   let(:expected_steps) do
     {
       validate: 'shared.validate',
+      must_be_created_once_per_day: 'shared.must_be_created_once_per_day',
       assign_attributes: 'assign_attributes',
       persist: 'shared.persist'
     }

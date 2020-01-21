@@ -27,7 +27,8 @@ RSpec.describe Health::Meditations::Service do
       create(
         :health_meditation,
         notes: 'Meditation',
-        feeling: 'good'
+        feeling: 'good',
+        created_at: Time.zone.parse('2020-01-19 15:30:03')
       )
     end
 
@@ -36,7 +37,8 @@ RSpec.describe Health::Meditations::Service do
         resource: resource,
         attributes: {
           notes: html_ipsum(' My Meditation '),
-          feeling: 'amazing'
+          feeling: 'amazing',
+          created_at: '2020-01-18 12:15:31'
         }
       }
     end
@@ -49,6 +51,12 @@ RSpec.describe Health::Meditations::Service do
 
     it 'updates feeling' do
       expect { result }.to change(resource.reload, :feeling).from('good').to('amazing')
+    end
+
+    it 'updates created_at' do
+      expect { result }.to change(resource.reload, :created_at)
+        .from(Time.zone.parse('2020-01-19 15:30:03'))
+        .to(Time.zone.parse('2020-01-18 12:15:31'))
     end
   end
 end

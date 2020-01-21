@@ -12,6 +12,8 @@ module Activity
 
             attributes[:notes] = sanitizer.sanitize_html(attributes[:notes])
 
+            attributes.delete(:created_at) if attributes[:created_at].blank?
+
             resource.assign_attributes(attributes)
 
             Success input.merge(resource: resource)

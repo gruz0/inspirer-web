@@ -5,9 +5,9 @@ require 'rails_helper'
 RSpec.describe Health::BodyMeasures::Transactions::CreateTransaction do
   let(:expected_steps) do
     {
-      must_be_created_once_per_day: 'shared.must_be_created_once_per_day',
       validate: 'shared.validate',
       build: 'shared.build',
+      must_be_created_once_per_day: 'shared.must_be_created_once_per_day',
       assign_attributes: 'assign_attributes',
       persist: 'shared.persist'
     }

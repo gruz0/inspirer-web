@@ -8,6 +8,7 @@ module Activity
           required(:title).filled(Types::StrippedString, max_size?: 100)
           required(:feeling).filled(Types::Feeling)
           optional(:notes).value(Types::StrippedString)
+          optional(:created_at).maybe(Types::Params::DateTime)
         end
       end
     end

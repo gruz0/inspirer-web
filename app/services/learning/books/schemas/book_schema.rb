@@ -11,6 +11,7 @@ module Learning
           required(:status).filled.value(included_in?: LEARNING_BOOK_STATUSES.keys.map(&:to_s))
           required(:feeling).filled(Types::Feeling)
           optional(:notes).value(Types::StrippedString)
+          optional(:created_at).maybe(Types::Params::DateTime)
         end
       end
     end

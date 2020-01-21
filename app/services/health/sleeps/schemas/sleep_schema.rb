@@ -9,6 +9,7 @@ module Health
           required(:woke_up_at_minutes).filled(:integer) { gteq?(0) & lt?(60) }
           required(:feeling).filled(Types::Feeling)
           optional(:notes).value(Types::StrippedString)
+          optional(:created_at).maybe(Types::Params::DateTime)
         end
       end
     end

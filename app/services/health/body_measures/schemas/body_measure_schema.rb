@@ -11,6 +11,7 @@ module Health
           required(:unit).filled.value(included_in?: BODY_MEASURE_UNITS.keys.map(&:to_s))
           required(:feeling).filled(Types::Feeling)
           optional(:notes).value(Types::StrippedString)
+          optional(:created_at).maybe(Types::Params::DateTime)
         end
       end
     end

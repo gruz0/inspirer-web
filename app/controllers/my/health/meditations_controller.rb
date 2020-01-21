@@ -32,7 +32,9 @@ module My
       private
 
       def resource_params
-        params.require(:health_meditation).permit(:notes, :feeling).to_h.symbolize_keys
+        params.require(:health_meditation)
+              .permit(:notes, :feeling, :created_at)
+              .to_h.symbolize_keys
       end
 
       def resource_class
