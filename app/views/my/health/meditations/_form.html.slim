@@ -3,8 +3,8 @@
 = form_for [:my, meditation] do |f|
   .form-group.row
     = f.label :created_at, class: 'col-4 col-lg-3 col-form-label'
-    .col.col-lg-8
-      = f.text_field :created_at, class: 'form-control'
+    .col-8.col-sm-5.col-md-4
+      = f.text_field :created_at, class: 'form-control created-at'
 
   = render partial: 'shared/notes', locals: { form: f, required: true }
   = render partial: 'shared/feeling', locals: { form: f, value: meditation.feeling }
