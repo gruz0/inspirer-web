@@ -179,6 +179,7 @@ GEM
       railties (>= 4.2.0)
     ffaker (2.13.0)
     ffi (1.11.3)
+    flatpickr (4.5.7.0)
     font-awesome-rails (4.7.0.5)
       railties (>= 3.2, < 6.1)
     globalid (0.4.2)
@@ -372,6 +373,7 @@ DEPENDENCIES
   dry-validation
   factory_bot_rails
   ffaker
+  flatpickr
   font-awesome-rails
   hiredis
   jquery-rails
