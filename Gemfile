@@ -18,7 +18,7 @@ gem 'hiredis'
 gem 'jquery-rails'
 gem 'pagy'
 gem 'pg'
-gem 'puma', '~> 4.3'
+gem 'puma', '~> 4.3', '>= 4.3.3'
 # FIXME: It should be updated to '~> 6.0.3' after fixing Zeitwerk's issue
 gem 'rails', '= 6.0.1'
 gem 'redis-session-store'
