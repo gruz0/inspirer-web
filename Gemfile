@@ -20,7 +20,7 @@ gem 'pagy'
 gem 'pg'
 gem 'puma', '~> 4.3'
 # FIXME: It should be updated to '~> 6.0.3' after fixing Zeitwerk's issue
-gem 'rails', '= 6.0.1'
+gem 'rails', '6.0.3.1'
 gem 'redis-session-store'
 gem 'rollbar'
 gem 'sanitize'
