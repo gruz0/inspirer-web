@@ -5,30 +5,30 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 gem 'addressable'
 gem 'bootsnap', '>= 1.4.4', require: false
-gem 'bootstrap', '>= 4.3.1'
-gem 'devise'
-gem 'devise_zxcvbn'
-gem 'dotenv-rails'
+gem 'bootstrap', '>= 4.4.1'
+gem 'devise', '>= 4.7.1'
+gem 'devise_zxcvbn', '>= 5.1.0'
+gem 'dotenv-rails', '>= 2.7.5'
 gem 'dry-system'
 gem 'dry-transaction'
 gem 'dry-validation'
 gem 'flatpickr'
-gem 'font-awesome-rails'
+gem 'font-awesome-rails', '>= 4.7.0.5'
 gem 'hiredis'
-gem 'jquery-rails'
+gem 'jquery-rails', '>= 4.3.5'
 gem 'pagy'
 gem 'pg'
 gem 'puma', '~> 4.3'
 # FIXME: It should be updated to '~> 6.0.3' after fixing Zeitwerk's issue
-gem 'rails', '= 6.0.1'
-gem 'redis-session-store'
+gem 'rails', '= 6.0.3.1'
+gem 'redis-session-store', '>= 0.11.1'
 gem 'rollbar'
 gem 'sanitize'
-gem 'sassc-rails'
+gem 'sassc-rails', '>= 2.1.2'
 gem 'sidekiq'
-gem 'slim-rails'
+gem 'slim-rails', '>= 3.2.0'
 gem 'sprockets'
-gem 'validate_url'
+gem 'validate_url', '>= 1.0.8'
 
 # NOTE: When we'll try to build this Docker image for production,
 # we'll have this issue when try to install mini_racer with v8 on Alpine Linux:
@@ -46,19 +46,19 @@ group :development do
   gem 'better_errors'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'web-console', '>= 3.3.0'
+  gem 'web-console', '>= 4.0.1'
 end
 
 group :development, :test do
-  gem 'rspec-rails', '~> 3.9'
+  gem 'rspec-rails', '~> 3.9', '>= 3.9.0'
 end
 
 group :test do
   gem 'capybara', require: 'capybara/rspec'
   gem 'database_cleaner'
-  gem 'factory_bot_rails'
+  gem 'factory_bot_rails', '>= 5.1.1'
   gem 'ffaker'
   gem 'selenium-webdriver'
-  gem 'shoulda-callback-matchers'
-  gem 'shoulda-matchers'
+  gem 'shoulda-callback-matchers', '>= 1.1.4'
+  gem 'shoulda-matchers', '>= 4.3.0'
 end
