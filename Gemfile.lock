@@ -178,7 +178,7 @@ GEM
     factory_bot_rails (5.1.1)
       factory_bot (~> 5.1.0)
       railties (>= 4.2.0)
-    ffaker (2.13.0)
+    ffaker (2.15.0)
     ffi (1.11.3)
     flatpickr (4.5.7.0)
     font-awesome-rails (4.7.0.5)
