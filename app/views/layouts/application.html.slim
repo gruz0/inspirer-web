@@ -10,24 +10,16 @@ html lang="en"
     - if Rails.env.production?
       = render 'application/analytics/yandex_metrika'
       = render 'application/analytics/google_analytics'
-      = render 'application/jivosite'
   body style="padding-bottom:55px;"
     header
       = render 'application/menu'
 
     .container-fluid
-      .row
-        .col-12.col-sm-3.col-lg-2.col-xl-2.pt-3.bg-light.sidebar
-          = render 'application/left_sidebar'
-
-        .col-12.col-sm-9.col-lg-6.col-xl-7.pt-3
+      .row.justify-content-md-center
+        .col.col-md-9.mt-3
           main.mt-3 role="main"
             = render 'application/flash_messages'
 
             = yield
-
-        .col-12.col-lg-4.col-xl-3.pt-3.bg-light.sidebar
-          = render 'application/right_sidebar'
-
     footer
       = render 'application/footer'
