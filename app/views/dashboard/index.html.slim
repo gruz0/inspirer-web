@@ -15,15 +15,6 @@
     .card.mb-3.text-center.border-0
       .card-body
         p.card-text
-          = fa_icon "tasks 5x", style: 'color:#F79F1F;'
-        h5.card-title
-          = link_to(my_productivity_index_path, class: 'stretched-link')
-            = t('views.dashboard.index.cards.productivity')
-
-  .col-6.col-sm-6.col-md-4
-    .card.mb-3.text-center.border-0
-      .card-body
-        p.card-text
           = fa_icon "heartbeat 5x", style: 'color:#EA2027;'
         h5.card-title
           = link_to(my_activity_index_path, class: 'stretched-link')

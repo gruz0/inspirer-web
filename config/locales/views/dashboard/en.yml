@@ -5,7 +5,6 @@ en:
         title: Dashboard
         cards:
           health: Health
-          productivity: Productivity
           activity: Activity
           emotions: Emotions
           learning: Learning
