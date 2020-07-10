@@ -16,8 +16,8 @@ RSpec.describe 'Viewing the index view of Activity section', type: :system do
       visit my_activity_index_path
     end
 
-    it 'has 7 cards' do
-      expect(page.find('main')).to have_selector('.card', count: 7)
+    it 'has 6 cards' do
+      expect(page.find('main')).to have_selector('.card', count: 6)
     end
 
     it 'has link to Gym & Workout' do
@@ -43,11 +43,6 @@ RSpec.describe 'Viewing the index view of Activity section', type: :system do
     it 'has link to Yoga' do
       expect(page).to have_link(nil, href: my_activity_yoga_index_path,
                                      text: I18n.t('views.my.activity.index.cards.yoga'))
-    end
-
-    it 'has link to Stretching' do
-      expect(page).to have_link(nil, href: my_activity_stretching_index_path,
-                                     text: I18n.t('views.my.activity.index.cards.stretching'))
     end
 
     it 'has link to Custom Workouts' do
