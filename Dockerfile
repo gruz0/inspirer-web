@@ -13,7 +13,7 @@ WORKDIR /home/inspirer
 # will be cached unless changes to one of those two files
 # are made.
 COPY --chown=inspirer Gemfile Gemfile.lock ./
-RUN gem install bundler -v 2.0.2
+RUN gem install bundler -v 2.1.4
 RUN bundle install --jobs 20 --retry 5
 
 COPY --chown=inspirer . ./
