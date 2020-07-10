@@ -69,8 +69,6 @@ CREATE TYPE public.weight_units AS ENUM (
 
 SET default_tablespace = '';
 
-SET default_with_oids = false;
-
 --
 -- Name: accounts; Type: TABLE; Schema: public; Owner: -
 --

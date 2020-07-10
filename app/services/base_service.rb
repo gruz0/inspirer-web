@@ -4,7 +4,7 @@ require 'dry/transaction'
 require 'dry/transaction/operation'
 
 class BaseService
-  def method_missing(name, *args, &block)
+  def method_missing(name, *args, &block) # rubocop:disable Metrics/CyclomaticComplexity
     return super unless self.class.transactions.key?(name)
 
     input, step_args = args

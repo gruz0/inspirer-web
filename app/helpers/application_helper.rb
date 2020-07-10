@@ -8,7 +8,7 @@ module ApplicationHelper
   end
 
   def human_readable_date(date)
-    content_tag(:abbr, title: l(date, format: :long)) do
+    tag.abbr(title: l(date, format: :long)) do
       time_tag(date) do
         "#{distance_of_time_in_words(date, Time.zone.now, include_seconds: true)} ago"
       end
