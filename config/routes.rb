@@ -48,8 +48,6 @@ Rails.application.routes.draw do
       resources :articles, only: %i[index show new create edit update]
       resources :books, only: %i[index show new create edit update]
     end
-
-    resources :family, only: [:index]
   end
 
   root 'home#index'
