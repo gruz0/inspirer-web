@@ -39,8 +39,6 @@ Rails.application.routes.draw do
       resources :custom_workouts, only: %i[index show new create edit update]
     end
 
-    resources :emotions, only: [:index]
-
     resources :learning, only: [:index]
     namespace :learning do
       resources :videos, only: %i[index show new create edit update]

@@ -16,8 +16,8 @@ RSpec.describe 'Viewing the index view of Dashboard', type: :system do
       visit dashboard_index_path
     end
 
-    it 'has 4 cards' do
-      expect(page.find('main')).to have_selector('.card', count: 4)
+    it 'has 3 cards' do
+      expect(page.find('main')).to have_selector('.card', count: 3)
     end
 
     it 'has link to Health' do
@@ -28,11 +28,6 @@ RSpec.describe 'Viewing the index view of Dashboard', type: :system do
     it 'has link to Activity' do
       expect(page).to have_link(nil, href: my_activity_index_path,
                                      text: I18n.t('views.dashboard.index.cards.activity'))
-    end
-
-    it 'has link to Emotions' do
-      expect(page).to have_link(nil, href: my_emotions_path,
-                                     text: I18n.t('views.dashboard.index.cards.emotions'))
     end
 
     it 'has link to Learning' do
