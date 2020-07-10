@@ -36,7 +36,6 @@ Rails.application.routes.draw do
         resources :uddiyana, only: [:index]
         resources :affirmation, only: [:index]
       end
-      resources :stretching, only: [:index]
       resources :custom_workouts, only: %i[index show new create edit update]
     end
 
