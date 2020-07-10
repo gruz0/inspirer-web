@@ -23,12 +23,6 @@ Rails.application.routes.draw do
       resources :meditations, only: %i[index show new create edit update]
     end
 
-    resources :productivity, only: [:index]
-    namespace :productivity do
-      resources :habbits, only: [:index]
-      resources :eat_the_frog_first, only: [:index]
-    end
-
     resources :activity, only: [:index]
     namespace :activity do
       resources :gym, only: [:index]
