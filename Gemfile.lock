@@ -186,7 +186,7 @@ GEM
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     hiredis (0.6.3)
-    i18n (1.8.3)
+    i18n (1.8.5)
       concurrent-ruby (~> 1.0)
     ice_nine (0.11.2)
     jquery-rails (4.4.0)
@@ -258,8 +258,8 @@ GEM
     rb-inotify (0.10.1)
       ffi (~> 1.0)
     redis (4.2.1)
-    redis-session-store (0.11.1)
-      actionpack (>= 3)
+    redis-session-store (0.11.3)
+      actionpack (>= 3, < 7)
       redis (>= 3, < 5)
     regexp_parser (1.7.1)
     responders (3.0.1)
@@ -346,7 +346,7 @@ GEM
     websocket-extensions (0.1.5)
     xpath (3.2.0)
       nokogiri (~> 1.8)
-    zeitwerk (2.3.1)
+    zeitwerk (2.4.0)
     zxcvbn-js (4.4.3)
       execjs
 
