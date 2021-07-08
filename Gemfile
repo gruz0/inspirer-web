@@ -3,7 +3,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-gem 'addressable'
+gem 'addressable', '>= 2.8.0'
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'bootstrap', '>= 4.3.1'
 gem 'devise'
@@ -53,7 +53,7 @@ group :development, :test do
 end
 
 group :test do
-  gem 'capybara', require: 'capybara/rspec'
+  gem 'capybara', '>= 3.33.0', require: 'capybara/rspec'
   gem 'database_cleaner'
   gem 'factory_bot_rails'
   gem 'ffaker'
