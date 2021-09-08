@@ -42,7 +42,7 @@ end
 
 group :development do
   gem 'active_record_query_trace'
-  gem 'better_errors'
+  gem 'better_errors', '>= 2.8.0'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'web-console', '>= 3.3.0'
