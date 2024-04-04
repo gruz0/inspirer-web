@@ -5,28 +5,28 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 gem 'addressable'
 gem 'bootsnap', '>= 1.4.4', require: false
-gem 'bootstrap', '>= 4.3.1'
-gem 'devise'
-gem 'devise_zxcvbn'
-gem 'dotenv-rails'
+gem 'bootstrap', '>= 4.5.2'
+gem 'devise', '>= 4.7.3'
+gem 'devise_zxcvbn', '>= 5.2.0'
+gem 'dotenv-rails', '>= 2.7.6'
 gem 'dry-system'
 gem 'dry-transaction'
 gem 'dry-validation'
 gem 'flatpickr'
-gem 'font-awesome-rails'
+gem 'font-awesome-rails', '>= 4.7.0.8'
 gem 'hiredis'
-gem 'jquery-rails'
+gem 'jquery-rails', '>= 4.5.0'
 gem 'pagy'
 gem 'pg'
 gem 'puma', '~> 4.3'
-gem 'rails', '~> 6.0.3'
-gem 'redis-session-store'
+gem 'rails', '~> 7.0.8', '>= 7.0.8.1'
+gem 'redis-session-store', '>= 0.11.4'
 gem 'rollbar'
-gem 'sanitize'
+gem 'sanitize', '>= 5.2.2'
 gem 'sassc-rails'
-gem 'sidekiq'
-gem 'slim-rails'
-gem 'sprockets'
+gem 'sidekiq', '>= 6.1.1'
+gem 'slim-rails', '>= 3.3.0'
+gem 'sprockets', '>= 4.0.3'
 gem 'validate_url'
 
 # NOTE: When we'll try to build this Docker image for production,
@@ -42,20 +42,20 @@ end
 
 group :development do
   gem 'active_record_query_trace'
-  gem 'better_errors'
+  gem 'better_errors', '>= 2.8.0'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'web-console', '>= 3.3.0'
+  gem 'web-console', '>= 4.0.4'
 end
 
 group :development, :test do
-  gem 'rspec-rails', '~> 4.0'
+  gem 'rspec-rails', '~> 4.0', '>= 4.0.2'
 end
 
 group :test do
-  gem 'capybara', require: 'capybara/rspec'
+  gem 'capybara', '>= 3.34.0', require: 'capybara/rspec'
   gem 'database_cleaner'
-  gem 'factory_bot_rails'
+  gem 'factory_bot_rails', '>= 6.1.0'
   gem 'ffaker'
   gem 'selenium-webdriver'
   gem 'shoulda-callback-matchers'
