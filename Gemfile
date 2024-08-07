@@ -5,7 +5,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 gem 'addressable'
 gem 'bootsnap', '>= 1.4.4', require: false
-gem 'bootstrap', '>= 4.3.1'
+gem 'bootstrap', '>= 5.0.0'
 gem 'devise'
 gem 'devise_zxcvbn'
 gem 'dotenv-rails'
