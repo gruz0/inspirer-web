@@ -5,7 +5,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 gem 'addressable'
 gem 'bootsnap', '>= 1.4.4', require: false
-gem 'bootstrap', '>= 4.3.1'
+gem 'bootstrap', '>= 4.6.2.1'
 gem 'devise'
 gem 'devise_zxcvbn'
 gem 'dotenv-rails'
@@ -19,7 +19,7 @@ gem 'jquery-rails'
 gem 'pagy'
 gem 'pg'
 gem 'puma', '~> 4.3'
-gem 'rails', '~> 6.0.3'
+gem 'rails', '~> 7.0.0'
 gem 'redis-session-store'
 gem 'rollbar'
 gem 'sanitize'
